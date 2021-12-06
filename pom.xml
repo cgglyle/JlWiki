@@ -21,6 +21,7 @@
     <description>JWiki</description>
     <properties>
         <java.version>11</java.version>
+        <mybatis-plus.version>3.4.3.4</mybatis-plus.version>
     </properties>
     <dependencies>
         <dependency>
@@ -75,6 +76,11 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatis-plus.version}</version>
         </dependency>
     </dependencies>
 
