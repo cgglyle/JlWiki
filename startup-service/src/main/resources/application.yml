@@ -7,3 +7,6 @@ spring:
   application:
     # 服务名称
     name: JWiki
+  profiles:
+    # 环境
+    active: dev
