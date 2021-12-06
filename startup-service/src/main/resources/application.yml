@@ -1,0 +1,9 @@
+# 服务
+server:
+  # 服务端口
+  port: 8080
+
+spring:
+  application:
+    # 服务名称
+    name: JWiki
