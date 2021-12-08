@@ -1,6 +1,8 @@
 package pers.cgglyle.service.acconut.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import pers.cgglyle.response.GlobalExceptionHandler;
 
 /**
  * @author cgglyle
@@ -8,4 +10,8 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class ResultConfig {
+    @Bean
+    public GlobalExceptionHandler globalExceptionHandler(){
+        return new GlobalExceptionHandler();
+    }
 }
