@@ -59,13 +59,13 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, UserEntity> imp
             BeanUtils.copyProperties(user, userVo);
             return userVo;
         }).collect(Collectors.toList());
-        return new PageResult(userQuery.getPageNum(),userQuery.getPageSize(),data.getTotal(),data.getPages(),collect);
+        return new PageResult(userQuery.getPageNum(), userQuery.getPageSize(), data.getTotal(), data.getPages(), collect);
     }
 
     @Override
     public boolean addUser(UserAddDto userAddDto) {
         UserEntity userEntity = new UserEntity();
-        BeanUtils.copyProperties(userAddDto,userEntity);
+        BeanUtils.copyProperties(userAddDto, userEntity);
         userEntity.setUserPasswordUpdateTime(LocalDateTime.now());
         return this.add(userEntity);
     }
@@ -73,10 +73,10 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, UserEntity> imp
     @Override
     public boolean updateUser(UserUpdateDto userUpdateDto) {
         UserEntity userEntity = new UserEntity();
-        BeanUtils.copyProperties(userUpdateDto,userEntity);
+        BeanUtils.copyProperties(userUpdateDto, userEntity);
         userEntity.setUpdateTime(LocalDateTime.now());
         //判断是否修改密码(修改过执行，没修改过不执行）
-        if(!userUpdateDto.getUserPassword().equals(this.getById(userUpdateDto.getId()).getUserPassword())){
+        if (!userUpdateDto.getUserPassword().equals(this.getById(userUpdateDto.getId()).getUserPassword())) {
             userEntity.setUserPasswordUpdateTime(LocalDateTime.now());
         }
         return this.update(userEntity);
