@@ -53,3 +53,17 @@ mybatis-plus:
     auto-mapping-behavior: full
   # 指定映射文件
   mapper-locations: classpath*:mapper/*.xml
+#接口文档系统配置
+knife4j:
+  # true:启用knife4j增强模式, false:不启用knife4j增强模式
+  enable: true
+  #是否开启生产环境保护策略,生产环境下禁止访问接口文档系统,生产环境设置为true,开发环境设置为false,
+  production: false
+  #对Knife4j提供的资源提供BasicHttp校验,保护文档;production配置为true时,basic认证功能不可用
+  basic:
+    #开启BasicHttp功能
+    enable: false
+    username: admin
+    password: 123321
+  #是否开启一个默认的跨域配置,该功能配合自定义Host使用,cors: true
+  #  cors: true
