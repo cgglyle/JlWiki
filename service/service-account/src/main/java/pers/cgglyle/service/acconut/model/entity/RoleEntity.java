@@ -1,6 +1,7 @@
 package pers.cgglyle.service.acconut.model.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import pers.cgglyle.base.model.BaseEntity;
@@ -14,6 +15,7 @@ import java.util.Objects;
  * @date 2021/12/7
  */
 @ApiModel("角色实体")
+@TableName("role")
 public class RoleEntity extends BaseEntity {
     @ApiModelProperty("角色名称")
     @TableField("role_name")
