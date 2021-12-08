@@ -1,14 +1,13 @@
 package pers.cgglyle.service.acconut.model.dto;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
 import pers.cgglyle.base.model.BaseDto;
 
-import java.util.Date;
 import java.util.Objects;
 
 /**
+ * 用户添加数据模型
+ *
  * @author cgglyle
  * @date 2021/12/7
  */

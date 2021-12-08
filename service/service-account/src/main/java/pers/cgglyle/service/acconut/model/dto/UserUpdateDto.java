@@ -6,6 +6,8 @@ import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 /**
+ * 用户更新数据模型
+ *
  * @author cgglyle
  * @date 2021/12/7
  */

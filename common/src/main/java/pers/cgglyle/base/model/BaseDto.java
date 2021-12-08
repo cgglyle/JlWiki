@@ -1,16 +1,12 @@
 package pers.cgglyle.base.model;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
 
-import java.util.Date;
 import java.util.Objects;
 
 /**
+ * 基础数据模型
+ *
  * @author cgglyle
  * @date 2021/12/7
  */

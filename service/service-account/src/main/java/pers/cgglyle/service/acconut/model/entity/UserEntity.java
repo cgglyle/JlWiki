@@ -13,10 +13,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 import pers.cgglyle.base.model.BaseEntity;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Objects;
 
 /**
+ * 用户实体
+ *
  * @author cgglyle
  * @date 2021/12/6
  */

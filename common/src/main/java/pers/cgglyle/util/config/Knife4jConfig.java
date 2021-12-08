@@ -12,6 +12,8 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
 /**
+ * Knife4j配置类
+ *
  * @author cgglyle
  * @date 2021/12/6
  */
