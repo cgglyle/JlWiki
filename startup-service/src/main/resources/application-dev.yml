@@ -32,6 +32,8 @@ spring:
         max-idle: 8
         # 连接池中最小空闲连接
         min-idle: 0
+  main:
+    allow-bean-definition-overriding: true
 
 # swagger 配置 开启文档显示
 springfox:
