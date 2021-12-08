@@ -9,6 +9,9 @@ import pers.cgglyle.base.model.BaseQuery;
 import pers.cgglyle.base.service.IBaseService;
 import pers.cgglyle.response.PageResult;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 /**
  * 服务成基础实现
  *
@@ -30,5 +33,39 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseEntity> exte
         Page<T> data = baseMapper.selectPage(page,wrapper);
         // 返回分页结构
         return new PageResult(baseQuery.getPageNum(),baseQuery.getPageSize(),data.getTotal(),data.getRecords());
+    }
+
+    @Override
+    public boolean add(T entity) {
+        entity.setCreateTime(LocalDateTime.now());
+        entity.setStatus(true);
+        entity.setDeleted(true);
+        entity.setSystem(false);
+        return this.save(entity);
+    }
+
+    @Override
+    public boolean delete(Integer id) {
+        // 判断是否为系统预制
+        if(this.getById(id).isSystem()){
+            throw new RuntimeException("系统预制，不可删除");
+        }
+        return this.removeById(id);
+    }
+
+    @Override
+    public boolean update(T entity) {
+        entity.setUpdateTime(LocalDateTime.now());
+        return updateById(entity);
+    }
+
+    @Override
+    public boolean batchDelete(List<Integer> idList) {
+        for (Integer id: idList) {
+            if(this.getById(id).isSystem()){
+                throw new RuntimeException( id + "系统预制，不可删除");
+            }
+        }
+        return this.removeByIds(idList);
     }
 }
