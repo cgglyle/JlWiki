@@ -8,6 +8,8 @@ import pers.cgglyle.base.model.BaseQuery;
 import pers.cgglyle.base.service.impl.BaseServiceImpl;
 import pers.cgglyle.response.PageResult;
 import pers.cgglyle.service.acconut.mapper.RoleMapper;
+import pers.cgglyle.service.acconut.model.dto.RoleAddDto;
+import pers.cgglyle.service.acconut.model.dto.RoleUpdateDto;
 import pers.cgglyle.service.acconut.model.entity.RoleEntity;
 import pers.cgglyle.service.acconut.model.query.RoleQuery;
 import pers.cgglyle.service.acconut.model.vo.RoleVo;
@@ -28,21 +30,35 @@ public class RoleServiceImpl extends BaseServiceImpl<RoleMapper, RoleEntity> imp
     public PageResult getPage(BaseQuery baseQuery) {
         RoleQuery roleQuery = (RoleQuery) baseQuery;
         QueryWrapper<RoleEntity> queryWrapper = new QueryWrapper<>();
-        if(roleQuery.getRoleName() != null){
-            queryWrapper.like("role_name",roleQuery.getRoleName());
+        if (roleQuery.getRoleName() != null) {
+            queryWrapper.like("role_name", roleQuery.getRoleName());
         }
-        if(roleQuery.getRoleDescription() != null){
-            queryWrapper.like("role_description",roleQuery.getRoleDescription());
+        if (roleQuery.getRoleDescription() != null) {
+            queryWrapper.like("role_description", roleQuery.getRoleDescription());
         }
-        queryWrapper.eq("is_deleted",true);
+        queryWrapper.eq("is_deleted", true);
         queryWrapper.orderByDesc("id");
         Page<RoleEntity> page = new Page<>(roleQuery.getPageNum(), roleQuery.getPageSize());
         Page<RoleEntity> data = baseMapper.selectPage(page, queryWrapper);
-        List<RoleEntity> collect = data.getRecords().stream().map(role -> {
+        List<RoleVo> collect = data.getRecords().stream().map(role -> {
             RoleVo roleVo = new RoleVo();
             BeanUtils.copyProperties(role, roleVo);
-            return role;
+            return roleVo;
         }).collect(Collectors.toList());
-        return new PageResult(roleQuery.getPageNum(),roleQuery.getPageSize(),data.getTotal(),data.getPages(),collect);
+        return new PageResult(roleQuery.getPageNum(), roleQuery.getPageSize(), data.getTotal(), data.getPages(), collect);
+    }
+
+    @Override
+    public boolean addRole(RoleAddDto roleAddDto) {
+        RoleEntity roleEntity = new RoleEntity();
+        BeanUtils.copyProperties(roleAddDto, roleEntity);
+        return this.add(roleEntity);
+    }
+
+    @Override
+    public boolean updateRole(RoleUpdateDto roleUpdateDto) {
+        RoleEntity roleEntity = new RoleEntity();
+        BeanUtils.copyProperties(roleUpdateDto, roleEntity);
+        return this.update(roleEntity);
     }
 }
