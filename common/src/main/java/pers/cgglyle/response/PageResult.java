@@ -30,10 +30,11 @@ public class PageResult {
     public PageResult() {
     }
 
-    public PageResult(long pageNum, long pageSize, long totalSize, List<?> data) {
+    public PageResult(long pageNum, long pageSize, long totalSize, long totalPage, List<?> data) {
         this.pageNum = pageNum;
         this.pageSize = pageSize;
         this.totalSize = totalSize;
+        this.totalPage = totalPage;
         this.data = data;
     }
 

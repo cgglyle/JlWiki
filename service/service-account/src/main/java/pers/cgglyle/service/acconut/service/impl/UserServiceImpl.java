@@ -59,7 +59,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, UserEntity> imp
             BeanUtils.copyProperties(user, userVo);
             return userVo;
         }).collect(Collectors.toList());
-        return new PageResult(userQuery.getPageNum(),userQuery.getPageSize(),data.getTotal(),collect);
+        return new PageResult(userQuery.getPageNum(),userQuery.getPageSize(),data.getTotal(),data.getPages(),collect);
     }
 
     @Override

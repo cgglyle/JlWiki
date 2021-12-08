@@ -33,7 +33,7 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseEntity> exte
         // 获取分页查询信息
         Page<T> data = baseMapper.selectPage(page,wrapper);
         // 返回分页结构
-        return new PageResult(baseQuery.getPageNum(),baseQuery.getPageSize(),data.getTotal(),data.getRecords());
+        return new PageResult(baseQuery.getPageNum(),baseQuery.getPageSize(),data.getTotal(),data.getPages(),data.getRecords());
     }
 
     @Override
