@@ -2,6 +2,7 @@ package pers.cgglyle.service.acconut.model.dto;
 
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 /**
@@ -9,6 +10,7 @@ import java.util.Objects;
  * @date 2021/12/7
  */
 public class UserUpdateDto {
+    @NotNull(message = "用户id不能为空")
     @ApiModelProperty("主键id")
     private String id;
 
