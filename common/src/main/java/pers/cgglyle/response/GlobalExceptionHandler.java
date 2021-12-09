@@ -1,5 +1,7 @@
 package pers.cgglyle.response;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -18,6 +20,7 @@ import java.util.List;
  */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+    private Logger logger = LoggerFactory.getLogger(getClass());
     /**
      * Api请求失败
      *
@@ -56,5 +59,17 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(NullPointerException.class)
     public Result nullPointerExceptionHandler(NullPointerException e){
         return new Result(ResultCode.NULL_POINTER,e.getMessage());
+    }
+
+    /**
+     * 未知异常
+     *
+     * @param e 未知异常信息
+     * @return 返回体
+     */
+    @ExceptionHandler(Exception.class)
+    public Result exception (Exception e){
+        logger.error(ResultCode.SERVICE_ERROR.getMessage(),e);
+        return new Result(ResultCode.SERVICE_ERROR,e.getMessage());
     }
 }
