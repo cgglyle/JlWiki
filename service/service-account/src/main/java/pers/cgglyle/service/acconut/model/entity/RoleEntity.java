@@ -29,6 +29,10 @@ public class RoleEntity extends BaseEntity {
     @TableField("role_user_count")
     private Integer roleUserCount;
 
+    @ApiModelProperty("修改者")
+    @TableField("update_user")
+    private Integer updateUser;
+
     public String getRoleName() {
         return roleName;
     }
@@ -53,17 +57,25 @@ public class RoleEntity extends BaseEntity {
         this.roleUserCount = roleUserCount;
     }
 
+    public Integer getUpdateUser() {
+        return updateUser;
+    }
+
+    public void setUpdateUser(Integer updateUser) {
+        this.updateUser = updateUser;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         RoleEntity that = (RoleEntity) o;
-        return Objects.equals(roleName, that.roleName) && Objects.equals(roleDescription, that.roleDescription) && Objects.equals(roleUserCount, that.roleUserCount);
+        return Objects.equals(roleName, that.roleName) && Objects.equals(roleDescription, that.roleDescription) && Objects.equals(roleUserCount, that.roleUserCount) && Objects.equals(updateUser, that.updateUser);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), roleName, roleDescription, roleUserCount);
+        return Objects.hash(super.hashCode(), roleName, roleDescription, roleUserCount, updateUser);
     }
 }

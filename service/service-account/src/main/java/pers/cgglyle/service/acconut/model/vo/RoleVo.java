@@ -21,6 +21,9 @@ public class RoleVo extends BaseVo {
     @ApiModelProperty("当前角色用户数量")
     private Integer roleUserCount;
 
+    @ApiModelProperty("修改者")
+    private String updateUser;
+
     public String getRoleName() {
         return roleName;
     }
@@ -45,17 +48,25 @@ public class RoleVo extends BaseVo {
         this.roleUserCount = roleUserCount;
     }
 
+    public String getUpdateUser() {
+        return updateUser;
+    }
+
+    public void setUpdateUser(String updateUser) {
+        this.updateUser = updateUser;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         RoleVo roleVo = (RoleVo) o;
-        return Objects.equals(roleName, roleVo.roleName) && Objects.equals(roleDescription, roleVo.roleDescription) && Objects.equals(roleUserCount, roleVo.roleUserCount);
+        return Objects.equals(roleName, roleVo.roleName) && Objects.equals(roleDescription, roleVo.roleDescription) && Objects.equals(roleUserCount, roleVo.roleUserCount) && Objects.equals(updateUser, roleVo.updateUser);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), roleName, roleDescription, roleUserCount);
+        return Objects.hash(super.hashCode(), roleName, roleDescription, roleUserCount, updateUser);
     }
 }

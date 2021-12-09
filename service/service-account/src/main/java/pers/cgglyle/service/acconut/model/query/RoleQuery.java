@@ -18,6 +18,9 @@ public class RoleQuery extends BaseQuery {
     @ApiModelProperty("角色描述")
     private String roleDescription;
 
+    @ApiModelProperty("修改者")
+    private String updateUser;
+
     public String getRoleName() {
         return roleName;
     }
@@ -34,16 +37,25 @@ public class RoleQuery extends BaseQuery {
         this.roleDescription = roleDescription;
     }
 
+    public String getUpdateUser() {
+        return updateUser;
+    }
+
+    public void setUpdateUser(String updateUser) {
+        this.updateUser = updateUser;
+    }
+
     @Override
     public boolean equals(Object o) {
+
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RoleQuery roleQuery = (RoleQuery) o;
-        return Objects.equals(roleName, roleQuery.roleName) && Objects.equals(roleDescription, roleQuery.roleDescription);
+        return Objects.equals(roleName, roleQuery.roleName) && Objects.equals(roleDescription, roleQuery.roleDescription) && Objects.equals(updateUser, roleQuery.updateUser);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(roleName, roleDescription);
+        return Objects.hash(roleName, roleDescription, updateUser);
     }
 }

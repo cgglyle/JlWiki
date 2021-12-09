@@ -17,6 +17,9 @@ public class RoleUpdateDto {
     @ApiModelProperty("角色描述")
     private String roleDescription;
 
+    @ApiModelProperty("修改者")
+    private Integer updateUser;
+
     public String getRoleName() {
         return roleName;
     }
@@ -33,16 +36,24 @@ public class RoleUpdateDto {
         this.roleDescription = roleDescription;
     }
 
+    public Integer getUpdateUser() {
+        return updateUser;
+    }
+
+    public void setUpdateUser(Integer updateUser) {
+        this.updateUser = updateUser;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RoleUpdateDto that = (RoleUpdateDto) o;
-        return Objects.equals(roleName, that.roleName) && Objects.equals(roleDescription, that.roleDescription);
+        return Objects.equals(roleName, that.roleName) && Objects.equals(roleDescription, that.roleDescription) && Objects.equals(updateUser, that.updateUser);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(roleName, roleDescription);
+        return Objects.hash(roleName, roleDescription, updateUser);
     }
 }
