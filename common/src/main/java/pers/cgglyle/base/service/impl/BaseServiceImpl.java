@@ -16,6 +16,8 @@ import java.util.List;
 /**
  * 服务成基础实现
  *
+ * @param <M> 映射Mapper
+ * @param <T> 实体类
  * @author cgglyle
  * @date 2021/12/6
  */
