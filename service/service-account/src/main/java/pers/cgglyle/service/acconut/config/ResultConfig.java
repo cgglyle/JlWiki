@@ -13,7 +13,7 @@ import pers.cgglyle.response.GlobalExceptionHandler;
 @Configuration
 public class ResultConfig {
     @Bean
-    public GlobalExceptionHandler globalExceptionHandler(){
+    public GlobalExceptionHandler globalExceptionHandler() {
         return new GlobalExceptionHandler();
     }
 }

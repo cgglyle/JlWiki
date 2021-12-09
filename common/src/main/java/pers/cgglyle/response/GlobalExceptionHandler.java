@@ -20,7 +20,8 @@ import java.util.List;
  */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-    private Logger logger = LoggerFactory.getLogger(getClass());
+    private final Logger logger = LoggerFactory.getLogger(getClass());
+
     /**
      * Api请求失败
      *
@@ -29,11 +30,13 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(ApiException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Result apiExceptionHandler(ApiException e){
+    public Result apiExceptionHandler(ApiException e) {
         return new Result(ResultCode.FAILED, e.getMessage());
     }
+
     /**
      * 方法参数错误异常
+     *
      * @param e 参数错误信息
      * @return 返回体
      */
@@ -41,9 +44,9 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Result methodArgumentNotValidExceptionHandler(MethodArgumentNotValidException e) {
         // 从异常对象中拿到ObjectError对象
-        List<String> list=new ArrayList<>();
-        if (!e.getBindingResult().getAllErrors().isEmpty()){
-            for(ObjectError error:e.getBindingResult().getAllErrors()){
+        List<String> list = new ArrayList<>();
+        if (!e.getBindingResult().getAllErrors().isEmpty()) {
+            for (ObjectError error : e.getBindingResult().getAllErrors()) {
                 list.add(error.getDefaultMessage());
             }
         }
@@ -53,12 +56,13 @@ public class GlobalExceptionHandler {
 
     /**
      * 空指针异常
+     *
      * @param e 空指针异常信息
      * @return 返回体
      */
     @ExceptionHandler(NullPointerException.class)
-    public Result nullPointerExceptionHandler(NullPointerException e){
-        return new Result(ResultCode.NULL_POINTER,e.getMessage());
+    public Result nullPointerExceptionHandler(NullPointerException e) {
+        return new Result(ResultCode.NULL_POINTER, e.getMessage());
     }
 
     /**
@@ -68,8 +72,8 @@ public class GlobalExceptionHandler {
      * @return 返回体
      */
     @ExceptionHandler(Exception.class)
-    public Result exception (Exception e){
-        logger.error(ResultCode.SERVICE_ERROR.getMessage(),e);
-        return new Result(ResultCode.SERVICE_ERROR,e.getMessage());
+    public Result exception(Exception e) {
+        logger.error(ResultCode.SERVICE_ERROR.getMessage(), e);
+        return new Result(ResultCode.SERVICE_ERROR, e.getMessage());
     }
 }

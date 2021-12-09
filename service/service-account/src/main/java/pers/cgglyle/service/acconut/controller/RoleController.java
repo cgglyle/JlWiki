@@ -32,45 +32,53 @@ public class RoleController {
 
     @ApiOperation("获取分页")
     @GetMapping("getPage")
-    public PageResult getPage(RoleQuery roleQuery){
+    public PageResult getPage(RoleQuery roleQuery) {
         return roleService.getPage(roleQuery);
     }
 
     @PostMapping("addRole")
-    @ApiOperation("添加用户")
-    public boolean addRole(@RequestBody RoleAddDto roleAddDto){
+    @ApiOperation("添加角色")
+    public boolean addRole(@RequestBody RoleAddDto roleAddDto) {
         boolean b = roleService.addRole(roleAddDto);
-        if(!b){
-            throw new ApiException("用户添加失败");
+        if (!b) {
+            throw new ApiException("角色添加失败");
         }
         return true;
     }
 
+    /**
+     * 删除角色
+     * <p>
+     * 删除角色会同时删除所有拥有这个角色的用户的这个角色（笑）。
+     *
+     * @param id 角色id
+     * @return true
+     */
     @DeleteMapping("deleteRole")
-    @ApiOperation("删除用户")
-    public boolean deleteRole(Integer id){
+    @ApiOperation("删除角色")
+    public boolean deleteRole(Integer id) {
         boolean delete = roleService.delete(id);
-        if(!delete){
-            throw new ApiException("用户删除失败");
+        if (!delete) {
+            throw new ApiException("角色删除失败");
         }
         return true;
     }
 
     @PutMapping("updateRole")
-    @ApiOperation("更新用户")
-    public boolean updateRole(@RequestBody RoleUpdateDto roleUpdateDto){
+    @ApiOperation("更新角色")
+    public boolean updateRole(@RequestBody RoleUpdateDto roleUpdateDto) {
         boolean b = roleService.updateRole(roleUpdateDto);
-        if(!b){
-            throw new ApiException("更新用户失败");
+        if (!b) {
+            throw new ApiException("更新角色失败");
         }
         return true;
     }
 
     @DeleteMapping("batchDeleteRole")
-    @ApiOperation("批量删除用户")
-    public boolean batchDeleteRole(List<Integer> idList){
+    @ApiOperation("批量删除角色")
+    public boolean batchDeleteRole(List<Integer> idList) {
         boolean b = roleService.batchDelete(idList);
-        if(!b){
+        if (!b) {
             throw new ApiException("批量删除失败");
         }
         return true;

@@ -10,6 +10,20 @@ public class ApiException extends RuntimeException {
     private Integer code;
     private String message;
 
+    public ApiException() {
+        this(ResultCode.FAILED);
+    }
+
+    public ApiException(ResultCode failed) {
+        this.code = failed.getCode();
+        this.message = failed.getMessage();
+    }
+
+    public ApiException(String message) {
+        this.code = ResultCode.SERVICE_ERROR.getCode();
+        this.message = message;
+    }
+
     public Integer getCode() {
         return code;
     }
@@ -17,20 +31,6 @@ public class ApiException extends RuntimeException {
     @Override
     public String getMessage() {
         return message;
-    }
-
-    public ApiException() {
-        this(ResultCode.FAILED);
-    }
-
-    public ApiException(ResultCode failed) {
-        this.code=failed.getCode();
-        this.message=failed.getMessage();
-    }
-
-    public ApiException(String message){
-        this.code=ResultCode.SERVICE_ERROR.getCode();
-        this.message=message;
     }
 
 }

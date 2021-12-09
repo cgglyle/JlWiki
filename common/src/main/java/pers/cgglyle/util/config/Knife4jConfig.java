@@ -22,13 +22,13 @@ import springfox.documentation.spring.web.plugins.Docket;
 @Configuration
 public class Knife4jConfig {
     @Bean
-    public Docket createRestApi(){
+    public Docket createRestApi() {
         return new Docket(DocumentationType.OAS_30)
                 .enable(true)
                 .apiInfo(new ApiInfoBuilder()
                         .title("JWiki接口文档")
                         .description("JWikiApi")
-                        .contact(new Contact("cgglyle","https://github.com/cgglyle/JWiki","cgglyle@outlook.com"))
+                        .contact(new Contact("cgglyle", "https://github.com/cgglyle/JWiki", "cgglyle@outlook.com"))
                         .version("0.1")
                         .build())
                 .groupName("0.1")

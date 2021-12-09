@@ -3,6 +3,7 @@ package pers.cgglyle.service.acconut.service;
 import pers.cgglyle.base.service.IBaseService;
 import pers.cgglyle.service.acconut.model.dto.UserRoleRelationDto;
 import pers.cgglyle.service.acconut.model.entity.UserRoleRelationEntity;
+import pers.cgglyle.service.acconut.model.vo.UserRoleVo;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ public interface UserRoleRelationService extends IBaseService<UserRoleRelationEn
      * @param userId 用户id
      * @return 用户角色列表
      */
-    List<String> getUserRoleList(Integer userId);
+    List<UserRoleVo> getUserRoleList(Integer userId);
 
     /**
      * 模糊搜索获取用户id列表

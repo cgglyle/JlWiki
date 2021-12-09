@@ -6,13 +6,16 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import pers.cgglyle.base.model.BaseQuery;
 import pers.cgglyle.base.service.impl.BaseServiceImpl;
+import pers.cgglyle.response.ApiException;
 import pers.cgglyle.response.PageResult;
 import pers.cgglyle.service.acconut.mapper.UserMapper;
 import pers.cgglyle.service.acconut.model.dto.UserAddDto;
 import pers.cgglyle.service.acconut.model.dto.UserRoleRelationDto;
 import pers.cgglyle.service.acconut.model.dto.UserUpdateDto;
 import pers.cgglyle.service.acconut.model.entity.UserEntity;
+import pers.cgglyle.service.acconut.model.entity.UserRoleRelationEntity;
 import pers.cgglyle.service.acconut.model.query.UserQuery;
+import pers.cgglyle.service.acconut.model.vo.UserRoleVo;
 import pers.cgglyle.service.acconut.model.vo.UserVo;
 import pers.cgglyle.service.acconut.service.UserRoleRelationService;
 import pers.cgglyle.service.acconut.service.UserService;
@@ -57,8 +60,8 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, UserEntity> imp
         }
         if (userQuery.getUserRole() != null) {
             List<Integer> userIdList = roleRelationService.getUserIdList(userQuery.getUserRole());
-            for (Integer id: userIdList) {
-                wrapper.or().eq("id",id);
+            for (Integer id : userIdList) {
+                wrapper.or().eq("id", id);
             }
         }
         wrapper.orderByDesc("id");
@@ -70,7 +73,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, UserEntity> imp
         List<UserVo> collect = data.getRecords().stream().map(user -> {
             UserVo userVo = new UserVo();
             BeanUtils.copyProperties(user, userVo);
-            List<String> userRoleList = roleRelationService.getUserRoleList(user.getId());
+            List<UserRoleVo> userRoleList = roleRelationService.getUserRoleList(user.getId());
             userVo.setUserRole(userRoleList);
             return userVo;
         }).collect(Collectors.toList());
@@ -83,12 +86,6 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, UserEntity> imp
         BeanUtils.copyProperties(userAddDto, userEntity);
         userEntity.setUserPasswordUpdateTime(LocalDateTime.now());
         return this.add(userEntity);
-    }
-
-    @Override
-    public boolean add(UserEntity entity) {
-
-        return super.add(entity);
     }
 
     @Override
@@ -106,5 +103,19 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, UserEntity> imp
     @Override
     public boolean addUserRole(UserRoleRelationDto userRoleRelationDto) {
         return roleRelationService.addUserRole(userRoleRelationDto);
+    }
+
+    @Override
+    public boolean delete(Integer id) {
+        UserEntity userEntity = this.getById(id);
+        if (userEntity.isSystem()) {
+            throw new ApiException("系统用户，无法删除");
+        }
+        QueryWrapper<UserRoleRelationEntity> wrapper = new QueryWrapper<>();
+        wrapper.eq("user_id", id);
+        boolean remove = roleRelationService.remove(wrapper);
+        boolean b = this.removeById(id);
+        return remove && b;
+
     }
 }

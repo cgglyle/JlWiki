@@ -30,12 +30,22 @@ public class Result {
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone="GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private LocalDateTime timeStamp = LocalDateTime.now();
     /**
      * 响应数据
      */
     private Object data;
+
+    public Result(Object data) {
+        this(ResultCode.SUCCESS, data);
+    }
+
+    public Result(ResultCode resultCode, Object data) {
+        this.code = resultCode.getCode();
+        this.message = resultCode.getMessage();
+        this.data = data;
+    }
 
     public Integer getCode() {
         return code;
@@ -66,16 +76,6 @@ public class Result {
     }
 
     public void setData(Object data) {
-        this.data = data;
-    }
-
-    public Result(Object data){
-        this(ResultCode.SUCCESS,data);
-    }
-
-    public Result(ResultCode resultCode,Object data){
-        this.code = resultCode.getCode();
-        this.message = resultCode.getMessage();
         this.data = data;
     }
 }

@@ -26,7 +26,7 @@ public class UserVo extends BaseVo {
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone="GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @ApiModelProperty("用户密码更新时间")
     private LocalDateTime userPasswordUpdateTime;
 
@@ -70,12 +70,12 @@ public class UserVo extends BaseVo {
     private String userFacebook;
 
     @ApiModelProperty("用户角色")
-    private List<String> userRole;
+    private List<UserRoleVo> userRole;
 
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone="GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     @ApiModelProperty("用户最后登陆时间")
     private LocalDateTime userLoginTime;
 
@@ -229,11 +229,11 @@ public class UserVo extends BaseVo {
         this.userLoginIp = userLoginIp;
     }
 
-    public List<String> getUserRole() {
+    public List<UserRoleVo> getUserRole() {
         return userRole;
     }
 
-    public void setUserRole(List<String> userRole) {
+    public void setUserRole(List<UserRoleVo> userRole) {
         this.userRole = userRole;
     }
 

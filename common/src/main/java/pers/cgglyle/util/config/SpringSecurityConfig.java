@@ -18,11 +18,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()// 对请求授权
                 .antMatchers("/doc.html"
-                        ,"/webjars/**"
-                        ,"/img.icons/**"
-                        ,"/**"
-                        ,"/swagger-resources/**"
-                        ,"/v2/api-docs").permitAll()
+                        , "/webjars/**"
+                        , "/img.icons/**"
+                        , "/**"
+                        , "/swagger-resources/**"
+                        , "/v2/api-docs").permitAll()
                 .anyRequest() // 任何请求
                 .authenticated()// 需要身份认证
                 .and().csrf().disable();

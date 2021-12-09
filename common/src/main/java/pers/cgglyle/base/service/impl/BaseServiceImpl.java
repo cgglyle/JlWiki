@@ -27,15 +27,15 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseEntity> exte
         // 创建查询条件
         QueryWrapper<T> wrapper = new QueryWrapper<>();
         // 检查是否删除
-        wrapper.eq("is_delete",true);
+        wrapper.eq("is_delete", true);
         // 按id倒叙排列
         wrapper.orderByDesc("id");
         // 创建分页条件
-        Page<T> page = new Page<>(baseQuery.getPageNum(),baseQuery.getPageSize());
+        Page<T> page = new Page<>(baseQuery.getPageNum(), baseQuery.getPageSize());
         // 获取分页查询信息
-        Page<T> data = baseMapper.selectPage(page,wrapper);
+        Page<T> data = baseMapper.selectPage(page, wrapper);
         // 返回分页结构
-        return new PageResult(baseQuery.getPageNum(),baseQuery.getPageSize(),data.getTotal(),data.getPages(),data.getRecords());
+        return new PageResult(baseQuery.getPageNum(), baseQuery.getPageSize(), data.getTotal(), data.getPages(), data.getRecords());
     }
 
     @Override
@@ -50,7 +50,7 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseEntity> exte
     @Override
     public boolean delete(Integer id) {
         // 判断是否为系统预制
-        if(this.getById(id).isSystem()){
+        if (this.getById(id).isSystem()) {
             throw new ApiException("系统预制，不可删除");
         }
         return this.removeById(id);
@@ -64,9 +64,9 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseEntity> exte
 
     @Override
     public boolean batchDelete(List<Integer> idList) {
-        for (Integer id: idList) {
-            if(this.getById(id).isSystem()){
-                throw new ApiException( id + "系统预制，不可删除");
+        for (Integer id : idList) {
+            if (this.getById(id).isSystem()) {
+                throw new ApiException(id + "系统预制，不可删除");
             }
         }
         return this.removeByIds(idList);

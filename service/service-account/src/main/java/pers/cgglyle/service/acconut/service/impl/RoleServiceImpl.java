@@ -45,15 +45,15 @@ public class RoleServiceImpl extends BaseServiceImpl<RoleMapper, RoleEntity> imp
             queryWrapper.like("role_description", roleQuery.getRoleDescription());
         }
         // 判断更新用户查询是否为空
-        if (roleQuery.getUpdateUser() != null){
+        if (roleQuery.getUpdateUser() != null) {
             // 临时wrapper
             QueryWrapper<UserEntity> tempWrapper = new QueryWrapper<>();
             // 查询用户id
-            tempWrapper.select("id","user_name").like("user_name",roleQuery.getUpdateUser());
+            tempWrapper.select("id", "user_name").like("user_name", roleQuery.getUpdateUser());
             List<UserEntity> list = userMapper.selectList(tempWrapper);
             // 循环加入wrapper
-            for (UserEntity userEntity: list) {
-                queryWrapper.or().eq("id",userEntity.getId());
+            for (UserEntity userEntity : list) {
+                queryWrapper.or().eq("id", userEntity.getId());
             }
         }
         queryWrapper.orderByDesc("id");

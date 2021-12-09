@@ -1,6 +1,7 @@
 package pers.cgglyle.service.acconut.controller;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 import pers.cgglyle.response.ApiException;
@@ -9,6 +10,7 @@ import pers.cgglyle.service.acconut.model.dto.UserAddDto;
 import pers.cgglyle.service.acconut.model.dto.UserRoleRelationDto;
 import pers.cgglyle.service.acconut.model.dto.UserUpdateDto;
 import pers.cgglyle.service.acconut.model.query.UserQuery;
+import pers.cgglyle.service.acconut.service.UserRoleRelationService;
 import pers.cgglyle.service.acconut.service.UserService;
 
 import java.util.List;
@@ -25,32 +27,43 @@ import java.util.List;
 @RestController
 public class UserController {
     private final UserService userService;
+    private final UserRoleRelationService userRoleRelationService;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, UserRoleRelationService userRoleRelationService) {
         this.userService = userService;
+        this.userRoleRelationService = userRoleRelationService;
     }
 
     @GetMapping("getPage")
     @ApiOperation("获取分页信息")
-    public PageResult getPage(UserQuery userQuery){
+    public PageResult getPage(UserQuery userQuery) {
         return userService.getPage(userQuery);
     }
 
     @PostMapping("addUser")
     @ApiOperation("添加用户")
-    public boolean addUser(@RequestBody UserAddDto userAddDto){
+    public boolean addUser(@RequestBody UserAddDto userAddDto) {
         boolean b = userService.addUser(userAddDto);
-        if(!b){
+        if (!b) {
             throw new ApiException("用户添加失败");
         }
         return true;
     }
 
-    @DeleteMapping("deleteUser")
+    /**
+     * 删除用户
+     * <p>
+     * 删除用户也会删除该用户的所有角色
+     *
+     * @param id 用户id
+     * @return ture
+     */
+    @DeleteMapping("deleteUser/{id}")
     @ApiOperation("删除用户")
-    public boolean deleteUser(Integer id){
+    @ApiImplicitParam(name = "id", value = "用户id")
+    public boolean deleteUser(@PathVariable Integer id) {
         boolean delete = userService.delete(id);
-        if(!delete){
+        if (!delete) {
             throw new ApiException("用户删除失败");
         }
         return true;
@@ -58,9 +71,9 @@ public class UserController {
 
     @PutMapping("updateUser")
     @ApiOperation("更新用户")
-    public boolean updateUser(@RequestBody UserUpdateDto userUpdateDto){
+    public boolean updateUser(@RequestBody UserUpdateDto userUpdateDto) {
         boolean b = userService.updateUser(userUpdateDto);
-        if(!b){
+        if (!b) {
             throw new ApiException("更新用户失败");
         }
         return true;
@@ -68,9 +81,9 @@ public class UserController {
 
     @DeleteMapping("batchDeleteUser")
     @ApiOperation("批量删除用户")
-    public boolean batchDeleteUser(List<Integer> idList){
+    public boolean batchDeleteUser(@RequestBody List<Integer> idList) {
         boolean b = userService.batchDelete(idList);
-        if(!b){
+        if (!b) {
             throw new ApiException("批量删除失败");
         }
         return true;
@@ -78,10 +91,27 @@ public class UserController {
 
     @PostMapping("addUserRole")
     @ApiOperation("给用户添加角色")
-    public boolean addUserRole(@RequestBody UserRoleRelationDto userRoleRelationDto){
+    public boolean addUserRole(@RequestBody UserRoleRelationDto userRoleRelationDto) {
         boolean b = userService.addUserRole(userRoleRelationDto);
-        if(!b){
+        if (!b) {
             throw new ApiException("添加角色失败");
+        }
+        return true;
+    }
+
+    /**
+     * 删除用户的角色API
+     *
+     * @param id 用户 UserRoleVo 的 id
+     * @return true
+     */
+    @DeleteMapping("deleteUserRole/{id}")
+    @ApiOperation("删除用户角色")
+    @ApiImplicitParam(name = "id", value = "用户 UserRoleVo 的 id")
+    public boolean deleteUserRole(@PathVariable Integer id) {
+        boolean delete = userRoleRelationService.delete(id);
+        if (!delete) {
+            throw new ApiException("角色删除失败");
         }
         return true;
     }
