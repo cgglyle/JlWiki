@@ -10,6 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import pers.cgglyle.base.model.BaseVo;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -67,6 +68,9 @@ public class UserVo extends BaseVo {
 
     @ApiModelProperty("用户facebook")
     private String userFacebook;
+
+    @ApiModelProperty("用户角色")
+    private List<String> userRole;
 
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonSerialize(using = LocalDateTimeSerializer.class)
@@ -225,17 +229,25 @@ public class UserVo extends BaseVo {
         this.userLoginIp = userLoginIp;
     }
 
+    public List<String> getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(List<String> userRole) {
+        this.userRole = userRole;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         UserVo userVo = (UserVo) o;
-        return Objects.equals(userName, userVo.userName) && Objects.equals(userPasswordUpdateTime, userVo.userPasswordUpdateTime) && Objects.equals(userRealName, userVo.userRealName) && Objects.equals(userGender, userVo.userGender) && Objects.equals(userAge, userVo.userAge) && Objects.equals(userNickName, userVo.userNickName) && Objects.equals(userIcon, userVo.userIcon) && Objects.equals(userEmail, userVo.userEmail) && Objects.equals(userPhone, userVo.userPhone) && Objects.equals(userQq, userVo.userQq) && Objects.equals(userWechat, userVo.userWechat) && Objects.equals(userGoogle, userVo.userGoogle) && Objects.equals(userTelegram, userVo.userTelegram) && Objects.equals(userTwitter, userVo.userTwitter) && Objects.equals(userFacebook, userVo.userFacebook) && Objects.equals(userLoginTime, userVo.userLoginTime) && Objects.equals(userLoginNum, userVo.userLoginNum) && Objects.equals(userLoginIp, userVo.userLoginIp);
+        return Objects.equals(userName, userVo.userName) && Objects.equals(userPasswordUpdateTime, userVo.userPasswordUpdateTime) && Objects.equals(userRealName, userVo.userRealName) && Objects.equals(userGender, userVo.userGender) && Objects.equals(userAge, userVo.userAge) && Objects.equals(userNickName, userVo.userNickName) && Objects.equals(userIcon, userVo.userIcon) && Objects.equals(userEmail, userVo.userEmail) && Objects.equals(userPhone, userVo.userPhone) && Objects.equals(userQq, userVo.userQq) && Objects.equals(userWechat, userVo.userWechat) && Objects.equals(userGoogle, userVo.userGoogle) && Objects.equals(userTelegram, userVo.userTelegram) && Objects.equals(userTwitter, userVo.userTwitter) && Objects.equals(userFacebook, userVo.userFacebook) && Objects.equals(userRole, userVo.userRole) && Objects.equals(userLoginTime, userVo.userLoginTime) && Objects.equals(userLoginNum, userVo.userLoginNum) && Objects.equals(userLoginIp, userVo.userLoginIp);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), userName, userPasswordUpdateTime, userRealName, userGender, userAge, userNickName, userIcon, userEmail, userPhone, userQq, userWechat, userGoogle, userTelegram, userTwitter, userFacebook, userLoginTime, userLoginNum, userLoginIp);
+        return Objects.hash(super.hashCode(), userName, userPasswordUpdateTime, userRealName, userGender, userAge, userNickName, userIcon, userEmail, userPhone, userQq, userWechat, userGoogle, userTelegram, userTwitter, userFacebook, userRole, userLoginTime, userLoginNum, userLoginIp);
     }
 }

@@ -9,10 +9,12 @@ import pers.cgglyle.base.service.impl.BaseServiceImpl;
 import pers.cgglyle.response.PageResult;
 import pers.cgglyle.service.acconut.mapper.UserMapper;
 import pers.cgglyle.service.acconut.model.dto.UserAddDto;
+import pers.cgglyle.service.acconut.model.dto.UserRoleRelationDto;
 import pers.cgglyle.service.acconut.model.dto.UserUpdateDto;
 import pers.cgglyle.service.acconut.model.entity.UserEntity;
 import pers.cgglyle.service.acconut.model.query.UserQuery;
 import pers.cgglyle.service.acconut.model.vo.UserVo;
+import pers.cgglyle.service.acconut.service.UserRoleRelationService;
 import pers.cgglyle.service.acconut.service.UserService;
 
 import java.time.LocalDateTime;
@@ -27,6 +29,12 @@ import java.util.stream.Collectors;
  */
 @Service
 public class UserServiceImpl extends BaseServiceImpl<UserMapper, UserEntity> implements UserService {
+
+    private final UserRoleRelationService roleRelationService;
+
+    public UserServiceImpl(UserRoleRelationService roleRelationService) {
+        this.roleRelationService = roleRelationService;
+    }
 
     @Override
     public PageResult getPage(BaseQuery baseQuery) {
@@ -47,7 +55,12 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, UserEntity> imp
         if (userQuery.getUserNickName() != null) {
             wrapper.like("user_nick_name", userQuery.getUserNickName());
         }
-        wrapper.eq("is_deleted", true);
+        if (userQuery.getUserRole() != null) {
+            List<Integer> userIdList = roleRelationService.getUserIdList(userQuery.getUserRole());
+            for (Integer id: userIdList) {
+                wrapper.or().eq("id",id);
+            }
+        }
         wrapper.orderByDesc("id");
         // 创建分页
         Page<UserEntity> page = new Page<>(userQuery.getPageNum(), userQuery.getPageSize());
@@ -57,6 +70,8 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, UserEntity> imp
         List<UserVo> collect = data.getRecords().stream().map(user -> {
             UserVo userVo = new UserVo();
             BeanUtils.copyProperties(user, userVo);
+            List<String> userRoleList = roleRelationService.getUserRoleList(user.getId());
+            userVo.setUserRole(userRoleList);
             return userVo;
         }).collect(Collectors.toList());
         return new PageResult(userQuery.getPageNum(), userQuery.getPageSize(), data.getTotal(), data.getPages(), collect);
@@ -71,6 +86,12 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, UserEntity> imp
     }
 
     @Override
+    public boolean add(UserEntity entity) {
+
+        return super.add(entity);
+    }
+
+    @Override
     public boolean updateUser(UserUpdateDto userUpdateDto) {
         UserEntity userEntity = new UserEntity();
         BeanUtils.copyProperties(userUpdateDto, userEntity);
@@ -80,5 +101,10 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, UserEntity> imp
             userEntity.setUserPasswordUpdateTime(LocalDateTime.now());
         }
         return this.update(userEntity);
+    }
+
+    @Override
+    public boolean addUserRole(UserRoleRelationDto userRoleRelationDto) {
+        return roleRelationService.addUserRole(userRoleRelationDto);
     }
 }

@@ -2,6 +2,7 @@ package pers.cgglyle.service.acconut.service;
 
 import pers.cgglyle.base.service.IBaseService;
 import pers.cgglyle.service.acconut.model.dto.UserAddDto;
+import pers.cgglyle.service.acconut.model.dto.UserRoleRelationDto;
 import pers.cgglyle.service.acconut.model.dto.UserUpdateDto;
 import pers.cgglyle.service.acconut.model.entity.UserEntity;
 
@@ -27,4 +28,12 @@ public interface UserService extends IBaseService<UserEntity> {
      * @return true-成功,false-失败
      */
     boolean updateUser(UserUpdateDto userUpdateDto);
+
+    /**
+     * 添加用户角色
+     *
+     * @param userRoleRelationDto 用户添加角色模型
+     * @return true-成功,false-失败
+     */
+    boolean addUserRole(UserRoleRelationDto userRoleRelationDto);
 }

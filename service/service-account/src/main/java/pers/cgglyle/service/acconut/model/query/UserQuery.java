@@ -20,6 +20,8 @@ public class UserQuery extends BaseQuery {
     private String userEmail;
     @ApiModelProperty("性别")
     private String gender;
+    @ApiModelProperty("用户角色")
+    private String userRole;
 
     public String getUserName() {
         return userName;
@@ -59,5 +61,13 @@ public class UserQuery extends BaseQuery {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public String getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(String userRole) {
+        this.userRole = userRole;
     }
 }

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import pers.cgglyle.response.ApiException;
 import pers.cgglyle.response.PageResult;
 import pers.cgglyle.service.acconut.model.dto.UserAddDto;
+import pers.cgglyle.service.acconut.model.dto.UserRoleRelationDto;
 import pers.cgglyle.service.acconut.model.dto.UserUpdateDto;
 import pers.cgglyle.service.acconut.model.query.UserQuery;
 import pers.cgglyle.service.acconut.service.UserService;
@@ -71,6 +72,16 @@ public class UserController {
         boolean b = userService.batchDelete(idList);
         if(!b){
             throw new ApiException("批量删除失败");
+        }
+        return true;
+    }
+
+    @PostMapping("addUserRole")
+    @ApiOperation("给用户添加角色")
+    public boolean addUserRole(@RequestBody UserRoleRelationDto userRoleRelationDto){
+        boolean b = userService.addUserRole(userRoleRelationDto);
+        if(!b){
+            throw new ApiException("添加角色失败");
         }
         return true;
     }
