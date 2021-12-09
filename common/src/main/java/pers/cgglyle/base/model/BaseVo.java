@@ -21,7 +21,7 @@ import java.util.Objects;
 @ApiModel("基础返回实体")
 public class BaseVo {
     @ApiModelProperty("主键id")
-    private String id;
+    private Integer id;
 
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonSerialize(using = LocalDateTimeSerializer.class)
@@ -49,11 +49,11 @@ public class BaseVo {
     @ApiModelProperty("创建者")
     private Integer createUser;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

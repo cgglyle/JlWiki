@@ -13,7 +13,6 @@ import io.swagger.annotations.ApiModelProperty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -26,7 +25,7 @@ public class BaseEntity {
     @ApiModelProperty("主键id")
     @TableId(type = IdType.AUTO)
     @TableField("id")
-    private String id;
+    private Integer id;
 
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonSerialize(using = LocalDateTimeSerializer.class)
@@ -61,11 +60,11 @@ public class BaseEntity {
     @TableField("create_user")
     private Integer createUser;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
