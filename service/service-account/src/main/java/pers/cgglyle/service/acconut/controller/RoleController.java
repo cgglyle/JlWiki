@@ -35,6 +35,7 @@ public class RoleController {
     public PageResult getPage(RoleQuery roleQuery){
         return roleService.getPage(roleQuery);
     }
+
     @PostMapping("addRole")
     @ApiOperation("添加用户")
     public boolean addRole(@RequestBody RoleAddDto roleAddDto){
