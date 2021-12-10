@@ -21,7 +21,7 @@ import java.util.List;
  * @author cgglyle
  * @date 2021/12/6
  */
-@Api(tags = "User控制")
+@Api(tags = "用户控制")
 @CrossOrigin
 @RequestMapping("/user")
 @RestController
