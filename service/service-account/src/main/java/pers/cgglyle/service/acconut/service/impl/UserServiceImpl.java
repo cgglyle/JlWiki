@@ -6,7 +6,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import pers.cgglyle.base.model.BaseQuery;
 import pers.cgglyle.base.service.impl.BaseServiceImpl;
-import pers.cgglyle.response.ApiException;
 import pers.cgglyle.response.PageResult;
 import pers.cgglyle.service.acconut.mapper.UserMapper;
 import pers.cgglyle.service.acconut.model.dto.UserAddDto;
@@ -105,17 +104,40 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, UserEntity> imp
         return roleRelationService.addUserRole(userRoleRelationDto);
     }
 
+    /**
+     * 删除用户
+     * <p>
+     * 删除用户同时会删除该用户的所有角色。
+     *
+     * @param id 主键id
+     * @return true-成功,false-失败
+     */
     @Override
     public boolean delete(Integer id) {
-        UserEntity userEntity = this.getById(id);
-        if (userEntity.isSystem()) {
-            throw new ApiException("系统用户，无法删除");
-        }
+        boolean b = super.delete(id);
         QueryWrapper<UserRoleRelationEntity> wrapper = new QueryWrapper<>();
         wrapper.eq("user_id", id);
         boolean remove = roleRelationService.remove(wrapper);
-        boolean b = this.removeById(id);
         return remove && b;
 
+    }
+
+    /**
+     * 批量删除用户
+     * <p>
+     * 删除用户同时会删除该用户的所有角色；
+     *
+     * @param idList id列表
+     * @return true-成功,false-失败
+     */
+    @Override
+    public boolean batchDelete(List<Integer> idList) {
+        boolean b = super.batchDelete(idList);
+        QueryWrapper<UserRoleRelationEntity> wrapper = new QueryWrapper<>();
+        for (Integer id : idList) {
+            wrapper.or().eq("user_id", id);
+        }
+        boolean remove = roleRelationService.remove(wrapper);
+        return b && remove;
     }
 }

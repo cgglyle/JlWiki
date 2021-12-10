@@ -30,6 +30,9 @@ public class UserRoleRelationEntity extends BaseEntity {
     @TableField("update_user")
     private Integer updateUser;
 
+    @TableField("is_deleted")
+    private boolean isDeleted;
+
     public Integer getUserId() {
         return userId;
     }
@@ -55,16 +58,26 @@ public class UserRoleRelationEntity extends BaseEntity {
     }
 
     @Override
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    @Override
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         UserRoleRelationEntity that = (UserRoleRelationEntity) o;
-        return Objects.equals(userId, that.userId) && Objects.equals(roleId, that.roleId) && Objects.equals(updateUser, that.updateUser);
+        return isDeleted == that.isDeleted && Objects.equals(userId, that.userId) && Objects.equals(roleId, that.roleId) && Objects.equals(updateUser, that.updateUser);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), userId, roleId, updateUser);
+        return Objects.hash(super.hashCode(), userId, roleId, updateUser, isDeleted);
     }
 }

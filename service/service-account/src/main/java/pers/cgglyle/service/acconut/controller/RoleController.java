@@ -49,7 +49,7 @@ public class RoleController {
     /**
      * 删除角色
      * <p>
-     * 删除角色会同时删除所有拥有这个角色的用户的这个角色（笑）。
+     * TODO 删除角色会同时删除所有拥有这个角色的用户的这个角色（笑）。
      *
      * @param id 角色id
      * @return true
@@ -74,6 +74,14 @@ public class RoleController {
         return true;
     }
 
+    /**
+     * 批量删除角色
+     * <p>
+     * TODO 删除角色会同时删除所有拥有这个角色的用户的这个角色（笑）。
+     *
+     * @param idList 角色id列表
+     * @return true
+     */
     @DeleteMapping("batchDeleteRole")
     @ApiOperation("批量删除角色")
     public boolean batchDeleteRole(List<Integer> idList) {
