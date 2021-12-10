@@ -12,6 +12,9 @@ public class UserRoleVo {
     @ApiModelProperty("角色名")
     private String roleName;
 
+    public UserRoleVo() {
+    }
+
     public UserRoleVo(Integer id, String roleName) {
         this.id = id;
         this.roleName = roleName;
