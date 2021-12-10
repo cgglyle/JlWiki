@@ -61,8 +61,10 @@ public class RoleServiceImpl extends BaseServiceImpl<RoleMapper, RoleEntity> imp
         Page<RoleEntity> data = baseMapper.selectPage(page, queryWrapper);
         List<RoleVo> collect = data.getRecords().stream().map(role -> {
             RoleVo roleVo = new RoleVo();
-            UserEntity userEntity = userMapper.selectById(role.getUpdateUser());
-            roleVo.setUpdateUser(userEntity.getUserName());
+            if(role.getUpdateUser()!=null) {
+                UserEntity userEntity = userMapper.selectById(role.getUpdateUser());
+                roleVo.setUpdateUser(userEntity.getUserName());
+            }
             BeanUtils.copyProperties(role, roleVo);
             return roleVo;
         }).collect(Collectors.toList());
