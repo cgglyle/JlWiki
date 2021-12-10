@@ -12,6 +12,8 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -21,7 +23,11 @@ import java.util.Objects;
  * @author cgglyle
  * @date 2021/12/6
  */
-public class BaseEntity {
+public class BaseEntity implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = -3683323499263018529L;
+
     @ApiModelProperty("主键id")
     @TableId(type = IdType.AUTO)
     @TableField("id")
