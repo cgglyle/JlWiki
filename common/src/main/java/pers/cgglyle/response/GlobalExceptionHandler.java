@@ -31,6 +31,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ApiException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Result apiExceptionHandler(ApiException e) {
+        logger.warn(ResultCode.FAILED.getMessage(), e);
         return new Result(ResultCode.FAILED, e.getMessage());
     }
 
@@ -62,6 +63,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(NullPointerException.class)
     public Result nullPointerExceptionHandler(NullPointerException e) {
+        logger.warn(ResultCode.NULL_POINTER.getMessage(), e);
         return new Result(ResultCode.NULL_POINTER, e.getMessage());
     }
 
