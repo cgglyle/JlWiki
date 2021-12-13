@@ -4,23 +4,24 @@ import io.swagger.annotations.ApiModelProperty;
 
 /**
  * @author cgglyle
- * @date 2021-12-09 13:40
+ * @date 2021-12-13 11:48
  */
-public class UserRoleVo {
+public class UserGroupVo {
     /**
-     * UserRoleRelation 主键 ID
+     * UserGroupRelation 主键 ID
      */
     @ApiModelProperty("主键id")
     private Integer id;
     @ApiModelProperty("角色名")
-    private String roleName;
+    private String groupName;
 
-    public UserRoleVo() {
+    public UserGroupVo() {
+
     }
 
-    public UserRoleVo(Integer id, String roleName) {
+    public UserGroupVo(Integer id, String groupName) {
         this.id = id;
-        this.roleName = roleName;
+        this.groupName = groupName;
     }
 
     public Integer getId() {
@@ -31,11 +32,11 @@ public class UserRoleVo {
         this.id = id;
     }
 
-    public String getRoleName() {
-        return roleName;
+    public String getGroupName() {
+        return groupName;
     }
 
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
     }
 }

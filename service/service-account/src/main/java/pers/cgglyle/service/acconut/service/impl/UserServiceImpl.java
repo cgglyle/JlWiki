@@ -4,18 +4,23 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pers.cgglyle.base.model.BaseQuery;
 import pers.cgglyle.base.service.impl.BaseServiceImpl;
+import pers.cgglyle.response.ApiException;
 import pers.cgglyle.response.PageResult;
 import pers.cgglyle.service.acconut.mapper.UserMapper;
 import pers.cgglyle.service.acconut.model.dto.UserAddDto;
 import pers.cgglyle.service.acconut.model.dto.UserRoleRelationDto;
 import pers.cgglyle.service.acconut.model.dto.UserUpdateDto;
 import pers.cgglyle.service.acconut.model.entity.UserEntity;
+import pers.cgglyle.service.acconut.model.entity.UserGroupRelationEntity;
 import pers.cgglyle.service.acconut.model.entity.UserRoleRelationEntity;
 import pers.cgglyle.service.acconut.model.query.UserQuery;
+import pers.cgglyle.service.acconut.model.vo.UserGroupVo;
 import pers.cgglyle.service.acconut.model.vo.UserRoleVo;
 import pers.cgglyle.service.acconut.model.vo.UserVo;
+import pers.cgglyle.service.acconut.service.UserGroupRelationService;
 import pers.cgglyle.service.acconut.service.UserRoleRelationService;
 import pers.cgglyle.service.acconut.service.UserService;
 
@@ -33,9 +38,12 @@ import java.util.stream.Collectors;
 public class UserServiceImpl extends BaseServiceImpl<UserMapper, UserEntity> implements UserService {
 
     private final UserRoleRelationService roleRelationService;
+    private final UserGroupRelationService userGroupRelationService;
 
-    public UserServiceImpl(UserRoleRelationService roleRelationService) {
+    public UserServiceImpl(UserRoleRelationService roleRelationService,
+                           UserGroupRelationService userGroupRelationService) {
         this.roleRelationService = roleRelationService;
+        this.userGroupRelationService = userGroupRelationService;
     }
 
     @Override
@@ -63,6 +71,12 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, UserEntity> imp
                 wrapper.or().eq("id", id);
             }
         }
+        if (userQuery.getUserGroup() != null) {
+            List<Integer> userIdList = userGroupRelationService.getUserIdList(userQuery.getUserGroup());
+            for (Integer id : userIdList) {
+                wrapper.or().eq("id", id);
+            }
+        }
         wrapper.orderByDesc("id");
         // 创建分页
         Page<UserEntity> page = new Page<>(userQuery.getPageNum(), userQuery.getPageSize());
@@ -74,6 +88,8 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, UserEntity> imp
             BeanUtils.copyProperties(user, userVo);
             List<UserRoleVo> userRoleList = roleRelationService.getUserRoleList(user.getId());
             userVo.setUserRole(userRoleList);
+            List<UserGroupVo> userGroupList = userGroupRelationService.getUserGroupList(user.getId());
+            userVo.setUserGroup(userGroupList);
             return userVo;
         }).collect(Collectors.toList());
         return new PageResult(userQuery.getPageNum(), userQuery.getPageSize(), data.getTotal(), data.getPages(), collect);
@@ -108,17 +124,32 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, UserEntity> imp
      * 删除用户
      * <p>
      * 删除用户同时会删除该用户的所有角色。
+     * <p>
+     * 删除用户同时会删除该用户的所有组
      *
      * @param id 主键id
      * @return true-成功,false-失败
      */
+    @Transactional(rollbackFor = RuntimeException.class)
     @Override
     public boolean delete(Integer id) {
         boolean b = super.delete(id);
-        QueryWrapper<UserRoleRelationEntity> wrapper = new QueryWrapper<>();
-        wrapper.eq("user_id", id);
-        boolean remove = roleRelationService.remove(wrapper);
-        return remove && b;
+        if (!b){
+            throw new ApiException("用户删除失败");
+        }
+        QueryWrapper<UserRoleRelationEntity> wrapperRole = new QueryWrapper<>();
+        wrapperRole.eq("user_id", id);
+        boolean removeRole = roleRelationService.remove(wrapperRole);
+        if (!removeRole) {
+            throw new ApiException("用户角色删除失败");
+        }
+        QueryWrapper<UserGroupRelationEntity> wrapperGroup = new QueryWrapper<>();
+        wrapperGroup.eq("user_id", id);
+        boolean removeGroup = userGroupRelationService.remove(wrapperGroup);
+        if (!removeGroup) {
+            throw new ApiException("用户组删除失败");
+        }
+        return true;
 
     }
 
@@ -129,15 +160,32 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, UserEntity> imp
      *
      * @param idList id列表
      * @return true-成功,false-失败
+     * @throws ApiException 当用户删除失败抛出（用户删除失败）
+     * @throws ApiException 当角色删除失败抛出（角色删除失败）
      */
+    @Transactional(rollbackFor = RuntimeException.class)
     @Override
     public boolean batchDelete(List<Integer> idList) {
         boolean b = super.batchDelete(idList);
-        QueryWrapper<UserRoleRelationEntity> wrapper = new QueryWrapper<>();
-        for (Integer id : idList) {
-            wrapper.or().eq("user_id", id);
+        if (!b) {
+            throw new ApiException("用户删除失败");
         }
-        boolean remove = roleRelationService.remove(wrapper);
-        return b && remove;
+        QueryWrapper<UserRoleRelationEntity> wrapperRole = new QueryWrapper<>();
+        for (Integer id : idList) {
+            wrapperRole.or().eq("user_id", id);
+        }
+        boolean removeRole = roleRelationService.remove(wrapperRole);
+        if (!removeRole) {
+            throw new ApiException("用户角色删除失败");
+        }
+        QueryWrapper<UserGroupRelationEntity> wrapperGroup = new QueryWrapper<>();
+        for (Integer id : idList) {
+            wrapperGroup.or().eq("user_id", id);
+        }
+        boolean removeGroup = userGroupRelationService.remove(wrapperGroup);
+        if (!removeGroup) {
+            throw new ApiException("用户组删除失败");
+        }
+        return true;
     }
 }
