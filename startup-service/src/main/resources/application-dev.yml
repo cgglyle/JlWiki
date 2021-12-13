@@ -3,13 +3,16 @@ spring:
   # 数据源配置
   datasource:
     # 驱动配置
-    driver-class-name: com.mysql.cj.jdbc.Driver
+#    driver-class-name: com.mysql.cj.jdbc.Driver
     # 连接配置(集成 activiti7 时注意设置nullCatalogMeansCurrent=true)
-    url: jdbc:mysql://localhost:3306/wiki_user?allowMultiQueries=true&useUnicode=true&nullCatalogMeansCurrent=true&characterEncoding=UTF-8
+#    url: jdbc:mysql://localhost:3306/wiki_user?allowMultiQueries=true&useUnicode=true&nullCatalogMeansCurrent=true&characterEncoding=UTF-8
+    url: jdbc:p6spy:mysql://localhost:3306/wiki_user?allowMultiQueries=true&useUnicode=true&nullCatalogMeansCurrent=true&characterEncoding=UTF-8
     # 用户名
     username: root
     # 密码
     password: 5211314a
+    # sql语句性能分析驱动
+    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
   # Redis相关配置
   redis:
     # 服务器地址
