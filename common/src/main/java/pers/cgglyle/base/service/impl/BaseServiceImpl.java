@@ -41,6 +41,7 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseEntity> exte
     @Override
     public boolean add(T entity) {
         entity.setCreateTime(LocalDateTime.now());
+        entity.setUpdateTime(LocalDateTime.now());
         entity.setStatus(true);
         entity.setDeleted(true);
         entity.setSystem(false);
