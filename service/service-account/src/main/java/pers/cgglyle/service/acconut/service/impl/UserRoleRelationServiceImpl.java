@@ -33,7 +33,7 @@ public class UserRoleRelationServiceImpl extends BaseServiceImpl<UserRoleRelatio
     @Override
     public List<UserRoleVo> getUserRoleList(Integer userId) {
         QueryWrapper<UserRoleRelationEntity> tempWrapper = new QueryWrapper<>();
-        // 根据 user_id 从 user_role_relation 表中模糊查出 role_id
+        // 根据 user_id 从 user_role_relation 表中精确查出 role_id
         tempWrapper.select("role_id", "id").eq("user_id", userId);
         List<UserRoleRelationEntity> roleRelationList = this.list(tempWrapper);
         List<UserRoleVo> roleList = new ArrayList<>();
