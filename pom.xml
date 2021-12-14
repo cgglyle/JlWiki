@@ -7,6 +7,7 @@
         <module>startup-service</module>
         <module>common</module>
         <module>service</module>
+        <module>log</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -21,10 +22,10 @@
     <description>JWiki</description>
     <properties>
         <java.version>11</java.version>
-        <mybatis-plus.version>3.4.3.4</mybatis-plus.version>
-        <knife4j.version>3.0.3</knife4j.version>
-        <springfox.version>3.0.0</springfox.version>
-        <mybatis-plus-generator.version>3.5.1</mybatis-plus-generator.version>
+<!--        <mybatis-plus.version>3.4.3.4</mybatis-plus.version>-->
+<!--        <knife4j.version>3.0.3</knife4j.version>-->
+<!--        <springfox.version>3.0.0</springfox.version>-->
+<!--        <mybatis-plus-generator.version>3.5.1</mybatis-plus-generator.version>-->
     </properties>
     <dependencies>
         <dependency>

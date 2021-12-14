@@ -37,6 +37,13 @@ spring:
         min-idle: 0
   main:
     allow-bean-definition-overriding: true
+  mvc:
+    pathmatch:
+      # 解决 Failed to start bean 'documentationPluginsBootstrapper';
+      # nested exception is java.lang.NullPointerException:
+      # Cannot invoke "org.springframework.web.servlet.mvc.condition.PatternsRequestCondition.getPatterns()"
+      # because "this.condition" is null
+      matching-strategy: ant_path_matcher
 
 # swagger 配置 开启文档显示
 springfox:
