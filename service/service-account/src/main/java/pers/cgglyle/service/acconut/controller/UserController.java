@@ -4,6 +4,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
+import pers.cgglyle.log.annotaion.OperationLog;
 import pers.cgglyle.response.ApiException;
 import pers.cgglyle.response.PageResult;
 import pers.cgglyle.service.acconut.model.dto.UserAddDto;
@@ -45,6 +46,7 @@ public class UserController {
         return userService.getPage(userQuery);
     }
 
+    @OperationLog(operationModule = "User", operationMethod = "POST")
     @PostMapping("addUser")
     @ApiOperation("添加用户")
     public boolean addUser(@RequestBody UserAddDto userAddDto) {
@@ -65,6 +67,7 @@ public class UserController {
      * @param id 用户id
      * @return ture
      */
+    @OperationLog(operationMethod = "DELETE", operationModule = "User")
     @DeleteMapping("deleteUser/{id}")
     @ApiOperation("删除用户")
     @ApiImplicitParam(name = "id", value = "用户id")
@@ -76,6 +79,7 @@ public class UserController {
         return true;
     }
 
+    @OperationLog(operationModule = "User", operationMethod = "PUT")
     @PutMapping("updateUser")
     @ApiOperation("更新用户")
     public boolean updateUser(@RequestBody UserUpdateDto userUpdateDto) {
@@ -86,6 +90,7 @@ public class UserController {
         return true;
     }
 
+    @OperationLog(operationMethod = "DELETE", operationModule = "User")
     @DeleteMapping("batchDeleteUser")
     @ApiOperation("批量删除用户")
     public boolean batchDeleteUser(@RequestBody List<Integer> idList) {
@@ -96,6 +101,7 @@ public class UserController {
         return true;
     }
 
+    @OperationLog(operationModule = "UserRole", operationMethod = "POST")
     @PostMapping("addUserRole")
     @ApiOperation("给用户添加角色")
     public boolean addUserRole(@RequestBody UserRoleRelationDto userRoleRelationDto) {
@@ -112,6 +118,7 @@ public class UserController {
      * @param id 用户 UserRoleVo 的 id
      * @return true
      */
+    @OperationLog(operationMethod = "DELETE", operationModule = "UserRole")
     @DeleteMapping("deleteUserRole/{id}")
     @ApiOperation("删除用户角色")
     @ApiImplicitParam(name = "id", value = "用户 UserRoleVo 的 id")
@@ -123,6 +130,7 @@ public class UserController {
         return true;
     }
 
+    @OperationLog(operationModule = "UserGroup", operationMethod = "POST")
     @PostMapping("addUserGroup")
     @ApiOperation("给用户添加用户组")
     public boolean addUserGroup(@RequestBody UserGroupRelationAddDto userGroupRelationAddDto) {
@@ -139,6 +147,7 @@ public class UserController {
      * @param id 用户 UserRoleVo 的 id
      * @return true
      */
+    @OperationLog(operationMethod = "DELETE", operationModule = "UserGroup")
     @DeleteMapping("deleteUserGroup/{id}")
     @ApiOperation("删除用户用户组")
     @ApiImplicitParam(name = "id", value = "用户 UserGroupVo 的 id")
