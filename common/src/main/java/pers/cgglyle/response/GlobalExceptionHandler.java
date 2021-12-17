@@ -3,6 +3,7 @@ package pers.cgglyle.response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -65,6 +66,18 @@ public class GlobalExceptionHandler {
     public Result nullPointerExceptionHandler(NullPointerException e) {
         logger.warn(ResultCode.NULL_POINTER.getMessage(), e);
         return new Result(ResultCode.NULL_POINTER, e.getMessage());
+    }
+
+    /**
+     * 安全框架登陆异常
+     *
+     * @param e 登陆异常信息
+     * @return 返回体
+     */
+    @ExceptionHandler(BadCredentialsException.class)
+    public Result badCredentialsException(BadCredentialsException e) {
+        logger.warn(ResultCode.LOGIN_ERROR.getMessage(), e);
+        return new Result(ResultCode.LOGIN_ERROR, e.getMessage());
     }
 
     /**

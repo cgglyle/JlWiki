@@ -188,4 +188,9 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, UserEntity> imp
         }
         return true;
     }
+
+    @Override
+    public UserEntity getUserEntity(String userName) {
+        return query().eq("user_name",userName).one();
+    }
 }

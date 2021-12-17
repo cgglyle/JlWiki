@@ -36,4 +36,12 @@ public interface UserService extends IBaseService<UserEntity> {
      * @return true-成功,false-失败
      */
     boolean addUserRole(UserRoleRelationDto userRoleRelationDto);
+
+    /**
+     * 精确查询用户名
+     *
+     * @param userName 用户名
+     * @return 用户数据实体
+     */
+    UserEntity getUserEntity (String userName);
 }
