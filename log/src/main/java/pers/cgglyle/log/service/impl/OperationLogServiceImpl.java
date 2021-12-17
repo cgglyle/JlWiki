@@ -5,12 +5,12 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Service;
 import pers.cgglyle.log.mapper.OperationLogMapper;
 import pers.cgglyle.log.model.entity.OperationLogEntity;
 import pers.cgglyle.log.model.query.OperationLogQuery;
 import pers.cgglyle.log.model.vo.OperationLogVo;
 import pers.cgglyle.log.service.OperationLogService;
-import org.springframework.stereotype.Service;
 import pers.cgglyle.response.PageResult;
 
 import java.util.List;
@@ -28,19 +28,19 @@ public class OperationLogServiceImpl extends ServiceImpl<OperationLogMapper, Ope
     @Override
     public PageResult getPage(OperationLogQuery operationLogQuery) {
         QueryWrapper<OperationLogEntity> queryWrapper = new QueryWrapper<>();
-        if (operationLogQuery.getOperationModule() != null){
-            queryWrapper.like("operation_module",operationLogQuery.getOperationModule());
+        if (operationLogQuery.getOperationModule() != null) {
+            queryWrapper.like("operation_module", operationLogQuery.getOperationModule());
         }
-        if (operationLogQuery.getCreateTime() != null){
-            queryWrapper.like("create_time",operationLogQuery.getCreateTime());
+        if (operationLogQuery.getCreateTime() != null) {
+            queryWrapper.like("create_time", operationLogQuery.getCreateTime());
         }
-        if (operationLogQuery.getUserName() != null){
-            queryWrapper.like("user_name",operationLogQuery.getUserName());
+        if (operationLogQuery.getUserName() != null) {
+            queryWrapper.like("user_name", operationLogQuery.getUserName());
         }
-        if (operationLogQuery.getRequestAddress() != null){
-            queryWrapper.like("request_address",operationLogQuery.getRequestAddress());
+        if (operationLogQuery.getRequestAddress() != null) {
+            queryWrapper.like("request_address", operationLogQuery.getRequestAddress());
         }
-        Page<OperationLogEntity> page = new Page<>(operationLogQuery.getPageNum(),operationLogQuery.getPageSize());
+        Page<OperationLogEntity> page = new Page<>(operationLogQuery.getPageNum(), operationLogQuery.getPageSize());
         Page<OperationLogEntity> data = baseMapper.selectPage(page, queryWrapper);
         List<OperationLogVo> collect = data.getRecords().stream().map(log -> {
             OperationLogVo operationLogVo = new OperationLogVo();
@@ -49,6 +49,6 @@ public class OperationLogServiceImpl extends ServiceImpl<OperationLogMapper, Ope
             operationLogVo.setReturnResult(JSON.parseObject(log.getReturnResult()));
             return operationLogVo;
         }).collect(Collectors.toList());
-        return new PageResult(operationLogQuery.getPageNum(),operationLogQuery.getPageSize(),data.getTotal(),data.getPages(),collect);
+        return new PageResult(operationLogQuery.getPageNum(), operationLogQuery.getPageSize(), data.getTotal(), data.getPages(), collect);
     }
 }

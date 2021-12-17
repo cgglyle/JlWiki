@@ -134,7 +134,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, UserEntity> imp
     @Override
     public boolean delete(Integer id) {
         boolean b = super.delete(id);
-        if (!b){
+        if (!b) {
             throw new ApiException("用户删除失败");
         }
         QueryWrapper<UserRoleRelationEntity> wrapperRole = new QueryWrapper<>();
@@ -191,6 +191,6 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, UserEntity> imp
 
     @Override
     public UserEntity getUserEntity(String userName) {
-        return query().eq("user_name",userName).one();
+        return query().eq("user_name", userName).one();
     }
 }

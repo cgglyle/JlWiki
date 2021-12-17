@@ -12,8 +12,8 @@ import pers.cgglyle.service.acconut.model.vo.UserInfo;
  */
 public class SecurityUtils {
 
-    public static UserInfo login(String userName, String  password, AuthenticationManager authenticationManager){
-        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userName,password);
+    public static UserInfo login(String userName, String password, AuthenticationManager authenticationManager) {
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userName, password);
         Authentication authentication = authenticationManager.authenticate(token);
         SecurityContextHolder.getContext().setAuthentication(authentication);
         return (UserInfo) authentication.getPrincipal();

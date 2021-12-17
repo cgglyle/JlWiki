@@ -15,7 +15,7 @@ import pers.cgglyle.service.acconut.service.LoginLogService;
 public class LoginLogServiceImpl extends ServiceImpl<LoginLogMapper, LoginLogEntity> implements LoginLogService {
     @Override
     public boolean LoginLogSave(UserInfo userInfo) {
-        if (userInfo == null){
+        if (userInfo == null) {
             return false;
         }
 

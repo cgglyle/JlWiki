@@ -3,7 +3,10 @@ package pers.cgglyle.log.aspect;
 import com.alibaba.fastjson.JSON;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -104,7 +107,7 @@ public class OperationLogAspect {
         // 通过代理执行业务逻辑 它之前相当于前置增强（before），它之后相当于后置增强（after）
         result = joinPoint.proceed();
         // 记录结束时间
-        operationLogEntity.setQueryEndTime((Duration.between(beginTime,Instant.now())).toMillis());
+        operationLogEntity.setQueryEndTime((Duration.between(beginTime, Instant.now())).toMillis());
         //请求结果 json 化
         operationLogEntity.setReturnResult(JSON.toJSONString(result));
         operationLogEntity.setStatus(true);
@@ -113,8 +116,8 @@ public class OperationLogAspect {
         return result;
     }
 
-    @AfterThrowing(value = "log()",throwing = "e")
-    public void doAfterThrowing(JoinPoint joinPoint,Exception e){
+    @AfterThrowing(value = "log()", throwing = "e")
+    public void doAfterThrowing(JoinPoint joinPoint, Exception e) {
         LocalDateTime nowTime = LocalDateTime.now();
         OperationLogEntity operationLogEntity = new OperationLogEntity();
         // 从切面织入点处通过反射获取织入点的方法

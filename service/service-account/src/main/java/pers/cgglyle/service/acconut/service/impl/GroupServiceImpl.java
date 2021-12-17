@@ -62,7 +62,7 @@ public class GroupServiceImpl extends BaseServiceImpl<GroupMapper, GroupEntity> 
         Page<GroupEntity> data = baseMapper.selectPage(page, queryWrapper);
         List<GroupVo> collect = data.getRecords().stream().map(group -> {
             GroupVo groupVo = new GroupVo();
-            if(group.getUpdateUser()!=null) {
+            if (group.getUpdateUser() != null) {
                 UserEntity userEntity = userMapper.selectById(group.getUpdateUser());
                 groupVo.setUpdateUser(userEntity.getUserName());
             }

@@ -43,5 +43,5 @@ public interface UserService extends IBaseService<UserEntity> {
      * @param userName 用户名
      * @return 用户数据实体
      */
-    UserEntity getUserEntity (String userName);
+    UserEntity getUserEntity(String userName);
 }

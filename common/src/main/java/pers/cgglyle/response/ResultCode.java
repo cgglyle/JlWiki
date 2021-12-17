@@ -49,10 +49,10 @@ public enum ResultCode {
     BAD_REQUEST(1040, "错误传递参数"),
     /**
      * ACCOUNT_ERROR
-     *
+     * <p>
      * 登陆错误
      */
-    LOGIN_ERROR(1500,"登陆错误");
+    LOGIN_ERROR(1500, "登陆错误");
 
     private final Integer code;
     private final String message;

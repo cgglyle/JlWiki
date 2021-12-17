@@ -25,11 +25,11 @@ import java.time.LocalDateTime;
 @ApiModel("LoginLog实体类")
 @TableName("login_log")
 public class LoginLogEntity {
-        
+
 
     /**
      * 主键
-     */     
+     */
     @ApiModelProperty("主键")
     @TableId(type = IdType.AUTO)
     @TableField("id")
@@ -37,7 +37,7 @@ public class LoginLogEntity {
 
     /**
      * 登陆用户名
-     */     
+     */
     @ApiModelProperty("登陆用户名")
     @TableField("login_user_name")
     private String loginUserName;
@@ -55,14 +55,14 @@ public class LoginLogEntity {
 
     /**
      * 登陆地址
-     */     
+     */
     @ApiModelProperty("登陆地址")
     @TableField("login_ip")
     private String loginIp;
 
     /**
      * 登陆状态
-     */     
+     */
     @ApiModelProperty("登陆状态")
     @TableField("is_status")
     private boolean isStatus;

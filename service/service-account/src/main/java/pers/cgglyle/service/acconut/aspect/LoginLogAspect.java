@@ -66,7 +66,7 @@ public class LoginLogAspect {
         for (int i = 0; i < Objects.requireNonNull(parameterNames).length; i++) {
             params.put(parameterNames[i], args[i]);
         }
-        loginLogEntity.setLoginUserName(((LoginQuest)params.get("loginQuest")).getUserName());
+        loginLogEntity.setLoginUserName(((LoginQuest) params.get("loginQuest")).getUserName());
         loginLogEntity.setLoginTime(loginTime);
         loginLogEntity.setStatus(false);
         loginLogService.save(loginLogEntity);

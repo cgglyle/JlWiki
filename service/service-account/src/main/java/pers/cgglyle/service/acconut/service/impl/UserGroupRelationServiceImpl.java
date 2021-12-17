@@ -46,7 +46,7 @@ public class UserGroupRelationServiceImpl extends BaseServiceImpl<UserGroupRelat
         }
         List<UserGroupRelationEntity> userGroupRelationEntityList = list(wrapper);
         List<Integer> integers = new ArrayList<>();
-        for (UserGroupRelationEntity userGroupRelationEntity : userGroupRelationEntityList){
+        for (UserGroupRelationEntity userGroupRelationEntity : userGroupRelationEntityList) {
             integers.add(userGroupRelationEntity.getUserId());
         }
         return integers;
@@ -56,12 +56,12 @@ public class UserGroupRelationServiceImpl extends BaseServiceImpl<UserGroupRelat
     public List<UserGroupVo> getUserGroupList(Integer id) {
         QueryWrapper<UserGroupRelationEntity> queryWrapper = new QueryWrapper<>();
         // 从 user_group_relation 表中查出 id 和 group_id
-        queryWrapper.select("id","group_id").eq("user_id",id);
+        queryWrapper.select("id", "group_id").eq("user_id", id);
         List<UserGroupRelationEntity> list = list(queryWrapper);
         List<UserGroupVo> userGroupVos = new ArrayList<>();
-        for (UserGroupRelationEntity userGroupRelationEntity : list){
+        for (UserGroupRelationEntity userGroupRelationEntity : list) {
             GroupEntity groupEntity = groupService.getById(userGroupRelationEntity.getGroupId());
-            userGroupVos.add(new UserGroupVo(userGroupRelationEntity.getId(),groupEntity.getGroupName()));
+            userGroupVos.add(new UserGroupVo(userGroupRelationEntity.getId(), groupEntity.getGroupName()));
         }
         return userGroupVos;
     }
