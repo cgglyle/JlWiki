@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import pers.cgglyle.base.service.impl.BaseServiceImpl;
+import pers.cgglyle.response.ApiException;
 import pers.cgglyle.service.acconut.mapper.UserRoleRelationMapper;
 import pers.cgglyle.service.acconut.model.dto.UserRoleRelationDto;
 import pers.cgglyle.service.acconut.model.entity.RoleEntity;
@@ -66,6 +67,12 @@ public class UserRoleRelationServiceImpl extends BaseServiceImpl<UserRoleRelatio
 
     @Override
     public boolean addUserRole(UserRoleRelationDto userRoleRelationDto) {
+        List<UserRoleVo> userRoleList = this.getUserRoleList(userRoleRelationDto.getUserId());
+        userRoleList.forEach(userRoleVo -> {
+            if (this.baseMapper.selectById(userRoleVo.getId()) != null) {
+                throw new ApiException("已有此角色");
+            }
+        });
         UserRoleRelationEntity userRoleRelationEntity = new UserRoleRelationEntity();
         BeanUtils.copyProperties(userRoleRelationDto, userRoleRelationEntity);
         return add(userRoleRelationEntity);
