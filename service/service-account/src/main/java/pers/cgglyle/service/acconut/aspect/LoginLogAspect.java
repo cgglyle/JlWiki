@@ -8,6 +8,8 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import pers.cgglyle.service.acconut.model.entity.LoginLogEntity;
 import pers.cgglyle.service.acconut.model.query.LoginQuest;
@@ -35,11 +37,14 @@ public class LoginLogAspect {
 
     @Pointcut("@annotation(pers.cgglyle.service.acconut.annotaion.LoginLog)")
     public void loginLog() {
+    }
 
+    @Pointcut("@annotation(pers.cgglyle.service.acconut.annotaion.LogoutLog)")
+    public void logoutLog() {
     }
 
     @Around("loginLog()")
-    public Object doAround(ProceedingJoinPoint joinPoint) throws Throwable {
+    public Object doLoginAround(ProceedingJoinPoint joinPoint) throws Throwable {
         LocalDateTime loginTime = LocalDateTime.now();
         LoginLogEntity loginLogEntity = new LoginLogEntity();
         loginLogEntity.setLoginTime(loginTime);
@@ -72,4 +77,15 @@ public class LoginLogAspect {
         loginLogService.save(loginLogEntity);
     }
 
+    @Around("logoutLog()")
+    public Object doLogoutAround(ProceedingJoinPoint joinPoint) throws Throwable {
+        LocalDateTime logoutTime = LocalDateTime.now();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = authentication.getName();
+        loginLogService.lambdaUpdate()
+                .eq(LoginLogEntity::getLoginUserName, currentUserName)
+                .isNull(LoginLogEntity::getLogoutTime)
+                .set(LoginLogEntity::getLogoutTime, logoutTime).update();
+        return joinPoint.proceed();
+    }
 }

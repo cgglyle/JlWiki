@@ -41,7 +41,7 @@ public class UserController {
     }
 
     @GetMapping("getPage")
-    @ApiOperation("获取分页信息")
+    @ApiOperation("获取用户分页信息")
     public PageResult getPage(UserQuery userQuery) {
         return userService.getPage(userQuery);
     }

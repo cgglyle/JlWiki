@@ -3,13 +3,13 @@ package pers.cgglyle.service.acconut.annotaion;
 import java.lang.annotation.*;
 
 /**
- * 登陆系统日志注解
+ * 登出日志注解
  *
  * @author cgglyle
- * @date 2021-12-17 10:34
+ * @date 2021-12-21 11:36
  */
 @Documented
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface LoginLog {
+public @interface LogoutLog {
 }

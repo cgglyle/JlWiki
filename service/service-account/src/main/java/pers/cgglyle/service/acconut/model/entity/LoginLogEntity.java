@@ -54,6 +54,17 @@ public class LoginLogEntity {
     private LocalDateTime loginTime;
 
     /**
+     * 登出时间
+     */
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @ApiModelProperty("登陆时间")
+    @TableField("login_time")
+    private LocalDateTime logoutTime;
+
+    /**
      * 登陆地址
      */
     @ApiModelProperty("登陆地址")
@@ -106,6 +117,14 @@ public class LoginLogEntity {
 
     public void setStatus(boolean status) {
         isStatus = status;
+    }
+
+    public LocalDateTime getLogoutTime() {
+        return logoutTime;
+    }
+
+    public void setLogoutTime(LocalDateTime logoutTime) {
+        this.logoutTime = logoutTime;
     }
 }
 
