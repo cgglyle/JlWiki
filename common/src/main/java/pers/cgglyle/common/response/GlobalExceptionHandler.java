@@ -1,4 +1,4 @@
-package pers.cgglyle.response;
+package pers.cgglyle.common.response;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

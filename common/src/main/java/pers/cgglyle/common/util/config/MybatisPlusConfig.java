@@ -1,4 +1,4 @@
-package pers.cgglyle.util.config;
+package pers.cgglyle.common.util.config;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;

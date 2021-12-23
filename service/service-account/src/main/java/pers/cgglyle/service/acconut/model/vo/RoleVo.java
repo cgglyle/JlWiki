@@ -1,7 +1,7 @@
 package pers.cgglyle.service.acconut.model.vo;
 
 import io.swagger.annotations.ApiModelProperty;
-import pers.cgglyle.base.model.BaseVo;
+import pers.cgglyle.common.base.model.BaseVo;
 
 import java.util.Objects;
 

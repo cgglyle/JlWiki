@@ -1,14 +1,14 @@
-package pers.cgglyle.base.service.impl;
+package pers.cgglyle.common.base.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import pers.cgglyle.base.model.BaseEntity;
-import pers.cgglyle.base.model.BaseQuery;
-import pers.cgglyle.base.service.IBaseService;
-import pers.cgglyle.response.ApiException;
-import pers.cgglyle.response.PageResult;
+import pers.cgglyle.common.base.model.BaseEntity;
+import pers.cgglyle.common.base.model.BaseQuery;
+import pers.cgglyle.common.base.service.IBaseService;
+import pers.cgglyle.common.response.ApiException;
+import pers.cgglyle.common.response.PageResult;
 
 import java.time.LocalDateTime;
 import java.util.List;

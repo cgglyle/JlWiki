@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import pers.cgglyle.base.model.BaseEntity;
+import pers.cgglyle.common.base.model.BaseEntity;
 
 import java.util.Objects;
 

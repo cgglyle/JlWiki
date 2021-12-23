@@ -1,7 +1,7 @@
 package pers.cgglyle.log.model.query;
 
 import io.swagger.annotations.ApiModelProperty;
-import pers.cgglyle.base.model.BaseQuery;
+import pers.cgglyle.common.base.model.BaseQuery;
 
 import java.time.LocalDateTime;
 

@@ -1,6 +1,6 @@
 package pers.cgglyle.service.acconut.service;
 
-import pers.cgglyle.base.service.IBaseService;
+import pers.cgglyle.common.base.service.IBaseService;
 import pers.cgglyle.service.acconut.model.dto.UserRoleRelationDto;
 import pers.cgglyle.service.acconut.model.entity.UserRoleRelationEntity;
 import pers.cgglyle.service.acconut.model.vo.UserRoleVo;

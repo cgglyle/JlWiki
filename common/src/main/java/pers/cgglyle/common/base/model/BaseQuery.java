@@ -1,4 +1,4 @@
-package pers.cgglyle.base.model;
+package pers.cgglyle.common.base.model;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

@@ -1,7 +1,7 @@
 package pers.cgglyle.service.acconut.model.query;
 
 import io.swagger.annotations.ApiModelProperty;
-import pers.cgglyle.base.model.BaseQuery;
+import pers.cgglyle.common.base.model.BaseQuery;
 
 import java.util.Objects;
 

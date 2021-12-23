@@ -1,7 +1,7 @@
 package pers.cgglyle.service.acconut.model.dto;
 
 import io.swagger.annotations.ApiModelProperty;
-import pers.cgglyle.base.model.BaseDto;
+import pers.cgglyle.common.base.model.BaseDto;
 
 import java.util.Objects;
 

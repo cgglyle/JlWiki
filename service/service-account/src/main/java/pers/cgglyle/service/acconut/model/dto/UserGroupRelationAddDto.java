@@ -2,7 +2,7 @@ package pers.cgglyle.service.acconut.model.dto;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import io.swagger.annotations.ApiModelProperty;
-import pers.cgglyle.base.model.BaseDto;
+import pers.cgglyle.common.base.model.BaseDto;
 
 /**
  * @author cgglyle

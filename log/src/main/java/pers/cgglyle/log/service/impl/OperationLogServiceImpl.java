@@ -11,7 +11,7 @@ import pers.cgglyle.log.model.entity.OperationLogEntity;
 import pers.cgglyle.log.model.query.OperationLogQuery;
 import pers.cgglyle.log.model.vo.OperationLogVo;
 import pers.cgglyle.log.service.OperationLogService;
-import pers.cgglyle.response.PageResult;
+import pers.cgglyle.common.response.PageResult;
 
 import java.util.List;
 import java.util.stream.Collectors;

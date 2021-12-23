@@ -7,7 +7,7 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.format.annotation.DateTimeFormat;
-import pers.cgglyle.base.model.BaseVo;
+import pers.cgglyle.common.base.model.BaseVo;
 
 import java.time.LocalDateTime;
 import java.util.List;

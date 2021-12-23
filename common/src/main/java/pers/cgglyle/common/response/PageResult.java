@@ -1,4 +1,4 @@
-package pers.cgglyle.response;
+package pers.cgglyle.common.response;
 
 import io.swagger.annotations.ApiModelProperty;
 

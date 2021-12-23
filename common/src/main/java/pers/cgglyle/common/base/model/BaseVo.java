@@ -1,4 +1,4 @@
-package pers.cgglyle.base.model;
+package pers.cgglyle.common.base.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;

@@ -1,4 +1,4 @@
-package pers.cgglyle.response;
+package pers.cgglyle.common.response;
 
 /**
  * Api异常实体

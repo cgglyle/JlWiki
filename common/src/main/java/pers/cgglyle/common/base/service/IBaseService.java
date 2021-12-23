@@ -1,8 +1,8 @@
-package pers.cgglyle.base.service;
+package pers.cgglyle.common.base.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import pers.cgglyle.base.model.BaseQuery;
-import pers.cgglyle.response.PageResult;
+import pers.cgglyle.common.base.model.BaseQuery;
+import pers.cgglyle.common.response.PageResult;
 
 import java.util.List;
 

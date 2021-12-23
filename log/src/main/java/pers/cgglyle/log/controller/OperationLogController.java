@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pers.cgglyle.log.model.query.OperationLogQuery;
 import pers.cgglyle.log.service.OperationLogService;
-import pers.cgglyle.response.PageResult;
+import pers.cgglyle.common.response.PageResult;
 
 /**
  * @author cgglyle

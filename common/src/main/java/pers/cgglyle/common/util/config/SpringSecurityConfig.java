@@ -1,4 +1,4 @@
-package pers.cgglyle.util.config;
+package pers.cgglyle.common.util.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

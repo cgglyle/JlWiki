@@ -1,4 +1,4 @@
-package pers.cgglyle.response;
+package pers.cgglyle.common.response;
 
 /**
  * 结果实体枚举控制
