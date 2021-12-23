@@ -35,6 +35,7 @@ public class RoleServiceImpl extends BaseServiceImpl<RoleMapper, RoleEntity> imp
         this.userMapper = userMapper;
     }
 
+    @RedisCache
     @Override
     public PageResult getPage(BaseQuery baseQuery) {
         RoleQuery roleQuery = (RoleQuery) baseQuery;

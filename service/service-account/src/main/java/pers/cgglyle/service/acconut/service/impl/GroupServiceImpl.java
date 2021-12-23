@@ -36,6 +36,7 @@ public class GroupServiceImpl extends BaseServiceImpl<GroupMapper, GroupEntity> 
         this.userMapper = userMapper;
     }
 
+    @RedisCache
     @Override
     public PageResult getPage(BaseQuery baseQuery) {
         GroupQuery groupQuery = (GroupQuery) baseQuery;

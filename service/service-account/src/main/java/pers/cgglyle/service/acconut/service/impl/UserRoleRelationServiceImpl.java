@@ -32,6 +32,7 @@ public class UserRoleRelationServiceImpl extends BaseServiceImpl<UserRoleRelatio
         this.roleService = roleService;
     }
 
+    @RedisCache
     @Override
     public List<UserRoleVo> getUserRoleList(Integer userId) {
         QueryWrapper<UserRoleRelationEntity> tempWrapper = new QueryWrapper<>();
@@ -46,6 +47,7 @@ public class UserRoleRelationServiceImpl extends BaseServiceImpl<UserRoleRelatio
         return roleList;
     }
 
+    @RedisCache
     @Override
     public List<Integer> getUserIdList(String roleName) {
         QueryWrapper<RoleEntity> tempWrapper = new QueryWrapper<>();

@@ -36,6 +36,7 @@ public class UserGroupRelationServiceImpl extends BaseServiceImpl<UserGroupRelat
         return super.add(userGroupRelationEntity);
     }
 
+    @RedisCache
     @Override
     public List<Integer> getUserIdList(String userGroup) {
         QueryWrapper<GroupEntity> queryWrapper = new QueryWrapper<>();
@@ -53,6 +54,7 @@ public class UserGroupRelationServiceImpl extends BaseServiceImpl<UserGroupRelat
         return integers;
     }
 
+    @RedisCache
     @Override
     public List<UserGroupVo> getUserGroupList(Integer id) {
         QueryWrapper<UserGroupRelationEntity> queryWrapper = new QueryWrapper<>();

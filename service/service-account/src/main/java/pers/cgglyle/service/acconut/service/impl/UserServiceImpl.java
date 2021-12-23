@@ -3,6 +3,7 @@ package pers.cgglyle.service.acconut.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pers.cgglyle.common.annotaion.RedisCache;
@@ -39,6 +40,9 @@ import java.util.stream.Collectors;
 @Service
 public class UserServiceImpl extends BaseServiceImpl<UserMapper, UserEntity> implements UserService {
 
+    @Autowired
+    private RedisUtils redisUtils;
+
     private final UserRoleRelationService roleRelationService;
     private final UserGroupRelationService userGroupRelationService;
 
@@ -48,6 +52,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, UserEntity> imp
         this.userGroupRelationService = userGroupRelationService;
     }
 
+    @RedisCache(timeout = 7200L)
     @Override
     public PageResult getPage(BaseQuery baseQuery) {
         UserQuery userQuery = (UserQuery) baseQuery;
