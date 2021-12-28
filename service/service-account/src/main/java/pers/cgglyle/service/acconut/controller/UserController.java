@@ -158,4 +158,11 @@ public class UserController {
         }
         return true;
     }
+
+    @OperationLog(operationMethod = "UPDATE", operationModule = "User")
+    @PutMapping("updateUserPassword")
+    @ApiOperation("修改密码")
+    public boolean updateUserPassword(String id,String oldPassword, String newPasswprd){
+        return userService.updateUserPassword(id,oldPassword,newPasswprd);
+    }
 }

@@ -4,8 +4,10 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 import pers.cgglyle.common.annotaion.RedisCache;
 import pers.cgglyle.common.base.model.BaseQuery;
 import pers.cgglyle.common.base.service.impl.BaseServiceImpl;
@@ -42,6 +44,8 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, UserEntity> imp
 
     @Autowired
     private RedisUtils redisUtils;
+//    @Autowired
+//    private AuthenticationManager authenticationManager;
 
     private final UserRoleRelationService roleRelationService;
     private final UserGroupRelationService userGroupRelationService;
@@ -199,5 +203,27 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, UserEntity> imp
     @Override
     public UserEntity getUserEntity(String userName) {
         return query().eq("user_name", userName).one();
+    }
+
+    @Override
+    public boolean updateUserPassword(String id, String oldPassword, String newPassword) {
+        Assert.hasText(oldPassword,"旧密码不能为空");
+        Assert.hasText(newPassword,"新密码不能为空");
+        Assert.isTrue(oldPassword.equals(newPassword),"新密码不能与老密码相同");
+        // 密码验证
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String encodeNewPassword = encoder.encode(newPassword);
+        boolean matches = encoder.matches(oldPassword, getById(id).getUserPassword());
+        Assert.isTrue(matches,"旧密码错误");
+        /*
+            清理该用户的token盐值
+            清理后用户就需要重新登录验证身份
+         */
+        redisUtils.hdel("SALT",id);
+        return lambdaUpdate().eq(UserEntity::getId,id)
+                .set(UserEntity::getUserPassword,encodeNewPassword)
+                .set(UserEntity::getUserPasswordUpdateTime,LocalDateTime.now())
+                .set(UserEntity::getUpdateTime,LocalDateTime.now())
+                .update();
     }
 }

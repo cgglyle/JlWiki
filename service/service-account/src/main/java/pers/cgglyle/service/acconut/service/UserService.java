@@ -44,4 +44,6 @@ public interface UserService extends IBaseService<UserEntity> {
      * @return 用户数据实体
      */
     UserEntity getUserEntity(String userName);
+
+    boolean updateUserPassword(String id, String oldPassword, String newPassword);
 }
