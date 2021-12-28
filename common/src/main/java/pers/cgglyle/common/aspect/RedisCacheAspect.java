@@ -6,7 +6,6 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pers.cgglyle.common.annotaion.RedisCache;
 import pers.cgglyle.common.util.redis.RedisUtils;
@@ -21,8 +20,11 @@ import pers.cgglyle.common.util.redis.RedisUtils;
 @Aspect
 @Component
 public class RedisCacheAspect {
-    @Autowired
-    private RedisUtils redisUtils;
+    private final RedisUtils redisUtils;
+
+    public RedisCacheAspect(RedisUtils redisUtils) {
+        this.redisUtils = redisUtils;
+    }
 
     @Pointcut("@annotation(pers.cgglyle.common.annotaion.RedisCache)")
     public void redisCache(){

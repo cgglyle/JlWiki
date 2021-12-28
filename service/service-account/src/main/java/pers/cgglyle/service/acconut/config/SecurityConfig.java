@@ -1,8 +1,8 @@
 package pers.cgglyle.service.acconut.config;
 
+import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -11,8 +11,11 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import pers.cgglyle.service.acconut.filter.JwtAuthenticationTokenFilter;
 import pers.cgglyle.service.acconut.service.impl.UserDetailsServiceImpl;
 
 /**
@@ -21,7 +24,7 @@ import pers.cgglyle.service.acconut.service.impl.UserDetailsServiceImpl;
  * @author cgglyle
  * @date 2021-12-16 16:50
  */
-@Order(value = 214848364)
+@AutoConfigureOrder
 @Configuration
 @EnableWebSecurity
 @EnableGlobalAuthentication
@@ -55,20 +58,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManager();
     }
 
+    @Bean
+    public JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter() throws Exception {
+        return new JwtAuthenticationTokenFilter(authenticationManager());
+    }
+
     /**
      * http 方法通过 Spring Security 过滤器链
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.addFilterBefore(jwtAuthenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class);
         http.authorizeRequests()
-                // 配置放行的请求
                 .antMatchers("/login").permitAll()
-                // 其余请求都需要验证
                 .anyRequest().authenticated()
-                // 授权码模式需要 会弹出默认自带的登录框
                 .and().httpBasic()
-                // 禁用跨站伪造
                 .and().csrf().disable();
+        // 因为使用Token
+        http.sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 
     /**
@@ -83,7 +91,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/404.html")
                 .antMatchers("/500.html")
                 .antMatchers("/html/**")
-                .antMatchers("/js/**");
+                .antMatchers("/js/**")
+                .antMatchers("/v3/**")
+                .antMatchers("/error")
+                .antMatchers("/webjars/**")
+                .antMatchers("/swagger-resources");
     }
 
     /**

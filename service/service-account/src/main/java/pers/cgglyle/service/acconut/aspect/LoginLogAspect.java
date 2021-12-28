@@ -11,6 +11,7 @@ import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
+import pers.cgglyle.service.acconut.model.dto.UserLoginDto;
 import pers.cgglyle.service.acconut.model.entity.LoginLogEntity;
 import pers.cgglyle.service.acconut.model.query.LoginQuest;
 import pers.cgglyle.service.acconut.model.vo.UserInfo;
@@ -50,8 +51,12 @@ public class LoginLogAspect {
         loginLogEntity.setLoginTime(loginTime);
         Object result;
         result = joinPoint.proceed();
-        UserInfo userInfo = (UserInfo) result;
-        loginLogEntity.setLoginUserName(userInfo.getUsername());
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserInfo userInfo){
+            loginLogEntity.setLoginUserName(userInfo.getUsername());
+        }
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserLoginDto userInfo){
+            loginLogEntity.setLoginUserName(userInfo.getUsername());
+        }
         loginLogEntity.setStatus(true);
         loginLogService.save(loginLogEntity);
         return result;

@@ -3,6 +3,8 @@ package pers.cgglyle.service.acconut.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import pers.cgglyle.common.response.GlobalExceptionHandler;
+import pers.cgglyle.service.acconut.service.LoginService;
+import pers.cgglyle.service.acconut.service.impl.LoginServiceImpl;
 
 /**
  * 全局异常处理Account模块配置类
@@ -15,5 +17,10 @@ public class AccountConfig {
     @Bean
     public GlobalExceptionHandler globalExceptionHandler() {
         return new GlobalExceptionHandler();
+    }
+
+    @Bean
+    public LoginService loginService(){
+        return new LoginServiceImpl();
     }
 }

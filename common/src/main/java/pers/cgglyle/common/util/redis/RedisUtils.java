@@ -1,6 +1,5 @@
 package pers.cgglyle.common.util.redis;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
@@ -18,8 +17,11 @@ import java.util.concurrent.TimeUnit;
 @Component
 public final class RedisUtils {
 
-    @Autowired
-    private RedisTemplate<String, Object> redisTemplate;
+    private final RedisTemplate<String, Object> redisTemplate;
+
+    public RedisUtils(RedisTemplate<String, Object> redisTemplate) {
+        this.redisTemplate = redisTemplate;
+    }
 
     // =============================common============================
 

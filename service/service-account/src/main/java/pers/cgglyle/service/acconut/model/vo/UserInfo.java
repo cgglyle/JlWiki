@@ -2,20 +2,22 @@ package pers.cgglyle.service.acconut.model.vo;
 
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 
-import java.io.Serial;
 import java.util.Collection;
-import java.util.List;
 
 /**
+ * 登陆显示实体
+ *
  * @author cgglyle
  * @date 2021-12-16 17:08
  */
-public class UserInfo extends User {
+public class UserInfo {
 
-    @Serial
-    private static final long serialVersionUID = 3965486146556284604L;
+    @ApiModelProperty("用户id")
+    private Integer id;
+
+    @ApiModelProperty("用户名")
+    private String username;
 
     @ApiModelProperty("用户昵称")
     private String userNickName;
@@ -24,23 +26,38 @@ public class UserInfo extends User {
     private String userIcon;
 
     @ApiModelProperty("用户角色")
-    private List<UserRoleVo> userRole;
+    private Collection<GrantedAuthority> userRole;
 
-    @ApiModelProperty("用户组")
-    private List<UserGroupVo> userGroup;
+    @ApiModelProperty("Token")
+    private String token;
 
-    public UserInfo(String username, String password, Collection<? extends GrantedAuthority> authorities, String userNickName, String userIcon) {
-        super(username, password, authorities);
-        this.userNickName = userNickName;
-        this.userIcon = userIcon;
+    public UserInfo(){
+
     }
 
-    public UserInfo(String username, String password, boolean enabled, boolean accountNonExpired,
-                    boolean credentialsNonExpired, boolean accountNonLocked, Collection<? extends GrantedAuthority>
-                            authorities, String userNickName, String userIcon) {
-        super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
+    public UserInfo(Integer id, String username, String userNickName, String userIcon, Collection<GrantedAuthority> userRole, String token) {
+        this.id = id;
+        this.username = username;
         this.userNickName = userNickName;
         this.userIcon = userIcon;
+        this.userRole = userRole;
+        this.token = token;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getUserNickName() {
@@ -59,19 +76,19 @@ public class UserInfo extends User {
         this.userIcon = userIcon;
     }
 
-    public List<UserRoleVo> getUserRole() {
+    public Collection<GrantedAuthority> getUserRole() {
         return userRole;
     }
 
-    public void setUserRole(List<UserRoleVo> userRole) {
+    public void setUserRole(Collection<GrantedAuthority> userRole) {
         this.userRole = userRole;
     }
 
-    public List<UserGroupVo> getUserGroup() {
-        return userGroup;
+    public String getToken() {
+        return token;
     }
 
-    public void setUserGroup(List<UserGroupVo> userGroup) {
-        this.userGroup = userGroup;
+    public void setToken(String token) {
+        this.token = token;
     }
 }
