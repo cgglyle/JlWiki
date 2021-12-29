@@ -47,7 +47,6 @@ public class LoginServiceImpl implements LoginService {
     private AuthenticationManager authenticationManager;
     @Autowired
     private RedisUtils redisUtils;
-
     /**
      * 创建token
      *
@@ -134,7 +133,7 @@ public class LoginServiceImpl implements LoginService {
      * @return 用户显示信息
      */
     @Override
-    public UserInfo parserToken(String token) throws NoSuchAlgorithmException, InvalidKeySpecException {
+    public UserLoginDto parserToken(String token) throws NoSuchAlgorithmException, InvalidKeySpecException {
         // 获取RSA256密钥
         RsaKeyDto rsa256Key = (RsaKeyDto) redisUtils.get(REDIS_RSA256_KEY_NAME);
         if (rsa256Key == null) {
@@ -155,8 +154,9 @@ public class LoginServiceImpl implements LoginService {
             return null;
         }
         // TODO 下面那个丑陋的 (Collection<GrantedAuthority>) body.get("ROLE") 转换需要改进
-        return new UserInfo(Integer.parseInt(body.getId()), body.getAudience(), (String) body.get("USER_NICK_NAME"),
-                (String) body.get("USER_ICON"), (Collection<GrantedAuthority>) body.get("ROLE"), token);
+        return new UserLoginDto(Integer.parseInt(body.getId()), body.getAudience(), "",
+                (Collection<GrantedAuthority>) body.get("ROLE"), (String) body.get("USER_NICK_NAME"),
+                (String) body.get("USER_ICON"), token);
     }
 
     @Override

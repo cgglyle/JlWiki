@@ -8,7 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
-import pers.cgglyle.service.acconut.model.vo.UserInfo;
+import pers.cgglyle.service.acconut.model.dto.UserLoginDto;
 import pers.cgglyle.service.acconut.service.LoginService;
 
 import javax.servlet.FilterChain;
@@ -56,12 +56,12 @@ public class JwtAuthenticationTokenFilter extends BasicAuthenticationFilter {
         }
         try {
             // 尝试解析token
-            UserInfo userInfo = loginService.parserToken(authorization);
-            if (userInfo == null) {
+            UserLoginDto userLoginDto = loginService.parserToken(authorization);
+            if (userLoginDto == null) {
                 chain.doFilter(request, response);
                 return;
             }
-            Collection<GrantedAuthority> userRole = userInfo.getUserRole();
+            Collection<GrantedAuthority> userRole = userLoginDto.getAuthorities();
             List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
             /*
             TODO 下面这部分需要重新改进，for循环有点丑陋
@@ -73,7 +73,7 @@ public class JwtAuthenticationTokenFilter extends BasicAuthenticationFilter {
                 grantedAuthorities.add(grantedAuthority);
             }
             // 生成内部token
-            UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userInfo, null, grantedAuthorities);
+            UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userLoginDto, null, grantedAuthorities);
             // 将token放入上下文
             SecurityContextHolder.getContext().setAuthentication(token);
         } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {

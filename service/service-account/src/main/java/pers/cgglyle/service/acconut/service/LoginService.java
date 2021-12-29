@@ -50,7 +50,7 @@ public interface LoginService {
      * @param token Token
      * @return 用户显示模型，不正确会返回null
      */
-    UserInfo parserToken(String token) throws NoSuchAlgorithmException, InvalidKeySpecException;
+    UserLoginDto parserToken(String token) throws NoSuchAlgorithmException, InvalidKeySpecException;
 
     /**
      * 登陆接口

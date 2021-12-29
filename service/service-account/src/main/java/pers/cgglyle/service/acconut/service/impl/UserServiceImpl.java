@@ -44,8 +44,6 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, UserEntity> imp
 
     @Autowired
     private RedisUtils redisUtils;
-//    @Autowired
-//    private AuthenticationManager authenticationManager;
 
     private final UserRoleRelationService roleRelationService;
     private final UserGroupRelationService userGroupRelationService;
@@ -110,6 +108,10 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, UserEntity> imp
     public boolean addUser(UserAddDto userAddDto) {
         UserEntity userEntity = new UserEntity();
         BeanUtils.copyProperties(userAddDto, userEntity);
+        // 加密密码
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String encode = encoder.encode(userEntity.getUserPassword());
+        userEntity.setUserPassword(encode);
         userEntity.setUserPasswordUpdateTime(LocalDateTime.now());
         return this.add(userEntity);
     }

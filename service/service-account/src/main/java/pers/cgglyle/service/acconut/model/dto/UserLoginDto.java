@@ -26,11 +26,13 @@ public class UserLoginDto extends User {
     @ApiModelProperty("用户头像url")
     private String userIcon;
 
-    public UserLoginDto(Integer id, String username, String password, Collection<? extends GrantedAuthority> authorities, String userNickName, String userIcon) {
+    private String token;
+    public UserLoginDto(Integer id, String username, String password, Collection<? extends GrantedAuthority> authorities, String userNickName, String userIcon, String token) {
         super(username, password, authorities);
         this.id = id;
         this.userNickName = userNickName;
         this.userIcon = userIcon;
+        this.token = token;
     }
 
     public UserLoginDto(Integer id, String username, String password, boolean enabled, boolean accountNonExpired,
@@ -64,5 +66,13 @@ public class UserLoginDto extends User {
 
     public void setUserIcon(String userIcon) {
         this.userIcon = userIcon;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

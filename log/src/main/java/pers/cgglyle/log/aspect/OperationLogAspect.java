@@ -84,9 +84,9 @@ public class OperationLogAspect {
             Object principal = authentication.getPrincipal();
             if (principal instanceof User user) {
                 operationLogEntity.setUserName(user.getUsername());
+            }else {
+                operationLogEntity.setUserName("非法登陆");
             }
-        } else {
-            operationLogEntity.setUserName("非法登陆");
         }
         // 获取请求参数
         Method method = ((MethodSignature) joinPoint.getSignature()).getMethod();

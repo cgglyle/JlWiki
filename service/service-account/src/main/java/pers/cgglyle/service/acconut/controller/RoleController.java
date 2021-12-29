@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 import pers.cgglyle.common.response.ApiException;
 import pers.cgglyle.common.response.PageResult;
+import pers.cgglyle.log.annotaion.OperationLog;
 import pers.cgglyle.service.acconut.model.dto.RoleAddDto;
 import pers.cgglyle.service.acconut.model.dto.RoleUpdateDto;
 import pers.cgglyle.service.acconut.model.query.RoleQuery;
@@ -36,6 +37,7 @@ public class RoleController {
         return roleService.getPage(roleQuery);
     }
 
+    @OperationLog(operationModule = "Role",operationMethod = "POST")
     @PostMapping("addRole")
     @ApiOperation("添加角色")
     public boolean addRole(@RequestBody RoleAddDto roleAddDto) {
@@ -54,6 +56,7 @@ public class RoleController {
      * @param id 角色id
      * @return true
      */
+    @OperationLog(operationMethod = "DELETE", operationModule = "Role")
     @DeleteMapping("deleteRole")
     @ApiOperation("删除角色")
     public boolean deleteRole(Integer id) {
@@ -64,6 +67,7 @@ public class RoleController {
         return true;
     }
 
+    @OperationLog(operationModule = "Role", operationMethod = "PUT")
     @PutMapping("updateRole")
     @ApiOperation("更新角色")
     public boolean updateRole(@RequestBody RoleUpdateDto roleUpdateDto) {
@@ -82,6 +86,7 @@ public class RoleController {
      * @param idList 角色id列表
      * @return true
      */
+    @OperationLog(operationMethod = "DELETE", operationModule = "Role")
     @DeleteMapping("batchDeleteRole")
     @ApiOperation("批量删除角色")
     public boolean batchDeleteRole(List<Integer> idList) {
