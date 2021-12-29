@@ -20,13 +20,13 @@
 
 ## 项目使用技术
 
-* Java
-* Spring
-* Spring MVC
-* Spring Boot
-* Spring Security
-* Mybatis
-* Mybatis-plus
-* Redis
-* RabbitMq
-* knife4j
+* 编程语言：Java
+* 编程框架：Spring, Spring MVC, Spring Boot
+* ORM框架：MyBatis, MyBatis-Plus
+* 安全框架：Spring Security
+* 关系数据库：MySQL
+* 文档数据库：MongoDB
+* 缓存：Redis
+* 接口工具：Knife4j
+* JWT工具：JJWT
+* 消息队列框架：RabbitMQ
