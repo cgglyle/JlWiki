@@ -1,5 +1,6 @@
 package pers.cgglyle.common.response;
 
+import io.jsonwebtoken.ExpiredJwtException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.security.SignatureException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,6 +82,29 @@ public class GlobalExceptionHandler {
         return new Result(ResultCode.LOGIN_ERROR, e.getMessage());
     }
 
+    /**
+     * JWT签名与本地计算机不符
+     *
+     * @param e JWT异常信息
+     * @return 返回体
+     */
+    @ExceptionHandler(SignatureException.class)
+    public Result signatureException(SignatureException e){
+        logger.warn(ResultCode.LOGIN_ERROR.getMessage(), e);
+        return new Result(ResultCode.LOGIN_ERROR, e.getMessage());
+    }
+
+    /**
+     * JWT过期异常
+     *
+     * @param e
+     * @return
+     */
+    @ExceptionHandler(ExpiredJwtException.class)
+    public Result expiredJwtException(ExpiredJwtException e){
+        logger.warn(ResultCode.LOGIN_ERROR.getMessage(),e);
+        return new Result(ResultCode.LOGIN_ERROR, e.getMessage());
+    }
     /**
      * 未知异常
      *
