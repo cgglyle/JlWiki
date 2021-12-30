@@ -1,13 +1,14 @@
 package pers.cgglyle.service.acconut.filter;
 
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.SignatureException;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+import pers.cgglyle.common.response.ApiException;
 import pers.cgglyle.service.acconut.model.dto.UserLoginDto;
 import pers.cgglyle.service.acconut.service.LoginService;
 
@@ -18,10 +19,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.LinkedHashMap;
-import java.util.List;
 
 /**
  * JWT Token 拦截器
@@ -39,7 +36,7 @@ public class JwtAuthenticationTokenFilter extends BasicAuthenticationFilter {
 
     /**
      * JWT token 拦截器
-     *
+     * <p>
      * 功能：
      * (1) 查看是否携带Token
      * (2) 检查Token是否正确
@@ -61,23 +58,24 @@ public class JwtAuthenticationTokenFilter extends BasicAuthenticationFilter {
                 chain.doFilter(request, response);
                 return;
             }
-            Collection<GrantedAuthority> userRole = userLoginDto.getAuthorities();
-            List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-            /*
-            TODO 下面这部分需要重新改进，for循环有点丑陋
-            此部分功能是将LinkedHashMap从userRole中提取出来，并且转化为Collection<GrantedAuthority>集合
-             */
-            for (int i = 0; i < userRole.size(); i++) {
-                LinkedHashMap hashMap = (LinkedHashMap) ((ArrayList) userRole).get(i);
-                GrantedAuthority grantedAuthority = new SimpleGrantedAuthority((String) hashMap.get("authority"));
-                grantedAuthorities.add(grantedAuthority);
-            }
+//            Collection<GrantedAuthority> userRole = userLoginDto.getAuthorities();
+//            List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+//            /*
+//            TODO 下面这部分需要重新改进，for循环有点丑陋
+//            此部分功能是将LinkedHashMap从userRole中提取出来，并且转化为Collection<GrantedAuthority>集合
+//             */
+//            for (int i = 0; i < userRole.size(); i++) {
+//                LinkedHashMap hashMap = (LinkedHashMap) ((ArrayList) userRole).get(i);
+//                GrantedAuthority grantedAuthority = new SimpleGrantedAuthority((String) hashMap.get("authority"));
+//                grantedAuthorities.add(grantedAuthority);
+//            }
             // 生成内部token
-            UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userLoginDto, null, grantedAuthorities);
+            UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userLoginDto, null, userLoginDto.getAuthorities());
             // 将token放入上下文
             SecurityContextHolder.getContext().setAuthentication(token);
-        } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+        } catch (NoSuchAlgorithmException | InvalidKeySpecException | ExpiredJwtException | SignatureException | ApiException e) {
             e.printStackTrace();
+            chain.doFilter(request, response);
         }
         // 继续拦截链
         chain.doFilter(request, response);

@@ -10,6 +10,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.util.Base64Utils;
 import pers.cgglyle.common.response.ApiException;
@@ -26,8 +27,7 @@ import java.security.interfaces.RSAPublicKey;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
-import java.util.Collection;
-import java.util.Date;
+import java.util.*;
 
 /**
  * 登陆服务实现
@@ -153,9 +153,19 @@ public class LoginServiceImpl implements LoginService {
         if (!redisUtils.hHasKey(REDIS_SALT_KEY_NAME, body.getId())){
             return null;
         }
-        // TODO 下面那个丑陋的 (Collection<GrantedAuthority>) body.get("ROLE") 转换需要改进
+        Collection<GrantedAuthority> userRole = (Collection<GrantedAuthority>) body.get("ROLE");
+        List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+            /*
+            TODO 下面这部分需要重新改进，for循环有点丑陋
+            此部分功能是将LinkedHashMap从userRole中提取出来，并且转化为Collection<GrantedAuthority>集合
+             */
+        for (int i = 0; i < userRole.size(); i++) {
+            LinkedHashMap hashMap = (LinkedHashMap) ((ArrayList) userRole).get(i);
+            GrantedAuthority grantedAuthority = new SimpleGrantedAuthority((String) hashMap.get("authority"));
+            grantedAuthorities.add(grantedAuthority);
+        }
         return new UserLoginDto(Integer.parseInt(body.getId()), body.getAudience(), "",
-                (Collection<GrantedAuthority>) body.get("ROLE"), (String) body.get("USER_NICK_NAME"),
+                grantedAuthorities, (String) body.get("USER_NICK_NAME"),
                 (String) body.get("USER_ICON"), token);
     }
 

@@ -3,7 +3,7 @@ package pers.cgglyle.service.acconut.model.vo;
 import io.swagger.annotations.ApiModelProperty;
 import pers.cgglyle.common.base.model.BaseVo;
 
-import java.util.Objects;
+import java.util.List;
 
 /**
  * 角色显示
@@ -23,6 +23,9 @@ public class RoleVo extends BaseVo {
 
     @ApiModelProperty("修改者")
     private String updateUser;
+
+    @ApiModelProperty("权限列表")
+    private List<RolePermissionRelationVo> permissionList;
 
     public String getRoleName() {
         return roleName;
@@ -56,17 +59,11 @@ public class RoleVo extends BaseVo {
         this.updateUser = updateUser;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        RoleVo roleVo = (RoleVo) o;
-        return Objects.equals(roleName, roleVo.roleName) && Objects.equals(roleDescription, roleVo.roleDescription) && Objects.equals(roleUserCount, roleVo.roleUserCount) && Objects.equals(updateUser, roleVo.updateUser);
+    public List<RolePermissionRelationVo> getPermissionList() {
+        return permissionList;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), roleName, roleDescription, roleUserCount, updateUser);
+    public void setPermissionList(List<RolePermissionRelationVo> permissionList) {
+        this.permissionList = permissionList;
     }
 }

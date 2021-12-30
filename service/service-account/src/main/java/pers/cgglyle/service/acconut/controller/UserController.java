@@ -3,6 +3,7 @@ package pers.cgglyle.service.acconut.controller;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pers.cgglyle.log.annotaion.OperationLog;
 import pers.cgglyle.common.response.ApiException;
@@ -40,6 +41,7 @@ public class UserController {
         this.userGroupRelationService = userGroupRelationService;
     }
 
+    @PreAuthorize("hasRole('admin')")
     @GetMapping("getPage")
     @ApiOperation("获取用户分页信息")
     public PageResult getPage(UserQuery userQuery) {

@@ -7,8 +7,10 @@ import pers.cgglyle.common.response.ApiException;
 import pers.cgglyle.common.response.PageResult;
 import pers.cgglyle.log.annotaion.OperationLog;
 import pers.cgglyle.service.acconut.model.dto.RoleAddDto;
+import pers.cgglyle.service.acconut.model.dto.RolePermissionRelationDto;
 import pers.cgglyle.service.acconut.model.dto.RoleUpdateDto;
 import pers.cgglyle.service.acconut.model.query.RoleQuery;
+import pers.cgglyle.service.acconut.service.RolePermissionRelationService;
 import pers.cgglyle.service.acconut.service.RoleService;
 
 import java.util.List;
@@ -26,9 +28,11 @@ import java.util.List;
 public class RoleController {
 
     private final RoleService roleService;
+    private final RolePermissionRelationService rolePermissionRelationService;
 
-    public RoleController(RoleService roleService) {
+    public RoleController(RoleService roleService, RolePermissionRelationService rolePermissionRelationService) {
         this.roleService = roleService;
+        this.rolePermissionRelationService = rolePermissionRelationService;
     }
 
     @ApiOperation("获取分页")
@@ -95,6 +99,13 @@ public class RoleController {
             throw new ApiException("批量删除失败");
         }
         return true;
+    }
+
+    @ApiOperation("添加角色权限")
+    @OperationLog(operationModule = "RolePermission", operationMethod = "POST")
+    @PostMapping("addRolePermission")
+    public boolean addRolePermission(@RequestBody RolePermissionRelationDto rolePermissionRelationDto){
+        return rolePermissionRelationService.add(rolePermissionRelationDto);
     }
 
 }

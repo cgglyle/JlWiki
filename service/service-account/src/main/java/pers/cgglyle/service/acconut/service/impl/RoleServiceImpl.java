@@ -15,7 +15,9 @@ import pers.cgglyle.service.acconut.model.dto.RoleUpdateDto;
 import pers.cgglyle.service.acconut.model.entity.RoleEntity;
 import pers.cgglyle.service.acconut.model.entity.UserEntity;
 import pers.cgglyle.service.acconut.model.query.RoleQuery;
+import pers.cgglyle.service.acconut.model.vo.RolePermissionRelationVo;
 import pers.cgglyle.service.acconut.model.vo.RoleVo;
+import pers.cgglyle.service.acconut.service.RolePermissionRelationService;
 import pers.cgglyle.service.acconut.service.RoleService;
 
 import java.util.List;
@@ -30,9 +32,11 @@ import java.util.stream.Collectors;
 @Service
 public class RoleServiceImpl extends BaseServiceImpl<RoleMapper, RoleEntity> implements RoleService {
     private final UserMapper userMapper;
+    private final RolePermissionRelationService rolePermissionRelationService;
 
-    public RoleServiceImpl(UserMapper userMapper) {
+    public RoleServiceImpl(UserMapper userMapper, RolePermissionRelationService rolePermissionRelationService) {
         this.userMapper = userMapper;
+        this.rolePermissionRelationService = rolePermissionRelationService;
     }
 
     @RedisCache
@@ -67,6 +71,8 @@ public class RoleServiceImpl extends BaseServiceImpl<RoleMapper, RoleEntity> imp
                 UserEntity userEntity = userMapper.selectById(role.getUpdateUser());
                 roleVo.setUpdateUser(userEntity.getUserName());
             }
+            List<RolePermissionRelationVo> permissionList = rolePermissionRelationService.getPermissionList(role.getId());
+            roleVo.setPermissionList(permissionList);
             BeanUtils.copyProperties(role, roleVo);
             return roleVo;
         }).collect(Collectors.toList());
