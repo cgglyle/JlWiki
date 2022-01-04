@@ -75,3 +75,8 @@ knife4j:
   #是否开启一个默认的跨域配置,该功能配合自定义Host使用,cors: true
   #  cors: true
 debug: true
+
+jwiki:
+  security:
+    # 是否允许匿名用户访问
+    anonymous: false

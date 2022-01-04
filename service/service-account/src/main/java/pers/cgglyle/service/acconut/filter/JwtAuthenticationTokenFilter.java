@@ -58,17 +58,6 @@ public class JwtAuthenticationTokenFilter extends BasicAuthenticationFilter {
                 chain.doFilter(request, response);
                 return;
             }
-//            Collection<GrantedAuthority> userRole = userLoginDto.getAuthorities();
-//            List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-//            /*
-//            TODO 下面这部分需要重新改进，for循环有点丑陋
-//            此部分功能是将LinkedHashMap从userRole中提取出来，并且转化为Collection<GrantedAuthority>集合
-//             */
-//            for (int i = 0; i < userRole.size(); i++) {
-//                LinkedHashMap hashMap = (LinkedHashMap) ((ArrayList) userRole).get(i);
-//                GrantedAuthority grantedAuthority = new SimpleGrantedAuthority((String) hashMap.get("authority"));
-//                grantedAuthorities.add(grantedAuthority);
-//            }
             // 生成内部token
             UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userLoginDto, null, userLoginDto.getAuthorities());
             // 将token放入上下文

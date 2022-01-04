@@ -12,7 +12,7 @@ import pers.cgglyle.common.base.model.BaseDto;
  */
 
 @ApiModel("Permission实体类")
-public class PermissionDto extends BaseDto {
+public class PermissionAddDto extends BaseDto {
 
     /**
      * 资源名称

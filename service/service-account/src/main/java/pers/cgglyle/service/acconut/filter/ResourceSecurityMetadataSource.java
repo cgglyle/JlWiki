@@ -5,8 +5,8 @@ import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.SecurityConfig;
 import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
-import pers.cgglyle.service.acconut.model.dto.PermissionGetListDto;
-import pers.cgglyle.service.acconut.service.PermissionService;
+import pers.cgglyle.service.acconut.service.RolePermissionService;
+import pers.cgglyle.service.acconut.util.RoleUtils;
 
 import java.util.Collection;
 import java.util.List;
@@ -16,18 +16,27 @@ import java.util.List;
  * @date 2021-12-30 09:42
  */
 public class ResourceSecurityMetadataSource implements FilterInvocationSecurityMetadataSource {
+    private static final String ANONYMOUS = "ROLE_ANONYMOUS";
+    private static final String[] RELEASE_URL = {"/login"};
 
     @Autowired
-    private PermissionService permissionService;
+    private RolePermissionService rolePermissionService;
 
     @Override
     public Collection<ConfigAttribute> getAttributes(Object object) throws IllegalArgumentException {
         String requestUrl = ((FilterInvocation) object).getHttpRequest().getRequestURI();
-        List<PermissionGetListDto> permissionList = permissionService.getPermissionList(requestUrl);
-        if (permissionList.isEmpty()){
-            return null;
+//        for (String url: RELEASE_URL){
+//            if (url.equals(requestUrl)){
+//                return null;
+//            }
+//        }
+        List<String> roleList = rolePermissionService.getRoleList(requestUrl);
+        // 如果没有任何权限，就添加一个anonymous的权限
+        if (roleList == null){
+            return SecurityConfig.createList(ANONYMOUS);
         }
-        return SecurityConfig.createList(permissionList.toArray(new String[0]));
+        List<String> list = RoleUtils.rolePrefix(roleList);
+        return SecurityConfig.createList(list.toArray(new String[0]));
     }
 
     @Override
@@ -37,6 +46,6 @@ public class ResourceSecurityMetadataSource implements FilterInvocationSecurityM
 
     @Override
     public boolean supports(Class<?> clazz) {
-        return false;
+        return FilterInvocation.class.isAssignableFrom(clazz);
     }
 }

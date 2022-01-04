@@ -71,6 +71,7 @@ public class UserRoleRelationServiceImpl extends BaseServiceImpl<UserRoleRelatio
     @Override
     public boolean addUserRole(UserRoleRelationDto userRoleRelationDto) {
         List<UserRoleVo> userRoleList = this.getUserRoleList(userRoleRelationDto.getUserId());
+        // FIXME 修复这里的只能有一个角色bug
         userRoleList.forEach(userRoleVo -> {
             if (this.baseMapper.selectById(userRoleVo.getId()) != null) {
                 throw new ApiException("已有此角色");

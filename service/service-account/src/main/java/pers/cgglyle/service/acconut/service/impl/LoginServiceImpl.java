@@ -20,6 +20,7 @@ import pers.cgglyle.service.acconut.model.dto.UserLoginDto;
 import pers.cgglyle.service.acconut.model.query.LoginQuest;
 import pers.cgglyle.service.acconut.model.vo.UserInfo;
 import pers.cgglyle.service.acconut.service.LoginService;
+import pers.cgglyle.service.acconut.util.RoleUtils;
 
 import java.security.*;
 import java.security.interfaces.RSAPrivateKey;
@@ -36,11 +37,29 @@ import java.util.*;
  * @date 2021-12-27 08:33
  */
 public class LoginServiceImpl implements LoginService {
-    private static final Long TIMEOUT = 60 * 60 * 1000L;
+    /**
+     * token 超时时间
+     */
+    private static final Long TIMEOUT = 12 * 60 * 60 * 1000L;
+    /**
+     * 加密方式
+     */
     private static final String ENCRYPTION = "RSA";
+    /**
+     * 密钥长度
+     */
     private static final int KEY_SIZE = 2048;
+    /**
+     * Redis RSA key 过时时间
+     */
     private static final Long CACHE_TIMEOUT = 24 * 60 * 60L;
+    /**
+     * Redis RSA key 键名
+     */
     private static final String REDIS_RSA256_KEY_NAME = "RSA256KEY";
+    /**
+     * Redis token 盐 键名
+     */
     private static final String REDIS_SALT_KEY_NAME = "SALT";
 
     @Autowired
@@ -92,6 +111,8 @@ public class LoginServiceImpl implements LoginService {
         if (!redisUtils.hHasKey(REDIS_SALT_KEY_NAME, Integer.toString(userLoginDto.getId()))) {
             redisUtils.hset(REDIS_SALT_KEY_NAME, Integer.toString(userLoginDto.getId()), 1);
         }
+        Collection<GrantedAuthority> authorities = userLoginDto.getAuthorities();
+        List<String> list = RoleUtils.rolePrefix(authorities);
         // 创建Token
         String token = Jwts.builder()
                 // 发布者
@@ -99,7 +120,7 @@ public class LoginServiceImpl implements LoginService {
                 // Token id
                 .setId(String.valueOf(userLoginDto.getId()))
                 // 角色
-                .claim("ROLE", userLoginDto.getAuthorities())
+                .claim("ROLE", list)
                 // 昵称
                 .claim("USER_NICK_NAME", userLoginDto.getUserNickName())
                 // 头像url
@@ -153,17 +174,22 @@ public class LoginServiceImpl implements LoginService {
         if (!redisUtils.hHasKey(REDIS_SALT_KEY_NAME, body.getId())){
             return null;
         }
+        List<String> role = (List<String>)body.get("ROLE");
         Collection<GrantedAuthority> userRole = (Collection<GrantedAuthority>) body.get("ROLE");
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
             /*
             TODO 下面这部分需要重新改进，for循环有点丑陋
             此部分功能是将LinkedHashMap从userRole中提取出来，并且转化为Collection<GrantedAuthority>集合
              */
-        for (int i = 0; i < userRole.size(); i++) {
-            LinkedHashMap hashMap = (LinkedHashMap) ((ArrayList) userRole).get(i);
-            GrantedAuthority grantedAuthority = new SimpleGrantedAuthority((String) hashMap.get("authority"));
-            grantedAuthorities.add(grantedAuthority);
-        }
+//        for (int i = 0; i < userRole.size(); i++) {
+//            LinkedHashMap hashMap = (LinkedHashMap) ((ArrayList) userRole).get(i);
+//            GrantedAuthority grantedAuthority = new SimpleGrantedAuthority((String) hashMap.get("authority"));
+//            grantedAuthorities.add(grantedAuthority);
+//        }
+        role.forEach(grantedAuthority -> {
+            SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(grantedAuthority);
+            grantedAuthorities.add(simpleGrantedAuthority);
+        });
         return new UserLoginDto(Integer.parseInt(body.getId()), body.getAudience(), "",
                 grantedAuthorities, (String) body.get("USER_NICK_NAME"),
                 (String) body.get("USER_ICON"), token);
