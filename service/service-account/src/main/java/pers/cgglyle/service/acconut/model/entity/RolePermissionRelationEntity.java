@@ -19,21 +19,21 @@ public class RolePermissionRelationEntity extends BaseEntity {
 
     /**
      * 角色id
-     */     
+     */
     @ApiModelProperty("角色id")
     @TableField("role_id")
     private Integer roleId;
 
     /**
      * 权限id
-     */     
+     */
     @ApiModelProperty("权限id")
     @TableField("permission_id")
     private Integer permissionId;
 
     /**
      * 修改人
-     */     
+     */
     @ApiModelProperty("修改人")
     @TableField("update_user")
     private Integer updateUser;
@@ -62,7 +62,6 @@ public class RolePermissionRelationEntity extends BaseEntity {
     public void setUpdateUser(Integer updateUser) {
         this.updateUser = updateUser;
     }
-
 
 
 }

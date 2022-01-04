@@ -3,6 +3,7 @@ package pers.cgglyle.service.acconut.model.vo;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.security.core.GrantedAuthority;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 /**
@@ -14,7 +15,7 @@ import java.util.Collection;
 public class UserInfo {
 
     @ApiModelProperty("用户id")
-    private Integer id;
+    private Serializable id;
 
     @ApiModelProperty("用户名")
     private String username;
@@ -31,11 +32,11 @@ public class UserInfo {
     @ApiModelProperty("Token")
     private String token;
 
-    public UserInfo(){
+    public UserInfo() {
 
     }
 
-    public UserInfo(Integer id, String username, String userNickName, String userIcon, Collection<GrantedAuthority> userRole, String token) {
+    public UserInfo(Serializable id, String username, String userNickName, String userIcon, Collection<GrantedAuthority> userRole, String token) {
         this.id = id;
         this.username = username;
         this.userNickName = userNickName;
@@ -44,11 +45,11 @@ public class UserInfo {
         this.token = token;
     }
 
-    public Integer getId() {
+    public Serializable getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Serializable id) {
         this.id = id;
     }
 

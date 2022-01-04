@@ -31,7 +31,7 @@ public class BaseEntity implements Serializable {
     @ApiModelProperty("主键id")
     @TableId(type = IdType.AUTO)
     @TableField("id")
-    private Integer id;
+    private Serializable id;
 
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonSerialize(using = LocalDateTimeSerializer.class)
@@ -66,11 +66,11 @@ public class BaseEntity implements Serializable {
     @TableField("create_user")
     private Integer createUser;
 
-    public Integer getId() {
+    public Serializable getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Serializable id) {
         this.id = id;
     }
 
@@ -124,8 +124,12 @@ public class BaseEntity implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         BaseEntity baseEntity = (BaseEntity) o;
         return isStatus == baseEntity.isStatus && isDeleted == baseEntity.isDeleted && isSystem == baseEntity.isSystem && Objects.equals(id, baseEntity.id) && Objects.equals(createTime, baseEntity.createTime) && Objects.equals(updateTime, baseEntity.updateTime) && Objects.equals(createUser, baseEntity.createUser);
     }

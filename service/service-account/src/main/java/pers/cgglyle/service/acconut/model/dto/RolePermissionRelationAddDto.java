@@ -2,7 +2,7 @@ package pers.cgglyle.service.acconut.model.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import pers.cgglyle.common.base.model.BaseDto;
+import pers.cgglyle.common.base.model.BaseAddDto;
 
 /**
  * 角色权限关联表(RolePermission)添加模型
@@ -12,7 +12,7 @@ import pers.cgglyle.common.base.model.BaseDto;
  */
 
 @ApiModel("RolePermission添加模型")
-public class RolePermissionRelationAddDto extends BaseDto {
+public class RolePermissionRelationAddDto extends BaseAddDto {
 
     /**
      * 角色id
@@ -22,7 +22,7 @@ public class RolePermissionRelationAddDto extends BaseDto {
 
     /**
      * 权限id
-     */     
+     */
     @ApiModelProperty("权限id")
     private Integer permissionId;
 

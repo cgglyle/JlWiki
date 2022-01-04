@@ -7,7 +7,6 @@ import pers.cgglyle.service.acconut.annotaion.LogoutLog;
 import pers.cgglyle.service.acconut.model.query.LoginQuest;
 import pers.cgglyle.service.acconut.model.vo.UserInfo;
 import pers.cgglyle.service.acconut.service.LoginService;
-import pers.cgglyle.service.acconut.service.impl.UserDetailsServiceImpl;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -25,11 +24,9 @@ import java.security.spec.InvalidKeySpecException;
 public class LoginController {
 
     private final LoginService loginService;
-    private final UserDetailsServiceImpl userDetailsService;
 
-    public LoginController(LoginService loginService, UserDetailsServiceImpl userDetailsService) {
+    public LoginController(LoginService loginService) {
         this.loginService = loginService;
-        this.userDetailsService = userDetailsService;
     }
 
 
@@ -52,13 +49,13 @@ public class LoginController {
      */
     @LogoutLog
     @GetMapping("logout/{id}")
-    public boolean logout(@PathVariable String id){
+    public boolean logout(@PathVariable String id) {
         return loginService.logout(id);
     }
 
     @LoginLog
     @GetMapping("testLogin")
-    public String testLogin(){
+    public String testLogin() {
         return "登陆成功";
     }
 }

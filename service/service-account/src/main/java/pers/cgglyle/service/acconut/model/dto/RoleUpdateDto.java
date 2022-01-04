@@ -1,8 +1,7 @@
 package pers.cgglyle.service.acconut.model.dto;
 
 import io.swagger.annotations.ApiModelProperty;
-
-import java.util.Objects;
+import pers.cgglyle.common.base.model.BaseUpdateDto;
 
 /**
  * 更新角色模型
@@ -10,7 +9,7 @@ import java.util.Objects;
  * @author cgglyle
  * @date 2021-12-08 14:09
  */
-public class RoleUpdateDto {
+public class RoleUpdateDto extends BaseUpdateDto {
     @ApiModelProperty("角色名称")
     private String roleName;
 
@@ -42,18 +41,5 @@ public class RoleUpdateDto {
 
     public void setUpdateUser(Integer updateUser) {
         this.updateUser = updateUser;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        RoleUpdateDto that = (RoleUpdateDto) o;
-        return Objects.equals(roleName, that.roleName) && Objects.equals(roleDescription, that.roleDescription) && Objects.equals(updateUser, that.updateUser);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(roleName, roleDescription, updateUser);
     }
 }

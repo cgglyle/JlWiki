@@ -2,7 +2,7 @@ package pers.cgglyle.service.acconut.model.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import pers.cgglyle.common.base.model.BaseDto;
+import pers.cgglyle.common.base.model.BaseAddDto;
 
 /**
  * (Permission)实体类
@@ -12,17 +12,17 @@ import pers.cgglyle.common.base.model.BaseDto;
  */
 
 @ApiModel("Permission实体类")
-public class PermissionAddDto extends BaseDto {
+public class PermissionAddDto extends BaseAddDto {
 
     /**
      * 资源名称
-     */     
+     */
     @ApiModelProperty("资源名称")
     private String permissionName;
 
     /**
      * 资源地址
-     */     
+     */
     @ApiModelProperty("资源地址")
     private String permissionUrl;
 

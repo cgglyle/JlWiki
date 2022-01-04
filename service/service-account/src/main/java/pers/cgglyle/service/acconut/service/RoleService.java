@@ -10,7 +10,7 @@ import pers.cgglyle.service.acconut.model.entity.RoleEntity;
  * @author cgglyle
  * @date 2021-12-08 13:08
  */
-public interface RoleService extends IBaseService<RoleEntity>{
+public interface RoleService extends IBaseService<RoleEntity> {
 
     /**
      * 更新角色

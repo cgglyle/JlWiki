@@ -12,8 +12,9 @@ import pers.cgglyle.common.util.redis.RedisUtils;
 
 /**
  * Redis 缓存切面
- *
+ * <p>
  * 通过此切面进行缓存加入
+ *
  * @author cgglyle
  * @date 2021-12-23 11:53
  */
@@ -27,7 +28,7 @@ public class RedisCacheAspect {
     }
 
     @Pointcut("@annotation(pers.cgglyle.common.annotaion.RedisCache)")
-    public void redisCache(){
+    public void redisCache() {
 
     }
 
@@ -42,14 +43,14 @@ public class RedisCacheAspect {
                 .append(joinPoint.getSignature().getName())
                 .append(JSON.toJSONString(joinPoint.getArgs()).hashCode())
                 .toString();
-        if(redisUtils.hasKey(cacheKey)){
+        if (redisUtils.hasKey(cacheKey)) {
             return redisUtils.get(cacheKey);
         }
         Object result = joinPoint.proceed();
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         // 获取 OperationLog 注解中的值
         RedisCache annotation = signature.getMethod().getAnnotation(RedisCache.class);
-        redisUtils.set(cacheKey,result,annotation.timeout());
+        redisUtils.set(cacheKey, result, annotation.timeout());
         return result;
     }
 }

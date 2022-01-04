@@ -5,6 +5,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
 import java.io.Serial;
+import java.io.Serializable;
 import java.util.Collection;
 
 /**
@@ -18,7 +19,7 @@ public class UserLoginDto extends User {
     private static final long serialVersionUID = 3965486146556284604L;
 
     @ApiModelProperty("用户id")
-    private Integer id;
+    private Serializable id;
 
     @ApiModelProperty("用户昵称")
     private String userNickName;
@@ -27,6 +28,7 @@ public class UserLoginDto extends User {
     private String userIcon;
 
     private String token;
+
     public UserLoginDto(Integer id, String username, String password, Collection<? extends GrantedAuthority> authorities, String userNickName, String userIcon, String token) {
         super(username, password, authorities);
         this.id = id;
@@ -35,7 +37,7 @@ public class UserLoginDto extends User {
         this.token = token;
     }
 
-    public UserLoginDto(Integer id, String username, String password, boolean enabled, boolean accountNonExpired,
+    public UserLoginDto(Serializable id, String username, String password, boolean enabled, boolean accountNonExpired,
                         boolean credentialsNonExpired, boolean accountNonLocked, Collection<? extends GrantedAuthority>
                                 authorities, String userNickName, String userIcon) {
         super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
@@ -44,11 +46,11 @@ public class UserLoginDto extends User {
         this.userIcon = userIcon;
     }
 
-    public Integer getId() {
+    public Serializable getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Serializable id) {
         this.id = id;
     }
 

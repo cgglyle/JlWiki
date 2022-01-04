@@ -7,12 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import pers.cgglyle.common.response.PageResult;
 import pers.cgglyle.log.annotaion.OperationLog;
 import pers.cgglyle.service.acconut.model.dto.PermissionAddDto;
-import pers.cgglyle.service.acconut.model.dto.PermissionGetListDto;
 import pers.cgglyle.service.acconut.model.query.PermissionQuery;
-import pers.cgglyle.service.acconut.service.PermissionService;
-import pers.cgglyle.service.acconut.service.RolePermissionService;
-
-import java.util.List;
+import pers.cgglyle.service.acconut.service.AccountService;
 
 /**
  * @author cgglyle
@@ -25,25 +21,18 @@ import java.util.List;
 public class PermissionController {
 
     @Autowired
-    private PermissionService permissionService;
-    @Autowired
-    private RolePermissionService rolePermissionService;
+    private AccountService accountService;
 
     @OperationLog(operationMethod = "POST", operationModule = "Permission")
     @ApiOperation("添加权限")
     @PostMapping("add")
-    public boolean addPermission(@RequestBody PermissionAddDto permissionAddDto){
-        return rolePermissionService.add(permissionAddDto);
+    public boolean addPermission(@RequestBody PermissionAddDto permissionAddDto) {
+        return accountService.add(permissionAddDto);
     }
 
     @ApiOperation("查询分页")
     @GetMapping("get")
-    public PageResult get(PermissionQuery permissionQuery){
-        return rolePermissionService.get(permissionQuery);
-    }
-
-    @GetMapping("getList")
-    public List<PermissionGetListDto> getPermission(String url){
-        return permissionService.getPermissionList(url);
+    public PageResult get(PermissionQuery permissionQuery) {
+        return accountService.get(permissionQuery);
     }
 }

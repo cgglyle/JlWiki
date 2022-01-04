@@ -10,7 +10,7 @@ import java.util.List;
  * @author cgglyle
  * @date 2021-12-29 14:31
  */
-public interface RolePermissionRelationService extends IBaseService<RolePermissionRelationEntity>{
+public interface RolePermissionRelationService extends IBaseService<RolePermissionRelationEntity> {
 
 
     List<RolePermissionRelationEntity> getListByRoleId(Serializable id);

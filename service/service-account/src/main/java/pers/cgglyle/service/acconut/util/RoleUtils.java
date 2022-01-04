@@ -14,9 +14,9 @@ import java.util.List;
 public class RoleUtils {
     private static final String ROLE_PREFIX = "ROLE_";
 
-    public static List<String> rolePrefix (List<String> list){
+    public static List<String> rolePrefix(List<String> list) {
         List<String> processedRoleList = new ArrayList<>();
-        list.forEach(role ->{
+        list.forEach(role -> {
             String upperRole = StringUtils.upperCase(role);
             String join = StringUtils.join(ROLE_PREFIX, upperRole);
             processedRoleList.add(join);
@@ -24,7 +24,7 @@ public class RoleUtils {
         return processedRoleList;
     }
 
-    public static List<String> rolePrefix (Collection<GrantedAuthority> collection){
+    public static List<String> rolePrefix(Collection<GrantedAuthority> collection) {
         List<String> processedRoleList = new ArrayList<>();
         collection.forEach(grantedAuthority -> {
             String upperCases = StringUtils.upperCase(grantedAuthority.getAuthority());

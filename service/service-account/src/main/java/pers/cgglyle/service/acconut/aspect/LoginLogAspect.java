@@ -51,10 +51,10 @@ public class LoginLogAspect {
         loginLogEntity.setLoginTime(loginTime);
         Object result;
         result = joinPoint.proceed();
-        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserInfo userInfo){
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserInfo userInfo) {
             loginLogEntity.setLoginUserName(userInfo.getUsername());
         }
-        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserLoginDto userInfo){
+        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserLoginDto userInfo) {
             loginLogEntity.setLoginUserName(userInfo.getUsername());
         }
         loginLogEntity.setStatus(true);

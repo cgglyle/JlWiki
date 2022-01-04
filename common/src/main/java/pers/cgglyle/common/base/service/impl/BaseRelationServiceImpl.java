@@ -2,9 +2,11 @@ package pers.cgglyle.common.base.service.impl;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.BeanUtils;
+import pers.cgglyle.common.base.model.BaseDto;
 import pers.cgglyle.common.base.model.BaseEntity;
 import pers.cgglyle.common.base.model.BaseQuery;
-import pers.cgglyle.common.base.service.BaseRelationService;
+import pers.cgglyle.common.base.service.IBaseRelationService;
+import pers.cgglyle.common.response.ApiException;
 import pers.cgglyle.common.response.PageResult;
 
 import java.lang.reflect.Constructor;
@@ -27,7 +29,7 @@ import java.util.stream.Collectors;
  * @author cgglyle
  * @date 2021-12-30 14:37
  */
-public abstract class BaseRelationServiceImpl implements BaseRelationService {
+public class BaseRelationServiceImpl implements IBaseRelationService {
 
     /**
      * 打包器
@@ -65,10 +67,10 @@ public abstract class BaseRelationServiceImpl implements BaseRelationService {
      * <p>
      * 可以实现一些复杂的打包任务
      *
-     * @param data Page对象
+     * @param data      Page对象
      * @param baseQuery 请求参数
-     * @param clazz 转换类型
-     * @param consumer 函数接口
+     * @param clazz     转换类型
+     * @param consumer  函数接口
      * @return PageResult对象
      */
     protected PageResult wrapper(Page<? extends BaseEntity> data, BaseQuery baseQuery, Class<?> clazz, Consumer<Object> consumer) {
@@ -85,5 +87,30 @@ public abstract class BaseRelationServiceImpl implements BaseRelationService {
             return null;
         }).collect(Collectors.toList());
         return new PageResult(baseQuery.getPageNum(), baseQuery.getPageSize(), data.getTotal(), data.getPages(), collect);
+    }
+
+    @Override
+    public PageResult get(BaseQuery query) {
+        throw new ApiException("未实现");
+    }
+
+    @Override
+    public boolean add(BaseDto dto) {
+        throw new ApiException("未实现");
+    }
+
+    @Override
+    public boolean update(BaseDto dto) {
+        throw new ApiException("未实现");
+    }
+
+    @Override
+    public boolean delete(BaseDto dto) {
+        throw new ApiException("未实现");
+    }
+
+    @Override
+    public boolean batchDelete(BaseDto dto) {
+        throw new ApiException("未实现");
     }
 }

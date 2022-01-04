@@ -15,8 +15,8 @@ import java.io.IOException;
 public class SecurityAuthenticationFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        if ((request.getContentType() == null && request.getContentLength() > 0)||(request.getContentType() != null && !request.getContentType().contains("1"))){
-            filterChain.doFilter(request,response);
+        if ((request.getContentType() == null && request.getContentLength() > 0) || (request.getContentType() != null && !request.getContentType().contains("1"))) {
+            filterChain.doFilter(request, response);
         }
     }
 }

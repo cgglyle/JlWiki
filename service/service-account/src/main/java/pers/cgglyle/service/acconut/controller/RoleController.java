@@ -9,13 +9,13 @@ import pers.cgglyle.common.response.ApiException;
 import pers.cgglyle.common.response.PageResult;
 import pers.cgglyle.log.annotaion.OperationLog;
 import pers.cgglyle.service.acconut.model.dto.RoleAddDto;
+import pers.cgglyle.service.acconut.model.dto.RoleDeleteDto;
 import pers.cgglyle.service.acconut.model.dto.RolePermissionRelationAddDto;
 import pers.cgglyle.service.acconut.model.dto.RoleUpdateDto;
 import pers.cgglyle.service.acconut.model.query.RoleQuery;
-import pers.cgglyle.service.acconut.service.RolePermissionRelationService;
-import pers.cgglyle.service.acconut.service.RolePermissionService;
-import pers.cgglyle.service.acconut.service.RoleService;
+import pers.cgglyle.service.acconut.service.AccountService;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -31,27 +31,20 @@ import java.util.List;
 public class RoleController {
 
     @Autowired
-    private RolePermissionService rolePermissionService;
-    private final RoleService roleService;
-    private final RolePermissionRelationService rolePermissionRelationService;
-
-    public RoleController(RoleService roleService, RolePermissionRelationService rolePermissionRelationService) {
-        this.roleService = roleService;
-        this.rolePermissionRelationService = rolePermissionRelationService;
-    }
+    private AccountService accountService;
 
     @ApiOperation("获取分页")
     @GetMapping("getPage")
     @RedisCache
     public PageResult getPage(RoleQuery roleQuery) {
-        return rolePermissionService.get(roleQuery);
+        return accountService.get(roleQuery);
     }
 
-    @OperationLog(operationModule = "Role",operationMethod = "POST")
+    @OperationLog(operationModule = "Role", operationMethod = "POST")
     @PostMapping("addRole")
     @ApiOperation("添加角色")
     public boolean addRole(@RequestBody RoleAddDto roleAddDto) {
-        boolean b = rolePermissionService.add(roleAddDto);
+        boolean b = accountService.add(roleAddDto);
         if (!b) {
             throw new ApiException("角色添加失败");
         }
@@ -69,8 +62,8 @@ public class RoleController {
     @OperationLog(operationMethod = "DELETE", operationModule = "Role")
     @DeleteMapping("deleteRole")
     @ApiOperation("删除角色")
-    public boolean deleteRole(Integer id) {
-        boolean delete = roleService.delete(id);
+    public boolean deleteRole(Serializable id) {
+        boolean delete = accountService.delete(new RoleDeleteDto(id));
         if (!delete) {
             throw new ApiException("角色删除失败");
         }
@@ -81,7 +74,7 @@ public class RoleController {
     @PutMapping("updateRole")
     @ApiOperation("更新角色")
     public boolean updateRole(@RequestBody RoleUpdateDto roleUpdateDto) {
-        boolean b = roleService.updateRole(roleUpdateDto);
+        boolean b = accountService.update(roleUpdateDto);
         if (!b) {
             throw new ApiException("更新角色失败");
         }
@@ -99,8 +92,8 @@ public class RoleController {
     @OperationLog(operationMethod = "DELETE", operationModule = "Role")
     @DeleteMapping("batchDeleteRole")
     @ApiOperation("批量删除角色")
-    public boolean batchDeleteRole(List<Integer> idList) {
-        boolean b = roleService.batchDelete(idList);
+    public boolean batchDeleteRole(List<Serializable> idList) {
+        boolean b = accountService.batchDelete(new RoleDeleteDto(idList));
         if (!b) {
             throw new ApiException("批量删除失败");
         }
@@ -110,8 +103,8 @@ public class RoleController {
     @ApiOperation("添加角色权限")
     @OperationLog(operationModule = "RolePermission", operationMethod = "POST")
     @PostMapping("addRolePermission")
-    public boolean addRolePermission(@RequestBody RolePermissionRelationAddDto rolePermissionRelationDto){
-        return rolePermissionService.add(rolePermissionRelationDto);
+    public boolean addRolePermission(@RequestBody RolePermissionRelationAddDto rolePermissionRelationDto) {
+        return accountService.add(rolePermissionRelationDto);
     }
 
 }

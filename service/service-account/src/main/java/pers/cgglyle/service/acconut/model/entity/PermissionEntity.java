@@ -19,25 +19,24 @@ public class PermissionEntity extends BaseEntity {
 
     /**
      * 资源名称
-     */     
+     */
     @ApiModelProperty("资源名称")
     @TableField("permission_name")
     private String permissionName;
 
     /**
      * 资源地址
-     */     
+     */
     @ApiModelProperty("资源地址")
     @TableField("permission_url")
     private String permissionUrl;
 
     /**
      * 修改人
-     */     
+     */
     @ApiModelProperty("修改人")
     @TableField("update_user")
     private Integer updateUser;
-
 
 
     public String getPermissionName() {

@@ -1,9 +1,9 @@
 package pers.cgglyle.service.acconut.model.dto;
 
 import io.swagger.annotations.ApiModelProperty;
+import pers.cgglyle.common.base.model.BaseUpdateDto;
 
 import javax.validation.constraints.NotNull;
-import java.util.Objects;
 
 /**
  * 用户更新数据模型
@@ -11,7 +11,7 @@ import java.util.Objects;
  * @author cgglyle
  * @date 2021/12/7
  */
-public class UserUpdateDto {
+public class UserUpdateDto extends BaseUpdateDto {
     @NotNull(message = "用户id不能为空")
     @ApiModelProperty("主键id")
     private String id;
@@ -200,16 +200,4 @@ public class UserUpdateDto {
         isStatus = status;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        UserUpdateDto that = (UserUpdateDto) o;
-        return isStatus == that.isStatus && Objects.equals(id, that.id) && Objects.equals(userName, that.userName) && Objects.equals(userPassword, that.userPassword) && Objects.equals(userRealName, that.userRealName) && Objects.equals(userGender, that.userGender) && Objects.equals(userAge, that.userAge) && Objects.equals(userNickName, that.userNickName) && Objects.equals(userIcon, that.userIcon) && Objects.equals(userEmail, that.userEmail) && Objects.equals(userPhone, that.userPhone) && Objects.equals(userQq, that.userQq) && Objects.equals(userWechat, that.userWechat) && Objects.equals(userGoogle, that.userGoogle) && Objects.equals(userTelegram, that.userTelegram) && Objects.equals(userTwitter, that.userTwitter) && Objects.equals(userFacebook, that.userFacebook);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, userName, userPassword, userRealName, userGender, userAge, userNickName, userIcon, userEmail, userPhone, userQq, userWechat, userGoogle, userTelegram, userTwitter, userFacebook, isStatus);
-    }
 }

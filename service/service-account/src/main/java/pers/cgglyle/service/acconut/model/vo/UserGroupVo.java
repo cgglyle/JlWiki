@@ -2,6 +2,8 @@ package pers.cgglyle.service.acconut.model.vo;
 
 import io.swagger.annotations.ApiModelProperty;
 
+import java.io.Serializable;
+
 /**
  * @author cgglyle
  * @date 2021-12-13 11:48
@@ -11,7 +13,7 @@ public class UserGroupVo {
      * UserGroupRelation 主键 ID
      */
     @ApiModelProperty("主键id")
-    private Integer id;
+    private Serializable id;
     @ApiModelProperty("角色名")
     private String groupName;
 
@@ -19,16 +21,16 @@ public class UserGroupVo {
 
     }
 
-    public UserGroupVo(Integer id, String groupName) {
+    public UserGroupVo(Serializable id, String groupName) {
         this.id = id;
         this.groupName = groupName;
     }
 
-    public Integer getId() {
+    public Serializable getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Serializable id) {
         this.id = id;
     }
 

@@ -10,6 +10,7 @@ import pers.cgglyle.common.base.service.IBaseService;
 import pers.cgglyle.common.response.ApiException;
 import pers.cgglyle.common.response.PageResult;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -57,7 +58,7 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseEntity> exte
     }
 
     @Override
-    public boolean delete(Integer id) {
+    public boolean delete(Serializable id) {
         // 判断是否为系统预制
         if (this.getById(id).isSystem()) {
             throw new ApiException("系统预制，不可删除");
@@ -72,8 +73,8 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseEntity> exte
     }
 
     @Override
-    public boolean batchDelete(List<Integer> idList) {
-        for (Integer id : idList) {
+    public boolean batchDelete(List<Serializable> idList) {
+        for (Serializable id : idList) {
             if (this.getById(id).isSystem()) {
                 throw new ApiException(id + "系统预制，不可删除");
             }

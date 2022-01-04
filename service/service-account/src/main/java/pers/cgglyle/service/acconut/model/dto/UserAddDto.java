@@ -1,9 +1,7 @@
 package pers.cgglyle.service.acconut.model.dto;
 
 import io.swagger.annotations.ApiModelProperty;
-import pers.cgglyle.common.base.model.BaseDto;
-
-import java.util.Objects;
+import pers.cgglyle.common.base.model.BaseAddDto;
 
 /**
  * 用户添加数据模型
@@ -11,7 +9,7 @@ import java.util.Objects;
  * @author cgglyle
  * @date 2021/12/7
  */
-public class UserAddDto extends BaseDto {
+public class UserAddDto extends BaseAddDto {
     @ApiModelProperty("用户名字")
     private String userName;
 
@@ -177,17 +175,4 @@ public class UserAddDto extends BaseDto {
         this.userFacebook = userFacebook;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        UserAddDto that = (UserAddDto) o;
-        return Objects.equals(userName, that.userName) && Objects.equals(userPassword, that.userPassword) && Objects.equals(userRealName, that.userRealName) && Objects.equals(userGender, that.userGender) && Objects.equals(userAge, that.userAge) && Objects.equals(userNickName, that.userNickName) && Objects.equals(userIcon, that.userIcon) && Objects.equals(userEmail, that.userEmail) && Objects.equals(userPhone, that.userPhone) && Objects.equals(userQq, that.userQq) && Objects.equals(userWechat, that.userWechat) && Objects.equals(userGoogle, that.userGoogle) && Objects.equals(userTelegram, that.userTelegram) && Objects.equals(userTwitter, that.userTwitter) && Objects.equals(userFacebook, that.userFacebook);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), userName, userPassword, userRealName, userGender, userAge, userNickName, userIcon, userEmail, userPhone, userQq, userWechat, userGoogle, userTelegram, userTwitter, userFacebook);
-    }
 }

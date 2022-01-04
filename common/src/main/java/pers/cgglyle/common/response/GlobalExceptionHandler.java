@@ -89,7 +89,7 @@ public class GlobalExceptionHandler {
      * @return 返回体
      */
     @ExceptionHandler(SignatureException.class)
-    public Result signatureException(SignatureException e){
+    public Result signatureException(SignatureException e) {
         logger.warn(ResultCode.LOGIN_ERROR.getMessage(), e);
         return new Result(ResultCode.LOGIN_ERROR, e.getMessage());
     }
@@ -101,10 +101,11 @@ public class GlobalExceptionHandler {
      * @return
      */
     @ExceptionHandler(ExpiredJwtException.class)
-    public Result expiredJwtException(ExpiredJwtException e){
-        logger.warn(ResultCode.LOGIN_ERROR.getMessage(),e);
+    public Result expiredJwtException(ExpiredJwtException e) {
+        logger.warn(ResultCode.LOGIN_ERROR.getMessage(), e);
         return new Result(ResultCode.LOGIN_ERROR, e.getMessage());
     }
+
     /**
      * 未知异常
      *

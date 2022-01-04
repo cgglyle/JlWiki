@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import pers.cgglyle.common.base.model.BaseQuery;
 import pers.cgglyle.common.response.PageResult;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -47,7 +48,7 @@ public interface IBaseService<T> extends IService<T> {
      * @param id 主键id
      * @return true-成功，false-失败
      */
-    boolean delete(Integer id);
+    boolean delete(Serializable id);
 
     /**
      * 根据id更新数据
@@ -63,6 +64,6 @@ public interface IBaseService<T> extends IService<T> {
      * @param idList id列表
      * @return true-成功，false-失败
      */
-    boolean batchDelete(List<Integer> idList);
+    boolean batchDelete(List<Serializable> idList);
 
 }

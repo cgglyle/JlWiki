@@ -1,11 +1,9 @@
 package pers.cgglyle.service.acconut.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pers.cgglyle.common.base.service.impl.BaseServiceImpl;
 import pers.cgglyle.service.acconut.mapper.RolePermissionRelationMapper;
 import pers.cgglyle.service.acconut.model.entity.RolePermissionRelationEntity;
-import pers.cgglyle.service.acconut.service.PermissionService;
 import pers.cgglyle.service.acconut.service.RolePermissionRelationService;
 
 import java.io.Serializable;
@@ -18,12 +16,9 @@ import java.util.List;
 @Service
 public class RolePermissionRelationServiceImpl extends BaseServiceImpl<RolePermissionRelationMapper, RolePermissionRelationEntity> implements RolePermissionRelationService {
 
-    @Autowired
-    private PermissionService permissionService;
-
     @Override
     public List<RolePermissionRelationEntity> getListByRoleId(Serializable id) {
-        return lambdaQuery().eq(RolePermissionRelationEntity::getRoleId,id)
+        return lambdaQuery().eq(RolePermissionRelationEntity::getRoleId, id)
                 .list();
     }
 }

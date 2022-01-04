@@ -18,7 +18,7 @@ public class RolePermissionRelationVo {
 
     /**
      * 权限id
-     */     
+     */
     @ApiModelProperty("权限名")
     private String permission;
 

@@ -34,7 +34,7 @@ import pers.cgglyle.service.acconut.service.impl.UserDetailsServiceImpl;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalAuthentication
-@EnableGlobalMethodSecurity(prePostEnabled = true,securedEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
@@ -71,12 +71,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public FilterInvocationSecurityMetadataSource filterInvocationSecurityMetadataSource(){
+    public FilterInvocationSecurityMetadataSource filterInvocationSecurityMetadataSource() {
         return new ResourceSecurityMetadataSource();
     }
 
     @Bean
-    public ResourceAccessDecisionManager resourceAccessDecisionManager(){
+    public ResourceAccessDecisionManager resourceAccessDecisionManager() {
         return new ResourceAccessDecisionManager();
     }
 
@@ -86,7 +86,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/login","/user/addUser").permitAll()
+                .antMatchers("/login", "/user/addUser").permitAll()
                 .anyRequest().authenticated()
                 .and().httpBasic()
                 .and().csrf().disable();

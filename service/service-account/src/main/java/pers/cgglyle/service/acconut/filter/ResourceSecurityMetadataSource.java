@@ -5,7 +5,7 @@ import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.SecurityConfig;
 import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
-import pers.cgglyle.service.acconut.service.RolePermissionService;
+import pers.cgglyle.service.acconut.service.AccountService;
 import pers.cgglyle.service.acconut.util.RoleUtils;
 
 import java.util.Collection;
@@ -17,10 +17,9 @@ import java.util.List;
  */
 public class ResourceSecurityMetadataSource implements FilterInvocationSecurityMetadataSource {
     private static final String ANONYMOUS = "ROLE_ANONYMOUS";
-    private static final String[] RELEASE_URL = {"/login"};
 
     @Autowired
-    private RolePermissionService rolePermissionService;
+    private AccountService accountService;
 
     @Override
     public Collection<ConfigAttribute> getAttributes(Object object) throws IllegalArgumentException {
@@ -30,9 +29,9 @@ public class ResourceSecurityMetadataSource implements FilterInvocationSecurityM
 //                return null;
 //            }
 //        }
-        List<String> roleList = rolePermissionService.getRoleList(requestUrl);
+        List<String> roleList = accountService.getRoleList(requestUrl);
         // 如果没有任何权限，就添加一个anonymous的权限
-        if (roleList == null){
+        if (roleList == null) {
             return SecurityConfig.createList(ANONYMOUS);
         }
         List<String> list = RoleUtils.rolePrefix(roleList);

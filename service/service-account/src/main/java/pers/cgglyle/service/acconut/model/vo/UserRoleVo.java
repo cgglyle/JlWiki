@@ -2,6 +2,8 @@ package pers.cgglyle.service.acconut.model.vo;
 
 import io.swagger.annotations.ApiModelProperty;
 
+import java.io.Serializable;
+
 /**
  * @author cgglyle
  * @date 2021-12-09 13:40
@@ -11,7 +13,7 @@ public class UserRoleVo {
      * UserRoleRelation 主键 ID
      */
     @ApiModelProperty("主键id")
-    private Integer id;
+    private Serializable id;
     @ApiModelProperty("角色名")
     private String roleName;
 
@@ -23,11 +25,11 @@ public class UserRoleVo {
         this.roleName = roleName;
     }
 
-    public Integer getId() {
+    public Serializable getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Serializable id) {
         this.id = id;
     }
 

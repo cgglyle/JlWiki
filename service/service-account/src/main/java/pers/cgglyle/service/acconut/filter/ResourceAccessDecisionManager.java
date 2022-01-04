@@ -20,24 +20,25 @@ import java.util.Collection;
  * @date 2021-12-31 13:08
  */
 public class ResourceAccessDecisionManager implements AccessDecisionManager {
+    private static final String ANONYMOUS = "ROLE_ANONYMOUS";
     @Autowired
     private JWikiSecurityConfig jWikiSecurityConfig;
-    private static final String ANONYMOUS = "ROLE_ANONYMOUS";
 
     /**
      * 权限判决器
-     *
+     * <p>
      * 判断用户是否有url所有想要的权限
-     *
+     * <p>
      * 如果开启允许匿名用户访问的话，就
-     * @param authentication 用户权限载体
-     * @param object 未知
+     *
+     * @param authentication   用户权限载体
+     * @param object           未知
      * @param configAttributes url权限载体
      */
     @Override
     public void decide(Authentication authentication, Object object, Collection<ConfigAttribute> configAttributes) throws AccessDeniedException, InsufficientAuthenticationException {
         // 是否允许匿名用户访问
-        if (jWikiSecurityConfig.isAnonymous()){
+        if (jWikiSecurityConfig.isAnonymous()) {
             return;
         }
         // 获取用户权限
@@ -46,7 +47,7 @@ public class ResourceAccessDecisionManager implements AccessDecisionManager {
         for (ConfigAttribute configAttribute : configAttributes) {
             String attribute = configAttribute.getAttribute();
             // 如果url的要求权限是匿名用户，或者是空，就直接放行
-            if (StringUtils.equals(attribute,ANONYMOUS) || !StringUtils.isNotBlank(attribute)){
+            if (StringUtils.equals(attribute, ANONYMOUS) || !StringUtils.isNotBlank(attribute)) {
                 return;
             }
             for (GrantedAuthority grantedAuthority : authorities) {

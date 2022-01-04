@@ -1,5 +1,6 @@
 package pers.cgglyle.service.acconut.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,10 +11,8 @@ import org.springframework.util.StringUtils;
 import pers.cgglyle.service.acconut.model.dto.UserLoginDto;
 import pers.cgglyle.service.acconut.model.entity.UserEntity;
 import pers.cgglyle.service.acconut.model.vo.UserRoleVo;
-import pers.cgglyle.service.acconut.service.UserRoleRelationService;
-import pers.cgglyle.service.acconut.service.UserService;
+import pers.cgglyle.service.acconut.service.AccountService;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,10 +24,8 @@ import java.util.List;
  */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-    @Resource
-    private UserService userService;
-    @Resource
-    private UserRoleRelationService userRoleRelationService;
+    @Autowired
+    private AccountService accountService;
 
     /**
      * 根据用户名创建UserDetails
@@ -42,13 +39,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         if (!StringUtils.hasText(username)) {
             throw new UsernameNotFoundException("用户名为空");
         }
-        UserEntity userEntity = userService.getUserEntity(username);
+        UserEntity userEntity = accountService.getUserEntity(username);
         // 判断是否有此用户
         if (userEntity == null) {
             throw new UsernameNotFoundException("无此用户");
         }
         // 获取用户角色信息
-        List<UserRoleVo> userRoleList = userRoleRelationService.getUserRoleList(userEntity.getId());
+        List<UserRoleVo> userRoleList = accountService.getUserRoleList(userEntity.getId());
         // 创建GrantedAuthority角色载体
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
         // 将用户角色放入载体
@@ -56,7 +53,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(userRoleVo.getRoleName());
             grantedAuthorities.add(grantedAuthority);
         });
-        return new UserLoginDto(userEntity.getId(),userEntity.getUserName(), userEntity.getUserPassword(), userEntity.isStatus()
+        return new UserLoginDto(userEntity.getId(), userEntity.getUserName(), userEntity.getUserPassword(), userEntity.isStatus()
                 , true, true, true
                 , grantedAuthorities, userEntity.getUserNickName(), userEntity.getUserIcon());
     }

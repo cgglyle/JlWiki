@@ -28,7 +28,10 @@ import java.security.interfaces.RSAPublicKey;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
 
 /**
  * 登陆服务实现
@@ -66,6 +69,7 @@ public class LoginServiceImpl implements LoginService {
     private AuthenticationManager authenticationManager;
     @Autowired
     private RedisUtils redisUtils;
+
     /**
      * 创建token
      *
@@ -108,8 +112,8 @@ public class LoginServiceImpl implements LoginService {
         // 转换为PKCS8私钥
         PrivateKey privateKey = factory.generatePrivate(keySpec);
         // 判断redis中是否有用户的盐
-        if (!redisUtils.hHasKey(REDIS_SALT_KEY_NAME, Integer.toString(userLoginDto.getId()))) {
-            redisUtils.hset(REDIS_SALT_KEY_NAME, Integer.toString(userLoginDto.getId()), 1);
+        if (!redisUtils.hHasKey(REDIS_SALT_KEY_NAME, (String) userLoginDto.getId())) {
+            redisUtils.hset(REDIS_SALT_KEY_NAME, (String) userLoginDto.getId(), 1);
         }
         Collection<GrantedAuthority> authorities = userLoginDto.getAuthorities();
         List<String> list = RoleUtils.rolePrefix(authorities);
@@ -133,7 +137,7 @@ public class LoginServiceImpl implements LoginService {
                  * 当需要强制下线用户的时候将这个id从hash中删除
                  * 当更新密码的时候也删除id，保证之前的token失效
                  */
-                .claim("SALT", redisUtils.hget(REDIS_SALT_KEY_NAME, Integer.toString(userLoginDto.getId())))
+                .claim("SALT", redisUtils.hget(REDIS_SALT_KEY_NAME, (String) userLoginDto.getId()))
                 // 用户名
                 .setAudience(userLoginDto.getUsername())
                 // 过期时间
@@ -171,10 +175,10 @@ public class LoginServiceImpl implements LoginService {
         // 获取Token载荷
         Claims body = claimsJws.getBody();
         // 判断盐是否存在
-        if (!redisUtils.hHasKey(REDIS_SALT_KEY_NAME, body.getId())){
+        if (!redisUtils.hHasKey(REDIS_SALT_KEY_NAME, body.getId())) {
             return null;
         }
-        List<String> role = (List<String>)body.get("ROLE");
+        List<String> role = (List<String>) body.get("ROLE");
         Collection<GrantedAuthority> userRole = (Collection<GrantedAuthority>) body.get("ROLE");
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
             /*
@@ -211,8 +215,8 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public boolean logout(String id) {
         // 删除盐
-        redisUtils.hdel(REDIS_SALT_KEY_NAME,id);
+        redisUtils.hdel(REDIS_SALT_KEY_NAME, id);
         // 检查盐
-        return redisUtils.hHasKey(REDIS_SALT_KEY_NAME,id);
+        return redisUtils.hHasKey(REDIS_SALT_KEY_NAME, id);
     }
 }

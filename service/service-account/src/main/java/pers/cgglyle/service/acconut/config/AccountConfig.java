@@ -20,7 +20,7 @@ public class AccountConfig {
     }
 
     @Bean
-    public LoginService loginService(){
+    public LoginService loginService() {
         return new LoginServiceImpl();
     }
 }

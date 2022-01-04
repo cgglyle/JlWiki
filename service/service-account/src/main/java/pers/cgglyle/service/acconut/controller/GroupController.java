@@ -10,6 +10,7 @@ import pers.cgglyle.service.acconut.model.dto.GroupUpdateDto;
 import pers.cgglyle.service.acconut.model.query.GroupQuery;
 import pers.cgglyle.service.acconut.service.GroupService;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -84,7 +85,7 @@ public class GroupController {
      */
     @DeleteMapping("batchDeleteGroup")
     @ApiOperation("批量删除用户组")
-    public boolean batchDeleteGroup(List<Integer> idList) {
+    public boolean batchDeleteGroup(List<Serializable> idList) {
         boolean b = groupService.batchDelete(idList);
         if (!b) {
             throw new ApiException("批量删除失败");

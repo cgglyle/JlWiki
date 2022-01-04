@@ -27,8 +27,8 @@ public class PermissionServiceImpl extends BaseServiceImpl<PermissionMapper, Per
     public Page<PermissionEntity> get(BaseQuery query) {
         PermissionQuery permissionQuery = (PermissionQuery) query;
         Page<PermissionEntity> page = new Page<>(permissionQuery.getPageNum(), permissionQuery.getPageSize());
-        return lambdaQuery().like(StringUtils.isNotEmpty(permissionQuery.getPermissionName()),PermissionEntity::getPermissionName, permissionQuery.getPermissionName())
-                .like(StringUtils.isNotEmpty(permissionQuery.getPermissionUrl()),PermissionEntity::getPermissionUrl, permissionQuery.getPermissionUrl())
+        return lambdaQuery().like(StringUtils.isNotEmpty(permissionQuery.getPermissionName()), PermissionEntity::getPermissionName, permissionQuery.getPermissionName())
+                .like(StringUtils.isNotEmpty(permissionQuery.getPermissionUrl()), PermissionEntity::getPermissionUrl, permissionQuery.getPermissionUrl())
                 .orderByDesc(PermissionEntity::getPermissionName)
                 .page(page);
     }
