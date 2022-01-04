@@ -1,5 +1,6 @@
 package pers.cgglyle.common.base.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import pers.cgglyle.common.base.model.BaseQuery;
 import pers.cgglyle.common.response.PageResult;
@@ -15,11 +16,22 @@ import java.util.List;
 public interface IBaseService<T> extends IService<T> {
     /**
      * 根据查询体分页查询。
+     * <p>
+     * 已过时，建议使用{@link #get(BaseQuery)}方法。
      *
      * @param baseQuery 查询体
      * @return 分页模型
      */
+    @Deprecated
     PageResult getPage(BaseQuery baseQuery);
+
+    /**
+     * 根据查询条件，查询分页信息
+     *
+     * @param query 查询模型
+     * @return 分页模型
+     */
+    Page<T> get(BaseQuery query);
 
     /**
      * 存储实体信息

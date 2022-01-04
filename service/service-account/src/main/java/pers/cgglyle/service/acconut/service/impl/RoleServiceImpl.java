@@ -2,6 +2,7 @@ package pers.cgglyle.service.acconut.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import pers.cgglyle.common.annotaion.RedisCache;
@@ -10,12 +11,10 @@ import pers.cgglyle.common.base.service.impl.BaseServiceImpl;
 import pers.cgglyle.common.response.PageResult;
 import pers.cgglyle.service.acconut.mapper.RoleMapper;
 import pers.cgglyle.service.acconut.mapper.UserMapper;
-import pers.cgglyle.service.acconut.model.dto.RoleAddDto;
 import pers.cgglyle.service.acconut.model.dto.RoleUpdateDto;
 import pers.cgglyle.service.acconut.model.entity.RoleEntity;
 import pers.cgglyle.service.acconut.model.entity.UserEntity;
 import pers.cgglyle.service.acconut.model.query.RoleQuery;
-import pers.cgglyle.service.acconut.model.vo.RolePermissionRelationVo;
 import pers.cgglyle.service.acconut.model.vo.RoleVo;
 import pers.cgglyle.service.acconut.service.RolePermissionRelationService;
 import pers.cgglyle.service.acconut.service.RoleService;
@@ -71,8 +70,6 @@ public class RoleServiceImpl extends BaseServiceImpl<RoleMapper, RoleEntity> imp
                 UserEntity userEntity = userMapper.selectById(role.getUpdateUser());
                 roleVo.setUpdateUser(userEntity.getUserName());
             }
-            List<RolePermissionRelationVo> permissionList = rolePermissionRelationService.getPermissionList(role.getId());
-            roleVo.setPermissionList(permissionList);
             BeanUtils.copyProperties(role, roleVo);
             return roleVo;
         }).collect(Collectors.toList());
@@ -80,10 +77,12 @@ public class RoleServiceImpl extends BaseServiceImpl<RoleMapper, RoleEntity> imp
     }
 
     @Override
-    public boolean addRole(RoleAddDto roleAddDto) {
-        RoleEntity roleEntity = new RoleEntity();
-        BeanUtils.copyProperties(roleAddDto, roleEntity);
-        return this.add(roleEntity);
+    public Page<RoleEntity> get(BaseQuery query){
+        RoleQuery roleQuery = (RoleQuery) query;
+        Page<RoleEntity> page = new Page<>(roleQuery.getPageNum(),roleQuery.getPageSize());
+        return lambdaQuery().like(StringUtils.isNotEmpty(roleQuery.getRoleName()), RoleEntity::getRoleName, roleQuery.getRoleName())
+                .orderByDesc(RoleEntity::getRoleName)
+                .page(page);
     }
 
     @Override

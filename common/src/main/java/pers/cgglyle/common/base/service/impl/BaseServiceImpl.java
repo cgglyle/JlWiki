@@ -39,6 +39,14 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseEntity> exte
     }
 
     @Override
+    public Page<T> get(BaseQuery query) {
+        Page<T> page = new Page<>(query.getPageNum(), query.getPageSize());
+        return lambdaQuery().orderByDesc(T::getId)
+                .eq(T::isDeleted, true)
+                .page(page);
+    }
+
+    @Override
     public boolean add(T entity) {
         entity.setCreateTime(LocalDateTime.now());
         entity.setUpdateTime(LocalDateTime.now());

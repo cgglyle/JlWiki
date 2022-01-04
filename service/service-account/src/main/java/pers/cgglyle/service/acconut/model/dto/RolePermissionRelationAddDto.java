@@ -5,14 +5,14 @@ import io.swagger.annotations.ApiModelProperty;
 import pers.cgglyle.common.base.model.BaseDto;
 
 /**
- * 角色权限关联表(RolePermission)实体类
+ * 角色权限关联表(RolePermission)添加模型
  *
  * @author cgglyle
  * @since 2021-12-29 14:25:08
  */
 
-@ApiModel("RolePermission实体类")
-public class RolePermissionRelationDto extends BaseDto {
+@ApiModel("RolePermission添加模型")
+public class RolePermissionRelationAddDto extends BaseDto {
 
     /**
      * 角色id
@@ -24,7 +24,7 @@ public class RolePermissionRelationDto extends BaseDto {
      * 权限id
      */     
     @ApiModelProperty("权限id")
-    private Integer permission;
+    private Integer permissionId;
 
     public Integer getRoleId() {
         return roleId;
@@ -34,12 +34,12 @@ public class RolePermissionRelationDto extends BaseDto {
         this.roleId = roleId;
     }
 
-    public Integer getPermission() {
-        return permission;
+    public Integer getPermissionId() {
+        return permissionId;
     }
 
-    public void setPermission(Integer permission) {
-        this.permission = permission;
+    public void setPermissionId(Integer permissionId) {
+        this.permissionId = permissionId;
     }
 }
 

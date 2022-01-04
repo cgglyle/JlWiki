@@ -2,15 +2,18 @@ package pers.cgglyle.service.acconut.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pers.cgglyle.common.annotaion.RedisCache;
 import pers.cgglyle.common.response.ApiException;
 import pers.cgglyle.common.response.PageResult;
 import pers.cgglyle.log.annotaion.OperationLog;
 import pers.cgglyle.service.acconut.model.dto.RoleAddDto;
-import pers.cgglyle.service.acconut.model.dto.RolePermissionRelationDto;
+import pers.cgglyle.service.acconut.model.dto.RolePermissionRelationAddDto;
 import pers.cgglyle.service.acconut.model.dto.RoleUpdateDto;
 import pers.cgglyle.service.acconut.model.query.RoleQuery;
 import pers.cgglyle.service.acconut.service.RolePermissionRelationService;
+import pers.cgglyle.service.acconut.service.RolePermissionService;
 import pers.cgglyle.service.acconut.service.RoleService;
 
 import java.util.List;
@@ -27,6 +30,8 @@ import java.util.List;
 @RequestMapping("/role")
 public class RoleController {
 
+    @Autowired
+    private RolePermissionService rolePermissionService;
     private final RoleService roleService;
     private final RolePermissionRelationService rolePermissionRelationService;
 
@@ -37,15 +42,16 @@ public class RoleController {
 
     @ApiOperation("获取分页")
     @GetMapping("getPage")
+    @RedisCache
     public PageResult getPage(RoleQuery roleQuery) {
-        return roleService.getPage(roleQuery);
+        return rolePermissionService.get(roleQuery);
     }
 
     @OperationLog(operationModule = "Role",operationMethod = "POST")
     @PostMapping("addRole")
     @ApiOperation("添加角色")
     public boolean addRole(@RequestBody RoleAddDto roleAddDto) {
-        boolean b = roleService.addRole(roleAddDto);
+        boolean b = rolePermissionService.add(roleAddDto);
         if (!b) {
             throw new ApiException("角色添加失败");
         }
@@ -104,8 +110,8 @@ public class RoleController {
     @ApiOperation("添加角色权限")
     @OperationLog(operationModule = "RolePermission", operationMethod = "POST")
     @PostMapping("addRolePermission")
-    public boolean addRolePermission(@RequestBody RolePermissionRelationDto rolePermissionRelationDto){
-        return rolePermissionRelationService.add(rolePermissionRelationDto);
+    public boolean addRolePermission(@RequestBody RolePermissionRelationAddDto rolePermissionRelationDto){
+        return rolePermissionService.add(rolePermissionRelationDto);
     }
 
 }
