@@ -3,7 +3,6 @@ package pers.cgglyle.common.response;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.util.List;
-import java.util.Objects;
 
 /**
  * 分页返回模型。
@@ -76,18 +75,5 @@ public class PageResult {
 
     public void setData(List<?> data) {
         this.data = data;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        PageResult that = (PageResult) o;
-        return pageNum == that.pageNum && pageSize == that.pageSize && totalSize == that.totalSize && totalPage == that.totalPage && Objects.equals(data, that.data);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(pageNum, pageSize, totalSize, totalPage, data);
     }
 }

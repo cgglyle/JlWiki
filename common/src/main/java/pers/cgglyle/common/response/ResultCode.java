@@ -38,16 +38,6 @@ public enum ResultCode {
      */
     NULL_POINTER(1021, "空指针异常"),
     /**
-     * BAD_REQUEST
-     * <p>
-     * 错误传递了参数
-     * 已过时
-     *
-     * @deprecated BAD_REQUEST
-     */
-    @Deprecated
-    BAD_REQUEST(1040, "错误传递参数"),
-    /**
      * ACCOUNT_ERROR
      * <p>
      * 登陆错误

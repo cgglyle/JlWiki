@@ -8,6 +8,8 @@ import pers.cgglyle.common.response.ApiException;
 import javax.servlet.http.HttpServletRequest;
 
 /**
+ * 异常控制器
+ *
  * @author cgglyle
  * @date 2021-12-29 15:54
  */

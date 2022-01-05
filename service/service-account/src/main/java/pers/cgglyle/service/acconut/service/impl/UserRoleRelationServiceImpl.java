@@ -1,5 +1,6 @@
 package pers.cgglyle.service.acconut.service.impl;
 
+import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
 import org.springframework.stereotype.Service;
 import pers.cgglyle.common.base.service.impl.BaseServiceImpl;
 import pers.cgglyle.common.response.ApiException;
@@ -7,6 +8,7 @@ import pers.cgglyle.service.acconut.mapper.UserRoleRelationMapper;
 import pers.cgglyle.service.acconut.model.entity.UserRoleRelationEntity;
 import pers.cgglyle.service.acconut.service.UserRoleRelationService;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -27,5 +29,28 @@ public class UserRoleRelationServiceImpl extends BaseServiceImpl<UserRoleRelatio
             }
         });
         return super.add(entity);
+    }
+
+    @Override
+    public boolean deleteByRoleId(Serializable id) {
+        return deleteUtil(lambdaQuery()
+                .eq(UserRoleRelationEntity::getRoleId, id));
+    }
+
+    @Override
+    public boolean deleteByUserId(Serializable id) {
+        return deleteUtil(lambdaQuery()
+                .eq(UserRoleRelationEntity::getUserId, id));
+    }
+
+    private boolean deleteUtil(LambdaQueryChainWrapper<UserRoleRelationEntity> eq) {
+        List<UserRoleRelationEntity> userRoleList = eq.list();
+        userRoleList.forEach(userRoleRelationEntity -> {
+            boolean delete = delete(userRoleRelationEntity.getId());
+            if (!delete){
+                throw new ApiException("删除失败");
+            }
+        });
+        return true;
     }
 }

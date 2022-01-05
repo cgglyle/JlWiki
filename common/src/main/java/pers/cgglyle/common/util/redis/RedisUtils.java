@@ -11,6 +11,8 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * Redis工具类
+ *
  * @author cgglyle
  * @date 2021-12-09 16:00
  */

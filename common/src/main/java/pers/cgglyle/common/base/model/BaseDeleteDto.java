@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
+ * 基础删除数据模型
+ *
  * @author cgglyle
  * @date 2022-01-04 10:11
  */

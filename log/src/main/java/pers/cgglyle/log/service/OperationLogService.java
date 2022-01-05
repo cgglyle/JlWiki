@@ -13,6 +13,11 @@ import pers.cgglyle.log.model.query.OperationLogQuery;
  */
 public interface OperationLogService extends IService<OperationLogEntity> {
 
-
+    /**
+     * 获取分页信息
+     *
+     * @param operationLogQuery 分页请求
+     * @return 分页模型
+     */
     PageResult getPage(OperationLogQuery operationLogQuery);
 }

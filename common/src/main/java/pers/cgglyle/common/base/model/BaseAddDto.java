@@ -3,6 +3,8 @@ package pers.cgglyle.common.base.model;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
+ * 基础添加数据模型
+ *
  * @author cgglyle
  * @date 2022-01-04 09:51
  */

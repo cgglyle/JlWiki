@@ -8,7 +8,6 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
-import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,13 +18,12 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import pers.cgglyle.log.annotaion.OperationLog;
 import pers.cgglyle.log.model.entity.OperationLogEntity;
 import pers.cgglyle.log.service.OperationLogService;
+import pers.cgglyle.log.utils.JoinPointUtils;
 
 import javax.servlet.http.HttpServletRequest;
-import java.lang.reflect.Method;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDateTime;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -89,14 +87,7 @@ public class OperationLogAspect {
             }
         }
         // 获取请求参数
-        Method method = ((MethodSignature) joinPoint.getSignature()).getMethod();
-        LocalVariableTableParameterNameDiscoverer parameterNameDiscoverer = new LocalVariableTableParameterNameDiscoverer();
-        String[] parameterNames = parameterNameDiscoverer.getParameterNames(method);
-        Object[] args = joinPoint.getArgs();
-        Map<String, Object> params = new HashMap<>();
-        for (int i = 0; i < Objects.requireNonNull(parameterNames).length; i++) {
-            params.put(parameterNames[i], args[i]);
-        }
+        Map<String, Object> params = JoinPointUtils.getMethod(joinPoint);
         // 请求参数 json 化
         operationLogEntity.setRequestParameter(JSON.toJSONString(params));
         // 请求结果
@@ -143,14 +134,7 @@ public class OperationLogAspect {
             operationLogEntity.setUserName("非法登陆");
         }
         // 获取请求参数
-        Method method = ((MethodSignature) joinPoint.getSignature()).getMethod();
-        LocalVariableTableParameterNameDiscoverer parameterNameDiscoverer = new LocalVariableTableParameterNameDiscoverer();
-        String[] parameterNames = parameterNameDiscoverer.getParameterNames(method);
-        Object[] args = joinPoint.getArgs();
-        Map<String, Object> params = new HashMap<>();
-        for (int i = 0; i < Objects.requireNonNull(parameterNames).length; i++) {
-            params.put(parameterNames[i], args[i]);
-        }
+        Map<String, Object> params = JoinPointUtils.getMethod(joinPoint);
         // 请求参数 json 化
         operationLogEntity.setRequestParameter(JSON.toJSONString(params));
         operationLogEntity.setReturnResult(e.getMessage());

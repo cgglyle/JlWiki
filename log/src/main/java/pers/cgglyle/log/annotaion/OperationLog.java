@@ -3,6 +3,8 @@ package pers.cgglyle.log.annotaion;
 import java.lang.annotation.*;
 
 /**
+ * 日志请求注解
+ *
  * @author cgglyle
  * @date 2021-12-14 16:17
  */

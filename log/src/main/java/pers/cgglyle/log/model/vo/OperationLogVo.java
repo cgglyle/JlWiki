@@ -6,6 +6,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.time.LocalDateTime;
 
 /**
+ * 日志显示模型
+ *
  * @author cgglyle
  * @date 2021-12-15 13:48
  */

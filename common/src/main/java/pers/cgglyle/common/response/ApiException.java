@@ -7,8 +7,14 @@ package pers.cgglyle.common.response;
  * @date 2021-12-08 10:41
  */
 public class ApiException extends RuntimeException {
-    private Integer code;
-    private String message;
+    /**
+     * 异常代码
+     */
+    private final Integer code;
+    /**
+     * 异常信息
+     */
+    private final String message;
 
     public ApiException() {
         this(ResultCode.FAILED);

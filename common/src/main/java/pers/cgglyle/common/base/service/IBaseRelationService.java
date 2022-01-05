@@ -24,8 +24,6 @@ public interface IBaseRelationService {
      * 根据请求获取分页信息
      * <p>
      * 抽象方法，需要重写
-     * <p>
-     * 请求参数必须继承{@link pers.cgglyle.common.base.model.BaseQuery}
      *
      * @param query 请求模型
      * @return 分页模型
@@ -34,6 +32,8 @@ public interface IBaseRelationService {
 
     /**
      * 根据请求添加模型
+     * <p>
+     * 抽象方法，需要重写
      *
      * @param dto 添加请求模型
      * @return 成功失败
@@ -42,6 +42,8 @@ public interface IBaseRelationService {
 
     /**
      * 根据请求更新数据
+     * <p>
+     * 抽象方法，需要重写
      *
      * @param dto 更新请求模型
      * @return 成功失败
@@ -50,6 +52,8 @@ public interface IBaseRelationService {
 
     /**
      * 根据id删除数据
+     * <p>
+     * 抽象方法，需要重写
      *
      * @param dto 删除请求模型
      * @return 成功失败
@@ -58,6 +62,8 @@ public interface IBaseRelationService {
 
     /**
      * 批量删除数据
+     * <p>
+     * 抽象方法，需要重写
      *
      * @param dto 删除请求模型
      * @return 成功失败

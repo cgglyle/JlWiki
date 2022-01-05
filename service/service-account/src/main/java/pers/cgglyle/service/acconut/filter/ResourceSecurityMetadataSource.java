@@ -24,11 +24,6 @@ public class ResourceSecurityMetadataSource implements FilterInvocationSecurityM
     @Override
     public Collection<ConfigAttribute> getAttributes(Object object) throws IllegalArgumentException {
         String requestUrl = ((FilterInvocation) object).getHttpRequest().getRequestURI();
-//        for (String url: RELEASE_URL){
-//            if (url.equals(requestUrl)){
-//                return null;
-//            }
-//        }
         List<String> roleList = accountService.getRoleList(requestUrl);
         // 如果没有任何权限，就添加一个anonymous的权限
         if (roleList == null) {

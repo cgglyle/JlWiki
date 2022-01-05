@@ -14,4 +14,7 @@ public interface RolePermissionRelationService extends IBaseService<RolePermissi
 
 
     List<RolePermissionRelationEntity> getListByRoleId(Serializable id);
+
+    boolean deleteByRoleId(Serializable id);
+    boolean deleteByPermissionId(Serializable id);
 }

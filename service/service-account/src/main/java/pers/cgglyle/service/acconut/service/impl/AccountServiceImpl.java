@@ -3,6 +3,7 @@ package pers.cgglyle.service.acconut.service.impl;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pers.cgglyle.common.base.model.BaseDto;
 import pers.cgglyle.common.base.model.BaseEntity;
 import pers.cgglyle.common.base.model.BaseQuery;
@@ -23,6 +24,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
+ * 账号服务实现
+ * <p>
+ * 提供User信息、Role信息、Permission信息
+ *
  * @author cgglyle
  * @date 2022-01-04 11:27
  */
@@ -89,6 +94,21 @@ public class AccountServiceImpl extends BaseRelationServiceImpl implements Accou
         throw new ApiException("未支持的请求");
     }
 
+    /**
+     * 添加数据
+     * <p>
+     * 根据添加的请求分类
+     * <p>
+     * 支持的模型:
+     * 1.RoleAddDto
+     * 2.PermissionAddDto
+     * 3.UserAddDto
+     * 4.RolePermissionRelationAddDto
+     * 5.UserRoleRelationAddDto
+     *
+     * @param dto 添加请求模型
+     * @return 成功失败
+     */
     @Override
     public boolean add(BaseDto dto) {
         if (dto instanceof RoleAddDto roleAddDto) {
@@ -119,6 +139,18 @@ public class AccountServiceImpl extends BaseRelationServiceImpl implements Accou
         throw new ApiException("未支持的请求");
     }
 
+    /**
+     * 更新数据
+     * <p>
+     * 根据请求更新数据
+     * <p>
+     * 支持的模型:
+     * 1.RoleUpdateDto
+     * 2.UserUpdateDto
+     *
+     * @param dto 更新请求模型
+     * @return 成功失败
+     */
     @Override
     public boolean update(BaseDto dto) {
         if (dto instanceof RoleUpdateDto roleUpdateDto) {
@@ -134,15 +166,40 @@ public class AccountServiceImpl extends BaseRelationServiceImpl implements Accou
         throw new ApiException("未支持的请求");
     }
 
+    /**
+     * 删除数据
+     * <p>
+     * 根据请求删除数据
+     * <p>
+     * 支持的模型:
+     * 1.RoleDeleteDto
+     * 2.UserDeleteDto
+     * 3.PermissionDeleteDto
+     * 4.RolePermissionRelationDeleteDto
+     * 5.UserRoleRelationDeleteDto
+     *
+     * @param dto 删除请求模型
+     * @return 成功失败
+     */
+    @Transactional
     @Override
     public boolean delete(BaseDto dto) {
         if (dto instanceof RoleDeleteDto deleteDto) {
+            // 删除角色同时删除关系表中的数据
+            // 角色用户关系表
+            userRoleRelationService.deleteByRoleId(deleteDto.getId());
+            // 角色权限关系表
+            rolePermissionRelationService.deleteByRoleId(deleteDto.getId());
             return roleService.delete(deleteDto.getId());
         }
-        if (dto instanceof UserDeleteDto userDeleteDto) {
-            return userService.delete(userDeleteDto.getId());
+        if (dto instanceof UserDeleteDto deleteDto) {
+            // 删除用户角色关系表
+            userRoleRelationService.deleteByUserId(deleteDto.getId());
+            return userService.delete(deleteDto.getId());
         }
         if (dto instanceof PermissionDeleteDto deleteDto) {
+            // 删除角色权限关系表
+            rolePermissionRelationService.deleteByPermissionId(deleteDto.getId());
             return permissionService.delete(deleteDto.getId());
         }
         if (dto instanceof RolePermissionRelationDeleteDto deleteDto) {
@@ -154,15 +211,36 @@ public class AccountServiceImpl extends BaseRelationServiceImpl implements Accou
         throw new ApiException("未支持的请求");
     }
 
+    /**
+     * 批量删除数据
+     * <p>
+     * 根据请求批量删除数据
+     *
+     * @param dto 删除请求模型
+     * @return 成功失败
+     */
     @Override
     public boolean batchDelete(BaseDto dto) {
         if (dto instanceof RoleDeleteDto deleteDto) {
+            List<Serializable> idList = deleteDto.getIdList();
+            idList.forEach(id -> {
+                // 删除角色用户关系
+                userRoleRelationService.deleteByRoleId(id);
+                // 删除角色权限关系
+                rolePermissionRelationService.deleteByRoleId(id);
+            });
             return roleService.batchDelete(deleteDto.getIdList());
         }
-        if (dto instanceof UserDeleteDto userDeleteDto) {
-            return userService.batchDelete(userDeleteDto.getIdList());
+        if (dto instanceof UserDeleteDto deleteDto) {
+            List<Serializable> idList = deleteDto.getIdList();
+            // 删除用户角色关系
+            idList.forEach(userRoleRelationService::deleteByUserId);
+            return userService.batchDelete(deleteDto.getIdList());
         }
         if (dto instanceof PermissionDeleteDto deleteDto) {
+            List<Serializable> idList = deleteDto.getIdList();
+            // 删除角色权限关系
+            idList.forEach(rolePermissionRelationService::deleteByPermissionId);
             return permissionService.batchDelete(deleteDto.getIdList());
         }
         if (dto instanceof RolePermissionRelationDeleteDto deleteDto) {
@@ -174,6 +252,12 @@ public class AccountServiceImpl extends BaseRelationServiceImpl implements Accou
         throw new ApiException("未支持的请求");
     }
 
+    /**
+     * 根据Permission中的url获取角色
+     *
+     * @param url 请求url
+     * @return 角色列表
+     */
     @Override
     public List<String> getRoleList(String url) {
         PermissionEntity permissionEntity = permissionService.lambdaQuery()
@@ -193,6 +277,12 @@ public class AccountServiceImpl extends BaseRelationServiceImpl implements Accou
         return roleString;
     }
 
+    /**
+     * 根据用户id获取角色列表
+     *
+     * @param id 用户id
+     * @return 角色列表
+     */
     @Override
     public List<UserRoleVo> getUserRoleList(Serializable id) {
         List<UserRoleRelationEntity> list = userRoleRelationService.lambdaQuery().eq(UserRoleRelationEntity::getUserId, id).list();

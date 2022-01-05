@@ -1,7 +1,9 @@
 package pers.cgglyle.service.acconut.service.impl;
 
+import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
 import org.springframework.stereotype.Service;
 import pers.cgglyle.common.base.service.impl.BaseServiceImpl;
+import pers.cgglyle.common.response.ApiException;
 import pers.cgglyle.service.acconut.mapper.RolePermissionRelationMapper;
 import pers.cgglyle.service.acconut.model.entity.RolePermissionRelationEntity;
 import pers.cgglyle.service.acconut.service.RolePermissionRelationService;
@@ -20,5 +22,28 @@ public class RolePermissionRelationServiceImpl extends BaseServiceImpl<RolePermi
     public List<RolePermissionRelationEntity> getListByRoleId(Serializable id) {
         return lambdaQuery().eq(RolePermissionRelationEntity::getRoleId, id)
                 .list();
+    }
+
+    @Override
+    public boolean deleteByRoleId(Serializable id) {
+        return deleteUtil(lambdaQuery()
+                .eq(RolePermissionRelationEntity::getRoleId, id));
+    }
+
+    @Override
+    public boolean deleteByPermissionId(Serializable id) {
+        return deleteUtil(lambdaQuery()
+                .eq(RolePermissionRelationEntity::getPermissionId, id));
+    }
+
+    private boolean deleteUtil(LambdaQueryChainWrapper<RolePermissionRelationEntity> eq) {
+        List<RolePermissionRelationEntity> rolePermissionList = eq.list();
+        rolePermissionList.forEach(rolePermissionRelationEntity -> {
+            boolean delete = delete(rolePermissionRelationEntity.getId());
+            if (!delete){
+                throw new ApiException("删除失败");
+            }
+        });
+        return true;
     }
 }

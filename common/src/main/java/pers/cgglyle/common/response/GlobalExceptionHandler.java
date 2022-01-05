@@ -5,15 +5,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.security.SignatureException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 全局异常处理控制器
@@ -36,26 +32,6 @@ public class GlobalExceptionHandler {
     public Result apiExceptionHandler(ApiException e) {
         logger.warn(ResultCode.FAILED.getMessage(), e);
         return new Result(ResultCode.FAILED, e.getMessage());
-    }
-
-    /**
-     * 方法参数错误异常
-     *
-     * @param e 参数错误信息
-     * @return 返回体
-     */
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Result methodArgumentNotValidExceptionHandler(MethodArgumentNotValidException e) {
-        // 从异常对象中拿到ObjectError对象
-        List<String> list = new ArrayList<>();
-        if (!e.getBindingResult().getAllErrors().isEmpty()) {
-            for (ObjectError error : e.getBindingResult().getAllErrors()) {
-                list.add(error.getDefaultMessage());
-            }
-        }
-        // 然后提取错误提示信息进行返回
-        return new Result(ResultCode.BAD_REQUEST, list);
     }
 
     /**
@@ -97,8 +73,8 @@ public class GlobalExceptionHandler {
     /**
      * JWT过期异常
      *
-     * @param e
-     * @return
+     * @param e 异常信息
+     * @return 返回体
      */
     @ExceptionHandler(ExpiredJwtException.class)
     public Result expiredJwtException(ExpiredJwtException e) {

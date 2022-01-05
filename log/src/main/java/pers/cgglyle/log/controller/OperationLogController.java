@@ -10,6 +10,8 @@ import pers.cgglyle.log.model.query.OperationLogQuery;
 import pers.cgglyle.log.service.OperationLogService;
 
 /**
+ * 日志控制器
+ *
  * @author cgglyle
  * @date 2021-12-14 11:31
  */

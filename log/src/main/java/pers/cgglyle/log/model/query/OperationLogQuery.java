@@ -6,6 +6,8 @@ import pers.cgglyle.common.base.model.BaseQuery;
 import java.time.LocalDateTime;
 
 /**
+ * 日志请求
+ *
  * @author cgglyle
  * @date 2021-12-15 13:50
  */
