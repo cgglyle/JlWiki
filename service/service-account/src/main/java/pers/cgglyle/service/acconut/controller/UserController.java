@@ -32,6 +32,7 @@ public class UserController {
         this.accountService = accountService;
     }
 
+    @OperationLog(operationModule = "User", operationMethod = "GET")
     @GetMapping("getPage")
     @ApiOperation("获取用户分页信息")
     @RedisCache()

@@ -12,6 +12,19 @@ import java.io.Serializable;
  * @date 2021-12-08 16:01
  */
 public interface UserRoleRelationService extends IBaseService<UserRoleRelationEntity> {
+    /**
+     * 删除关系根据角色id
+     *
+     * @param id 角色id
+     * @return 成功失败
+     */
     boolean deleteByRoleId(Serializable id);
+
+    /**
+     * 删除关系根据用户id
+     *
+     * @param id 用户id
+     * @return 成功失败
+     */
     boolean deleteByUserId(Serializable id);
 }

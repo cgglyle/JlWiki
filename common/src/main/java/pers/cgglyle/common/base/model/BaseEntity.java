@@ -31,7 +31,7 @@ public class BaseEntity implements Serializable {
     @ApiModelProperty("主键id")
     @TableId(type = IdType.AUTO)
     @TableField("id")
-    private Serializable id;
+    private Integer id;
 
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonSerialize(using = LocalDateTimeSerializer.class)
@@ -66,11 +66,11 @@ public class BaseEntity implements Serializable {
     @TableField("create_user")
     private Integer createUser;
 
-    public Serializable getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Serializable id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

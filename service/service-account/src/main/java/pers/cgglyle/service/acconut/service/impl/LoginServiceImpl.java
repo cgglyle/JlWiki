@@ -112,8 +112,8 @@ public class LoginServiceImpl implements LoginService {
         // 转换为PKCS8私钥
         PrivateKey privateKey = factory.generatePrivate(keySpec);
         // 判断redis中是否有用户的盐
-        if (!redisUtils.hHasKey(REDIS_SALT_KEY_NAME, (String) userLoginDto.getId())) {
-            redisUtils.hset(REDIS_SALT_KEY_NAME, (String) userLoginDto.getId(), 1);
+        if (!redisUtils.hHasKey(REDIS_SALT_KEY_NAME, Integer.toString(userLoginDto.getId()))) {
+            redisUtils.hset(REDIS_SALT_KEY_NAME, Integer.toString(userLoginDto.getId()), 1);
         }
         Collection<GrantedAuthority> authorities = userLoginDto.getAuthorities();
         List<String> list = RoleUtils.rolePrefix(authorities);
@@ -137,7 +137,7 @@ public class LoginServiceImpl implements LoginService {
                  * 当需要强制下线用户的时候将这个id从hash中删除
                  * 当更新密码的时候也删除id，保证之前的token失效
                  */
-                .claim("SALT", redisUtils.hget(REDIS_SALT_KEY_NAME, (String) userLoginDto.getId()))
+                .claim("SALT", redisUtils.hget(REDIS_SALT_KEY_NAME, Integer.toString(userLoginDto.getId())))
                 // 用户名
                 .setAudience(userLoginDto.getUsername())
                 // 过期时间

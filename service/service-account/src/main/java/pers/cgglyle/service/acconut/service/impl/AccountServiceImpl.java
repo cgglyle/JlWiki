@@ -109,6 +109,7 @@ public class AccountServiceImpl extends BaseRelationServiceImpl implements Accou
      * @param dto 添加请求模型
      * @return 成功失败
      */
+    @Transactional
     @Override
     public boolean add(BaseDto dto) {
         if (dto instanceof RoleAddDto roleAddDto) {
@@ -134,6 +135,14 @@ public class AccountServiceImpl extends BaseRelationServiceImpl implements Accou
         if (dto instanceof UserRoleRelationAddDto userRoleRelationAddDto) {
             UserRoleRelationEntity userRoleRelationEntity = new UserRoleRelationEntity();
             BeanUtils.copyProperties(userRoleRelationAddDto, userRoleRelationEntity);
+            // 角色统计加一
+            RoleEntity roleEntity = roleService.lambdaQuery().select(RoleEntity::getRoleUserCount)
+                    .eq(RoleEntity::getId, userRoleRelationAddDto.getRoleId()).one();
+            boolean update = roleService.lambdaUpdate().eq(RoleEntity::getId, userRoleRelationAddDto.getRoleId())
+                    .set(RoleEntity::getRoleUserCount, roleEntity.getRoleUserCount() + 1).update();
+            if (!update){
+                throw new ApiException("角色拥有人数更新失败");
+            }
             return userRoleRelationService.add(userRoleRelationEntity);
         }
         throw new ApiException("未支持的请求");
@@ -193,6 +202,17 @@ public class AccountServiceImpl extends BaseRelationServiceImpl implements Accou
             return roleService.delete(deleteDto.getId());
         }
         if (dto instanceof UserDeleteDto deleteDto) {
+            // 角色统计减一
+            List<UserRoleRelationEntity> userRoleList = userRoleRelationService.lambdaQuery()
+                    .eq(UserRoleRelationEntity::getUserId, deleteDto.getId()).list();
+            userRoleList.forEach(userRoleRelationEntity -> {
+                RoleEntity one = roleService.lambdaQuery().eq(RoleEntity::getId, userRoleRelationEntity.getRoleId()).one();
+                boolean update = roleService.lambdaUpdate().eq(RoleEntity::getId, userRoleRelationEntity.getRoleId())
+                        .set(RoleEntity::getRoleUserCount, one.getRoleUserCount() - 1).update();
+                if (!update){
+                    throw new ApiException("角色拥有人数更新失败");
+                }
+            });
             // 删除用户角色关系表
             userRoleRelationService.deleteByUserId(deleteDto.getId());
             return userService.delete(deleteDto.getId());
