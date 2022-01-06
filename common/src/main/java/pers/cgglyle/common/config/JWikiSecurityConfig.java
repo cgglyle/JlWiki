@@ -12,9 +12,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class JWikiSecurityConfig {
     /**
      * 是否开启匿名访问
-     *
-     * 开启匿名访问后，匿名用户可以访问所有配置了ANONYMOUS权限的API，以及没有配置任何权限的API
-      */
+     * <p> 开启匿名访问后，匿名用户可以访问所有配置了ANONYMOUS权限的API，以及没有配置任何权限的API
+     */
     private boolean anonymous;
 
     public boolean isAnonymous() {

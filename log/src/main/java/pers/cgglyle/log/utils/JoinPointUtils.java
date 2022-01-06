@@ -23,7 +23,7 @@ public class JoinPointUtils {
      * @param joinPoint 连接点
      * @return Map类型的入参
      */
-    public static Map<String, Object> getMethod(JoinPoint joinPoint){
+    public static Map<String, Object> getMethod(JoinPoint joinPoint) {
         Method method = ((MethodSignature) joinPoint.getSignature()).getMethod();
         LocalVariableTableParameterNameDiscoverer parameterNameDiscoverer = new LocalVariableTableParameterNameDiscoverer();
         String[] parameterNames = parameterNameDiscoverer.getParameterNames(method);

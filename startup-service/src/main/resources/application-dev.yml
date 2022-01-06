@@ -6,13 +6,10 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     # 连接配置(集成 activiti7 时注意设置nullCatalogMeansCurrent=true)
     url: jdbc:mysql://localhost:3306/wiki?allowMultiQueries=true&useUnicode=true&nullCatalogMeansCurrent=true&characterEncoding=UTF-8
-    # url: jdbc:p6spy:mysql://localhost:3306/wiki?allowMultiQueries=true&useUnicode=true&nullCatalogMeansCurrent=true&characterEncoding=UTF-8
     # 用户名
     username: root
     # 密码
     password: 123456
-    # sql语句性能分析驱动
-  # driver-class-name: com.p6spy.engine.spy.P6SpyDriver
   # Redis相关配置
   redis:
     # 服务器地址
@@ -44,6 +41,10 @@ spring:
       # Cannot invoke "org.springframework.web.servlet.mvc.condition.PatternsRequestCondition.getPatterns()"
       # because "this.condition" is null
       matching-strategy: ant_path_matcher
+  # 初始化数据库
+  sql:
+    init:
+      mode: always
 
 # mybatis plus相关配置
 mybatis-plus:
@@ -74,7 +75,7 @@ knife4j:
     password: 123321
   #是否开启一个默认的跨域配置,该功能配合自定义Host使用,cors: true
   #  cors: true
-debug: true
+debug: false
 
 jwiki:
   security:

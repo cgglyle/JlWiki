@@ -17,8 +17,8 @@ import java.util.List;
 public interface IBaseService<T> extends IService<T> {
     /**
      * 根据查询体分页查询。
-     * <p>
-     * 已过时，建议使用{@link #get(BaseQuery)}方法。
+     * <p> 已过时，建议使用{@link #get(BaseQuery)}方法。
+     * <p> 未来版本随时删除
      *
      * @param baseQuery 查询体
      * @return 分页模型

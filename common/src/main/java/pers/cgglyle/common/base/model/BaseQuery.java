@@ -10,7 +10,7 @@ import io.swagger.annotations.ApiModelProperty;
  * @date 2021/12/6
  */
 @ApiModel("请求实体")
-public class BaseQuery {
+public abstract class BaseQuery {
     @ApiModelProperty("当前页")
     private Long pageNum = 1L;
     @ApiModelProperty("当前页条目数")

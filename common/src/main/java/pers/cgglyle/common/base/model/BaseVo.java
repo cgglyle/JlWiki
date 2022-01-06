@@ -19,7 +19,7 @@ import java.util.Objects;
  * @date 2021/12/6
  */
 @ApiModel("基础返回实体")
-public class BaseVo {
+public abstract class BaseVo {
     @ApiModelProperty("主键id")
     private Integer id;
 

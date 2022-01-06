@@ -26,7 +26,6 @@ public class OperationLogEntity {
      */
     @ApiModelProperty("主键")
     @TableId(type = IdType.AUTO)
-    @TableField("id")
     private Integer id;
 
     /**

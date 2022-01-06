@@ -17,14 +17,7 @@ import java.util.stream.Collectors;
 
 /**
  * 基础关系服务层
- * <p>
- * 中间层用于连接各个基础服务的
- * <p>
- * Controller层
- * ⬇
- * BaseRelationService层
- * ⬇
- * BaseService层
+ * <p> 中间层用于连接各个基础服务的
  *
  * @author cgglyle
  * @date 2021-12-30 14:37
@@ -33,8 +26,7 @@ public class BaseRelationServiceImpl implements IBaseRelationService {
 
     /**
      * 打包器
-     * <p>
-     * 用于打包Page对象成PageResult对象
+     * <p> 用于打包Page对象成PageResult对象
      * 并且会做类型转换
      *
      * @param data      Page对象
@@ -59,13 +51,9 @@ public class BaseRelationServiceImpl implements IBaseRelationService {
 
     /**
      * 函数式打包器
-     * <p>
-     * 用于打包Page对象成PageResult对象
+     * <p> 用于打包Page对象成PageResult对象
      * 并且会做类型转换
-     * <p>
-     * 特别的是：本方法支持函数是编程，可以在consumer参数初传递一个函数
-     * <p>
-     * 可以实现一些复杂的打包任务
+     * <p> 特别的是：本方法支持函数是编程，可以在consumer参数初传递一个函数
      *
      * @param data      Page对象
      * @param baseQuery 请求参数

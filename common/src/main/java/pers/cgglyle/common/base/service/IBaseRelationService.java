@@ -6,14 +6,7 @@ import pers.cgglyle.common.response.PageResult;
 
 /**
  * 基础中间服务层
- * <p>
- * 中间层用于连接各个基础服务的
- * <p>
- * Controller层
- * ⬇
- * BaseRelationService层
- * ⬇
- * BaseService层
+ * <p> 中间层用于连接各个基础服务的
  *
  * @author cgglyle
  * @date 2021-12-30 14:41
@@ -22,8 +15,7 @@ public interface IBaseRelationService {
 
     /**
      * 根据请求获取分页信息
-     * <p>
-     * 抽象方法，需要重写
+     * <p> 抽象方法，需要重写
      *
      * @param query 请求模型
      * @return 分页模型
@@ -32,8 +24,7 @@ public interface IBaseRelationService {
 
     /**
      * 根据请求添加模型
-     * <p>
-     * 抽象方法，需要重写
+     * <p> 抽象方法，需要重写
      *
      * @param dto 添加请求模型
      * @return 成功失败
@@ -42,8 +33,7 @@ public interface IBaseRelationService {
 
     /**
      * 根据请求更新数据
-     * <p>
-     * 抽象方法，需要重写
+     * <p> 抽象方法，需要重写
      *
      * @param dto 更新请求模型
      * @return 成功失败
@@ -52,8 +42,7 @@ public interface IBaseRelationService {
 
     /**
      * 根据id删除数据
-     * <p>
-     * 抽象方法，需要重写
+     * <p> 抽象方法，需要重写
      *
      * @param dto 删除请求模型
      * @return 成功失败
@@ -62,8 +51,7 @@ public interface IBaseRelationService {
 
     /**
      * 批量删除数据
-     * <p>
-     * 抽象方法，需要重写
+     * <p> 抽象方法，需要重写
      *
      * @param dto 删除请求模型
      * @return 成功失败

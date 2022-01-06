@@ -18,10 +18,11 @@ import javax.servlet.http.HttpServletRequest;
 public class ExceptionController {
     /**
      * 拦截器异常处理机制
-     * 通过下面的方法将异常转发到此处进行处理
-     * <p>
-     * request.setAttribute("filter", e);
-     * request.getRequestDispatcher("/exception/filter").forward(request, response);
+     * <P> 通过下面的方法将异常转发到此处进行处理
+     * <p> <pre> {@code
+     *      request.setAttribute("filter", e);
+     *      request.getRequestDispatcher("/exception/filter").forward(request, response);
+     * }</pre>
      */
     @RequestMapping("/filter")
     public void filterException(HttpServletRequest request) throws Exception {

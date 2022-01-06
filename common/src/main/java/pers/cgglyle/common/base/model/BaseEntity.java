@@ -23,14 +23,13 @@ import java.util.Objects;
  * @author cgglyle
  * @date 2021/12/6
  */
-public class BaseEntity implements Serializable {
+public abstract class BaseEntity implements Serializable {
 
     @Serial
     private static final long serialVersionUID = -3683323499263018529L;
 
     @ApiModelProperty("主键id")
     @TableId(type = IdType.AUTO)
-    @TableField("id")
     private Integer id;
 
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
