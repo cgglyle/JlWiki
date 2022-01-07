@@ -2,6 +2,8 @@ package pers.cgglyle.service.account.model.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import pers.cgglyle.common.base.model.BaseAddDto;
 
 /**
@@ -10,7 +12,8 @@ import pers.cgglyle.common.base.model.BaseAddDto;
  * @author cgglyle
  * @since 2021-12-29 14:20:51
  */
-
+@Data
+@EqualsAndHashCode(callSuper = true)
 @ApiModel("Permission实体类")
 public class PermissionAddDto extends BaseAddDto {
 
@@ -25,22 +28,5 @@ public class PermissionAddDto extends BaseAddDto {
      */
     @ApiModelProperty("资源地址")
     private String permissionUrl;
-
-    public String getPermissionName() {
-        return permissionName;
-    }
-
-    public void setPermissionName(String permissionName) {
-        this.permissionName = permissionName;
-    }
-
-    public String getPermissionUrl() {
-        return permissionUrl;
-    }
-
-    public void setPermissionUrl(String permissionUrl) {
-        this.permissionUrl = permissionUrl;
-    }
-
 }
 

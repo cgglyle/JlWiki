@@ -1,6 +1,8 @@
 package pers.cgglyle.service.account.model.dto;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import pers.cgglyle.common.base.model.BaseAddDto;
 
 /**
@@ -9,6 +11,8 @@ import pers.cgglyle.common.base.model.BaseAddDto;
  * @author cgglyle
  * @date 2021/12/7
  */
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class UserAddDto extends BaseAddDto {
     @ApiModelProperty("用户名字")
     private String userName;
@@ -54,125 +58,4 @@ public class UserAddDto extends BaseAddDto {
 
     @ApiModelProperty("用户facebook")
     private String userFacebook;
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getUserPassword() {
-        return userPassword;
-    }
-
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
-    }
-
-    public String getUserRealName() {
-        return userRealName;
-    }
-
-    public void setUserRealName(String userRealName) {
-        this.userRealName = userRealName;
-    }
-
-    public Integer getUserGender() {
-        return userGender;
-    }
-
-    public void setUserGender(Integer userGender) {
-        this.userGender = userGender;
-    }
-
-    public Integer getUserAge() {
-        return userAge;
-    }
-
-    public void setUserAge(Integer userAge) {
-        this.userAge = userAge;
-    }
-
-    public String getUserNickName() {
-        return userNickName;
-    }
-
-    public void setUserNickName(String userNickName) {
-        this.userNickName = userNickName;
-    }
-
-    public String getUserIcon() {
-        return userIcon;
-    }
-
-    public void setUserIcon(String userIcon) {
-        this.userIcon = userIcon;
-    }
-
-    public String getUserEmail() {
-        return userEmail;
-    }
-
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
-    }
-
-    public String getUserPhone() {
-        return userPhone;
-    }
-
-    public void setUserPhone(String userPhone) {
-        this.userPhone = userPhone;
-    }
-
-    public String getUserQq() {
-        return userQq;
-    }
-
-    public void setUserQq(String userQq) {
-        this.userQq = userQq;
-    }
-
-    public String getUserWechat() {
-        return userWechat;
-    }
-
-    public void setUserWechat(String userWechat) {
-        this.userWechat = userWechat;
-    }
-
-    public String getUserGoogle() {
-        return userGoogle;
-    }
-
-    public void setUserGoogle(String userGoogle) {
-        this.userGoogle = userGoogle;
-    }
-
-    public String getUserTelegram() {
-        return userTelegram;
-    }
-
-    public void setUserTelegram(String userTelegram) {
-        this.userTelegram = userTelegram;
-    }
-
-    public String getUserTwitter() {
-        return userTwitter;
-    }
-
-    public void setUserTwitter(String userTwitter) {
-        this.userTwitter = userTwitter;
-    }
-
-    public String getUserFacebook() {
-        return userFacebook;
-    }
-
-    public void setUserFacebook(String userFacebook) {
-        this.userFacebook = userFacebook;
-    }
-
 }

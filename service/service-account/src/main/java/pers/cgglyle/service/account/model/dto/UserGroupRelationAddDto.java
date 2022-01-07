@@ -2,6 +2,8 @@ package pers.cgglyle.service.account.model.dto;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import pers.cgglyle.common.base.model.BaseDto;
 
 /**
@@ -10,6 +12,8 @@ import pers.cgglyle.common.base.model.BaseDto;
  * @author cgglyle
  * @date 2021-12-13 11:04
  */
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class UserGroupRelationAddDto extends BaseDto {
     /**
      * 用户id
@@ -26,27 +30,4 @@ public class UserGroupRelationAddDto extends BaseDto {
     @TableField("is_deleted")
     private boolean isDeleted;
 
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
-    }
-
-    public void setGroupId(Integer groupId) {
-        this.groupId = groupId;
-    }
-
-    public boolean isDeleted() {
-        return isDeleted;
-    }
-
-    public void setDeleted(boolean deleted) {
-        isDeleted = deleted;
-    }
 }

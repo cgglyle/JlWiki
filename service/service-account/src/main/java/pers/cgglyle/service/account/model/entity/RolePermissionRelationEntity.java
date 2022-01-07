@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import pers.cgglyle.common.base.model.BaseEntity;
 
 /**
@@ -14,6 +16,8 @@ import pers.cgglyle.common.base.model.BaseEntity;
  */
 
 @ApiModel("RolePermission实体类")
+@Data
+@EqualsAndHashCode(callSuper = true)
 @TableName("role_permission_relation")
 public class RolePermissionRelationEntity extends BaseEntity {
 
@@ -37,32 +41,5 @@ public class RolePermissionRelationEntity extends BaseEntity {
     @ApiModelProperty("修改人")
     @TableField("update_user")
     private Integer updateUser;
-
-
-    public Integer getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(Integer roleId) {
-        this.roleId = roleId;
-    }
-
-    public Integer getPermissionId() {
-        return permissionId;
-    }
-
-    public void setPermissionId(Integer permissionId) {
-        this.permissionId = permissionId;
-    }
-
-    public Integer getUpdateUser() {
-        return updateUser;
-    }
-
-    public void setUpdateUser(Integer updateUser) {
-        this.updateUser = updateUser;
-    }
-
-
 }
 

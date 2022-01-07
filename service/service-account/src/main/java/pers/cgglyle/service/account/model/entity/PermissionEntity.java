@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import pers.cgglyle.common.base.model.BaseEntity;
 
 /**
@@ -14,6 +16,8 @@ import pers.cgglyle.common.base.model.BaseEntity;
  */
 
 @ApiModel("Permission实体类")
+@Data
+@EqualsAndHashCode(callSuper = true)
 @TableName("permission")
 public class PermissionEntity extends BaseEntity {
 
@@ -37,31 +41,5 @@ public class PermissionEntity extends BaseEntity {
     @ApiModelProperty("修改人")
     @TableField("update_user")
     private Integer updateUser;
-
-
-    public String getPermissionName() {
-        return permissionName;
-    }
-
-    public void setPermissionName(String permissionName) {
-        this.permissionName = permissionName;
-    }
-
-    public String getPermissionUrl() {
-        return permissionUrl;
-    }
-
-    public void setPermissionUrl(String permissionUrl) {
-        this.permissionUrl = permissionUrl;
-    }
-
-    public Integer getUpdateUser() {
-        return updateUser;
-    }
-
-    public void setUpdateUser(Integer updateUser) {
-        this.updateUser = updateUser;
-    }
-
 }
 

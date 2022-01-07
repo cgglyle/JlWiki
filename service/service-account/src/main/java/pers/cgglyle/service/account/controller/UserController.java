@@ -11,8 +11,6 @@ import pers.cgglyle.service.account.model.dto.*;
 import pers.cgglyle.service.account.model.query.UserQuery;
 import pers.cgglyle.service.account.service.AccountService;
 
-import java.io.Serializable;
-
 /**
  * 用户控制器
  *
@@ -45,15 +43,15 @@ public class UserController extends BaseController<AccountService, UserQuery, Us
     /**
      * 删除用户的角色API
      *
-     * @param id 用户 UserRoleVo 的 id
+     * @param dto 用户 UserRoleVo 的 id
      * @return true
      */
     @OperationLog(operationMethod = "DELETE", operationModule = "UserRole")
     @DeleteMapping("deleteUserRole/{id}")
     @ApiOperation("删除用户角色")
     @ApiImplicitParam(name = "id", value = "用户 UserRoleVo 的 id")
-    public boolean deleteUserRole(@PathVariable Serializable id) {
-        boolean delete = baseRelationService.delete(new UserRoleRelationDeleteDto(id));
+    public boolean deleteUserRole(@RequestBody UserRoleRelationDeleteDto dto) {
+        boolean delete = baseRelationService.delete(dto);
         if (!delete) {
             throw new ApiException("角色删除失败");
         }

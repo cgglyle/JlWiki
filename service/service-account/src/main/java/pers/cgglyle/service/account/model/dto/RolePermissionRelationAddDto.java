@@ -2,6 +2,8 @@ package pers.cgglyle.service.account.model.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import pers.cgglyle.common.base.model.BaseAddDto;
 
 /**
@@ -10,7 +12,8 @@ import pers.cgglyle.common.base.model.BaseAddDto;
  * @author cgglyle
  * @since 2021-12-29 14:25:08
  */
-
+@Data
+@EqualsAndHashCode(callSuper = true)
 @ApiModel("RolePermission添加模型")
 public class RolePermissionRelationAddDto extends BaseAddDto {
 
@@ -26,20 +29,5 @@ public class RolePermissionRelationAddDto extends BaseAddDto {
     @ApiModelProperty("权限id")
     private Integer permissionId;
 
-    public Integer getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(Integer roleId) {
-        this.roleId = roleId;
-    }
-
-    public Integer getPermissionId() {
-        return permissionId;
-    }
-
-    public void setPermissionId(Integer permissionId) {
-        this.permissionId = permissionId;
-    }
 }
 

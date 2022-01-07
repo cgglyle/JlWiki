@@ -2,6 +2,8 @@ package pers.cgglyle.service.account.model.query;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import pers.cgglyle.common.base.model.BaseQuery;
 
 /**
@@ -11,6 +13,8 @@ import pers.cgglyle.common.base.model.BaseQuery;
  * @since 2021-12-29 14:20:51
  */
 
+@Data
+@EqualsAndHashCode(callSuper = true)
 @ApiModel("Permission实体类")
 public class PermissionQuery extends BaseQuery {
 
@@ -37,37 +41,5 @@ public class PermissionQuery extends BaseQuery {
      */
     @ApiModelProperty("创建人")
     private Integer createUser;
-
-    public String getPermissionName() {
-        return permissionName;
-    }
-
-    public void setPermissionName(String permissionName) {
-        this.permissionName = permissionName;
-    }
-
-    public String getPermissionUrl() {
-        return permissionUrl;
-    }
-
-    public void setPermissionUrl(String permissionUrl) {
-        this.permissionUrl = permissionUrl;
-    }
-
-    public Integer getUpdateUser() {
-        return updateUser;
-    }
-
-    public void setUpdateUser(Integer updateUser) {
-        this.updateUser = updateUser;
-    }
-
-    public Integer getCreateUser() {
-        return createUser;
-    }
-
-    public void setCreateUser(Integer createUser) {
-        this.createUser = createUser;
-    }
 }
 

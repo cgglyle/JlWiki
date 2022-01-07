@@ -1,6 +1,8 @@
 package pers.cgglyle.service.account.model.vo;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.io.Serializable;
@@ -12,6 +14,8 @@ import java.util.Collection;
  * @author cgglyle
  * @date 2021-12-16 17:08
  */
+@Data
+@AllArgsConstructor
 public class UserInfo {
 
     @ApiModelProperty("用户id")
@@ -31,65 +35,4 @@ public class UserInfo {
 
     @ApiModelProperty("Token")
     private String token;
-
-    public UserInfo() {
-
-    }
-
-    public UserInfo(Serializable id, String username, String userNickName, String userIcon, Collection<GrantedAuthority> userRole, String token) {
-        this.id = id;
-        this.username = username;
-        this.userNickName = userNickName;
-        this.userIcon = userIcon;
-        this.userRole = userRole;
-        this.token = token;
-    }
-
-    public Serializable getId() {
-        return id;
-    }
-
-    public void setId(Serializable id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getUserNickName() {
-        return userNickName;
-    }
-
-    public void setUserNickName(String userNickName) {
-        this.userNickName = userNickName;
-    }
-
-    public String getUserIcon() {
-        return userIcon;
-    }
-
-    public void setUserIcon(String userIcon) {
-        this.userIcon = userIcon;
-    }
-
-    public Collection<GrantedAuthority> getUserRole() {
-        return userRole;
-    }
-
-    public void setUserRole(Collection<GrantedAuthority> userRole) {
-        this.userRole = userRole;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
 }

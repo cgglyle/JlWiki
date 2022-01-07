@@ -10,12 +10,12 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Objects;
 
 /**
  * 基础实体类。
@@ -23,6 +23,7 @@ import java.util.Objects;
  * @author cgglyle
  * @date 2021/12/6
  */
+@Data
 public abstract class BaseEntity implements Serializable {
 
     @Serial
@@ -64,77 +65,4 @@ public abstract class BaseEntity implements Serializable {
     @ApiModelProperty("创建用户")
     @TableField("create_user")
     private Integer createUser;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public LocalDateTime getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime;
-    }
-
-    public LocalDateTime getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(LocalDateTime updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public boolean isStatus() {
-        return isStatus;
-    }
-
-    public void setStatus(boolean status) {
-        isStatus = status;
-    }
-
-    public boolean isDeleted() {
-        return isDeleted;
-    }
-
-    public void setDeleted(boolean deleted) {
-        isDeleted = deleted;
-    }
-
-    public boolean isSystem() {
-        return isSystem;
-    }
-
-    public void setSystem(boolean system) {
-        isSystem = system;
-    }
-
-    public Integer getCreateUser() {
-        return createUser;
-    }
-
-    public void setCreateUser(Integer createUser) {
-        this.createUser = createUser;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        BaseEntity baseEntity = (BaseEntity) o;
-        return isStatus == baseEntity.isStatus && isDeleted == baseEntity.isDeleted && isSystem == baseEntity.isSystem && Objects.equals(id, baseEntity.id) && Objects.equals(createTime, baseEntity.createTime) && Objects.equals(updateTime, baseEntity.updateTime) && Objects.equals(createUser, baseEntity.createUser);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, createTime, updateTime, isStatus, isDeleted, isSystem, createUser);
-    }
 }

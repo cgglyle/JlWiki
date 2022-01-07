@@ -1,9 +1,8 @@
 package pers.cgglyle.service.account.model.dto;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import pers.cgglyle.common.base.model.BaseDeleteDto;
-
-import java.io.Serializable;
-import java.util.List;
 
 /**
  * 用户角色关系删除模型
@@ -11,15 +10,8 @@ import java.util.List;
  * @author cgglyle
  * @date 2022-01-04 13:11
  */
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class UserRoleRelationDeleteDto extends BaseDeleteDto {
-    public UserRoleRelationDeleteDto() {
-    }
 
-    public UserRoleRelationDeleteDto(Serializable id) {
-        super(id);
-    }
-
-    public UserRoleRelationDeleteDto(List<Serializable> idList) {
-        super(idList);
-    }
 }

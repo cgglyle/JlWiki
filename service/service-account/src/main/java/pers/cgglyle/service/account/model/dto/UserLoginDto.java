@@ -1,6 +1,8 @@
 package pers.cgglyle.service.account.model.dto;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
@@ -13,6 +15,8 @@ import java.util.Collection;
  * @author cgglyle
  * @date 2021-12-27 10:10
  */
+@Getter
+@Setter
 public class UserLoginDto extends User {
     @Serial
     private static final long serialVersionUID = 3965486146556284604L;
@@ -43,37 +47,5 @@ public class UserLoginDto extends User {
         this.id = id;
         this.userNickName = userNickName;
         this.userIcon = userIcon;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getUserNickName() {
-        return userNickName;
-    }
-
-    public void setUserNickName(String userNickName) {
-        this.userNickName = userNickName;
-    }
-
-    public String getUserIcon() {
-        return userIcon;
-    }
-
-    public void setUserIcon(String userIcon) {
-        this.userIcon = userIcon;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
     }
 }

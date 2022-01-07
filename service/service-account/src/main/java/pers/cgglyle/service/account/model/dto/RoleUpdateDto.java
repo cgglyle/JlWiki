@@ -1,6 +1,8 @@
 package pers.cgglyle.service.account.model.dto;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import pers.cgglyle.common.base.model.BaseUpdateDto;
 
 /**
@@ -9,6 +11,8 @@ import pers.cgglyle.common.base.model.BaseUpdateDto;
  * @author cgglyle
  * @date 2021-12-08 14:09
  */
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class RoleUpdateDto extends BaseUpdateDto {
     @ApiModelProperty("角色名称")
     private String roleName;
@@ -19,27 +23,4 @@ public class RoleUpdateDto extends BaseUpdateDto {
     @ApiModelProperty("修改者")
     private Integer updateUser;
 
-    public String getRoleName() {
-        return roleName;
-    }
-
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
-    }
-
-    public String getRoleDescription() {
-        return roleDescription;
-    }
-
-    public void setRoleDescription(String roleDescription) {
-        this.roleDescription = roleDescription;
-    }
-
-    public Integer getUpdateUser() {
-        return updateUser;
-    }
-
-    public void setUpdateUser(Integer updateUser) {
-        this.updateUser = updateUser;
-    }
 }
