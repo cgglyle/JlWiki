@@ -1,7 +1,6 @@
 package pers.cgglyle.service.account.service;
 
 import pers.cgglyle.common.base.service.IBaseService;
-import pers.cgglyle.service.account.model.dto.RoleUpdateDto;
 import pers.cgglyle.service.account.model.entity.RoleEntity;
 
 /**
@@ -12,11 +11,4 @@ import pers.cgglyle.service.account.model.entity.RoleEntity;
  */
 public interface RoleService extends IBaseService<RoleEntity> {
 
-    /**
-     * 更新角色
-     *
-     * @param roleUpdateDto 更新角色模型
-     * @return true-成功,false-失败
-     */
-    boolean updateRole(RoleUpdateDto roleUpdateDto);
 }

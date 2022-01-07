@@ -1,4 +1,4 @@
-package pers.cgglyle.common.util.config;
+package pers.cgglyle.common.config;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;

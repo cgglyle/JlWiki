@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import pers.cgglyle.common.base.model.BaseQuery;
 import pers.cgglyle.common.base.service.impl.BaseServiceImpl;
-import pers.cgglyle.common.util.redis.RedisUtils;
+import pers.cgglyle.common.utils.RedisUtils;
 import pers.cgglyle.service.account.mapper.UserMapper;
 import pers.cgglyle.service.account.model.entity.UserEntity;
 import pers.cgglyle.service.account.model.query.UserQuery;

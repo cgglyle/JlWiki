@@ -1,9 +1,9 @@
-package pers.cgglyle.log.service;
+package pers.cgglyle.common.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import pers.cgglyle.common.model.entity.OperationLogEntity;
+import pers.cgglyle.common.model.query.OperationLogQuery;
 import pers.cgglyle.common.response.PageResult;
-import pers.cgglyle.log.model.entity.OperationLogEntity;
-import pers.cgglyle.log.model.query.OperationLogQuery;
 
 /**
  * 操作日志表(OperationLog)表服务接口

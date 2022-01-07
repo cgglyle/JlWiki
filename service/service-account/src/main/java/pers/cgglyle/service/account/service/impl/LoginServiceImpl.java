@@ -14,7 +14,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.util.Base64Utils;
 import pers.cgglyle.common.response.ApiException;
-import pers.cgglyle.common.util.redis.RedisUtils;
+import pers.cgglyle.common.utils.RedisUtils;
 import pers.cgglyle.service.account.model.dto.RsaKeyDto;
 import pers.cgglyle.service.account.model.dto.UserLoginDto;
 import pers.cgglyle.service.account.model.query.LoginQuest;

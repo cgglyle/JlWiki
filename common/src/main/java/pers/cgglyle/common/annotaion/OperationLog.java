@@ -1,4 +1,4 @@
-package pers.cgglyle.log.annotaion;
+package pers.cgglyle.common.annotaion;
 
 import java.lang.annotation.*;
 

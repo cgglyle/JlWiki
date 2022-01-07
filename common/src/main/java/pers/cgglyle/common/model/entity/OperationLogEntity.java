@@ -1,4 +1,4 @@
-package pers.cgglyle.log.model.entity;
+package pers.cgglyle.common.model.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;

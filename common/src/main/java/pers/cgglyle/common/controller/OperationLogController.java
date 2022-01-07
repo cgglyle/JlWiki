@@ -1,13 +1,13 @@
-package pers.cgglyle.log.controller;
+package pers.cgglyle.common.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import pers.cgglyle.common.model.query.OperationLogQuery;
 import pers.cgglyle.common.response.PageResult;
-import pers.cgglyle.log.model.query.OperationLogQuery;
-import pers.cgglyle.log.service.OperationLogService;
+import pers.cgglyle.common.service.OperationLogService;
 
 /**
  * 日志控制器

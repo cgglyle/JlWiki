@@ -1,4 +1,4 @@
-package pers.cgglyle.log.model.query;
+package pers.cgglyle.common.model.query;
 
 import io.swagger.annotations.ApiModelProperty;
 import pers.cgglyle.common.base.model.BaseQuery;

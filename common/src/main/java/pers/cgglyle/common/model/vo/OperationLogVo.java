@@ -1,4 +1,4 @@
-package pers.cgglyle.log.model.vo;
+package pers.cgglyle.common.model.vo;
 
 import com.alibaba.fastjson.JSONObject;
 import io.swagger.annotations.ApiModelProperty;

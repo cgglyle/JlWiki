@@ -1,7 +1,7 @@
-package pers.cgglyle.log.mapper;
+package pers.cgglyle.common.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import pers.cgglyle.log.model.entity.OperationLogEntity;
+import pers.cgglyle.common.model.entity.OperationLogEntity;
 
 /**
  * 操作日志表{@code OperationLog}表映像接口

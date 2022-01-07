@@ -1,4 +1,4 @@
-package pers.cgglyle.common.util.redis;
+package pers.cgglyle.common.utils;
 
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;

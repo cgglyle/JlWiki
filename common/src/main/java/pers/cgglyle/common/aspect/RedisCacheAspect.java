@@ -8,7 +8,7 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 import pers.cgglyle.common.annotaion.RedisCache;
-import pers.cgglyle.common.util.redis.RedisUtils;
+import pers.cgglyle.common.utils.RedisUtils;
 
 /**
  * Redis 缓存切面

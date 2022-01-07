@@ -1,4 +1,4 @@
-package pers.cgglyle.log.aspect;
+package pers.cgglyle.common.aspect;
 
 import com.alibaba.fastjson.JSON;
 import org.aspectj.lang.JoinPoint;
@@ -13,12 +13,13 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-import pers.cgglyle.log.annotaion.OperationLog;
-import pers.cgglyle.log.model.entity.OperationLogEntity;
-import pers.cgglyle.log.service.OperationLogService;
-import pers.cgglyle.log.utils.JoinPointUtils;
+import pers.cgglyle.common.annotaion.OperationLog;
+import pers.cgglyle.common.model.entity.OperationLogEntity;
+import pers.cgglyle.common.service.OperationLogService;
+import pers.cgglyle.common.utils.JoinPointUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.Duration;
@@ -46,7 +47,7 @@ public class OperationLogAspect {
     /**
      * 切入点
      */
-    @Pointcut("@annotation(pers.cgglyle.log.annotaion.OperationLog)")
+    @Pointcut("@annotation(pers.cgglyle.common.annotaion.OperationLog)")
     public void log() {
 
     }
@@ -66,10 +67,11 @@ public class OperationLogAspect {
         OperationLogEntity operationLogEntity = new OperationLogEntity();
         // 从切面织入点处通过反射获取织入点的方法
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
-        // 获取 OperationLog 注解中的值
         OperationLog annotation = signature.getMethod().getAnnotation(OperationLog.class);
+        Assert.notNull(annotation,"注解获取异常");
+        // 获取 OperationLog 注解中的值
+//        OperationLog annotation = signature.getMethod().getAnnotation(OperationLog.class);
         // 获取 OperationLog 注解中的 operationModule 值
-        operationLogEntity.setOperationModule(annotation.operationModule());
         operationLogEntity.setRequestMethod(annotation.operationMethod());
         // 获取当前方法的访问地址
         HttpServletRequest request = ((ServletRequestAttributes) Objects

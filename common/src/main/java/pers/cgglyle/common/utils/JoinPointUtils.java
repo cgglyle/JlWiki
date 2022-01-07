@@ -1,4 +1,4 @@
-package pers.cgglyle.log.utils;
+package pers.cgglyle.common.utils;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.reflect.MethodSignature;
