@@ -4,11 +4,12 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import pers.cgglyle.common.annotaion.QueryModel;
 import pers.cgglyle.common.base.model.BaseEntity;
 import pers.cgglyle.common.base.model.BaseQuery;
 import pers.cgglyle.common.base.service.IBaseService;
+import pers.cgglyle.common.enums.QueryModelEnum;
 import pers.cgglyle.common.response.ApiException;
-import pers.cgglyle.common.response.PageResult;
 import pers.cgglyle.common.utils.StringUtils;
 
 import java.io.Serializable;
@@ -25,21 +26,6 @@ import java.util.List;
  * @date 2021/12/6
  */
 public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseEntity> extends ServiceImpl<M, T> implements IBaseService<T> {
-    @Override
-    public PageResult getPage(BaseQuery baseQuery) {
-        // 创建查询条件
-        QueryWrapper<T> wrapper = new QueryWrapper<>();
-        // 检查是否删除
-        wrapper.eq("is_delete", true);
-        // 按id倒叙排列
-        wrapper.orderByDesc("id");
-        // 创建分页条件
-        Page<T> page = new Page<>(baseQuery.getPageNum(), baseQuery.getPageSize());
-        // 获取分页查询信息
-        Page<T> data = baseMapper.selectPage(page, wrapper);
-        // 返回分页结构
-        return new PageResult(baseQuery.getPageNum(), baseQuery.getPageSize(), data.getTotal(), data.getPages(), data.getRecords());
-    }
 
     @Override
     public Page<T> get(BaseQuery query) throws IllegalAccessException {
@@ -50,7 +36,16 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseEntity> exte
             declaredField.setAccessible(true);
             Object temp = declaredField.get(query);
             String underline = pers.cgglyle.common.utils.StringUtils.underline(declaredField.getName());
-            wrapper.like(temp instanceof String ? StringUtils.isNotBlank((String) temp) : temp != null, underline, temp);
+            QueryModel annotation = declaredField.getAnnotation(QueryModel.class);
+            if (annotation == null){
+                wrapper.like(temp instanceof String ? StringUtils.isNotBlank((String) temp) : temp != null, underline, temp);
+                continue;
+            }
+            if (annotation.value() == QueryModelEnum.EQ){
+                wrapper.eq(temp instanceof String ? StringUtils.isNotBlank((String) temp) : temp != null, underline, temp);
+            } else {
+                wrapper.like(temp instanceof String ? StringUtils.isNotBlank((String) temp) : temp != null, underline, temp);
+            }
         }
         Page<T> page = new Page<>(query.getPageNum(), query.getPageSize());
         return page(page, wrapper);

@@ -12,6 +12,7 @@ import pers.cgglyle.common.response.ApiException;
 import pers.cgglyle.common.response.PageResult;
 import pers.cgglyle.service.account.model.dto.*;
 import pers.cgglyle.service.account.model.entity.*;
+import pers.cgglyle.service.account.model.query.GroupQuery;
 import pers.cgglyle.service.account.model.query.PermissionQuery;
 import pers.cgglyle.service.account.model.query.RoleQuery;
 import pers.cgglyle.service.account.model.query.UserQuery;
@@ -35,14 +36,17 @@ public class AccountServiceImpl extends BaseRelationServiceImpl implements Accou
     private final UserService userService;
     private final RoleService roleService;
     private final PermissionService permissionService;
+    private final GroupService groupService;
     private final UserRoleRelationService userRoleRelationService;
     private final RolePermissionRelationService rolePermissionRelationService;
 
     public AccountServiceImpl(UserService userService, RoleService roleService,
                               PermissionService permissionService, UserRoleRelationService userRoleRelationService,
-                              RolePermissionRelationService rolePermissionRelationService) {
+                              RolePermissionRelationService rolePermissionRelationService,
+                              GroupService groupService) {
         this.userService = userService;
         this.roleService = roleService;
+        this.groupService = groupService;
         this.permissionService = permissionService;
         this.userRoleRelationService = userRoleRelationService;
         this.rolePermissionRelationService = rolePermissionRelationService;
@@ -89,6 +93,10 @@ public class AccountServiceImpl extends BaseRelationServiceImpl implements Accou
                 List<UserRoleVo> userRoleList = getUserRoleList(((UserVo) o).getId());
                 ((UserVo) o).setUserRole(userRoleList);
             });
+        }
+        if (query instanceof GroupQuery) {
+            Page<GroupEntity> page = groupService.get(query);
+            return wrapper(page, query, GroupVo.class);
         }
         throw new ApiException("未支持的请求");
     }
@@ -143,6 +151,11 @@ public class AccountServiceImpl extends BaseRelationServiceImpl implements Accou
                 throw new ApiException("角色拥有人数更新失败");
             }
             return userRoleRelationService.add(userRoleRelationEntity);
+        }
+        if (dto instanceof GroupAddDto addDto){
+            GroupEntity groupEntity = new GroupEntity();
+            BeanUtils.copyProperties(addDto,groupEntity);
+            return groupService.add(groupEntity);
         }
         throw new ApiException("未支持的请求");
     }

@@ -19,7 +19,6 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
             matcher.appendReplacement(sb, "_"+matcher.group().toLowerCase());
         }
         matcher.appendTail(sb);
-        System.out.println("changeUpperLetter: "+sb.toString());
         return sb.toString();
     }
 }

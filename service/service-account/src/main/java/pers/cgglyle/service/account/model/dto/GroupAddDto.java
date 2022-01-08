@@ -3,7 +3,7 @@ package pers.cgglyle.service.account.model.dto;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import pers.cgglyle.common.base.model.BaseDto;
+import pers.cgglyle.common.base.model.BaseAddDto;
 
 /**
  * 用户组添加模型
@@ -13,7 +13,7 @@ import pers.cgglyle.common.base.model.BaseDto;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class GroupAddDto extends BaseDto {
+public class GroupAddDto extends BaseAddDto {
     @ApiModelProperty("用户组名称")
     private String groupName;
 

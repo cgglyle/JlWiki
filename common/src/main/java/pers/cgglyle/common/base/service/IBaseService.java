@@ -2,8 +2,8 @@ package pers.cgglyle.common.base.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import pers.cgglyle.common.annotaion.QueryModel;
 import pers.cgglyle.common.base.model.BaseQuery;
-import pers.cgglyle.common.response.PageResult;
 
 import java.io.Serializable;
 import java.util.List;
@@ -15,22 +15,17 @@ import java.util.List;
  * @date 2021/12/6
  */
 public interface IBaseService<T> extends IService<T> {
-    /**
-     * 根据查询体分页查询。
-     * <p> 已过时，建议使用{@link #get(BaseQuery)}方法。
-     * <p> 未来版本随时删除
-     *
-     * @param baseQuery 查询体
-     * @return 分页模型
-     */
-    @Deprecated
-    PageResult getPage(BaseQuery baseQuery);
 
     /**
      * 根据查询条件，查询分页信息
+     * <p>此方法可以快捷的查询数据库内容。
+     * <p>需要在继承了{@code BaseQuery}的请求类中的成员上标注上
+     * {@link QueryModel#value()}，并控制{@code value}的值。
      *
      * @param query 查询模型
      * @return 分页模型
+     * @throws IllegalAccessException 非法访问异常
+     * @see QueryModel
      */
     Page<T> get(BaseQuery query) throws IllegalAccessException;
 

@@ -25,17 +25,6 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, UserEntity> imp
     @Autowired
     private RedisUtils redisUtils;
 
-//    @Override
-//    public Page<UserEntity> get(BaseQuery query) {
-//        UserQuery userQuery = (UserQuery) query;
-//        Page<UserEntity> page = new Page<>(userQuery.getPageNum(), userQuery.getPageSize());
-//        return lambdaQuery().like(StringUtils.isNotBlank(userQuery.getUserName()), UserEntity::getUserName, userQuery.getUserName())
-//                .eq(StringUtils.isNotBlank(userQuery.getUserEmail()), UserEntity::getUserEmail, userQuery.getUserEmail())
-//                .like(StringUtils.isNotBlank(((UserQuery) query).getUserNickName()), UserEntity::getUserNickName, ((UserQuery) query).getUserNickName())
-//                .orderByDesc(UserEntity::getUserName)
-//                .page(page);
-//    }
-
     @Override
     public UserEntity getUserEntity(String userName) {
         return query().eq("user_name", userName).one();
