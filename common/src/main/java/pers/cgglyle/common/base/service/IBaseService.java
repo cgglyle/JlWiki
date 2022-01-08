@@ -32,7 +32,7 @@ public interface IBaseService<T> extends IService<T> {
      * @param query 查询模型
      * @return 分页模型
      */
-    Page<T> get(BaseQuery query);
+    Page<T> get(BaseQuery query) throws IllegalAccessException;
 
     /**
      * 存储实体信息

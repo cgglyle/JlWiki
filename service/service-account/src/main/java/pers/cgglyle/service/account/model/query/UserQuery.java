@@ -23,7 +23,7 @@ public class UserQuery extends BaseQuery {
     @ApiModelProperty("邮箱")
     private String userEmail;
     @ApiModelProperty("性别")
-    private String gender;
+    private Integer userGender;
     @ApiModelProperty("用户角色")
     private String userRole;
     @ApiModelProperty("用户组")

@@ -68,7 +68,7 @@ public class BaseController<T extends IBaseRelationService, BQ extends BaseQuery
      */
     @ApiOperation("获取分页")
     @GetMapping("get")
-    public PageResult get(BQ query) {
+    public PageResult get(BQ query) throws IllegalAccessException {
         log.info("获取分页");
         return baseRelationService.get(query);
     }

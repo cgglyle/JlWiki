@@ -63,7 +63,7 @@ public class AccountServiceImpl extends BaseRelationServiceImpl implements Accou
      * @throws ApiException 当请求没有被命中抛出"未支持的请求"
      */
     @Override
-    public PageResult get(BaseQuery query) {
+    public PageResult get(BaseQuery query) throws IllegalAccessException {
         if (query instanceof PermissionQuery) {
             Page<PermissionEntity> data = permissionService.get(query);
             return wrapper(data, query, PermissionVo.class);

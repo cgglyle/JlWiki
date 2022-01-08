@@ -20,7 +20,7 @@ public interface IBaseRelationService {
      * @param query 请求模型
      * @return 分页模型
      */
-    PageResult get(BaseQuery query);
+    PageResult get(BaseQuery query) throws IllegalAccessException;
 
     /**
      * 根据请求添加模型

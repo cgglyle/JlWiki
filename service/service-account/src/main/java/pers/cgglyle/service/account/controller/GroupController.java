@@ -1,17 +1,22 @@
 package pers.cgglyle.service.account.controller;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
 import pers.cgglyle.common.response.ApiException;
 import pers.cgglyle.common.response.PageResult;
 import pers.cgglyle.service.account.model.dto.GroupAddDto;
 import pers.cgglyle.service.account.model.dto.GroupUpdateDto;
+import pers.cgglyle.service.account.model.entity.GroupEntity;
 import pers.cgglyle.service.account.model.query.GroupQuery;
+import pers.cgglyle.service.account.model.vo.GroupVo;
 import pers.cgglyle.service.account.service.GroupService;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 用户组控制层
@@ -35,6 +40,18 @@ public class GroupController {
     @GetMapping("getPage")
     public PageResult getPage(GroupQuery groupQuery) {
         return groupService.getPage(groupQuery);
+    }
+
+    @GetMapping("get")
+    public PageResult get(GroupQuery groupQuery) throws IllegalAccessException {
+        Page<GroupEntity> groupEntityPage = groupService.get(groupQuery);
+
+        List<GroupVo> collect = groupEntityPage.getRecords().stream().map(groupEntity -> {
+            GroupVo vo = new GroupVo();
+            BeanUtils.copyProperties(groupEntity, vo);
+            return vo;
+        }).collect(Collectors.toList());
+        return new PageResult(groupQuery.getPageNum(), groupQuery.getPageSize(), groupEntityPage.getTotal(), groupEntityPage.getPages(), collect);
     }
 
     @PostMapping("addGroup")

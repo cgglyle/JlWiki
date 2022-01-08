@@ -1,17 +1,13 @@
 package pers.cgglyle.service.account.service.impl;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
-import pers.cgglyle.common.base.model.BaseQuery;
 import pers.cgglyle.common.base.service.impl.BaseServiceImpl;
 import pers.cgglyle.common.utils.RedisUtils;
 import pers.cgglyle.service.account.mapper.UserMapper;
 import pers.cgglyle.service.account.model.entity.UserEntity;
-import pers.cgglyle.service.account.model.query.UserQuery;
 import pers.cgglyle.service.account.service.UserService;
 
 import java.io.Serializable;
@@ -29,16 +25,16 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, UserEntity> imp
     @Autowired
     private RedisUtils redisUtils;
 
-    @Override
-    public Page<UserEntity> get(BaseQuery query) {
-        UserQuery userQuery = (UserQuery) query;
-        Page<UserEntity> page = new Page<>(userQuery.getPageNum(), userQuery.getPageSize());
-        return lambdaQuery().like(StringUtils.isNotBlank(userQuery.getUserName()), UserEntity::getUserName, userQuery.getUserName())
-                .eq(StringUtils.isNotBlank(userQuery.getUserEmail()), UserEntity::getUserEmail, userQuery.getUserEmail())
-                .like(StringUtils.isNotBlank(((UserQuery) query).getUserNickName()), UserEntity::getUserNickName, ((UserQuery) query).getUserNickName())
-                .orderByDesc(UserEntity::getUserName)
-                .page(page);
-    }
+//    @Override
+//    public Page<UserEntity> get(BaseQuery query) {
+//        UserQuery userQuery = (UserQuery) query;
+//        Page<UserEntity> page = new Page<>(userQuery.getPageNum(), userQuery.getPageSize());
+//        return lambdaQuery().like(StringUtils.isNotBlank(userQuery.getUserName()), UserEntity::getUserName, userQuery.getUserName())
+//                .eq(StringUtils.isNotBlank(userQuery.getUserEmail()), UserEntity::getUserEmail, userQuery.getUserEmail())
+//                .like(StringUtils.isNotBlank(((UserQuery) query).getUserNickName()), UserEntity::getUserNickName, ((UserQuery) query).getUserNickName())
+//                .orderByDesc(UserEntity::getUserName)
+//                .page(page);
+//    }
 
     @Override
     public UserEntity getUserEntity(String userName) {

@@ -78,7 +78,7 @@ public class BaseRelationServiceImpl implements IBaseRelationService {
     }
 
     @Override
-    public PageResult get(BaseQuery query) {
+    public PageResult get(BaseQuery query) throws IllegalAccessException {
         throw new ApiException("未实现");
     }
 

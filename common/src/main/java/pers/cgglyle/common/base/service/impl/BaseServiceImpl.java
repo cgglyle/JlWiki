@@ -9,8 +9,10 @@ import pers.cgglyle.common.base.model.BaseQuery;
 import pers.cgglyle.common.base.service.IBaseService;
 import pers.cgglyle.common.response.ApiException;
 import pers.cgglyle.common.response.PageResult;
+import pers.cgglyle.common.utils.StringUtils;
 
 import java.io.Serializable;
+import java.lang.reflect.Field;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -40,11 +42,18 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseEntity> exte
     }
 
     @Override
-    public Page<T> get(BaseQuery query) {
+    public Page<T> get(BaseQuery query) throws IllegalAccessException {
+        Class<? extends BaseQuery> aClass = query.getClass();
+        Field[] declaredFields = aClass.getDeclaredFields();
+        QueryWrapper<T> wrapper = new QueryWrapper<>();
+        for (Field declaredField : declaredFields) {
+            declaredField.setAccessible(true);
+            Object temp = declaredField.get(query);
+            String underline = pers.cgglyle.common.utils.StringUtils.underline(declaredField.getName());
+            wrapper.like(temp instanceof String ? StringUtils.isNotBlank((String) temp) : temp != null, underline, temp);
+        }
         Page<T> page = new Page<>(query.getPageNum(), query.getPageSize());
-        return lambdaQuery().orderByDesc(T::getId)
-                .eq(T::isDeleted, true)
-                .page(page);
+        return page(page, wrapper);
     }
 
     @Override
