@@ -1,0 +1,23 @@
+spring:
+  # Redis相关配置
+  redis:
+    # 服务器地址
+    host: localhost
+    # 端口号
+    port: 6379
+    # 密码（默认空）
+    password:
+    # 连接超时时间（毫秒）
+    timeout: 30000
+    # 基于Lettuce的Redis驱动包相关配置
+    lettuce:
+      # 连接池对象
+      pool:
+        # 连接池最大连接数（负值表示没有限制，默认值位8）
+        max-active: 8
+        # 连接池最大阻塞等待时间（负值表示没有限制，默认值为-1ms）
+        max-wait: -1ms
+        # 连接池中最大空闲连接
+        max-idle: 8
+        # 连接池中最小空闲连接
+        min-idle: 0
