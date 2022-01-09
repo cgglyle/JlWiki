@@ -1,4 +1,4 @@
-package pers.cgglyle.common.response;
+package pers.cgglyle.common.enums;
 
 /**
  * 结果实体枚举控制

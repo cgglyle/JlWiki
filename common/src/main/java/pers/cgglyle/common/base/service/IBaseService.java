@@ -18,7 +18,7 @@ public interface IBaseService<T> extends IService<T> {
 
     /**
      * 根据查询条件，查询分页信息
-     * <p>此方法可以快捷的查询数据库内容。
+     * <p>支持根据查询条件动态查询
      * <p>需要在继承了{@code BaseQuery}的请求类中的成员上标注上
      * {@link QueryModel#value()}，并控制{@code value}的值。
      *
