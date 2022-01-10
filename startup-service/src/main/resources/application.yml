@@ -10,3 +10,6 @@ spring:
   profiles:
     # 环境
     active: dev
+    include:
+      - db
+      - redis

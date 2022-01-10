@@ -1,0 +1,26 @@
+package pers.cgglyle.authenticate.controller;
+
+import io.swagger.annotations.Api;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import pers.cgglyle.common.base.controller.BaseController;
+import pers.cgglyle.common.base.model.BaseDeleteDto;
+import pers.cgglyle.authenticate.model.dto.GroupAddDto;
+import pers.cgglyle.authenticate.model.dto.GroupUpdateDto;
+import pers.cgglyle.authenticate.model.query.GroupQuery;
+import pers.cgglyle.authenticate.service.AccountService;
+
+/**
+ * 用户组控制层
+ *
+ * @author cgglyle
+ * @date 2021-12-10 10:01
+ */
+@Api(tags = "用户组控制")
+@CrossOrigin
+@RestController
+@RequestMapping("/group")
+public class GroupController extends BaseController<AccountService,GroupQuery,GroupAddDto,GroupUpdateDto, BaseDeleteDto> {
+
+}

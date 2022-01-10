@@ -1,0 +1,17 @@
+spring:
+  # 数据源配置
+  datasource:
+    # 驱动配置
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 连接配置(集成 activiti7 时注意设置nullCatalogMeansCurrent=true)
+    url: jdbc:mysql://localhost:3306/wiki?allowMultiQueries=true&useUnicode=true&nullCatalogMeansCurrent=true&characterEncoding=UTF-8
+    # 用户名
+    username: root
+    # 密码
+    password: 123456
+  flyway:
+    baseline-version: 1
+    clean-disabled: true
+    enabled: true
+    baseline-on-migrate: true
+    locations: classpath:db
