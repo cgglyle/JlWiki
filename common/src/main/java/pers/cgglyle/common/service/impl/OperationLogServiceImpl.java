@@ -45,10 +45,22 @@ public class OperationLogServiceImpl extends ServiceImpl<OperationLogMapper, Ope
         List<OperationLogVo> collect = data.getRecords().stream().map(log -> {
             OperationLogVo operationLogVo = new OperationLogVo();
             BeanUtils.copyProperties(log, operationLogVo);
-            operationLogVo.setRequestParameter(JSON.parseObject(log.getRequestParameter()));
-            operationLogVo.setReturnResult(JSON.parseObject(log.getReturnResult()));
+            String requestParameter = log.getRequestParameter();
+            if (jsonType(requestParameter)){
+                operationLogVo.setRequestParameter(JSON.parseObject(log.getRequestParameter()));
+            }
+            operationLogVo.setRequestParameter(requestParameter);
+            String returnResult = log.getReturnResult();
+            if (jsonType(returnResult)){
+                operationLogVo.setReturnResult(JSON.parseObject(log.getReturnResult()));
+            }
+            operationLogVo.setReturnResult(returnResult);
             return operationLogVo;
         }).collect(Collectors.toList());
         return new PageResult(operationLogQuery.getPageNum(), operationLogQuery.getPageSize(), data.getTotal(), data.getPages(), collect);
+    }
+
+    private boolean jsonType(String str){
+        return str.startsWith("{") && str.endsWith("}");
     }
 }
