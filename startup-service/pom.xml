@@ -5,7 +5,7 @@
     <parent>
         <artifactId>JWiki</artifactId>
         <groupId>pers.cgglyle</groupId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -31,13 +31,8 @@
     <dependencies>
         <dependency>
             <groupId>pers.cgglyle</groupId>
-            <artifactId>service</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>pers.cgglyle</groupId>
-            <artifactId>service-account</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <artifactId>authenticate</artifactId>
+            <version>1.0.0</version>
         </dependency>
     </dependencies>
     <!--分别设置开发，测试，生产环境-->
