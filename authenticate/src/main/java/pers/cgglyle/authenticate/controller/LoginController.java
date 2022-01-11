@@ -1,6 +1,7 @@
 package pers.cgglyle.authenticate.controller;
 
-import io.swagger.annotations.Api;
+
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 import pers.cgglyle.authenticate.annotaion.LoginLog;
 import pers.cgglyle.authenticate.annotaion.LogoutLog;
@@ -17,7 +18,7 @@ import java.security.spec.InvalidKeySpecException;
  * @author cgglyle
  * @date 2021-12-16 17:32
  */
-@Api(tags = "安全系统")
+@Tag(name = "安全系统")
 @CrossOrigin
 @RestController
 @RequestMapping("/")

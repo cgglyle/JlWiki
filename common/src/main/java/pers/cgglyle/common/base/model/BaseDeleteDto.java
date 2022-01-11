@@ -1,6 +1,6 @@
 package pers.cgglyle.common.base.model;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -16,8 +16,8 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class BaseDeleteDto extends BaseDto {
-    @ApiModelProperty("删除id")
+    @Schema(description = "删除id")
     private Serializable id;
-    @ApiModelProperty("删除id列表")
+    @Schema(description = "删除id列表")
     private List<Serializable> idList;
 }

@@ -1,11 +1,12 @@
 package pers.cgglyle.common.model.entity;
 
+
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
@@ -90,86 +91,5 @@ public class OperationLogEntity {
     @ApiModelProperty("请求结束时间")
     @TableField("query_end_time")
     private Long queryEndTime;
-
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getOperationModule() {
-        return operationModule;
-    }
-
-    public void setOperationModule(String operationModule) {
-        this.operationModule = operationModule;
-    }
-
-    public String getRequestAddress() {
-        return requestAddress;
-    }
-
-    public void setRequestAddress(String requestAddress) {
-        this.requestAddress = requestAddress;
-    }
-
-    public String getRequestMethod() {
-        return requestMethod;
-    }
-
-    public void setRequestMethod(String requestMethod) {
-        this.requestMethod = requestMethod;
-    }
-
-    public String getRequestParameter() {
-        return requestParameter;
-    }
-
-    public void setRequestParameter(String requestParameter) {
-        this.requestParameter = requestParameter;
-    }
-
-    public String getReturnResult() {
-        return returnResult;
-    }
-
-    public void setReturnResult(String returnResult) {
-        this.returnResult = returnResult;
-    }
-
-    public boolean isStatus() {
-        return isStatus;
-    }
-
-    public void setStatus(boolean status) {
-        isStatus = status;
-    }
-
-    public LocalDateTime getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime;
-    }
-
-    public Long getQueryEndTime() {
-        return queryEndTime;
-    }
-
-    public void setQueryEndTime(Long queryEndTime) {
-        this.queryEndTime = queryEndTime;
-    }
 }
 

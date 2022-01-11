@@ -1,0 +1,7 @@
+springdoc:
+  swagger-ui:
+    display-request-duration: true
+  api-docs:
+    enabled: true
+    resolve-schema-properties: true
+  writer-with-default-pretty-printer: true

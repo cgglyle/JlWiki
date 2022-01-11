@@ -1,7 +1,8 @@
 package pers.cgglyle.authenticate.model.vo;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import pers.cgglyle.common.base.model.BaseVo;

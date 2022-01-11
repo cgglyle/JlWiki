@@ -1,6 +1,6 @@
 package pers.cgglyle.common.base.model;
 
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -13,6 +13,6 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class BaseAddDto extends BaseDto {
-    @ApiModelProperty("创建者")
+    @Schema(description = "创建者")
     private Integer createUser;
 }

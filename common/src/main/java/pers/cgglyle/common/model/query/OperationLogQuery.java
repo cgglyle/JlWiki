@@ -1,6 +1,9 @@
 package pers.cgglyle.common.model.query;
 
-import io.swagger.annotations.ApiModelProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import pers.cgglyle.common.base.model.BaseQuery;
 
 import java.time.LocalDateTime;
@@ -11,6 +14,8 @@ import java.time.LocalDateTime;
  * @author cgglyle
  * @date 2021-12-15 13:50
  */
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class OperationLogQuery extends BaseQuery {
 
     /**
@@ -50,51 +55,5 @@ public class OperationLogQuery extends BaseQuery {
     @ApiModelProperty("创建时间")
     private LocalDateTime createTime;
 
-    public String getUserName() {
-        return userName;
-    }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getOperationModule() {
-        return operationModule;
-    }
-
-    public void setOperationModule(String operationModule) {
-        this.operationModule = operationModule;
-    }
-
-    public String getRequestAddress() {
-        return requestAddress;
-    }
-
-    public void setRequestAddress(String requestAddress) {
-        this.requestAddress = requestAddress;
-    }
-
-    public String getRequestMethod() {
-        return requestMethod;
-    }
-
-    public void setRequestMethod(String requestMethod) {
-        this.requestMethod = requestMethod;
-    }
-
-    public boolean isStatus() {
-        return isStatus;
-    }
-
-    public void setStatus(boolean status) {
-        isStatus = status;
-    }
-
-    public LocalDateTime getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime;
-    }
 }

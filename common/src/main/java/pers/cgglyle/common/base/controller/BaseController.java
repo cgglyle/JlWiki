@@ -1,6 +1,8 @@
 package pers.cgglyle.common.base.controller;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import pers.cgglyle.common.annotaion.OperationLog;
@@ -66,7 +68,11 @@ public class BaseController<T extends IBaseRelationService, BQ extends BaseQuery
      * @param query 请求模型
      * @return 分页模型
      */
-    @ApiOperation("获取分页")
+    @Operation(summary = "获取分页", description = "根据请求信息获取分页")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "1000", description = "请求成功"),
+            @ApiResponse(responseCode = "1020", description = "系统内部错误")
+    })
     @GetMapping("get")
     public PageResult get(BQ query) throws IllegalAccessException {
         log.info("获取分页");
@@ -80,7 +86,7 @@ public class BaseController<T extends IBaseRelationService, BQ extends BaseQuery
      * @return 成功失败
      */
     @OperationLog(operationMethod = "POST")
-    @ApiOperation("添加数据")
+    @Operation(summary = "添加数据")
     @PostMapping("add")
     public boolean add(@RequestBody  BA dto) {
         log.info("添加数据");
@@ -94,7 +100,7 @@ public class BaseController<T extends IBaseRelationService, BQ extends BaseQuery
      * @return 成功失败
      */
     @OperationLog(operationMethod = "PUT")
-    @ApiOperation("更新数据")
+    @Operation(summary = "更新数据")
     @PutMapping("update")
     public boolean update(@RequestBody BU dto) {
         log.info("更新数据");
@@ -108,7 +114,7 @@ public class BaseController<T extends IBaseRelationService, BQ extends BaseQuery
      * @return 成功失败
      */
     @OperationLog(operationMethod = "DELETE")
-    @ApiOperation("删除数据")
+    @Operation(summary = "删除数据")
     @DeleteMapping("delete")
     public boolean delete(@RequestBody BD dto) {
         log.info("删除数据");
@@ -122,7 +128,7 @@ public class BaseController<T extends IBaseRelationService, BQ extends BaseQuery
      * @return 成功失败
      */
     @OperationLog(operationMethod = "DELETE")
-    @ApiOperation("批量删除数据")
+    @Operation(summary = "批量删除数据")
     @DeleteMapping("batchDelete")
     public boolean batchDelete(@RequestBody BD dto) {
         log.info("批量删除数据");

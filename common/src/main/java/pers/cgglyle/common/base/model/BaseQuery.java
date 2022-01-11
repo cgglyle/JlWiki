@@ -1,7 +1,6 @@
 package pers.cgglyle.common.base.model;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 /**
@@ -11,10 +10,10 @@ import lombok.Data;
  * @date 2021/12/6
  */
 @Data
-@ApiModel("请求实体")
+@Schema(description = "基础请求模型")
 public abstract class BaseQuery {
-    @ApiModelProperty("当前页")
+    @Schema(description = "当前页")
     private Long pageNum = 1L;
-    @ApiModelProperty("当前页条目数")
+    @Schema(description = "当前页条目数")
     private Long pageSize = 20L;
 }
