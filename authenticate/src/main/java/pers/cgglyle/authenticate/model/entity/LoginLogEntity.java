@@ -23,7 +23,7 @@ import java.time.LocalDateTime;
  * @since 2021-12-17 10:12:51
  */
 
-@ApiModel("LoginLog实体类")
+@Schema(description = "LoginLog实体类")
 @Data
 @TableName("login_log")
 public class LoginLogEntity {
@@ -32,14 +32,14 @@ public class LoginLogEntity {
     /**
      * 主键
      */
-    @ApiModelProperty("主键")
+    @Schema(description = "主键")
     @TableId(type = IdType.AUTO)
     private Integer id;
 
     /**
      * 登陆用户名
      */
-    @ApiModelProperty("登陆用户名")
+    @Schema(description = "登陆用户名")
     @TableField("login_user_name")
     private String loginUserName;
 
@@ -50,7 +50,7 @@ public class LoginLogEntity {
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    @ApiModelProperty("登陆时间")
+    @Schema(description = "登陆时间")
     @TableField("login_time")
     private LocalDateTime loginTime;
 
@@ -61,21 +61,21 @@ public class LoginLogEntity {
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    @ApiModelProperty("登陆时间")
+    @Schema(description = "登陆时间")
     @TableField("login_time")
     private LocalDateTime logoutTime;
 
     /**
      * 登陆地址
      */
-    @ApiModelProperty("登陆地址")
+    @Schema(description = "登陆地址")
     @TableField("login_ip")
     private String loginIp;
 
     /**
      * 登陆状态
      */
-    @ApiModelProperty("登陆状态")
+    @Schema(description = "登陆状态")
     @TableField("is_status")
     private boolean isStatus;
 

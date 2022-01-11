@@ -19,13 +19,13 @@ public class UserGroupRelationAddDto extends BaseDto {
     /**
      * 用户id
      */
-    @ApiModelProperty("用户id")
+    @Schema(description = "用户id")
     private Integer userId;
 
     /**
      * 用户组id
      */
-    @ApiModelProperty("用户组id")
+    @Schema(description = "用户组id")
     private Integer groupId;
 
     @TableField("is_deleted")

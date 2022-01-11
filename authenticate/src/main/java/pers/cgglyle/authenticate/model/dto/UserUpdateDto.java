@@ -18,54 +18,54 @@ import javax.validation.constraints.NotNull;
 @EqualsAndHashCode(callSuper = true)
 public class UserUpdateDto extends BaseUpdateDto {
     @NotNull(message = "用户id不能为空")
-    @ApiModelProperty("主键id")
+    @Schema(description = "主键id")
     private String id;
 
-    @ApiModelProperty("用户名字")
+    @Schema(description = "用户名字")
     private String userName;
 
-    @ApiModelProperty("用户密码")
+    @Schema(description = "用户密码")
     private String userPassword;
 
-    @ApiModelProperty("用户真实姓名")
+    @Schema(description = "用户真实姓名")
     private String userRealName;
 
-    @ApiModelProperty("用户性别(0-男性，1-女性，2-保密)")
+    @Schema(description = "(0-男性，1-女性，2-保密)")
     private Integer userGender;
 
-    @ApiModelProperty("用户年龄")
+    @Schema(description = "用户年龄")
     private Integer userAge;
 
-    @ApiModelProperty("用户昵称")
+    @Schema(description = "用户昵称")
     private String userNickName;
 
-    @ApiModelProperty("用户头像url")
+    @Schema(description = "用户头像url")
     private String userIcon;
 
-    @ApiModelProperty("用户邮箱")
+    @Schema(description = "用户邮箱")
     private String userEmail;
 
-    @ApiModelProperty("用户电话")
+    @Schema(description = "用户电话")
     private String userPhone;
 
-    @ApiModelProperty("用户QQ")
+    @Schema(description = "用户QQ")
     private String userQq;
 
-    @ApiModelProperty("用户微信")
+    @Schema(description = "用户微信")
     private String userWechat;
 
-    @ApiModelProperty("用户google")
+    @Schema(description = "用户google")
     private String userGoogle;
 
-    @ApiModelProperty("用户tg")
+    @Schema(description = "用户tg")
     private String userTelegram;
 
-    @ApiModelProperty("用户推特")
+    @Schema(description = "用户推特")
     private String userTwitter;
 
-    @ApiModelProperty("用户facebook")
+    @Schema(description = "用户facebook")
     private String userFacebook;
 
-    @ApiModelProperty("用户状态")
+    @Schema(description = "用户状态")
     private boolean isStatus;
 }

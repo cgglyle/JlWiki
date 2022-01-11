@@ -14,19 +14,19 @@ import pers.cgglyle.common.base.model.BaseAddDto;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@ApiModel("RolePermission添加模型")
+@Schema(description = "RolePermission添加模型")
 public class RolePermissionRelationAddDto extends BaseAddDto {
 
     /**
      * 角色id
      */
-    @ApiModelProperty("角色id")
+    @Schema(description = "角色id")
     private Integer roleId;
 
     /**
      * 权限id
      */
-    @ApiModelProperty("权限id")
+    @Schema(description = "权限id")
     private Integer permissionId;
 
 }

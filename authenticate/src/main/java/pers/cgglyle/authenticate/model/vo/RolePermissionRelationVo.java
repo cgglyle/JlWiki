@@ -12,16 +12,16 @@ import lombok.Data;
  * @since 2021-12-29 14:25:08
  */
 @Data
-@ApiModel("RolePermission实体类")
+@Schema(description = "RolePermission实体类")
 public class RolePermissionRelationVo {
 
-    @ApiModelProperty("主键id")
+    @Schema(description = "主键id")
     private Integer id;
 
     /**
      * 权限id
      */
-    @ApiModelProperty("权限名")
+    @Schema(description = "权限名")
     private String permission;
 
 }

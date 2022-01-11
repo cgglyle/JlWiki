@@ -15,16 +15,16 @@ import pers.cgglyle.common.base.model.BaseEntity;
  * @author cgglyle
  * @date 2021-12-10 13:30
  */
-@ApiModel("用户组用户实体")
+@Schema(description = "用户组用户实体")
 @Data
 @EqualsAndHashCode(callSuper = true)
 @TableName("user_group_relation")
 public class UserGroupRelationEntity extends BaseEntity {
-    @ApiModelProperty("用户id")
+    @Schema(description = "用户id")
     @TableField("user_id")
     private Integer userId;
 
-    @ApiModelProperty("用户组id")
+    @Schema(description = "用户组id")
     @TableField("group_id")
     private Integer groupId;
 }

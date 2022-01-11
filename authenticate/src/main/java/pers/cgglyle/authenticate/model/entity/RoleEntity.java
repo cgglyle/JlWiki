@@ -14,24 +14,24 @@ import pers.cgglyle.common.base.model.BaseEntity;
  * @author cgglyle
  * @date 2021/12/7
  */
-@ApiModel("角色实体")
+@Schema(description = "角色实体")
 @Data
 @EqualsAndHashCode(callSuper = true)
 @TableName("role")
 public class RoleEntity extends BaseEntity {
-    @ApiModelProperty("角色名称")
+    @Schema(description = "角色名称")
     @TableField("role_name")
     private String roleName;
 
-    @ApiModelProperty("角色描述")
+    @Schema(description = "角色描述")
     @TableField("role_description")
     private String roleDescription;
 
-    @ApiModelProperty("当前角色用户数量")
+    @Schema(description = "当前角色用户数量")
     @TableField("role_user_count")
     private Integer roleUserCount;
 
-    @ApiModelProperty("修改者")
+    @Schema(description = "修改者")
     @TableField("update_user")
     private Integer updateUser;
 }

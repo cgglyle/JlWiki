@@ -14,6 +14,7 @@ import java.util.List;
  * @date 2022-01-04 10:11
  */
 @Data
+@Schema(description = "基础删除模型")
 @EqualsAndHashCode(callSuper = true)
 public class BaseDeleteDto extends BaseDto {
     @Schema(description = "删除id")

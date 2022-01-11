@@ -14,9 +14,9 @@ import pers.cgglyle.common.base.model.BaseAddDto;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class RoleAddDto extends BaseAddDto {
-    @ApiModelProperty("角色名称")
+    @Schema(description = "角色名称")
     private String roleName;
 
-    @ApiModelProperty("角色描述")
+    @Schema(description = "角色描述")
     private String roleDescription;
 }

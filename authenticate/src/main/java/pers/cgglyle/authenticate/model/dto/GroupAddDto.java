@@ -14,9 +14,9 @@ import pers.cgglyle.common.base.model.BaseAddDto;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class GroupAddDto extends BaseAddDto {
-    @ApiModelProperty("用户组名称")
+    @Schema(description = "用户组名称")
     private String groupName;
 
-    @ApiModelProperty("用户组描述")
+    @Schema(description = "用户组描述")
     private String groupDescription;
 }

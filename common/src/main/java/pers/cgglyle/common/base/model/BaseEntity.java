@@ -24,6 +24,7 @@ import java.time.LocalDateTime;
  * @date 2021/12/6
  */
 @Data
+@Schema(description = "基础实体类")
 public abstract class BaseEntity implements Serializable {
 
     @Serial

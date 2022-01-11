@@ -22,13 +22,13 @@ public class UserLoginDto extends User {
     @Serial
     private static final long serialVersionUID = 3965486146556284604L;
 
-    @ApiModelProperty("用户id")
+    @Schema(description = "用户id")
     private Integer id;
 
-    @ApiModelProperty("用户昵称")
+    @Schema(description = "用户昵称")
     private String userNickName;
 
-    @ApiModelProperty("用户头像url")
+    @Schema(description = "用户头像url")
     private String userIcon;
 
     private String token;

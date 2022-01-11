@@ -17,9 +17,9 @@ public class UserRoleVo {
     /**
      * UserRoleRelation 主键 ID
      */
-    @ApiModelProperty("主键id")
+    @Schema(description = "主键id")
     private Serializable id;
-    @ApiModelProperty("角色名")
+    @Schema(description = "角色名")
     private String roleName;
 
 }

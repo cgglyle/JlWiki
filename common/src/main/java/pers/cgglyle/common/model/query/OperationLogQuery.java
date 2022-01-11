@@ -21,38 +21,38 @@ public class OperationLogQuery extends BaseQuery {
     /**
      * 用户名称
      */
-    @ApiModelProperty("用户id")
+    @Schema(description = "用户id")
     private String userName;
 
     /**
      * 操作模块
      */
-    @ApiModelProperty("操作模块")
+    @Schema(description = "操作模块")
     private String operationModule;
 
     /**
      * 请求地址
      */
-    @ApiModelProperty("请求地址")
+    @Schema(description = "请求地址")
     private String requestAddress;
 
     /**
      * 请求方式(GET,POST,PUT,DELETE)
      */
-    @ApiModelProperty("请求方式(GET,POST,PUT,DELETE)")
+    @Schema(description = "请求方式(GET,POST,PUT,DELETE)")
     private String requestMethod;
 
 
     /**
      * 状态（1-成功，0-失败）
      */
-    @ApiModelProperty("状态（1-成功，0-失败）")
+    @Schema(description = "状态（1-成功，0-失败）")
     private boolean isStatus;
 
     /**
      * 创建时间
      */
-    @ApiModelProperty("创建时间")
+    @Schema(description = "创建时间")
     private LocalDateTime createTime;
 
 

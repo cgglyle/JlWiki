@@ -19,21 +19,21 @@ import java.util.Collection;
 @AllArgsConstructor
 public class UserInfo {
 
-    @ApiModelProperty("用户id")
+    @Schema(description = "用户id")
     private Serializable id;
 
-    @ApiModelProperty("用户名")
+    @Schema(description = "用户名")
     private String username;
 
-    @ApiModelProperty("用户昵称")
+    @Schema(description = "用户昵称")
     private String userNickName;
 
-    @ApiModelProperty("用户头像url")
+    @Schema(description = "用户头像url")
     private String userIcon;
 
-    @ApiModelProperty("用户角色")
+    @Schema(description = "用户角色")
     private Collection<GrantedAuthority> userRole;
 
-    @ApiModelProperty("Token")
+    @Schema(description = "Token")
     private String token;
 }

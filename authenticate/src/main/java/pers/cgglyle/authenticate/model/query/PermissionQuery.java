@@ -16,31 +16,31 @@ import pers.cgglyle.common.base.model.BaseQuery;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-@ApiModel("Permission实体类")
+@Schema(description = "Permission实体类")
 public class PermissionQuery extends BaseQuery {
 
     /**
      * 资源名称
      */
-    @ApiModelProperty("资源名称")
+    @Schema(description = "资源名称")
     private String permissionName;
 
     /**
      * 资源地址
      */
-    @ApiModelProperty("资源地址")
+    @Schema(description = "资源地址")
     private String permissionUrl;
 
     /**
      * 修改人
      */
-    @ApiModelProperty("修改人")
+    @Schema(description = "修改人")
     private Integer updateUser;
 
     /**
      * 创建人
      */
-    @ApiModelProperty("创建人")
+    @Schema(description = "创建人")
     private Integer createUser;
 }
 

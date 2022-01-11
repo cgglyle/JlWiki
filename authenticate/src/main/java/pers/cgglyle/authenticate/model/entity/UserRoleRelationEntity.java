@@ -15,21 +15,21 @@ import pers.cgglyle.common.base.model.BaseEntity;
  * @author cgglyle
  * @date 2021-12-08 14:20
  */
-@ApiModel("用户角色实体")
+@Schema(description = "用户角色实体")
 @Data
 @EqualsAndHashCode(callSuper = true)
 @TableName("user_role_relation")
 public class UserRoleRelationEntity extends BaseEntity {
 
-    @ApiModelProperty("用户id")
+    @Schema(description = "用户id")
     @TableField("user_id")
     private Integer userId;
 
-    @ApiModelProperty("角色ID")
+    @Schema(description = "角色ID")
     @TableField("role_id")
     private Integer roleId;
 
-    @ApiModelProperty("修改人")
+    @Schema(description = "修改人")
     @TableField("update_user")
     private Integer updateUser;
 

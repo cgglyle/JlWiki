@@ -11,6 +11,7 @@ import lombok.EqualsAndHashCode;
  * @date 2022-01-04 09:51
  */
 @Data
+@Schema(description = "基础上添加模型")
 @EqualsAndHashCode(callSuper = true)
 public class BaseAddDto extends BaseDto {
     @Schema(description = "创建者")

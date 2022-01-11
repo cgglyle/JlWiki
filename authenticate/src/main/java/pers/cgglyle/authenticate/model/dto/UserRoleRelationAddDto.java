@@ -12,12 +12,12 @@ import pers.cgglyle.common.base.model.BaseAddDto;
  * @author cgglyle
  * @date 2021-12-09 09:28
  */
-@ApiModel("用户添加角色模型")
+@Schema(description = "用户添加角色模型")
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class UserRoleRelationAddDto extends BaseAddDto {
-    @ApiModelProperty("用户id")
+    @Schema(description = "用户id")
     private Integer userId;
-    @ApiModelProperty("角色id")
+    @Schema(description = "角色id")
     private Integer roleId;
 }
