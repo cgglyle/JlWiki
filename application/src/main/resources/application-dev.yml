@@ -37,3 +37,15 @@ jwiki:
   security:
     # 是否允许匿名用户访问
     anonymous: false
+
+# 可视化监控
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'prometheus'
+  endpoint:
+    health:
+      show-details: always
+    prometheus:
+      enabled: true
