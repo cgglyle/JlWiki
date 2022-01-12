@@ -1,8 +1,8 @@
 package pers.cgglyle.authenticate.controller;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 import pers.cgglyle.common.annotaion.OperationLog;
 import pers.cgglyle.common.base.controller.BaseController;
@@ -17,7 +17,7 @@ import pers.cgglyle.authenticate.service.AccountService;
  * @author cgglyle
  * @date 2021/12/6
  */
-@Api(tags = "用户控制")
+@Tag(name = "用户控制")
 @CrossOrigin
 @RequestMapping("/user")
 @RestController
@@ -31,7 +31,7 @@ public class UserController extends BaseController<AccountService, UserQuery, Us
      */
     @OperationLog(operationModule = "UserRole", operationMethod = "POST")
     @PostMapping("addUserRole")
-    @ApiOperation("给用户添加角色")
+    @Operation(summary = "给用户添加角色")
     public boolean addUserRole(@RequestBody UserRoleRelationAddDto userRoleRelationAddDto) {
         boolean b = baseRelationService.add(userRoleRelationAddDto);
         if (!b) {
@@ -48,8 +48,8 @@ public class UserController extends BaseController<AccountService, UserQuery, Us
      */
     @OperationLog(operationMethod = "DELETE", operationModule = "UserRole")
     @DeleteMapping("deleteUserRole/{id}")
-    @ApiOperation("删除用户角色")
-    @ApiImplicitParam(name = "id", value = "用户 UserRoleVo 的 id")
+    @Operation(summary = "删除用户角色")
+    @Parameter(name = "id",  description = "用户 UserRoleVo 的 id")
     public boolean deleteUserRole(@RequestBody UserRoleRelationDeleteDto dto) {
         boolean delete = baseRelationService.delete(dto);
         if (!delete) {
@@ -66,7 +66,7 @@ public class UserController extends BaseController<AccountService, UserQuery, Us
      */
     @OperationLog(operationModule = "UserGroup", operationMethod = "POST")
     @PostMapping("addUserGroup")
-    @ApiOperation("给用户添加用户组")
+    @Operation(summary = "给用户添加用户组")
     public boolean addUserGroup(@RequestBody UserGroupRelationAddDto userGroupRelationAddDto) {
         boolean b = baseRelationService.add(userGroupRelationAddDto);
         if (!b) {
@@ -103,7 +103,7 @@ public class UserController extends BaseController<AccountService, UserQuery, Us
      */
     @OperationLog(operationMethod = "UPDATE", operationModule = "User")
     @PutMapping("updateUserPassword")
-    @ApiOperation("修改密码")
+    @Operation(summary = "修改密码")
     public boolean updateUserPassword(String id, String oldPassword, String newPassword) {
         return baseRelationService.updateUserPassword(id, oldPassword, newPassword);
     }

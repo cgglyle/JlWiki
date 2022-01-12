@@ -13,3 +13,4 @@ spring:
     include:
       - db
       - redis
+      - springdoc

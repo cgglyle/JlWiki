@@ -1,6 +1,7 @@
 package pers.cgglyle.authenticate.model.dto;
 
-import io.swagger.annotations.ApiModelProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import pers.cgglyle.common.base.model.BaseUpdateDto;
@@ -14,13 +15,13 @@ import pers.cgglyle.common.base.model.BaseUpdateDto;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class RoleUpdateDto extends BaseUpdateDto {
-    @ApiModelProperty("角色名称")
+    @Schema(description = "角色名称")
     private String roleName;
 
-    @ApiModelProperty("角色描述")
+    @Schema(description = "角色描述")
     private String roleDescription;
 
-    @ApiModelProperty("修改者")
+    @Schema(description = "修改者")
     private Integer updateUser;
 
 }

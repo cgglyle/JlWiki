@@ -1,6 +1,8 @@
 package pers.cgglyle.common.response;
 
-import io.swagger.annotations.ApiModelProperty;
+
+
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.util.List;
 
@@ -11,19 +13,19 @@ import java.util.List;
  * @date 2021/12/6
  */
 public class PageResult {
-    @ApiModelProperty(value = "当前页码")
+    @Schema(description = "当前页码")
     private long pageNum;
 
-    @ApiModelProperty(value = "每页记录数")
+    @Schema(description = "每页记录数")
     private long pageSize;
 
-    @ApiModelProperty(value = "总记录数")
+    @Schema(description = "总记录数")
     private long totalSize;
 
-    @ApiModelProperty(value = "总页码")
+    @Schema(description = "总页码")
     private long totalPage;
 
-    @ApiModelProperty(value = "列表数据")
+    @Schema(description = "列表数据")
     private List<?> data;
 
     public PageResult() {

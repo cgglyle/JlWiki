@@ -1,7 +1,9 @@
 package pers.cgglyle.authenticate.controller;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 import pers.cgglyle.common.annotaion.OperationLog;
 import pers.cgglyle.common.base.controller.BaseController;
@@ -18,13 +20,13 @@ import pers.cgglyle.authenticate.service.AccountService;
  * @author cgglyle
  * @date 2021-12-08 13:11
  */
-@Api(tags = "角色控制")
+@Tag(name = "角色控制")
 @CrossOrigin
 @RestController
 @RequestMapping("/role")
 public class RoleController extends BaseController<AccountService, RoleQuery, RoleAddDto, RoleUpdateDto, RoleDeleteDto> {
 
-    @ApiOperation("添加角色权限")
+    @Operation(summary = "添加角色权限")
     @OperationLog(operationModule = "RolePermission", operationMethod = "POST")
     @PostMapping("addRolePermission")
     public boolean addRolePermission(@RequestBody RolePermissionRelationAddDto rolePermissionRelationDto) {

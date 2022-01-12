@@ -1,0 +1,51 @@
+# spring相关配置
+spring:
+  main:
+    allow-bean-definition-overriding: true
+#  mvc:
+#    pathmatch:
+#      # 解决 Failed to start bean 'documentationPluginsBootstrapper';
+#      # nested exception is java.lang.NullPointerException:
+#      # Cannot invoke "org.springframework.web.servlet.mvc.condition.PatternsRequestCondition.getPatterns()"
+#      # because "this.condition" is null
+#      matching-strategy: ant_path_matcher
+  # 初始化数据库
+  sql:
+    init:
+      mode: always
+
+# mybatis plus相关配置
+mybatis-plus:
+  # mybatis plus全局配置
+  global-config:
+    #禁止打印banner
+    banner: false
+  # 指定配置
+  configuration:
+    # 该配置就是将带有下划线的表字段映射为驼峰格式的实体类属性
+    map-underscore-to-camel-case: true
+    # 自动映射任意复杂的结果集
+    auto-mapping-behavior: full
+  # 指定映射文件
+  mapper-locations: classpath*:mapper/*.xml
+
+  #是否开启一个默认的跨域配置,该功能配合自定义Host使用,cors: true
+  #  cors: true
+debug: false
+
+jwiki:
+  security:
+    # 是否允许匿名用户访问
+    anonymous: false
+
+# 可视化监控
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'prometheus'
+  endpoint:
+    health:
+      show-details: always
+    prometheus:
+      enabled: true

@@ -1,6 +1,7 @@
 package pers.cgglyle.authenticate.model.vo;
 
-import io.swagger.annotations.ApiModelProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -18,8 +19,8 @@ public class UserGroupVo {
     /**
      * UserGroupRelation 主键 ID
      */
-    @ApiModelProperty("主键id")
+    @Schema(description = "主键id")
     private Serializable id;
-    @ApiModelProperty("角色名")
+    @Schema(description = "角色名")
     private String groupName;
 }

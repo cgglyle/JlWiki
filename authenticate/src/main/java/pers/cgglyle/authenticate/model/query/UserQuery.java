@@ -1,6 +1,7 @@
 package pers.cgglyle.authenticate.model.query;
 
-import io.swagger.annotations.ApiModelProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import pers.cgglyle.common.annotaion.QueryModel;
@@ -17,20 +18,20 @@ import pers.cgglyle.common.enums.QueryModelEnum;
 @EqualsAndHashCode(callSuper = true)
 public class UserQuery extends BaseQuery {
     @QueryModel(QueryModelEnum.EQ)
-    @ApiModelProperty("账户名")
+    @Schema(description = "账户名")
     private String userName;
     @QueryModel(QueryModelEnum.EQ)
-    @ApiModelProperty("电话")
+    @Schema(description = "电话")
     private String phone;
-    @ApiModelProperty("昵称")
+    @Schema(description = "昵称")
     private String userNickName;
-    @ApiModelProperty("邮箱")
+    @Schema(description = "邮箱")
     private String userEmail;
     @QueryModel(QueryModelEnum.EQ)
-    @ApiModelProperty("性别")
+    @Schema(description = "性别")
     private Integer userGender;
-    @ApiModelProperty("用户角色")
+    @Schema(description = "用户角色")
     private String userRole;
-    @ApiModelProperty("用户组")
+    @Schema(description = "用户组")
     private String userGroup;
 }

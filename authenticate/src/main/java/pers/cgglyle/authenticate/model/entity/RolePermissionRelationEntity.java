@@ -1,9 +1,9 @@
 package pers.cgglyle.authenticate.model.entity;
 
+
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import pers.cgglyle.common.base.model.BaseEntity;
@@ -15,7 +15,7 @@ import pers.cgglyle.common.base.model.BaseEntity;
  * @since 2021-12-29 14:25:08
  */
 
-@ApiModel("RolePermission实体类")
+@Schema(description = "RolePermission实体类")
 @Data
 @EqualsAndHashCode(callSuper = true)
 @TableName("role_permission_relation")
@@ -24,21 +24,21 @@ public class RolePermissionRelationEntity extends BaseEntity {
     /**
      * 角色id
      */
-    @ApiModelProperty("角色id")
+    @Schema(description = "角色id")
     @TableField("role_id")
     private Integer roleId;
 
     /**
      * 权限id
      */
-    @ApiModelProperty("权限id")
+    @Schema(description = "权限id")
     @TableField("permission_id")
     private Integer permissionId;
 
     /**
      * 修改人
      */
-    @ApiModelProperty("修改人")
+    @Schema(description = "修改人")
     @TableField("update_user")
     private Integer updateUser;
 }

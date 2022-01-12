@@ -1,6 +1,7 @@
 package pers.cgglyle.authenticate.controller;
 
-import io.swagger.annotations.Api;
+
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,7 +18,7 @@ import pers.cgglyle.authenticate.service.AccountService;
  * @author cgglyle
  * @date 2021-12-10 10:01
  */
-@Api(tags = "用户组控制")
+@Tag(name = "用户组控制")
 @CrossOrigin
 @RestController
 @RequestMapping("/group")

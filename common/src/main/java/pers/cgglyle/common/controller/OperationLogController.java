@@ -1,7 +1,8 @@
 package pers.cgglyle.common.controller;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +16,7 @@ import pers.cgglyle.common.service.OperationLogService;
  * @author cgglyle
  * @date 2021-12-14 11:31
  */
-@Api(tags = "日志控制器")
+@Tag(name = "日志控制器")
 @RestController
 @RequestMapping("/log")
 public class OperationLogController {
@@ -27,7 +28,7 @@ public class OperationLogController {
     }
 
     @GetMapping("getLog")
-    @ApiOperation("获取log日志")
+    @Operation(summary = "获取log日志")
     public PageResult getLogPage(OperationLogQuery operationLogQuery) {
         return operationLogService.getPage(operationLogQuery);
     }

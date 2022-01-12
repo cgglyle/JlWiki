@@ -1,7 +1,7 @@
 package pers.cgglyle.authenticate.model.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import pers.cgglyle.common.base.model.BaseAddDto;
@@ -14,19 +14,19 @@ import pers.cgglyle.common.base.model.BaseAddDto;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@ApiModel("Permission实体类")
+@Schema(description = "Permission实体类")
 public class PermissionAddDto extends BaseAddDto {
 
     /**
      * 资源名称
      */
-    @ApiModelProperty("资源名称")
+    @Schema(description = "资源名称")
     private String permissionName;
 
     /**
      * 资源地址
      */
-    @ApiModelProperty("资源地址")
+    @Schema(description = "资源地址")
     private String permissionUrl;
 }
 

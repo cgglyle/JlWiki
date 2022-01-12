@@ -1,6 +1,9 @@
 package pers.cgglyle.common.model.query;
 
-import io.swagger.annotations.ApiModelProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import pers.cgglyle.common.base.model.BaseQuery;
 
 import java.time.LocalDateTime;
@@ -11,90 +14,46 @@ import java.time.LocalDateTime;
  * @author cgglyle
  * @date 2021-12-15 13:50
  */
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class OperationLogQuery extends BaseQuery {
 
     /**
      * 用户名称
      */
-    @ApiModelProperty("用户id")
+    @Schema(description = "用户id")
     private String userName;
 
     /**
      * 操作模块
      */
-    @ApiModelProperty("操作模块")
+    @Schema(description = "操作模块")
     private String operationModule;
 
     /**
      * 请求地址
      */
-    @ApiModelProperty("请求地址")
+    @Schema(description = "请求地址")
     private String requestAddress;
 
     /**
      * 请求方式(GET,POST,PUT,DELETE)
      */
-    @ApiModelProperty("请求方式(GET,POST,PUT,DELETE)")
+    @Schema(description = "请求方式(GET,POST,PUT,DELETE)")
     private String requestMethod;
 
 
     /**
      * 状态（1-成功，0-失败）
      */
-    @ApiModelProperty("状态（1-成功，0-失败）")
+    @Schema(description = "状态（1-成功，0-失败）")
     private boolean isStatus;
 
     /**
      * 创建时间
      */
-    @ApiModelProperty("创建时间")
+    @Schema(description = "创建时间")
     private LocalDateTime createTime;
 
-    public String getUserName() {
-        return userName;
-    }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getOperationModule() {
-        return operationModule;
-    }
-
-    public void setOperationModule(String operationModule) {
-        this.operationModule = operationModule;
-    }
-
-    public String getRequestAddress() {
-        return requestAddress;
-    }
-
-    public void setRequestAddress(String requestAddress) {
-        this.requestAddress = requestAddress;
-    }
-
-    public String getRequestMethod() {
-        return requestMethod;
-    }
-
-    public void setRequestMethod(String requestMethod) {
-        this.requestMethod = requestMethod;
-    }
-
-    public boolean isStatus() {
-        return isStatus;
-    }
-
-    public void setStatus(boolean status) {
-        isStatus = status;
-    }
-
-    public LocalDateTime getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime;
-    }
 }
