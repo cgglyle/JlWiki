@@ -57,7 +57,7 @@ import javax.annotation.Resource;
  */
 @Slf4j
 @RestController
-public class BaseController<T extends IBaseRelationService, BQ extends BaseQuery,
+public abstract class BaseController<T extends IBaseRelationService, BQ extends BaseQuery,
         BA extends BaseAddDto, BU extends BaseUpdateDto, BD extends BaseDeleteDto> {
     @Resource
     protected T baseRelationService;
