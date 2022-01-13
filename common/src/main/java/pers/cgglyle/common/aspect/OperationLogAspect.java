@@ -1,6 +1,5 @@
 package pers.cgglyle.common.aspect;
 
-import com.alibaba.fastjson.JSON;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterThrowing;
@@ -69,8 +68,6 @@ public class OperationLogAspect {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         OperationLog annotation = signature.getMethod().getAnnotation(OperationLog.class);
         Assert.notNull(annotation,"注解获取异常");
-        // 获取 OperationLog 注解中的值
-//        OperationLog annotation = signature.getMethod().getAnnotation(OperationLog.class);
         // 获取 OperationLog 注解中的 operationModule 值
         operationLogEntity.setRequestMethod(annotation.operationMethod());
         // 获取当前方法的访问地址
@@ -91,7 +88,8 @@ public class OperationLogAspect {
         // 获取请求参数
         Map<String, Object> params = JoinPointUtils.getMethod(joinPoint);
         // 请求参数 json 化
-        operationLogEntity.setRequestParameter(JSON.toJSONString(params));
+//        operationLogEntity.setRequestParameter(JSON.toJSONString(params));
+        operationLogEntity.setRequestParameter(params);
         // 请求结果
         Object result;
         // 记录开始时间
@@ -102,10 +100,11 @@ public class OperationLogAspect {
         // 记录结束时间
         operationLogEntity.setQueryEndTime((Duration.between(beginTime, Instant.now())).toMillis());
         //请求结果 json 化
-        operationLogEntity.setReturnResult(JSON.toJSONString(result));
+//        operationLogEntity.setReturnResult(JSON.toJSONString(result));
+        operationLogEntity.setReturnResult(result);
         operationLogEntity.setStatus(true);
         operationLogEntity.setCreateTime(nowTime);
-        operationLogService.save(operationLogEntity);
+        operationLogService.add(operationLogEntity);
         return result;
     }
 
@@ -138,11 +137,12 @@ public class OperationLogAspect {
         // 获取请求参数
         Map<String, Object> params = JoinPointUtils.getMethod(joinPoint);
         // 请求参数 json 化
-        operationLogEntity.setRequestParameter(JSON.toJSONString(params));
+//        operationLogEntity.setRequestParameter(JSON.toJSONString(params));
+        operationLogEntity.setRequestParameter(params);
         operationLogEntity.setReturnResult(e.getMessage());
         operationLogEntity.setStatus(false);
         operationLogEntity.setQueryEndTime(-1L);
         operationLogEntity.setRequestMethod("EXCEPTION");
-        operationLogService.save(operationLogEntity);
+        operationLogService.add(operationLogEntity);
     }
 }

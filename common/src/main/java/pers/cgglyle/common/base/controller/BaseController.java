@@ -72,6 +72,7 @@ public abstract class BaseController<T extends IBaseRelationService, BQ extends 
             @ApiResponse(responseCode = "1000", description = "请求成功"),
             @ApiResponse(responseCode = "1020", description = "系统内部错误")
     })
+    @OperationLog(operationMethod = "GET")
     @GetMapping("get")
     public PageResult get(BQ query) throws IllegalAccessException {
         log.info("获取分页");

@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Data
 public class OperationLogVo {
     @Schema(description = "主键")
-    private Integer id;
+    private String id;
 
     /**
      * 用户名称

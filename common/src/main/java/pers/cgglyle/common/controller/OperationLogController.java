@@ -29,7 +29,7 @@ public class OperationLogController {
 
     @GetMapping("getLog")
     @Operation(summary = "获取log日志")
-    public PageResult getLogPage(OperationLogQuery operationLogQuery) {
-        return operationLogService.getPage(operationLogQuery);
+    public PageResult getLogPage(OperationLogQuery logQuery) {
+        return operationLogService.get(logQuery);
     }
 }
