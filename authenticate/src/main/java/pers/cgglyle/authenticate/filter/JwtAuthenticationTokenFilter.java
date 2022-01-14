@@ -65,9 +65,8 @@ public class JwtAuthenticationTokenFilter extends BasicAuthenticationFilter {
             UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userLoginDto, null, userLoginDto.getAuthorities());
             // 将token放入上下文
             SecurityContextHolder.getContext().setAuthentication(token);
-        } catch (NoSuchAlgorithmException | InvalidKeySpecException | ApiException e) {
+        } catch (NoSuchAlgorithmException | InvalidKeySpecException | ExpiredJwtException | ApiException e) {
             e.printStackTrace();
-        } catch (ExpiredJwtException e){
             request.setAttribute("filter", e);
             request.getRequestDispatcher("/exception/filter").forward(request, response);
         }
