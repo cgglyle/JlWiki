@@ -3,8 +3,6 @@ package pers.cgglyle.common.base.model;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
-import java.io.Serializable;
-
 /**
  * 前端基础请求实体
  *
@@ -13,7 +11,7 @@ import java.io.Serializable;
  */
 @Data
 @Schema(description = "基础请求模型")
-public abstract class BaseQuery implements Serializable {
+public abstract class BaseQuery {
     @Schema(description = "当前页")
     private Long pageNum = 1L;
     @Schema(description = "当前页条目数")

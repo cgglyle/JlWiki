@@ -1,7 +1,9 @@
 package pers.cgglyle.authenticate.model.entity;
 
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -10,9 +12,7 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import org.springframework.format.annotation.DateTimeFormat;
-import pers.cgglyle.common.base.model.BaseEntity;
 
 import java.time.LocalDateTime;
 
@@ -25,9 +25,16 @@ import java.time.LocalDateTime;
 
 @Schema(description = "LoginLog实体类")
 @Data
-@EqualsAndHashCode(callSuper = true)
 @TableName("login_log")
-public class LoginLogEntity extends BaseEntity {
+public class LoginLogEntity {
+
+
+    /**
+     * 主键
+     */
+    @Schema(description = "主键")
+    @TableId(type = IdType.AUTO)
+    private Integer id;
 
     /**
      * 登陆用户名
