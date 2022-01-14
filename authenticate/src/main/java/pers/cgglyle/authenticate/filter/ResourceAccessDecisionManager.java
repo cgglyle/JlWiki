@@ -35,10 +35,6 @@ public class ResourceAccessDecisionManager implements AccessDecisionManager {
      */
     @Override
     public void decide(Authentication authentication, Object object, Collection<ConfigAttribute> configAttributes) throws AccessDeniedException, InsufficientAuthenticationException {
-        // 是否允许匿名用户访问
-        if (jWikiSecurityConfig.isAnonymous()) {
-            return;
-        }
         // 获取用户权限
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         // 判断用户是否有url需要的权限
@@ -46,7 +42,10 @@ public class ResourceAccessDecisionManager implements AccessDecisionManager {
             String attribute = configAttribute.getAttribute();
             // 如果url的要求权限是匿名用户，或者为空，就直接放行
             if (StringUtils.equals(attribute, AccountEnum.ANONYMOUS.getMessage()) || !StringUtils.isNotBlank(attribute)) {
-                return;
+                // 是否允许匿名用户访问
+                if (jWikiSecurityConfig.isAnonymous()) {
+                    return;
+                }
             }
             for (GrantedAuthority grantedAuthority : authorities) {
                 if (StringUtils.equals(grantedAuthority.getAuthority(), attribute)) {
