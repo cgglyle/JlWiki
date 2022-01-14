@@ -1,4 +1,8 @@
 # JWiki
+[![](https://img.shields.io/github/license/cgglyle/JWiki.svg)](https://img.shields.io/github/license/cgglyle/JWiki/main/LICENSE)
+![](https://img.shields.io/github/forks/cgglyle/JWiki.svg)
+![](https://img.shields.io/github/stars/cgglyle/JWiki.svg)
+![](https://img.shields.io/github/watchers/cgglyle/JWiki.svg)
 
 本项目是蓄谋已久的想法了，很早之前就想自己独立开发一个wiki软件了。  
 长久以来我都是使用Mediawiki搭建的服务记录笔记的。  
@@ -62,3 +66,17 @@ spring:
     url: jdbc:mysql://localhost:3306/wiki?allowMultiQueries=true&useUnicode=true&nullCatalogMeansCurrent=true&characterEncoding=UTF-8  
 ```
 也就是一个名为`wiki`的mysql数据库。
+
+## 维护者
+[@cgglyle](https://github.com/cgglyle)
+
+## 贡献
+随意提交[Issues](https://github.com/cgglyle/JWiki/issues/new)或[Pull requests](https://github.com/cgglyle/JWiki/pulls)
+
+## 贡献者
+
+## License
+[GPL v3](https://www.gnu.org/licenses/gpl-3.0.html) © cgglyle
+
+## 项目增长幅度
+![](https://starchart.cc/cgglyle/JWiki.svg)
