@@ -7,13 +7,11 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
-
-
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.format.annotation.DateTimeFormat;
-import pers.cgglyle.common.base.model.BaseEntity;
+import pers.cgglyle.common.base.model.BaseIncrementalEntity;
 
 import java.time.LocalDateTime;
 
@@ -27,7 +25,7 @@ import java.time.LocalDateTime;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @TableName("user")
-public class UserEntity extends BaseEntity {
+public class UserEntity extends BaseIncrementalEntity {
     @Schema(description = "用户名字")
     @TableField("user_name")
     private String userName;

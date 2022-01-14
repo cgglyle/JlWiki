@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import pers.cgglyle.common.base.model.BaseEntity;
+import pers.cgglyle.common.base.model.BaseIncrementalEntity;
 
 /**
  * (Permission)实体类
@@ -19,7 +19,7 @@ import pers.cgglyle.common.base.model.BaseEntity;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @TableName("permission")
-public class PermissionEntity extends BaseEntity {
+public class PermissionEntity extends BaseIncrementalEntity {
 
     /**
      * 资源名称
