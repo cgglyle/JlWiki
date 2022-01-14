@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import pers.cgglyle.common.base.model.BaseIncrementalEntity;
+import pers.cgglyle.common.base.model.BaseEntity;
 
 /**
  * 角色权限关联表(RolePermission)实体类
@@ -19,7 +19,7 @@ import pers.cgglyle.common.base.model.BaseIncrementalEntity;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @TableName("role_permission_relation")
-public class RolePermissionRelationEntity extends BaseIncrementalEntity {
+public class RolePermissionRelationEntity extends BaseEntity {
 
     /**
      * 角色id

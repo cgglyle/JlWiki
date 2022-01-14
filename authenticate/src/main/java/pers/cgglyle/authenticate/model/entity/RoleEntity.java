@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import pers.cgglyle.common.base.model.BaseIncrementalEntity;
+import pers.cgglyle.common.base.model.BaseEntity;
 
 /**
  * 角色实体
@@ -18,7 +18,7 @@ import pers.cgglyle.common.base.model.BaseIncrementalEntity;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @TableName("role")
-public class RoleEntity extends BaseIncrementalEntity {
+public class RoleEntity extends BaseEntity {
     @Schema(description = "角色名称")
     @TableField("role_name")
     private String roleName;

@@ -2,10 +2,12 @@ package pers.cgglyle.authenticate.model.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
+
+
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import pers.cgglyle.common.base.model.BaseIncrementalEntity;
+import pers.cgglyle.common.base.model.BaseEntity;
 
 /**
  * 用户组用户实体
@@ -17,7 +19,7 @@ import pers.cgglyle.common.base.model.BaseIncrementalEntity;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @TableName("user_group_relation")
-public class UserGroupRelationEntity extends BaseIncrementalEntity {
+public class UserGroupRelationEntity extends BaseEntity {
     @Schema(description = "用户id")
     @TableField("user_id")
     private Integer userId;

@@ -10,7 +10,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
@@ -21,7 +20,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @Schema(description = "基础显示模型")
-public abstract class BaseVo implements Serializable {
+public abstract class BaseVo {
     @Schema(description = "主键id")
     private Integer id;
 
