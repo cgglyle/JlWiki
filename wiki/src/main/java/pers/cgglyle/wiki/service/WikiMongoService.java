@@ -1,5 +1,6 @@
 package pers.cgglyle.wiki.service;
 
+import org.springframework.data.mongodb.core.query.Query;
 import pers.cgglyle.wiki.model.entity.WikiEntity;
 
 import java.io.Serializable;
@@ -38,9 +39,19 @@ public interface WikiMongoService {
      * 存储一个文档
      *
      * @param entity 文档添加类
-     * @return 成功失败
+     * @param collection 集合名
+     * @return wikiID
      */
-    boolean save(WikiEntity entity, String collection);
+    String save(WikiEntity entity, String collection);
+
+    /**
+     * 根据请求获取文档
+     * @param query 请求
+     * @param clazz 实体类型
+     * @param collection 集合名
+     * @return 文档列表
+     */
+    List<?> find(Query query, Class<?> clazz, String collection);
 
     /**
      * 查询所有文档
@@ -72,4 +83,14 @@ public interface WikiMongoService {
      * @return 文档
      */
     boolean deleteById(Serializable id);
+
+    /**
+     * 查询符合条件的文档数目
+     *
+     * @param query 查询条件
+     * @param clazz 实体类型
+     * @param collection 集合名
+     * @return 数目
+     */
+    Long count(Query query, Class<?> clazz, String collection);
 }

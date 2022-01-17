@@ -63,9 +63,22 @@ public class WikiMongoServiceImpl implements WikiMongoService {
      * @return 成功失败
      */
     @Override
-    public boolean save(WikiEntity entity, String collection) {
-        mongoTemplate.save(entity, collection);
-        return true;
+    public String save(WikiEntity entity, String collection) {
+        WikiEntity save = mongoTemplate.save(entity, collection);
+        return save.getId();
+    }
+
+    /**
+     * 根据请求获取文档
+     *
+     * @param query      请求
+     * @param clazz      实体类型
+     * @param collection 集合名
+     * @return 文档列表
+     */
+    @Override
+    public List<?> find(Query query, Class<?> clazz, String collection) {
+        return mongoTemplate.find(query, clazz, collection);
     }
 
     /**
@@ -113,5 +126,18 @@ public class WikiMongoServiceImpl implements WikiMongoService {
         DeleteResult remove = mongoTemplate.remove(query,"testWikiCollection");
         log.info("移除" + remove.getDeletedCount() + "条");
         return true;
+    }
+
+    /**
+     * 查询符合条件的文档数目
+     *
+     * @param query      查询条件
+     * @param clazz      实体类型
+     * @param collection 集合名
+     * @return 数目
+     */
+    @Override
+    public Long count(Query query, Class<?> clazz, String collection) {
+        return mongoTemplate.count(query, clazz, collection);
     }
 }
