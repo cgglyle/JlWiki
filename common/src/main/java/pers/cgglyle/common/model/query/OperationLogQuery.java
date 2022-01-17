@@ -3,8 +3,6 @@ package pers.cgglyle.common.model.query;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import pers.cgglyle.common.base.model.BaseQuery;
 
 import java.time.LocalDateTime;
 
@@ -15,9 +13,10 @@ import java.time.LocalDateTime;
  * @date 2021-12-15 13:50
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
-public class OperationLogQuery extends BaseQuery {
+public class OperationLogQuery {
 
+    private int pageNum = 1;
+    private int pageSize = 20;
     /**
      * 用户名称
      */

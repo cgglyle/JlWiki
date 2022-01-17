@@ -1,6 +1,5 @@
 package pers.cgglyle.common.config;
 
-import io.swagger.v3.oas.models.ExternalDocumentation;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
@@ -37,6 +36,15 @@ public class SpringDocConfig {
                 .group("日志系统")
                 .pathsToMatch("/**")
                 .packagesToScan("pers.cgglyle.common.controller")
+                .build();
+    }
+
+    @Bean
+    public GroupedOpenApi wikiApi(){
+        return GroupedOpenApi.builder()
+                .group("wiki系统")
+                .pathsToMatch("/**")
+                .packagesToScan("pers.cgglyle.wiki.controller")
                 .build();
     }
 }

@@ -7,6 +7,7 @@
         <module>application</module>
         <module>common</module>
         <module>authenticate</module>
+        <module>wiki</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

@@ -1,6 +1,5 @@
 package pers.cgglyle.common.service;
 
-import com.baomidou.mybatisplus.extension.service.IService;
 import pers.cgglyle.common.model.entity.OperationLogEntity;
 import pers.cgglyle.common.model.query.OperationLogQuery;
 import pers.cgglyle.common.response.PageResult;
@@ -11,13 +10,14 @@ import pers.cgglyle.common.response.PageResult;
  * @author cgglyle
  * @since 2021-12-14 10:59:28
  */
-public interface OperationLogService extends IService<OperationLogEntity> {
+public interface OperationLogService{
 
     /**
-     * 获取分页信息
+     * 获取日志
      *
-     * @param operationLogQuery 分页请求
-     * @return 分页模型
+     * @return 日志列表
      */
-    PageResult getPage(OperationLogQuery operationLogQuery);
+    PageResult get(OperationLogQuery query);
+
+    void add(OperationLogEntity operationLogEntity);
 }

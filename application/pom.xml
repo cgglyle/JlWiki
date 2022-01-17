@@ -34,6 +34,11 @@
             <artifactId>authenticate</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>pers.cgglyle</groupId>
+            <artifactId>wiki</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
     <!--分别设置开发，测试，生产环境-->
     <profiles>
