@@ -14,15 +14,16 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SpringDocConfig {
     @Bean
-    public OpenAPI springOpenApi(){
+    public OpenAPI springOpenApi() {
         return new OpenAPI()
                 .info(new Info().title("JWiki API")
                         .description("JWiki项目的API文档")
                         .version("v1.0.0")
                         .license(new License().name("GPL-3.0").url("https://www.gnu.org")));
     }
+
     @Bean
-    public GroupedOpenApi publicApi(){
+    public GroupedOpenApi publicApi() {
         return GroupedOpenApi.builder()
                 .group("认证授权系统")
                 .pathsToMatch("/**")
@@ -31,7 +32,7 @@ public class SpringDocConfig {
     }
 
     @Bean
-    public GroupedOpenApi logApi(){
+    public GroupedOpenApi logApi() {
         return GroupedOpenApi.builder()
                 .group("日志系统")
                 .pathsToMatch("/**")
@@ -40,7 +41,7 @@ public class SpringDocConfig {
     }
 
     @Bean
-    public GroupedOpenApi wikiApi(){
+    public GroupedOpenApi wikiApi() {
         return GroupedOpenApi.builder()
                 .group("wiki系统")
                 .pathsToMatch("/**")

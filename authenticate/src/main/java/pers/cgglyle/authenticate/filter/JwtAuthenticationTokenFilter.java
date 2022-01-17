@@ -70,12 +70,12 @@ public class JwtAuthenticationTokenFilter extends BasicAuthenticationFilter {
             e.printStackTrace();
             request.setAttribute("filter", e);
             request.getRequestDispatcher("/exception/filter").forward(request, response);
-        } catch (ExpiredJwtException e){
+        } catch (ExpiredJwtException e) {
             e.printStackTrace();
             ApiException ae = new ApiException("Token 已过期");
             request.setAttribute("filter", ae);
             request.getRequestDispatcher("/exception/filter").forward(request, response);
-        } catch (SignatureException e){
+        } catch (SignatureException e) {
             e.printStackTrace();
             ApiException ae = new ApiException("Token RSA 验证失败, Token 不被信任");
             request.setAttribute("filter", ae);

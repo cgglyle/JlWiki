@@ -38,7 +38,7 @@ public interface WikiMongoService {
     /**
      * 存储一个文档
      *
-     * @param entity 文档添加类
+     * @param entity     文档添加类
      * @param collection 集合名
      * @return wikiID
      */
@@ -46,8 +46,9 @@ public interface WikiMongoService {
 
     /**
      * 根据请求获取文档
-     * @param query 请求
-     * @param clazz 实体类型
+     *
+     * @param query      请求
+     * @param clazz      实体类型
      * @param collection 集合名
      * @return 文档列表
      */
@@ -87,8 +88,8 @@ public interface WikiMongoService {
     /**
      * 查询符合条件的文档数目
      *
-     * @param query 查询条件
-     * @param clazz 实体类型
+     * @param query      查询条件
+     * @param clazz      实体类型
      * @param collection 集合名
      * @return 数目
      */

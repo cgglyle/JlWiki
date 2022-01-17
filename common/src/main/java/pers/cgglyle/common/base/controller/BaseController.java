@@ -88,7 +88,7 @@ public abstract class BaseController<T extends IBaseRelationService, BQ extends 
     @OperationLog(operationMethod = "POST")
     @Operation(summary = "添加数据")
     @PostMapping("add")
-    public boolean add(@RequestBody  BA dto) {
+    public boolean add(@RequestBody BA dto) {
         log.info("添加数据");
         return baseRelationService.add(dto);
     }

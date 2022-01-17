@@ -40,7 +40,7 @@ public class WikiServiceImpl extends BaseRelationServiceImpl implements WikiServ
 
     @Override
     public PageResult get(BaseQuery query) throws IllegalAccessException {
-        if (query instanceof WikiMongoQuery wikiMongoQuery){
+        if (query instanceof WikiMongoQuery wikiMongoQuery) {
             // 分页条件
             PageRequest pageRequest = PageRequest.of(query.getPageNum().intValue() - 1, query.getPageSize().intValue());
             // 请求条件
@@ -57,10 +57,10 @@ public class WikiServiceImpl extends BaseRelationServiceImpl implements WikiServ
                 WikiVo vo = new WikiVo();
                 BeanUtils.copyProperties(o, vo);
                 WikiUserRelationEntity entity = wikiUserRelationService.getById(vo.getWikiId());
-                BeanUtils.copyProperties(entity,vo);
+                BeanUtils.copyProperties(entity, vo);
                 return vo;
             }).collect(Collectors.toList());
-            return new PageResult(query.getPageNum(),query.getPageSize(),page.getTotalElements(),page.getTotalPages(), collect);
+            return new PageResult(query.getPageNum(), query.getPageSize(), page.getTotalElements(), page.getTotalPages(), collect);
         }
         return super.get(query);
     }
@@ -68,12 +68,12 @@ public class WikiServiceImpl extends BaseRelationServiceImpl implements WikiServ
     @Transactional
     @Override
     public boolean add(BaseDto dto) {
-        if (dto instanceof WikiMongoAddDto addDto){
+        if (dto instanceof WikiMongoAddDto addDto) {
             WikiEntity wiki = new WikiEntity();
             BeanUtils.copyProperties(addDto, wiki);
             String wikiId = wikiMongoService.save(wiki, addDto.getCollection());
             WikiUserRelationEntity wikiUserRelationEntity = new WikiUserRelationEntity();
-            BeanUtils.copyProperties(addDto,wikiUserRelationEntity);
+            BeanUtils.copyProperties(addDto, wikiUserRelationEntity);
             wikiUserRelationEntity.setWikiId(wikiId);
             wikiUserRelationEntity.setWikiVersion(1);
             return wikiUserRelationService.add(wikiUserRelationEntity);
@@ -88,7 +88,7 @@ public class WikiServiceImpl extends BaseRelationServiceImpl implements WikiServ
 
     @Override
     public boolean delete(BaseDto dto) {
-        if (dto instanceof WikiMongoDeleteDto deleteDto){
+        if (dto instanceof WikiMongoDeleteDto deleteDto) {
             return wikiMongoService.deleteById(deleteDto.getId());
         }
         return super.delete(dto);

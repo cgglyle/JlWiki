@@ -19,7 +19,7 @@ public class StartupApplication {
     public static void main(String[] args) {
         SpringApplication.run(StartupApplication.class, args);
         log.info("""
-                
+                                
                       __...--~~~~~-._   _.-~~~~~--...__          +---------------------------------+\s
                     //               `V'               \\\\\s       | JWiki 启动成功！                  |\s
                    //                 |                 \\\\\s      +---------------------------------+\s

@@ -5,12 +5,12 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pers.cgglyle.common.base.controller.BaseController;
-import pers.cgglyle.common.base.model.BaseDeleteDto;
 import pers.cgglyle.authenticate.model.dto.GroupAddDto;
 import pers.cgglyle.authenticate.model.dto.GroupUpdateDto;
 import pers.cgglyle.authenticate.model.query.GroupQuery;
 import pers.cgglyle.authenticate.service.AccountService;
+import pers.cgglyle.common.base.controller.BaseController;
+import pers.cgglyle.common.base.model.BaseDeleteDto;
 
 /**
  * 用户组控制层
@@ -22,6 +22,6 @@ import pers.cgglyle.authenticate.service.AccountService;
 @CrossOrigin
 @RestController
 @RequestMapping("/group")
-public class GroupController extends BaseController<AccountService,GroupQuery,GroupAddDto,GroupUpdateDto, BaseDeleteDto> {
+public class GroupController extends BaseController<AccountService, GroupQuery, GroupAddDto, GroupUpdateDto, BaseDeleteDto> {
 
 }

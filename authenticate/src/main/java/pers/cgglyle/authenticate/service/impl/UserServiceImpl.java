@@ -4,11 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
-import pers.cgglyle.common.base.service.impl.BaseServiceImpl;
-import pers.cgglyle.common.utils.RedisUtils;
 import pers.cgglyle.authenticate.mapper.UserMapper;
 import pers.cgglyle.authenticate.model.entity.UserEntity;
 import pers.cgglyle.authenticate.service.UserService;
+import pers.cgglyle.common.base.service.impl.BaseServiceImpl;
+import pers.cgglyle.common.utils.RedisUtils;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;

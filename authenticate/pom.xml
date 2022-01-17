@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>JWiki</artifactId>
@@ -22,27 +22,27 @@
             <artifactId>common</artifactId>
             <version>1.0.0</version>
         </dependency>
-<!--        解决 Handler dispatch failed; nested exception is java.lang.NoClassDefFoundError: javax/xml/bind/DatatypeConverter 问题-->
+        <!--        解决 Handler dispatch failed; nested exception is java.lang.NoClassDefFoundError: javax/xml/bind/DatatypeConverter 问题-->
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
             <version>2.3.1</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.sun.xml.bind</groupId>-->
-<!--            <artifactId>jaxb-impl</artifactId>-->
-<!--            <version>3.0.1</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>com.sun.xml.bind</groupId>-->
-<!--            <artifactId>jaxb-core</artifactId>-->
-<!--            <version>3.0.1</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>javax.activation</groupId>-->
-<!--            <artifactId>activation</artifactId>-->
-<!--            <version>1.1.1</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.sun.xml.bind</groupId>-->
+        <!--            <artifactId>jaxb-impl</artifactId>-->
+        <!--            <version>3.0.1</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.sun.xml.bind</groupId>-->
+        <!--            <artifactId>jaxb-core</artifactId>-->
+        <!--            <version>3.0.1</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>javax.activation</groupId>-->
+        <!--            <artifactId>activation</artifactId>-->
+        <!--            <version>1.1.1</version>-->
+        <!--        </dependency>-->
     </dependencies>
 
 </project>

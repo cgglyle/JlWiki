@@ -37,11 +37,11 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseEntity> exte
             Object temp = declaredField.get(query);
             String underline = pers.cgglyle.common.utils.StringUtils.underline(declaredField.getName());
             QueryModel annotation = declaredField.getAnnotation(QueryModel.class);
-            if (annotation == null){
+            if (annotation == null) {
                 wrapper.like(temp instanceof String ? StringUtils.isNotBlank((String) temp) : temp != null, underline, temp);
                 continue;
             }
-            if (annotation.value() == QueryModelEnum.EQ){
+            if (annotation.value() == QueryModelEnum.EQ) {
                 wrapper.eq(temp instanceof String ? StringUtils.isNotBlank((String) temp) : temp != null, underline, temp);
             } else {
                 wrapper.like(temp instanceof String ? StringUtils.isNotBlank((String) temp) : temp != null, underline, temp);

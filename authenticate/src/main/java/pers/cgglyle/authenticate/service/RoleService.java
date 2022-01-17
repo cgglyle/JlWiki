@@ -1,7 +1,7 @@
 package pers.cgglyle.authenticate.service;
 
-import pers.cgglyle.common.base.service.IBaseService;
 import pers.cgglyle.authenticate.model.entity.RoleEntity;
+import pers.cgglyle.common.base.service.IBaseService;
 
 /**
  * 角色服务层接口

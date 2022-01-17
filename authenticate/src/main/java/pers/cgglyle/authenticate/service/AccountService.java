@@ -1,8 +1,8 @@
 package pers.cgglyle.authenticate.service;
 
-import pers.cgglyle.common.base.service.IBaseRelationService;
 import pers.cgglyle.authenticate.model.entity.UserEntity;
 import pers.cgglyle.authenticate.model.vo.UserRoleVo;
+import pers.cgglyle.common.base.service.IBaseRelationService;
 
 import java.io.Serializable;
 import java.util.List;

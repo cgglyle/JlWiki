@@ -1,7 +1,7 @@
 package pers.cgglyle.authenticate.service;
 
-import pers.cgglyle.common.base.service.IBaseService;
 import pers.cgglyle.authenticate.model.entity.UserEntity;
+import pers.cgglyle.common.base.service.IBaseService;
 
 import java.io.Serializable;
 
@@ -24,7 +24,7 @@ public interface UserService extends IBaseService<UserEntity> {
     /**
      * 更新用户的密码
      *
-     * @param id 用户id
+     * @param id          用户id
      * @param oldPassword 老密码
      * @param newPassword 新密码
      * @return 成功失败

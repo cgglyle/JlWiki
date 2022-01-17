@@ -12,6 +12,6 @@ import pers.cgglyle.common.base.model.BaseDeleteDto;
 
 @Schema(description = "WikiUserRelation删除请求模型")
 public class WikiUserRelationDeleteDto extends BaseDeleteDto {
-       
+
 }
 

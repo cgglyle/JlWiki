@@ -2,13 +2,6 @@
 spring:
   main:
     allow-bean-definition-overriding: true
-#  mvc:
-#    pathmatch:
-#      # 解决 Failed to start bean 'documentationPluginsBootstrapper';
-#      # nested exception is java.lang.NullPointerException:
-#      # Cannot invoke "org.springframework.web.servlet.mvc.condition.PatternsRequestCondition.getPatterns()"
-#      # because "this.condition" is null
-#      matching-strategy: ant_path_matcher
   # 初始化数据库
   sql:
     init:

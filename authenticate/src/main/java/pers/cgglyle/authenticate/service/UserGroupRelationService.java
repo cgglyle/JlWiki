@@ -1,9 +1,9 @@
 package pers.cgglyle.authenticate.service;
 
-import pers.cgglyle.common.base.service.IBaseService;
 import pers.cgglyle.authenticate.model.dto.UserGroupRelationAddDto;
 import pers.cgglyle.authenticate.model.entity.UserGroupRelationEntity;
 import pers.cgglyle.authenticate.model.vo.UserGroupVo;
+import pers.cgglyle.common.base.service.IBaseService;
 
 import java.util.List;
 

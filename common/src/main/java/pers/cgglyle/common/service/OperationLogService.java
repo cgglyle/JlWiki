@@ -10,7 +10,7 @@ import pers.cgglyle.common.response.PageResult;
  * @author cgglyle
  * @since 2021-12-14 10:59:28
  */
-public interface OperationLogService{
+public interface OperationLogService {
 
     /**
      * 获取日志

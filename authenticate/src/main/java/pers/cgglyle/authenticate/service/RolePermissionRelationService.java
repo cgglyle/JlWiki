@@ -1,7 +1,7 @@
 package pers.cgglyle.authenticate.service;
 
-import pers.cgglyle.common.base.service.IBaseService;
 import pers.cgglyle.authenticate.model.entity.RolePermissionRelationEntity;
+import pers.cgglyle.common.base.service.IBaseService;
 
 import java.io.Serializable;
 import java.util.List;
@@ -30,6 +30,7 @@ public interface RolePermissionRelationService extends IBaseService<RolePermissi
 
     /**
      * 根据id删除角色权限关系
+     *
      * @param id 权限id
      * @return 成功失败
      */

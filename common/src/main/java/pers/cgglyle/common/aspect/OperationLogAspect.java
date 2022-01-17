@@ -67,7 +67,7 @@ public class OperationLogAspect {
         // 从切面织入点处通过反射获取织入点的方法
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         OperationLog annotation = signature.getMethod().getAnnotation(OperationLog.class);
-        Assert.notNull(annotation,"注解获取异常");
+        Assert.notNull(annotation, "注解获取异常");
         // 获取 OperationLog 注解中的 operationModule 值
         operationLogEntity.setRequestMethod(annotation.operationMethod());
         // 获取当前方法的访问地址
@@ -88,7 +88,6 @@ public class OperationLogAspect {
         // 获取请求参数
         Map<String, Object> params = JoinPointUtils.getMethod(joinPoint);
         // 请求参数 json 化
-//        operationLogEntity.setRequestParameter(JSON.toJSONString(params));
         operationLogEntity.setRequestParameter(params);
         // 请求结果
         Object result;
@@ -100,7 +99,6 @@ public class OperationLogAspect {
         // 记录结束时间
         operationLogEntity.setQueryEndTime((Duration.between(beginTime, Instant.now())).toMillis());
         //请求结果 json 化
-//        operationLogEntity.setReturnResult(JSON.toJSONString(result));
         operationLogEntity.setReturnResult(result);
         operationLogEntity.setStatus(true);
         operationLogEntity.setCreateTime(nowTime);
@@ -137,7 +135,6 @@ public class OperationLogAspect {
         // 获取请求参数
         Map<String, Object> params = JoinPointUtils.getMethod(joinPoint);
         // 请求参数 json 化
-//        operationLogEntity.setRequestParameter(JSON.toJSONString(params));
         operationLogEntity.setRequestParameter(params);
         operationLogEntity.setReturnResult(e.getMessage());
         operationLogEntity.setStatus(false);

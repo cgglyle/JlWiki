@@ -9,8 +9,8 @@ import org.springframework.security.authentication.InsufficientAuthenticationExc
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.FilterInvocation;
-import pers.cgglyle.common.config.JWikiSecurityConfig;
 import pers.cgglyle.authenticate.enums.AccountEnum;
+import pers.cgglyle.common.config.JWikiSecurityConfig;
 
 import java.util.Collection;
 

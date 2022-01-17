@@ -26,6 +26,8 @@ import java.util.stream.Collectors;
 
 /**
  * 账号服务实现
+ *
+ * <p> 这是一个标准的外观模式，同时符合最少知识原则
  * <p> 提供User信息、Role信息、Permission信息
  *
  * @author cgglyle
@@ -40,8 +42,10 @@ public class AccountServiceImpl extends BaseRelationServiceImpl implements Accou
     private final UserRoleRelationService userRoleRelationService;
     private final RolePermissionRelationService rolePermissionRelationService;
 
-    public AccountServiceImpl(UserService userService, RoleService roleService,
-                              PermissionService permissionService, UserRoleRelationService userRoleRelationService,
+    public AccountServiceImpl(UserService userService,
+                              RoleService roleService,
+                              PermissionService permissionService,
+                              UserRoleRelationService userRoleRelationService,
                               RolePermissionRelationService rolePermissionRelationService,
                               GroupService groupService) {
         this.userService = userService;
@@ -152,9 +156,9 @@ public class AccountServiceImpl extends BaseRelationServiceImpl implements Accou
             }
             return userRoleRelationService.add(userRoleRelationEntity);
         }
-        if (dto instanceof GroupAddDto addDto){
+        if (dto instanceof GroupAddDto addDto) {
             GroupEntity groupEntity = new GroupEntity();
-            BeanUtils.copyProperties(addDto,groupEntity);
+            BeanUtils.copyProperties(addDto, groupEntity);
             return groupService.add(groupEntity);
         }
         throw new ApiException("未支持的请求");

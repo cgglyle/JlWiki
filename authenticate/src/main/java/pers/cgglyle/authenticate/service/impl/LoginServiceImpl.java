@@ -13,14 +13,14 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.util.Base64Utils;
-import pers.cgglyle.common.response.ApiException;
-import pers.cgglyle.common.utils.RedisUtils;
 import pers.cgglyle.authenticate.model.dto.RsaKeyDto;
 import pers.cgglyle.authenticate.model.dto.UserLoginDto;
 import pers.cgglyle.authenticate.model.query.LoginQuest;
 import pers.cgglyle.authenticate.model.vo.UserInfo;
 import pers.cgglyle.authenticate.service.LoginService;
 import pers.cgglyle.authenticate.util.RoleUtils;
+import pers.cgglyle.common.response.ApiException;
+import pers.cgglyle.common.utils.RedisUtils;
 
 import java.security.*;
 import java.security.interfaces.RSAPrivateKey;
@@ -185,11 +185,6 @@ public class LoginServiceImpl implements LoginService {
             TODO 下面这部分需要重新改进，for循环有点丑陋
             此部分功能是将LinkedHashMap从userRole中提取出来，并且转化为Collection<GrantedAuthority>集合
              */
-//        for (int i = 0; i < userRole.size(); i++) {
-//            LinkedHashMap hashMap = (LinkedHashMap) ((ArrayList) userRole).get(i);
-//            GrantedAuthority grantedAuthority = new SimpleGrantedAuthority((String) hashMap.get("authority"));
-//            grantedAuthorities.add(grantedAuthority);
-//        }
         role.forEach(grantedAuthority -> {
             SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(grantedAuthority);
             grantedAuthorities.add(simpleGrantedAuthority);

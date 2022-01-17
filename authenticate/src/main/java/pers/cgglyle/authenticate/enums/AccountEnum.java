@@ -17,7 +17,8 @@ public enum AccountEnum {
 
     ;
     private final String message;
-    AccountEnum(String message){
+
+    AccountEnum(String message) {
         this.message = message;
     }
 

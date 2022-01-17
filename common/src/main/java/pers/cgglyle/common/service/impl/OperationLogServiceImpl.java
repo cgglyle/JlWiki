@@ -15,7 +15,6 @@ import pers.cgglyle.common.response.PageResult;
 import pers.cgglyle.common.service.OperationLogService;
 
 import java.util.List;
-import java.util.function.LongSupplier;
 import java.util.stream.Collectors;
 
 /**
@@ -42,19 +41,14 @@ public class OperationLogServiceImpl implements OperationLogService {
         tempQuery.with(pageRequest);
         // 查出日志体
         List<OperationLogEntity> operationLogEntities = mongoTemplate.find(tempQuery, OperationLogEntity.class, LOG_COLLECTION);
-        Page<?> page = PageableExecutionUtils.getPage(operationLogEntities, pageRequest, new LongSupplier() {
-            @Override
-            public long getAsLong() {
-                return count;
-            }
-        });
+        Page<?> page = PageableExecutionUtils.getPage(operationLogEntities, pageRequest, () -> count);
         // 封装显示
         List<OperationLogVo> collect = page.getContent().stream().map(o -> {
             OperationLogVo operationLogVo = new OperationLogVo();
             BeanUtils.copyProperties(o, operationLogVo);
             return operationLogVo;
         }).collect(Collectors.toList());
-        return new PageResult(query.getPageNum(),query.getPageSize(),page.getTotalElements(),page.getTotalPages(), collect);
+        return new PageResult(query.getPageNum(), query.getPageSize(), page.getTotalElements(), page.getTotalPages(), collect);
     }
 
     @Override

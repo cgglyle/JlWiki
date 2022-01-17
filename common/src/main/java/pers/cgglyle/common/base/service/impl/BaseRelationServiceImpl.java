@@ -6,7 +6,6 @@ import pers.cgglyle.common.base.model.BaseDto;
 import pers.cgglyle.common.base.model.BaseEntity;
 import pers.cgglyle.common.base.model.BaseQuery;
 import pers.cgglyle.common.base.service.IBaseRelationService;
-import pers.cgglyle.common.response.ApiException;
 import pers.cgglyle.common.response.PageResult;
 
 import java.lang.reflect.Constructor;
@@ -34,7 +33,7 @@ public class BaseRelationServiceImpl implements IBaseRelationService {
      * @param clazz     要转换成的类型
      * @return PageResult对象
      */
-    protected PageResult wrapper(Page<? extends BaseEntity> data, BaseQuery baseQuery, Class<?> clazz) {
+    protected final PageResult wrapper(Page<? extends BaseEntity> data, BaseQuery baseQuery, Class<?> clazz) {
         List<?> collect = data.getRecords().stream().map(o -> {
             try {
                 Constructor<?> constructor = clazz.getConstructor();
@@ -61,7 +60,7 @@ public class BaseRelationServiceImpl implements IBaseRelationService {
      * @param consumer  函数接口
      * @return PageResult对象
      */
-    protected PageResult wrapper(Page<? extends BaseEntity> data, BaseQuery baseQuery, Class<?> clazz, Consumer<Object> consumer) {
+    protected final PageResult wrapper(Page<? extends BaseEntity> data, BaseQuery baseQuery, Class<?> clazz, Consumer<Object> consumer) {
         List<?> collect = data.getRecords().stream().map(o -> {
             try {
                 Constructor<?> constructor = clazz.getConstructor();
@@ -79,26 +78,26 @@ public class BaseRelationServiceImpl implements IBaseRelationService {
 
     @Override
     public PageResult get(BaseQuery query) throws IllegalAccessException {
-        throw new ApiException("未实现");
+        throw new UnsupportedOperationException("未实现的操作");
     }
 
     @Override
     public boolean add(BaseDto dto) {
-        throw new ApiException("未实现");
+        throw new UnsupportedOperationException("未实现的操作");
     }
 
     @Override
     public boolean update(BaseDto dto) {
-        throw new ApiException("未实现");
+        throw new UnsupportedOperationException("未实现的操作");
     }
 
     @Override
     public boolean delete(BaseDto dto) {
-        throw new ApiException("未实现");
+        throw new UnsupportedOperationException("未实现的操作");
     }
 
     @Override
     public boolean batchDelete(BaseDto dto) {
-        throw new ApiException("未实现");
+        throw new UnsupportedOperationException("未实现的操作");
     }
 }

@@ -1,4 +1,5 @@
 # JWiki
+
 [![](https://img.shields.io/github/license/cgglyle/JWiki.svg)](https://img.shields.io/github/license/cgglyle/JWiki/main/LICENSE)
 ![](https://img.shields.io/github/forks/cgglyle/JWiki.svg)
 ![](https://img.shields.io/github/stars/cgglyle/JWiki.svg)
@@ -47,36 +48,45 @@
 * 裸机启动
 
 ### Docker方式启动
+
 可以直接使用`Docker-file`文件直接创建，修改一点配置文件即可，几乎不用配置。
+
 ```dockerfile
 
 ```
 
 ## 配置文件
+
 首先需要配置`application.yml`文件，该文件有几个必须配置的项：
+
 * `datasource.url` 数据库地址
 * `datasource.username` 数据库用户名
 * `datasource.password` 数据库密码
 
-并且，需要预先在数据库中创建一个`url`描述过的空的数据库。
-例如：
+并且，需要预先在数据库中创建一个`url`描述过的空的数据库。 例如：
+
 ```yaml
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/wiki?allowMultiQueries=true&useUnicode=true&nullCatalogMeansCurrent=true&characterEncoding=UTF-8  
 ```
+
 也就是一个名为`wiki`的mysql数据库。
 
 ## 维护者
+
 [@cgglyle](https://github.com/cgglyle)
 
 ## 贡献
+
 随意提交[Issues](https://github.com/cgglyle/JWiki/issues/new)或[Pull requests](https://github.com/cgglyle/JWiki/pulls)
 
 ## 贡献者
 
 ## License
+
 [GPL v3](https://www.gnu.org/licenses/gpl-3.0.html) © cgglyle
 
 ## 项目增长幅度
+
 ![](https://starchart.cc/cgglyle/JWiki.svg)

@@ -1,10 +1,10 @@
 package pers.cgglyle.authenticate.service.impl;
 
 import org.springframework.stereotype.Service;
-import pers.cgglyle.common.base.service.impl.BaseServiceImpl;
 import pers.cgglyle.authenticate.mapper.GroupMapper;
 import pers.cgglyle.authenticate.model.entity.GroupEntity;
 import pers.cgglyle.authenticate.service.GroupService;
+import pers.cgglyle.common.base.service.impl.BaseServiceImpl;
 
 /**
  * 用户组服务成实现

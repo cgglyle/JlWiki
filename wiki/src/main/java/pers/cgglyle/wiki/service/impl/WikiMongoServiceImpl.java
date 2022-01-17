@@ -123,7 +123,7 @@ public class WikiMongoServiceImpl implements WikiMongoService {
     public boolean deleteById(Serializable id) {
         Criteria criteria = Criteria.where("_id").is(id);
         Query query = new Query(criteria);
-        DeleteResult remove = mongoTemplate.remove(query,"testWikiCollection");
+        DeleteResult remove = mongoTemplate.remove(query, "testWikiCollection");
         log.info("移除" + remove.getDeletedCount() + "条");
         return true;
     }
