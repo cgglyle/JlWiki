@@ -1,5 +1,5 @@
-<div align='center' 
-     <h3> 此处有一张炫酷的图标 </h3>
+<div align='center'>
+     此处有一张炫酷的图标
      <br/>
      <sub> (请自行脑补，笑) </sub>
 </div>
