@@ -1,17 +1,48 @@
-# JWiki
-[![](https://img.shields.io/github/license/cgglyle/JWiki.svg)](https://img.shields.io/github/license/cgglyle/JWiki/main/LICENSE)
-![](https://img.shields.io/github/forks/cgglyle/JWiki.svg)
-![](https://img.shields.io/github/stars/cgglyle/JWiki.svg)
-![](https://img.shields.io/github/watchers/cgglyle/JWiki.svg)
+<div align='center' 
+     <h3> 此处有一张炫酷的图标 </h3>
+     <br/>
+     <sub> (请自行脑补，笑) </sub>
+</div>
+<h1 align='center'> JWiki </h1>
 
-本项目是蓄谋已久的想法了，很早之前就想自己独立开发一个wiki软件了。  
-长久以来我都是使用Mediawiki搭建的服务记录笔记的。  
-虽然Mediawiki是一个很完善，有大量开发者的现成的框架。  
-不过我还是想要自己开发一个完全由自己开发的项目，诶嘿～  
+<div align="center">
+  <strong>:high_brightness: 下一代 wiki :crescent_moon:</strong>
+  <br>一个高性能的 wiki，兼顾安全和便捷<br>
+  <sub>可用于 Linux、macOS 和 Windows 乃至 Android、ios。</sub>
+</div>
+
+<br/>
+
+<div align='center'>
+  <a href = "LICENSE">
+     <img src = "https://img.shields.io/github/license/cgglyle/JWiki.svg" alt = "LICENSE"/>
+  </a>
+  <a href = "forks">
+     <img src = "https://img.shields.io/github/forks/cgglyle/JWiki.svg" alt = "forks"/>
+  </a>
+  <a href = "stars">
+     <img src = "https://img.shields.io/github/stars/cgglyle/JWiki.svg" alt = "stars"/>
+  </a>
+  <a href = "watchers">
+     <img src = "https://img.shields.io/github/watchers/cgglyle/JWiki.svg" alt = "watchers"/>
+  </a>
+</div>
+
+<div align="center">
+  <sub>此 wiki 架构由
+    <a href="https://github.com/cgglyle">cgglyle</a> 和
+    <a href="https://github.com/cgglyle/JWiki/graphs/contributors">
+      贡献者们
+    </a>
+    倾力 ❤︎ 打造</sub>
+</div>
+
+## 为什么开发 JWiki
+本项目是蓄谋已久的想法了，很早之前就想自己独立开发一个wiki软件了。长久以来我都是使用Mediawiki搭建的服务记录笔记，虽然Mediawiki是一个很完善，有大量开发者的现成的框架。不过我还是想要自己开发一个完全由自己开发的项目，诶嘿～  
 啊，对了，为什么叫``Jwiki``，因为本项目是使用``Java``开发的``Wiki``项目（笑）  
 
-```
-在今天也就是2022年1月15日，我看到了一个很触动我的视频。这个视频是B站LKs的视频`BV1xa411B7Qo`  
+
+>在今天也就是2022年1月15日，我看到了一个很触动我的视频。这个视频是B站LKs的视频`BV1xa411B7Qo`  
 为什么说这个视频让我很触动呢？在很长一段时间内我都很拒绝录下自己或者拍下自己。就不说原因了。这直接导致了我缺失了很长一段时间的“记忆”  
 LKs的视频放出了他25年前的影像资料。听着看着他的世界，我想这我丢失了或者无法回忆起的那些时间，既没有什么留下的东西。  
 这让我想到了这个项目创立的目的，就是记录一些自己的想法挂念，乃至于视频影像。
@@ -19,7 +50,6 @@ LKs的视频放出了他25年前的影像资料。听着看着他的世界，我
 作为只有一个人的开发组，项目的立项、设计、开发、测试等全部都是我一个人的工作，当然在现在我的项目还是一个私有的开发状态。在合适的时间我会将其开源出来。
 作为一个初来乍到的小开发者，开发的项目可能不是好，但是作为项目的创始者，我还是希望它越来愈好。  
 日后这段话可能就会被删除了，不过可以作为小彩蛋嘛（笑）
-```
 
 ## 为什么选择JWiki
 
@@ -82,7 +112,8 @@ spring:
 [@cgglyle](https://github.com/cgglyle)
 
 ## 贡献
-随意提交[Issues](https://github.com/cgglyle/JWiki/issues/new)或[Pull requests](https://github.com/cgglyle/JWiki/pulls)
+随意提交[Issues](https://github.com/cgglyle/JWiki/issues/new)或[Pull requests](https://github.com/cgglyle/JWiki/pulls)  
+***请贡献者开发时尽量保证系统的弹性，以保证后续开发的便捷，以及维护的便利***
 
 ## 贡献者
 
