@@ -38,7 +38,7 @@
 </div>
 
 <div align="center">
-     <a href="t.me/JWiki">
+     <a href="https://t.me/JWiki">
         <sub>Telegram开发群组</sub>
      </a>
 </div>
