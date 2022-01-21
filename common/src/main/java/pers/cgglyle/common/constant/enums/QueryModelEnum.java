@@ -1,4 +1,4 @@
-package pers.cgglyle.common.enums;
+package pers.cgglyle.common.constant.enums;
 
 /**
  * @author cgglyle

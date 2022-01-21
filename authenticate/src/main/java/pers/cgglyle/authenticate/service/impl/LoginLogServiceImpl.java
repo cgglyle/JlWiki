@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 import pers.cgglyle.authenticate.mapper.LoginLogMapper;
 import pers.cgglyle.authenticate.model.entity.LoginLogEntity;
-import pers.cgglyle.authenticate.service.LoginLogService;
+import pers.cgglyle.authenticate.service.intf.LoginLogService;
 
 /**
  * @author cgglyle

@@ -1,6 +1,6 @@
 package pers.cgglyle.common.response;
 
-import pers.cgglyle.common.enums.ResultCode;
+import pers.cgglyle.common.constant.enums.ResultCode;
 
 /**
  * Api异常实体

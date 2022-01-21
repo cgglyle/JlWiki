@@ -1,4 +1,4 @@
-package pers.cgglyle.wiki.service;
+package pers.cgglyle.wiki.service.intf;
 
 import org.springframework.data.mongodb.core.query.Query;
 import pers.cgglyle.wiki.model.entity.WikiEntity;

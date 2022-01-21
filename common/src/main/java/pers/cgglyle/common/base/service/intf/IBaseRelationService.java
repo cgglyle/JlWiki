@@ -1,4 +1,4 @@
-package pers.cgglyle.common.base.service;
+package pers.cgglyle.common.base.service.intf;
 
 import pers.cgglyle.common.base.model.BaseDto;
 import pers.cgglyle.common.base.model.BaseQuery;

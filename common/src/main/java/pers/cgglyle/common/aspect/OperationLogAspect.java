@@ -17,7 +17,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import pers.cgglyle.common.annotaion.OperationLog;
 import pers.cgglyle.common.model.entity.OperationLogEntity;
-import pers.cgglyle.common.service.OperationLogService;
+import pers.cgglyle.common.service.intf.OperationLogService;
 import pers.cgglyle.common.utils.JoinPointUtils;
 
 import javax.servlet.http.HttpServletRequest;

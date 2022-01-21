@@ -11,13 +11,14 @@ import pers.cgglyle.authenticate.model.query.PermissionQuery;
 import pers.cgglyle.authenticate.model.query.RoleQuery;
 import pers.cgglyle.authenticate.model.query.UserQuery;
 import pers.cgglyle.authenticate.model.vo.*;
-import pers.cgglyle.authenticate.service.*;
+import pers.cgglyle.authenticate.service.intf.*;
 import pers.cgglyle.common.base.model.BaseDto;
 import pers.cgglyle.common.base.model.BaseEntity;
 import pers.cgglyle.common.base.model.BaseQuery;
 import pers.cgglyle.common.base.service.impl.BaseRelationServiceImpl;
 import pers.cgglyle.common.response.ApiException;
 import pers.cgglyle.common.response.PageResult;
+import pers.cgglyle.common.utils.WrapperUtils;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -74,11 +75,11 @@ public class AccountServiceImpl extends BaseRelationServiceImpl implements Accou
     public PageResult get(BaseQuery query) throws IllegalAccessException {
         if (query instanceof PermissionQuery) {
             Page<PermissionEntity> data = permissionService.get(query);
-            return wrapper(data, query, PermissionVo.class);
+            return WrapperUtils.wrapper(data, query, PermissionVo.class);
         }
         if (query instanceof RoleQuery) {
             Page<RoleEntity> data = roleService.get(query);
-            return wrapper(data, query, RoleVo.class, o -> {
+            return WrapperUtils.wrapper(data, query, RoleVo.class, o -> {
                 List<RolePermissionRelationEntity> relationList = rolePermissionRelationService.getListByRoleId(((RoleVo) o).getId());
                 // 获取角色权限关系
                 List<RolePermissionRelationVo> collect = relationList.stream().map(relation -> {
@@ -93,14 +94,14 @@ public class AccountServiceImpl extends BaseRelationServiceImpl implements Accou
         }
         if (query instanceof UserQuery) {
             Page<UserEntity> page = userService.get(query);
-            return wrapper(page, query, UserVo.class, o -> {
+            return WrapperUtils.wrapper(page, query, UserVo.class, o -> {
                 List<UserRoleVo> userRoleList = getUserRoleList(((UserVo) o).getId());
                 ((UserVo) o).setUserRole(userRoleList);
             });
         }
         if (query instanceof GroupQuery) {
             Page<GroupEntity> page = groupService.get(query);
-            return wrapper(page, query, GroupVo.class);
+            return WrapperUtils.wrapper(page, query, GroupVo.class);
         }
         throw new ApiException("未支持的请求");
     }

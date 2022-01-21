@@ -1,4 +1,4 @@
-package pers.cgglyle.common.base.service;
+package pers.cgglyle.common.base.service.intf;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;

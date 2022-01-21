@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 import pers.cgglyle.wiki.model.entity.WikiEntity;
-import pers.cgglyle.wiki.service.WikiMongoService;
+import pers.cgglyle.wiki.service.intf.WikiMongoService;
 
 import java.io.Serializable;
 import java.util.List;

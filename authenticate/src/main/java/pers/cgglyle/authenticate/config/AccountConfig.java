@@ -2,7 +2,7 @@ package pers.cgglyle.authenticate.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import pers.cgglyle.authenticate.service.LoginService;
+import pers.cgglyle.authenticate.service.intf.LoginService;
 import pers.cgglyle.authenticate.service.impl.LoginServiceImpl;
 import pers.cgglyle.common.response.GlobalExceptionHandler;
 

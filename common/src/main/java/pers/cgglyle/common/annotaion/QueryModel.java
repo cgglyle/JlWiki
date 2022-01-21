@@ -1,7 +1,8 @@
 package pers.cgglyle.common.annotaion;
 
 import pers.cgglyle.common.base.model.BaseQuery;
-import pers.cgglyle.common.enums.QueryModelEnum;
+import pers.cgglyle.common.base.service.intf.IBaseService;
+import pers.cgglyle.common.constant.enums.QueryModelEnum;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -10,7 +11,7 @@ import java.lang.annotation.Target;
 
 /**
  * 查询模式注解
- * <p>控制{@link pers.cgglyle.common.base.service.IBaseService#get(BaseQuery)}
+ * <p>控制{@link IBaseService#get(BaseQuery)}
  * 方法的查询方式。
  * <p>其中查询方式方式主要有
  * <ul>
@@ -20,7 +21,7 @@ import java.lang.annotation.Target;
  *
  * @author cgglyle
  * @date 2022-01-08 22:30
- * @see pers.cgglyle.common.base.service.IBaseService#get(BaseQuery)
+ * @see IBaseService#get(BaseQuery)
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)

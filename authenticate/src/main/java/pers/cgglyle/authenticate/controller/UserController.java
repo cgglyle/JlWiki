@@ -6,7 +6,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 import pers.cgglyle.authenticate.model.dto.*;
 import pers.cgglyle.authenticate.model.query.UserQuery;
-import pers.cgglyle.authenticate.service.AccountService;
+import pers.cgglyle.authenticate.service.intf.AccountService;
 import pers.cgglyle.common.annotaion.OperationLog;
 import pers.cgglyle.common.base.controller.BaseController;
 import pers.cgglyle.common.response.ApiException;

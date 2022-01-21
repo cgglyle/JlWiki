@@ -9,7 +9,7 @@ import pers.cgglyle.wiki.model.dto.WikiMongoAddDto;
 import pers.cgglyle.wiki.model.dto.WikiMongoDeleteDto;
 import pers.cgglyle.wiki.model.dto.WikiMongoUpdateDto;
 import pers.cgglyle.wiki.model.query.WikiMongoQuery;
-import pers.cgglyle.wiki.service.WikiService;
+import pers.cgglyle.wiki.service.intf.WikiService;
 
 /**
  * @author cgglyle

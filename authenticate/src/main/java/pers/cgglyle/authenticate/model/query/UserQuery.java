@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import pers.cgglyle.common.annotaion.QueryModel;
 import pers.cgglyle.common.base.model.BaseQuery;
-import pers.cgglyle.common.enums.QueryModelEnum;
+import pers.cgglyle.common.constant.enums.QueryModelEnum;
 
 /**
  * 用户查询体

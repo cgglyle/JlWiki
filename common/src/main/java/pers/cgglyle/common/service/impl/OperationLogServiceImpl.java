@@ -12,7 +12,7 @@ import pers.cgglyle.common.model.entity.OperationLogEntity;
 import pers.cgglyle.common.model.query.OperationLogQuery;
 import pers.cgglyle.common.model.vo.OperationLogVo;
 import pers.cgglyle.common.response.PageResult;
-import pers.cgglyle.common.service.OperationLogService;
+import pers.cgglyle.common.service.intf.OperationLogService;
 
 import java.util.List;
 import java.util.stream.Collectors;

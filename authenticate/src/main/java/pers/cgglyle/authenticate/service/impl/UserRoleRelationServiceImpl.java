@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapp
 import org.springframework.stereotype.Service;
 import pers.cgglyle.authenticate.mapper.UserRoleRelationMapper;
 import pers.cgglyle.authenticate.model.entity.UserRoleRelationEntity;
-import pers.cgglyle.authenticate.service.UserRoleRelationService;
+import pers.cgglyle.authenticate.service.intf.UserRoleRelationService;
 import pers.cgglyle.common.base.service.impl.BaseServiceImpl;
 import pers.cgglyle.common.response.ApiException;
 

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pers.cgglyle.common.model.query.OperationLogQuery;
 import pers.cgglyle.common.response.PageResult;
-import pers.cgglyle.common.service.OperationLogService;
+import pers.cgglyle.common.service.intf.OperationLogService;
 
 /**
  * 日志控制器

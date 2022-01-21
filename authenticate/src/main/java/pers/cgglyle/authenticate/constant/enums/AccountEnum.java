@@ -1,4 +1,4 @@
-package pers.cgglyle.authenticate.enums;
+package pers.cgglyle.authenticate.constant.enums;
 
 /**
  * @author cgglyle

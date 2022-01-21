@@ -3,7 +3,7 @@ package pers.cgglyle.authenticate.service.impl;
 import org.springframework.stereotype.Service;
 import pers.cgglyle.authenticate.mapper.RoleMapper;
 import pers.cgglyle.authenticate.model.entity.RoleEntity;
-import pers.cgglyle.authenticate.service.RoleService;
+import pers.cgglyle.authenticate.service.intf.RoleService;
 import pers.cgglyle.common.base.service.impl.BaseServiceImpl;
 
 /**

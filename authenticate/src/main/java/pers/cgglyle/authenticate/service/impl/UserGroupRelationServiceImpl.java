@@ -8,8 +8,8 @@ import pers.cgglyle.authenticate.model.dto.UserGroupRelationAddDto;
 import pers.cgglyle.authenticate.model.entity.GroupEntity;
 import pers.cgglyle.authenticate.model.entity.UserGroupRelationEntity;
 import pers.cgglyle.authenticate.model.vo.UserGroupVo;
-import pers.cgglyle.authenticate.service.GroupService;
-import pers.cgglyle.authenticate.service.UserGroupRelationService;
+import pers.cgglyle.authenticate.service.intf.GroupService;
+import pers.cgglyle.authenticate.service.intf.UserGroupRelationService;
 import pers.cgglyle.common.annotaion.RedisCache;
 import pers.cgglyle.common.base.service.impl.BaseServiceImpl;
 

@@ -11,7 +11,7 @@ import pers.cgglyle.common.base.model.BaseAddDto;
 import pers.cgglyle.common.base.model.BaseDeleteDto;
 import pers.cgglyle.common.base.model.BaseQuery;
 import pers.cgglyle.common.base.model.BaseUpdateDto;
-import pers.cgglyle.common.base.service.IBaseRelationService;
+import pers.cgglyle.common.base.service.intf.IBaseRelationService;
 import pers.cgglyle.common.response.PageResult;
 
 /**

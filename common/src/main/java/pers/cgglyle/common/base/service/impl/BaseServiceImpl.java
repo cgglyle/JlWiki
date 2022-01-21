@@ -7,8 +7,8 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import pers.cgglyle.common.annotaion.QueryModel;
 import pers.cgglyle.common.base.model.BaseEntity;
 import pers.cgglyle.common.base.model.BaseQuery;
-import pers.cgglyle.common.base.service.IBaseService;
-import pers.cgglyle.common.enums.QueryModelEnum;
+import pers.cgglyle.common.base.service.intf.IBaseService;
+import pers.cgglyle.common.constant.enums.QueryModelEnum;
 import pers.cgglyle.common.response.ApiException;
 import pers.cgglyle.common.utils.StringUtils;
 

@@ -1,7 +1,6 @@
 package pers.cgglyle.authenticate.filter;
 
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.ConfigAttribute;
@@ -9,9 +8,10 @@ import org.springframework.security.authentication.InsufficientAuthenticationExc
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.FilterInvocation;
-import pers.cgglyle.authenticate.enums.AccountEnum;
+import pers.cgglyle.authenticate.constant.enums.AccountEnum;
 import pers.cgglyle.common.config.JWikiSecurityConfig;
 
+import javax.annotation.Resource;
 import java.util.Collection;
 
 /**
@@ -21,7 +21,7 @@ import java.util.Collection;
  * @date 2021-12-31 13:08
  */
 public class ResourceAccessDecisionManager implements AccessDecisionManager {
-    @Autowired
+    @Resource
     private JWikiSecurityConfig jWikiSecurityConfig;
 
     /**

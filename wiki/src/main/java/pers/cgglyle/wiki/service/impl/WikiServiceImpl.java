@@ -20,9 +20,9 @@ import pers.cgglyle.wiki.model.entity.WikiEntity;
 import pers.cgglyle.wiki.model.entity.WikiUserRelationEntity;
 import pers.cgglyle.wiki.model.query.WikiMongoQuery;
 import pers.cgglyle.wiki.model.vo.WikiVo;
-import pers.cgglyle.wiki.service.WikiMongoService;
-import pers.cgglyle.wiki.service.WikiService;
-import pers.cgglyle.wiki.service.WikiUserRelationService;
+import pers.cgglyle.wiki.service.intf.WikiMongoService;
+import pers.cgglyle.wiki.service.intf.WikiService;
+import pers.cgglyle.wiki.service.intf.WikiUserRelationService;
 
 import java.util.List;
 import java.util.stream.Collectors;

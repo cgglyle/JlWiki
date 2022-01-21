@@ -1,7 +1,7 @@
-package pers.cgglyle.authenticate.service;
+package pers.cgglyle.authenticate.service.intf;
 
 import pers.cgglyle.authenticate.model.entity.RolePermissionRelationEntity;
-import pers.cgglyle.common.base.service.IBaseService;
+import pers.cgglyle.common.base.service.intf.IBaseService;
 
 import java.io.Serializable;
 import java.util.List;

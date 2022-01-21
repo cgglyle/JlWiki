@@ -8,7 +8,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import pers.cgglyle.common.enums.ResultCode;
+import pers.cgglyle.common.constant.enums.ResultCode;
 
 import java.security.SignatureException;
 

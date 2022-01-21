@@ -1,7 +1,7 @@
-package pers.cgglyle.authenticate.service;
+package pers.cgglyle.authenticate.service.intf;
 
 import pers.cgglyle.authenticate.model.entity.GroupEntity;
-import pers.cgglyle.common.base.service.IBaseService;
+import pers.cgglyle.common.base.service.intf.IBaseService;
 
 /**
  * 用户组服务层接口

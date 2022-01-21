@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import pers.cgglyle.authenticate.model.dto.GroupAddDto;
 import pers.cgglyle.authenticate.model.dto.GroupUpdateDto;
 import pers.cgglyle.authenticate.model.query.GroupQuery;
-import pers.cgglyle.authenticate.service.AccountService;
+import pers.cgglyle.authenticate.service.intf.AccountService;
 import pers.cgglyle.common.base.controller.BaseController;
 import pers.cgglyle.common.base.model.BaseDeleteDto;
 

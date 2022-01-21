@@ -1,4 +1,4 @@
-package pers.cgglyle.common.service;
+package pers.cgglyle.common.service.intf;
 
 import pers.cgglyle.common.model.entity.OperationLogEntity;
 import pers.cgglyle.common.model.query.OperationLogQuery;

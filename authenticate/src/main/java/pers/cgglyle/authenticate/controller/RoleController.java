@@ -9,7 +9,7 @@ import pers.cgglyle.authenticate.model.dto.RoleDeleteDto;
 import pers.cgglyle.authenticate.model.dto.RolePermissionRelationAddDto;
 import pers.cgglyle.authenticate.model.dto.RoleUpdateDto;
 import pers.cgglyle.authenticate.model.query.RoleQuery;
-import pers.cgglyle.authenticate.service.AccountService;
+import pers.cgglyle.authenticate.service.intf.AccountService;
 import pers.cgglyle.common.annotaion.OperationLog;
 import pers.cgglyle.common.base.controller.BaseController;
 

@@ -15,7 +15,7 @@ import pers.cgglyle.authenticate.model.dto.UserLoginDto;
 import pers.cgglyle.authenticate.model.entity.LoginLogEntity;
 import pers.cgglyle.authenticate.model.query.LoginQuest;
 import pers.cgglyle.authenticate.model.vo.UserInfo;
-import pers.cgglyle.authenticate.service.LoginLogService;
+import pers.cgglyle.authenticate.service.intf.LoginLogService;
 
 import java.lang.reflect.Method;
 import java.time.LocalDateTime;

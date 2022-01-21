@@ -1,4 +1,4 @@
-package pers.cgglyle.authenticate.service;
+package pers.cgglyle.authenticate.service.intf;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import pers.cgglyle.authenticate.model.entity.LoginLogEntity;

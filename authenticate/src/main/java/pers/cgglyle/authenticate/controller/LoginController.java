@@ -7,7 +7,7 @@ import pers.cgglyle.authenticate.annotaion.LoginLog;
 import pers.cgglyle.authenticate.annotaion.LogoutLog;
 import pers.cgglyle.authenticate.model.query.LoginQuest;
 import pers.cgglyle.authenticate.model.vo.UserInfo;
-import pers.cgglyle.authenticate.service.LoginService;
+import pers.cgglyle.authenticate.service.intf.LoginService;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;

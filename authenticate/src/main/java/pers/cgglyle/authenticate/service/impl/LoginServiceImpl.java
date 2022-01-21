@@ -17,7 +17,7 @@ import pers.cgglyle.authenticate.model.dto.RsaKeyDto;
 import pers.cgglyle.authenticate.model.dto.UserLoginDto;
 import pers.cgglyle.authenticate.model.query.LoginQuest;
 import pers.cgglyle.authenticate.model.vo.UserInfo;
-import pers.cgglyle.authenticate.service.LoginService;
+import pers.cgglyle.authenticate.service.intf.LoginService;
 import pers.cgglyle.authenticate.util.RoleUtils;
 import pers.cgglyle.common.response.ApiException;
 import pers.cgglyle.common.utils.RedisUtils;

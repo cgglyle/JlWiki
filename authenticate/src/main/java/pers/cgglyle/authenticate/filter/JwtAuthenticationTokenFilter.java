@@ -3,17 +3,17 @@ package pers.cgglyle.authenticate.filter;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.SignatureException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
-import pers.cgglyle.authenticate.enums.AccountEnum;
+import pers.cgglyle.authenticate.constant.enums.AccountEnum;
 import pers.cgglyle.authenticate.model.dto.UserLoginDto;
-import pers.cgglyle.authenticate.service.LoginService;
+import pers.cgglyle.authenticate.service.intf.LoginService;
 import pers.cgglyle.common.response.ApiException;
 import pers.cgglyle.common.utils.StringUtils;
 
+import javax.annotation.Resource;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -29,7 +29,7 @@ import java.security.spec.InvalidKeySpecException;
  * @date 2021-12-27 10:32
  */
 public class JwtAuthenticationTokenFilter extends BasicAuthenticationFilter {
-    @Autowired
+    @Resource
     private LoginService loginService;
 
     public JwtAuthenticationTokenFilter(AuthenticationManager authenticationManager) {

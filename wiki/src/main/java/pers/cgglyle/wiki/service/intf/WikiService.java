@@ -1,6 +1,6 @@
-package pers.cgglyle.wiki.service;
+package pers.cgglyle.wiki.service.intf;
 
-import pers.cgglyle.common.base.service.IBaseRelationService;
+import pers.cgglyle.common.base.service.intf.IBaseRelationService;
 
 /**
  * wiki综合服务

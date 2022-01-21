@@ -1,7 +1,7 @@
-package pers.cgglyle.authenticate.service;
+package pers.cgglyle.authenticate.service.intf;
 
 import pers.cgglyle.authenticate.model.entity.PermissionEntity;
-import pers.cgglyle.common.base.service.IBaseService;
+import pers.cgglyle.common.base.service.intf.IBaseService;
 
 /**
  * @author cgglyle

@@ -11,7 +11,7 @@ import org.springframework.util.StringUtils;
 import pers.cgglyle.authenticate.model.dto.UserLoginDto;
 import pers.cgglyle.authenticate.model.entity.UserEntity;
 import pers.cgglyle.authenticate.model.vo.UserRoleVo;
-import pers.cgglyle.authenticate.service.AccountService;
+import pers.cgglyle.authenticate.service.intf.AccountService;
 
 import java.util.ArrayList;
 import java.util.List;

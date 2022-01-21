@@ -1,4 +1,4 @@
-package pers.cgglyle.authenticate.service;
+package pers.cgglyle.authenticate.service.intf;
 
 import org.springframework.stereotype.Service;
 import pers.cgglyle.authenticate.model.dto.UserLoginDto;

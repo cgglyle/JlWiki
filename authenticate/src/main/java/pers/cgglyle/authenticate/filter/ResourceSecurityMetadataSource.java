@@ -1,14 +1,14 @@
 package pers.cgglyle.authenticate.filter;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.SecurityConfig;
 import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
-import pers.cgglyle.authenticate.enums.AccountEnum;
-import pers.cgglyle.authenticate.service.AccountService;
+import pers.cgglyle.authenticate.constant.enums.AccountEnum;
+import pers.cgglyle.authenticate.service.intf.AccountService;
 import pers.cgglyle.authenticate.util.RoleUtils;
 
+import javax.annotation.Resource;
 import java.util.Collection;
 import java.util.List;
 
@@ -17,7 +17,7 @@ import java.util.List;
  * @date 2021-12-30 09:42
  */
 public class ResourceSecurityMetadataSource implements FilterInvocationSecurityMetadataSource {
-    @Autowired
+    @Resource
     private AccountService accountService;
 
     /**

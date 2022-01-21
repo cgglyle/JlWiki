@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import pers.cgglyle.authenticate.mapper.UserMapper;
 import pers.cgglyle.authenticate.model.entity.UserEntity;
-import pers.cgglyle.authenticate.service.UserService;
+import pers.cgglyle.authenticate.service.intf.UserService;
 import pers.cgglyle.common.base.service.impl.BaseServiceImpl;
 import pers.cgglyle.common.utils.RedisUtils;
 
