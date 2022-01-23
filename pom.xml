@@ -16,10 +16,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>pers.cgglyle</groupId>
-    <artifactId>JWiki</artifactId>
+    <artifactId>JlWiki</artifactId>
     <version>1.0.0</version>
-    <name>JWiki</name>
-    <description>JWiki</description>
+    <name>JlWiki</name>
+    <description>JlWiki</description>
     <properties>
         <java.version>11</java.version>
         <!--        <mybatis-plus.version>3.4.3.4</mybatis-plus.version>-->
