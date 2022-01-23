@@ -2,6 +2,7 @@ package pers.cgglyle.authenticate.filter;
 
 
 import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.SignatureException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -65,9 +66,20 @@ public class JwtAuthenticationTokenFilter extends BasicAuthenticationFilter {
             UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userLoginDto, null, userLoginDto.getAuthorities());
             // 将token放入上下文
             SecurityContextHolder.getContext().setAuthentication(token);
-        } catch (NoSuchAlgorithmException | InvalidKeySpecException | ExpiredJwtException | ApiException e) {
+        } catch (NoSuchAlgorithmException | InvalidKeySpecException | ApiException e) {
             e.printStackTrace();
-            chain.doFilter(request, response);
+            request.setAttribute("filter", e);
+            request.getRequestDispatcher("/exception/filter").forward(request, response);
+        } catch (ExpiredJwtException e){
+            e.printStackTrace();
+            ApiException ae = new ApiException("Token 已过期");
+            request.setAttribute("filter", ae);
+            request.getRequestDispatcher("/exception/filter").forward(request, response);
+        } catch (SignatureException e){
+            e.printStackTrace();
+            ApiException ae = new ApiException("Token RSA 验证失败, Token 不被信任");
+            request.setAttribute("filter", ae);
+            request.getRequestDispatcher("/exception/filter").forward(request, response);
         }
         // 继续拦截链
         chain.doFilter(request, response);

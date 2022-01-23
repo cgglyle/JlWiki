@@ -1,12 +1,11 @@
 package pers.cgglyle.common.model.entity;
 
 
-import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.time.LocalDateTime;
 
@@ -26,8 +25,8 @@ public class OperationLogEntity {
      * 主键
      */
     @Schema(description = "主键")
-    @TableId(type = IdType.AUTO)
-    private Integer id;
+    @MongoId
+    private String id;
 
     /**
      * 用户名称
@@ -62,14 +61,14 @@ public class OperationLogEntity {
      */
     @Schema(description = "请求参数")
     @TableField("request_parameter")
-    private String requestParameter;
+    private Object requestParameter;
 
     /**
      * 返回结果
      */
     @Schema(description = "返回结果")
     @TableField("return_result")
-    private String returnResult;
+    private Object returnResult;
 
     /**
      * 状态（1-成功，0-失败）

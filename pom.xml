@@ -7,6 +7,7 @@
         <module>application</module>
         <module>common</module>
         <module>authenticate</module>
+        <module>wiki</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -15,10 +16,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>pers.cgglyle</groupId>
-    <artifactId>JWiki</artifactId>
+    <artifactId>JlWiki</artifactId>
     <version>1.0.0</version>
-    <name>JWiki</name>
-    <description>JWiki</description>
+    <name>JlWiki</name>
+    <description>JlWiki</description>
     <properties>
         <java.version>11</java.version>
         <!--        <mybatis-plus.version>3.4.3.4</mybatis-plus.version>-->
@@ -31,10 +32,10 @@
 <!--            <groupId>org.springframework.boot</groupId>-->
 <!--            <artifactId>spring-boot-starter-amqp</artifactId>-->
 <!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-data-mongodb</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>

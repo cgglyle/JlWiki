@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pers.cgglyle.common.annotaion.OperationLog;
 import pers.cgglyle.common.base.model.BaseAddDto;
@@ -12,8 +13,6 @@ import pers.cgglyle.common.base.model.BaseQuery;
 import pers.cgglyle.common.base.model.BaseUpdateDto;
 import pers.cgglyle.common.base.service.IBaseRelationService;
 import pers.cgglyle.common.response.PageResult;
-
-import javax.annotation.Resource;
 
 /**
  * 基础控制器
@@ -57,9 +56,9 @@ import javax.annotation.Resource;
  */
 @Slf4j
 @RestController
-public class BaseController<T extends IBaseRelationService, BQ extends BaseQuery,
+public abstract class BaseController<T extends IBaseRelationService, BQ extends BaseQuery,
         BA extends BaseAddDto, BU extends BaseUpdateDto, BD extends BaseDeleteDto> {
-    @Resource
+    @Autowired
     protected T baseRelationService;
 
     /**
@@ -73,6 +72,7 @@ public class BaseController<T extends IBaseRelationService, BQ extends BaseQuery
             @ApiResponse(responseCode = "1000", description = "请求成功"),
             @ApiResponse(responseCode = "1020", description = "系统内部错误")
     })
+    @OperationLog(operationMethod = "GET")
     @GetMapping("get")
     public PageResult get(BQ query) throws IllegalAccessException {
         log.info("获取分页");

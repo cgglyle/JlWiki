@@ -1,12 +1,13 @@
 package pers.cgglyle.common.service.impl;
 
-import com.alibaba.fastjson.JSON;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.support.PageableExecutionUtils;
 import org.springframework.stereotype.Service;
-import pers.cgglyle.common.mapper.OperationLogMapper;
 import pers.cgglyle.common.model.entity.OperationLogEntity;
 import pers.cgglyle.common.model.query.OperationLogQuery;
 import pers.cgglyle.common.model.vo.OperationLogVo;
@@ -14,6 +15,7 @@ import pers.cgglyle.common.response.PageResult;
 import pers.cgglyle.common.service.OperationLogService;
 
 import java.util.List;
+import java.util.function.LongSupplier;
 import java.util.stream.Collectors;
 
 /**
@@ -23,44 +25,40 @@ import java.util.stream.Collectors;
  * @since 2021-12-14 10:59:28
  */
 @Service("operationLogService")
-public class OperationLogServiceImpl extends ServiceImpl<OperationLogMapper, OperationLogEntity> implements OperationLogService {
+public class OperationLogServiceImpl implements OperationLogService {
+    private final static String LOG_COLLECTION = "operation_log";
+    @Autowired
+    private MongoTemplate mongoTemplate;
 
     @Override
-    public PageResult getPage(OperationLogQuery operationLogQuery) {
-        QueryWrapper<OperationLogEntity> queryWrapper = new QueryWrapper<>();
-        if (operationLogQuery.getOperationModule() != null) {
-            queryWrapper.like("operation_module", operationLogQuery.getOperationModule());
-        }
-        if (operationLogQuery.getCreateTime() != null) {
-            queryWrapper.like("create_time", operationLogQuery.getCreateTime());
-        }
-        if (operationLogQuery.getUserName() != null) {
-            queryWrapper.like("user_name", operationLogQuery.getUserName());
-        }
-        if (operationLogQuery.getRequestAddress() != null) {
-            queryWrapper.like("request_address", operationLogQuery.getRequestAddress());
-        }
-        Page<OperationLogEntity> page = new Page<>(operationLogQuery.getPageNum(), operationLogQuery.getPageSize());
-        Page<OperationLogEntity> data = baseMapper.selectPage(page, queryWrapper);
-        List<OperationLogVo> collect = data.getRecords().stream().map(log -> {
+    public PageResult get(OperationLogQuery query) {
+        // 分页条件
+        PageRequest pageRequest = PageRequest.of(query.getPageNum() - 1, query.getPageSize());
+        // 请求条件
+        Query tempQuery = new Query();
+        // 查询符合条件的条目数
+        long count = mongoTemplate.count(tempQuery, OperationLogEntity.class, LOG_COLLECTION);
+        // 分页条件放入请求
+        tempQuery.with(pageRequest);
+        // 查出日志体
+        List<OperationLogEntity> operationLogEntities = mongoTemplate.find(tempQuery, OperationLogEntity.class, LOG_COLLECTION);
+        Page<?> page = PageableExecutionUtils.getPage(operationLogEntities, pageRequest, new LongSupplier() {
+            @Override
+            public long getAsLong() {
+                return count;
+            }
+        });
+        // 封装显示
+        List<OperationLogVo> collect = page.getContent().stream().map(o -> {
             OperationLogVo operationLogVo = new OperationLogVo();
-            BeanUtils.copyProperties(log, operationLogVo);
-            String requestParameter = log.getRequestParameter();
-            if (jsonType(requestParameter)){
-                operationLogVo.setRequestParameter(JSON.parseObject(log.getRequestParameter()));
-            }
-            operationLogVo.setRequestParameter(requestParameter);
-            String returnResult = log.getReturnResult();
-            if (jsonType(returnResult)){
-                operationLogVo.setReturnResult(JSON.parseObject(log.getReturnResult()));
-            }
-            operationLogVo.setReturnResult(returnResult);
+            BeanUtils.copyProperties(o, operationLogVo);
             return operationLogVo;
         }).collect(Collectors.toList());
-        return new PageResult(operationLogQuery.getPageNum(), operationLogQuery.getPageSize(), data.getTotal(), data.getPages(), collect);
+        return new PageResult(query.getPageNum(),query.getPageSize(),page.getTotalElements(),page.getTotalPages(), collect);
     }
 
-    private boolean jsonType(String str){
-        return str.startsWith("{") && str.endsWith("}");
+    @Override
+    public void add(OperationLogEntity operationLogEntity) {
+        mongoTemplate.save(operationLogEntity, LOG_COLLECTION);
     }
 }

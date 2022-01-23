@@ -15,3 +15,9 @@ spring:
     enabled: true
     baseline-on-migrate: true
     locations: classpath:db
+  # mongodb配置
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: wiki

@@ -31,7 +31,7 @@ mybatis-plus:
 
   #是否开启一个默认的跨域配置,该功能配合自定义Host使用,cors: true
   #  cors: true
-debug: false
+debug: true
 
 jwiki:
   security:
