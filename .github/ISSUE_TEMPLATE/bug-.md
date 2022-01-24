@@ -3,7 +3,7 @@ name: 'Bug '
 about: 创建Bug issues来为我们找出问题
 title: "[BUG]"
 labels: bug
-assignees: cgglyle
+assignees: ''
 
 ---
 

@@ -3,7 +3,7 @@ name: Feature request（功能请求）
 about: 一个好的想法或者新的功能
 title: "[enhancement]"
 labels: enhancement
-assignees: cgglyle
+assignees: ''
 
 ---
 
