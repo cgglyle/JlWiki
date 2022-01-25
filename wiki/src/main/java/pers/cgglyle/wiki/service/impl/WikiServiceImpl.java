@@ -39,7 +39,7 @@ public class WikiServiceImpl extends BaseRelationServiceImpl implements WikiServ
     private WikiUserRelationService wikiUserRelationService;
 
     @Override
-    public PageResult get(BaseQuery query) throws IllegalAccessException {
+    public PageResult get(BaseQuery query) throws Exception {
         if (query instanceof WikiMongoQuery wikiMongoQuery) {
             // 分页条件
             PageRequest pageRequest = PageRequest.of(query.getPageNum().intValue() - 1, query.getPageSize().intValue());

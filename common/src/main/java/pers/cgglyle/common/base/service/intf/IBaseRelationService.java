@@ -21,7 +21,7 @@ public interface IBaseRelationService {
      * @return 分页模型
      * @throws IllegalAccessException 非法访问异常
      */
-    PageResult get(BaseQuery query) throws IllegalAccessException;
+    PageResult get(BaseQuery query) throws Exception;
 
     /**
      * 根据请求添加模型

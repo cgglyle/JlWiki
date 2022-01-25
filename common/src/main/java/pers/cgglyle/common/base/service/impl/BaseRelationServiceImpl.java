@@ -15,7 +15,7 @@ import pers.cgglyle.common.response.PageResult;
 public class BaseRelationServiceImpl implements IBaseRelationService {
 
     @Override
-    public PageResult get(BaseQuery query) throws IllegalAccessException {
+    public PageResult get(BaseQuery query) throws Exception {
         throw new UnsupportedOperationException("未实现的操作");
     }
 

@@ -72,15 +72,15 @@ public class AccountServiceImpl extends BaseRelationServiceImpl implements Accou
      * @throws ApiException 当请求没有被命中抛出"未支持的请求"
      */
     @Override
-    public PageResult get(BaseQuery query) throws IllegalAccessException {
+    public PageResult get(BaseQuery query) throws Exception {
         if (query instanceof PermissionQuery) {
             Page<PermissionEntity> data = permissionService.get(query);
             return WrapperUtils.wrapper(data, query, PermissionVo.class);
         }
         if (query instanceof RoleQuery) {
             Page<RoleEntity> data = roleService.get(query);
-            return WrapperUtils.wrapper(data, query, RoleVo.class, o -> {
-                List<RolePermissionRelationEntity> relationList = rolePermissionRelationService.getListByRoleId(((RoleVo) o).getId());
+            return WrapperUtils.wrapper(data, query, RoleVo.class, (o, obj) -> {
+                List<RolePermissionRelationEntity> relationList = rolePermissionRelationService.getListByRoleId(((RoleEntity) o).getId());
                 // 获取角色权限关系
                 List<RolePermissionRelationVo> collect = relationList.stream().map(relation -> {
                     RolePermissionRelationVo rolePermissionRelationVo = new RolePermissionRelationVo();
@@ -89,14 +89,14 @@ public class AccountServiceImpl extends BaseRelationServiceImpl implements Accou
                     BeanUtils.copyProperties(relation, rolePermissionRelationVo);
                     return rolePermissionRelationVo;
                 }).collect(Collectors.toList());
-                ((RoleVo) o).setPermissionList(collect);
+                ((RoleVo) obj).setPermissionList(collect);
             });
         }
         if (query instanceof UserQuery) {
             Page<UserEntity> page = userService.get(query);
-            return WrapperUtils.wrapper(page, query, UserVo.class, o -> {
-                List<UserRoleVo> userRoleList = getUserRoleList(((UserVo) o).getId());
-                ((UserVo) o).setUserRole(userRoleList);
+            return WrapperUtils.wrapper(page, query, UserVo.class, (o, obj) -> {
+                List<UserRoleVo> userRoleList = getUserRoleList(((UserEntity) o).getId());
+                ((UserVo) obj).setUserRole(userRoleList);
             });
         }
         if (query instanceof GroupQuery) {

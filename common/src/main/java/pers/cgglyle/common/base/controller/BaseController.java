@@ -74,7 +74,7 @@ public abstract class BaseController<T extends IBaseRelationService, BQ extends 
     })
     @OperationLog(operationMethod = "GET")
     @GetMapping("get")
-    public PageResult get(BQ query) throws IllegalAccessException {
+    public PageResult get(BQ query) throws Exception {
         log.info("获取分页");
         return baseRelationService.get(query);
     }
