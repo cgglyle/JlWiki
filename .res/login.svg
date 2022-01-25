@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" viewBox="397 90 391 788" width="391" height="788">
+  <defs>
+    <filter id="Shadow" filterUnits="userSpaceOnUse" x="357.9" y="11.2">
+      <feGaussianBlur in="SourceAlpha" result="blur" stdDeviation="1.308"/>
+      <feOffset in="blur" result="offset" dx="0" dy="2"/>
+      <feFlood flood-color="black" flood-opacity=".5" result="flood"/>
+      <feComposite in="flood" in2="offset" operator="in"/>
+    </filter>
+    <font-face font-family="STHeiti" font-size="10" panose-1="2 1 6 0 4 1 1 1 1 1" units-per-em="1000" underline-position="-133" underline-thickness="20" slope="0" x-height="598" cap-height="787" ascent="860.0006" descent="-139.99939" font-weight="700">
+      <font-face-src>
+        <font-face-name name="STHeiti"/>
+      </font-face-src>
+    </font-face>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="UMLInheritance_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-6 -4 7 8" markerWidth="7" markerHeight="8" color="#00aeef">
+      <g>
+        <path d="M -4.32 0 L 0 2.52 L 0 -2.52 Z" fill="none" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <metadata> Produced by OmniGraffle 7.19.2\n2022-01-25 02:43:39 +0000</metadata>
+  <g id="Canvas_1" fill-opacity="1" stroke-opacity="1" stroke-dasharray="none" stroke="none" fill="none">
+    <title>Canvas 1</title>
+    <g id="Canvas_1_Layer_1">
+      <title>Layer 1</title>
+      <g id="Graphic_7_shadow" filter="url(#Shadow)">
+        <path d="M 466.5 187.5 L 532 215.5 L 466.5 243.5 L 401 215.5 Z" fill="white"/>
+        <path d="M 466.5 187.5 L 532 215.5 L 466.5 243.5 L 401 215.5 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_9_shadow" filter="url(#Shadow)">
+        <path d="M 420.65 91.5 L 512.35 91.5 C 523.1968 91.5 532 100.908 532 112.5 C 532 124.092 523.1968 133.5 512.35 133.5 L 420.65 133.5 C 409.8032 133.5 401 124.092 401 112.5 C 401 100.908 409.8032 91.5 420.65 91.5 Z" fill="white"/>
+        <path d="M 420.65 91.5 L 512.35 91.5 C 523.1968 91.5 532 100.908 532 112.5 C 532 124.092 523.1968 133.5 512.35 133.5 L 420.65 133.5 C 409.8032 133.5 401 124.092 401 112.5 C 401 100.908 409.8032 91.5 420.65 91.5 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_13_shadow" filter="url(#Shadow)">
+        <rect x="401" y="297.5" width="131" height="42" fill="white"/>
+        <rect x="401" y="297.5" width="131" height="42" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_15_shadow" filter="url(#Shadow)">
+        <path d="M 466.5 393.5 L 532 423.5 L 466.5 453.5 L 401 423.5 Z" fill="white"/>
+        <path d="M 466.5 393.5 L 532 423.5 L 466.5 453.5 L 401 423.5 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_20_shadow" filter="url(#Shadow)">
+        <rect x="599.5" y="407.5" width="131" height="42" fill="white"/>
+        <rect x="599.5" y="407.5" width="131" height="42" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_22_shadow" filter="url(#Shadow)">
+        <path d="M 665 505.5 L 730.5 533.5 L 665 561.5 L 599.5 533.5 Z" fill="white"/>
+        <path d="M 665 505.5 L 730.5 533.5 L 665 561.5 L 599.5 533.5 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_24_shadow" filter="url(#Shadow)">
+        <rect x="401" y="507.5" width="131" height="42" fill="white"/>
+        <rect x="401" y="507.5" width="131" height="42" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_25_shadow" filter="url(#Shadow)">
+        <path d="M 665 297.5 L 730.5 325.5 L 665 353.5 L 599.5 325.5 Z" fill="white"/>
+        <path d="M 665 297.5 L 730.5 325.5 L 665 353.5 L 599.5 325.5 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_28_shadow" filter="url(#Shadow)">
+        <rect x="599.5" y="617.5" width="131" height="42" fill="white"/>
+        <rect x="599.5" y="617.5" width="131" height="42" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_34_shadow" filter="url(#Shadow)">
+        <rect x="401" y="717.5" width="131" height="42" fill="white"/>
+        <rect x="401" y="717.5" width="131" height="42" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_37_shadow" filter="url(#Shadow)">
+        <path d="M 420.65 830 L 512.35 830 C 523.1968 830 532 839.408 532 851 C 532 862.592 523.1968 872 512.35 872 L 420.65 872 C 409.8032 872 401 862.592 401 851 C 401 839.408 409.8032 830 420.65 830 Z" fill="white"/>
+        <path d="M 420.65 830 L 512.35 830 C 523.1968 830 532 839.408 532 851 C 532 862.592 523.1968 872 512.35 872 L 420.65 872 C 409.8032 872 401 862.592 401 851 C 401 839.408 409.8032 830 420.65 830 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_39_shadow" filter="url(#Shadow)">
+        <path d="M 619.15 830 L 710.85 830 C 721.6968 830 730.5 839.408 730.5 851 C 730.5 862.592 721.6968 872 710.85 872 L 619.15 872 C 608.3032 872 599.5 862.592 599.5 851 C 599.5 839.408 608.3032 830 619.15 830 Z" fill="white"/>
+        <path d="M 619.15 830 L 710.85 830 C 721.6968 830 730.5 839.408 730.5 851 C 730.5 862.592 721.6968 872 710.85 872 L 619.15 872 C 608.3032 872 599.5 862.592 599.5 851 C 599.5 839.408 608.3032 830 619.15 830 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_7">
+        <path d="M 466.5 187.5 L 532 215.5 L 466.5 243.5 L 401 215.5 Z" fill="white"/>
+        <path d="M 466.5 187.5 L 532 215.5 L 466.5 243.5 L 401 215.5 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(423.685 209.94)" fill="black">
+          <tspan font-family="STHeiti" font-size="10" font-weight="700" fill="black" x="9.91" y="9">是否携带Token</tspan>
+        </text>
+      </g>
+      <g id="Graphic_9">
+        <path d="M 420.65 91.5 L 512.35 91.5 C 523.1968 91.5 532 100.908 532 112.5 C 532 124.092 523.1968 133.5 512.35 133.5 L 420.65 133.5 C 409.8032 133.5 401 124.092 401 112.5 C 401 100.908 409.8032 91.5 420.65 91.5 Z" fill="white"/>
+        <path d="M 420.65 91.5 L 512.35 91.5 C 523.1968 91.5 532 100.908 532 112.5 C 532 124.092 523.1968 133.5 512.35 133.5 L 420.65 133.5 C 409.8032 133.5 401 124.092 401 112.5 C 401 100.908 409.8032 91.5 420.65 91.5 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(419.1 102.5)" fill="black">
+          <tspan font-family="STHeiti" font-size="10" font-weight="700" fill="black" x="37.4" y="9">登陆</tspan>
+          <tspan font-family="STHeiti" font-size="10" font-weight="700" fill="black" x="34.4" y="19">Login</tspan>
+        </text>
+      </g>
+      <g id="Line_12">
+        <line x1="466.5" y1="176.36" x2="466.5" y2="133.5" marker-start="url(#UMLInheritance_Marker)" stroke="#00aeef" stroke-linecap="square" stroke-linejoin="bevel" stroke-width="2"/>
+      </g>
+      <g id="Graphic_13">
+        <rect x="401" y="297.5" width="131" height="42" fill="white"/>
+        <rect x="401" y="297.5" width="131" height="42" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(406 313.5)" fill="black">
+          <tspan font-family="STHeiti" font-size="10" font-weight="700" fill="black" x="31.285" y="9">提取出Token</tspan>
+        </text>
+      </g>
+      <g id="Line_14">
+        <line x1="466.5" y1="286.36" x2="466.5" y2="243.5" marker-start="url(#UMLInheritance_Marker)" stroke="#00aeef" stroke-linecap="square" stroke-linejoin="bevel" stroke-width="2"/>
+      </g>
+      <g id="Graphic_15">
+        <path d="M 466.5 393.5 L 532 423.5 L 466.5 453.5 L 401 423.5 Z" fill="white"/>
+        <path d="M 466.5 393.5 L 532 423.5 L 466.5 453.5 L 401 423.5 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(423.685 417.9)" fill="black">
+          <tspan font-family="STHeiti" font-size="10" font-weight="700" fill="black" x="9.91" y="9">Token是否正确</tspan>
+        </text>
+      </g>
+      <g id="Line_16">
+        <line x1="466.5" y1="382.36" x2="466.5" y2="339.5" marker-start="url(#UMLInheritance_Marker)" stroke="#00aeef" stroke-linecap="square" stroke-linejoin="bevel" stroke-width="2"/>
+      </g>
+      <g id="Graphic_19">
+        <text transform="translate(479 258.5)" fill="black">
+          <tspan font-family="STHeiti" font-size="10" font-weight="700" fill="black" x="53290705e-22" y="9">yes</tspan>
+        </text>
+      </g>
+      <g id="Graphic_20">
+        <rect x="599.5" y="407.5" width="131" height="42" fill="white"/>
+        <rect x="599.5" y="407.5" width="131" height="42" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(604.5 418.5)" fill="black">
+          <tspan font-family="STHeiti" font-size="10" font-weight="700" fill="black" x=".5" y="9">根据用户名从数据库中提取</tspan>
+          <tspan font-family="STHeiti" font-size="10" font-weight="700" fill="black" x="40.5" y="19">账号密码</tspan>
+        </text>
+      </g>
+      <g id="Graphic_22">
+        <path d="M 665 505.5 L 730.5 533.5 L 665 561.5 L 599.5 533.5 Z" fill="white"/>
+        <path d="M 665 505.5 L 730.5 533.5 L 665 561.5 L 599.5 533.5 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(622.185 522.94)" fill="black">
+          <tspan font-family="STHeiti" font-size="10" font-weight="700" fill="black" x="4.125" y="9">密码是否与账户匹</tspan>
+          <tspan font-family="STHeiti" font-size="10" font-weight="700" fill="black" x="39.125" y="19">配</tspan>
+        </text>
+      </g>
+      <g id="Line_23">
+        <line x1="665" y1="494.36" x2="665" y2="449.5" marker-start="url(#UMLInheritance_Marker)" stroke="#00aeef" stroke-linecap="square" stroke-linejoin="bevel" stroke-width="2"/>
+      </g>
+      <g id="Graphic_24">
+        <rect x="401" y="507.5" width="131" height="42" fill="white"/>
+        <rect x="401" y="507.5" width="131" height="42" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(406 523.5)" fill="black">
+          <tspan font-family="STHeiti" font-size="10" font-weight="700" fill="black" x="16.285" y="9">提取Token中的信息</tspan>
+        </text>
+      </g>
+      <g id="Graphic_25">
+        <path d="M 665 297.5 L 730.5 325.5 L 665 353.5 L 599.5 325.5 Z" fill="white"/>
+        <path d="M 665 297.5 L 730.5 325.5 L 665 353.5 L 599.5 325.5 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(622.185 319.94)" fill="black">
+          <tspan font-family="STHeiti" font-size="10" font-weight="700" fill="black" x="4.125" y="9">是否携带账号密码</tspan>
+        </text>
+      </g>
+      <g id="Line_26">
+        <path d="M 665.135 286.36082 L 666 215 L 532 215.5" marker-start="url(#UMLInheritance_Marker)" stroke="#00aeef" stroke-linecap="square" stroke-linejoin="bevel" stroke-width="2"/>
+      </g>
+      <g id="Line_27">
+        <line x1="665" y1="396.36" x2="665" y2="353.5" marker-start="url(#UMLInheritance_Marker)" stroke="#00aeef" stroke-linecap="square" stroke-linejoin="bevel" stroke-width="2"/>
+      </g>
+      <g id="Graphic_28">
+        <rect x="599.5" y="617.5" width="131" height="42" fill="white"/>
+        <rect x="599.5" y="617.5" width="131" height="42" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(604.5 633.5)" fill="black">
+          <tspan font-family="STHeiti" font-size="10" font-weight="700" fill="black" x="10.5" y="9">提取数据库中账户信息</tspan>
+        </text>
+      </g>
+      <g id="Line_29">
+        <line x1="466.5" y1="496.36" x2="466.5" y2="453.5" marker-start="url(#UMLInheritance_Marker)" stroke="#00aeef" stroke-linecap="square" stroke-linejoin="bevel" stroke-width="2"/>
+      </g>
+      <g id="Line_30">
+        <line x1="665" y1="606.36" x2="665" y2="561.5" marker-start="url(#UMLInheritance_Marker)" stroke="#00aeef" stroke-linecap="square" stroke-linejoin="bevel" stroke-width="2"/>
+      </g>
+      <g id="Line_31">
+        <path d="M 653.86 297.5 L 566 297.5 L 566 423 L 532 423.5" marker-start="url(#UMLInheritance_Marker)" stroke="#00aeef" stroke-linecap="square" stroke-linejoin="bevel" stroke-width="2"/>
+      </g>
+      <g id="Graphic_32">
+        <text transform="translate(586.545 194)" fill="black">
+          <tspan font-family="STHeiti" font-size="10" font-weight="700" fill="black" x="26645353e-22" y="9">no</tspan>
+        </text>
+      </g>
+      <g id="Graphic_33">
+        <text transform="translate(542.5 406)" fill="black">
+          <tspan font-family="STHeiti" font-size="10" font-weight="700" fill="black" x="26645353e-22" y="9">no</tspan>
+        </text>
+      </g>
+      <g id="Graphic_34">
+        <rect x="401" y="717.5" width="131" height="42" fill="white"/>
+        <rect x="401" y="717.5" width="131" height="42" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(406 728.5)" fill="black">
+          <tspan font-family="STHeiti" font-size="10" font-weight="700" fill="black" x="30.5" y="9">将信息保存到</tspan>
+          <tspan font-family="STHeiti" font-size="10" font-weight="700" fill="black" x="28.555" y="19">内部Session中</tspan>
+        </text>
+      </g>
+      <g id="Line_35">
+        <line x1="466.5" y1="706.36" x2="466.5" y2="549.5" marker-start="url(#UMLInheritance_Marker)" stroke="#00aeef" stroke-linecap="square" stroke-linejoin="bevel" stroke-width="2"/>
+      </g>
+      <g id="Line_36">
+        <path d="M 476.23397 712.0825 L 499.74 699 L 666 697 L 665 659.5" marker-start="url(#UMLInheritance_Marker)" stroke="#00aeef" stroke-linecap="square" stroke-linejoin="bevel" stroke-width="2"/>
+      </g>
+      <g id="Graphic_37">
+        <path d="M 420.65 830 L 512.35 830 C 523.1968 830 532 839.408 532 851 C 532 862.592 523.1968 872 512.35 872 L 420.65 872 C 409.8032 872 401 862.592 401 851 C 401 839.408 409.8032 830 420.65 830 Z" fill="white"/>
+        <path d="M 420.65 830 L 512.35 830 C 523.1968 830 532 839.408 532 851 C 532 862.592 523.1968 872 512.35 872 L 420.65 872 C 409.8032 872 401 862.592 401 851 C 401 839.408 409.8032 830 420.65 830 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(419.1 846)" fill="black">
+          <tspan font-family="STHeiti" font-size="10" font-weight="700" fill="black" x="27.4" y="9">登陆成功</tspan>
+        </text>
+      </g>
+      <g id="Line_38">
+        <line x1="466.5" y1="818.86" x2="466.5" y2="759.5" marker-start="url(#UMLInheritance_Marker)" stroke="#00aeef" stroke-linecap="square" stroke-linejoin="bevel" stroke-width="2"/>
+      </g>
+      <g id="Graphic_39">
+        <path d="M 619.15 830 L 710.85 830 C 721.6968 830 730.5 839.408 730.5 851 C 730.5 862.592 721.6968 872 710.85 872 L 619.15 872 C 608.3032 872 599.5 862.592 599.5 851 C 599.5 839.408 608.3032 830 619.15 830 Z" fill="white"/>
+        <path d="M 619.15 830 L 710.85 830 C 721.6968 830 730.5 839.408 730.5 851 C 730.5 862.592 721.6968 872 710.85 872 L 619.15 872 C 608.3032 872 599.5 862.592 599.5 851 C 599.5 839.408 608.3032 830 619.15 830 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(617.6 846)" fill="black">
+          <tspan font-family="STHeiti" font-size="10" font-weight="700" fill="black" x="27.4" y="9">登陆失败</tspan>
+        </text>
+      </g>
+      <g id="Line_40">
+        <path d="M 665 818.86 L 665 759.5 L 787 759.5 L 787 326 L 730.5 325.5" marker-start="url(#UMLInheritance_Marker)" stroke="#00aeef" stroke-linecap="square" stroke-linejoin="bevel" stroke-width="2"/>
+      </g>
+    </g>
+  </g>
+</svg>
