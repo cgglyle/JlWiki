@@ -15,7 +15,7 @@ import java.util.Objects;
  * @author cgglyle
  * @date 2022-01-05 08:47
  */
-public class JoinPointUtils {
+public final class JoinPointUtils {
 
     /**
      * 根据连接点获取入参

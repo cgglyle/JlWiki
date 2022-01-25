@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
  * @author cgglyle
  * @date 2022-01-07 17:06
  */
-public class StringUtils extends org.apache.commons.lang3.StringUtils {
+public final class StringUtils extends org.apache.commons.lang3.StringUtils {
     public static String underline(String str) {
         // 匹配单个字符
         String regExp = "([A-Z]{1})";
