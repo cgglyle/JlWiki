@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
+import com.baomidou.mybatisplus.extension.conditions.query.QueryChainWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -290,5 +292,26 @@ public abstract class BaseGetServcieImpl<M extends BaseMapper<T>, T extends Base
     @Override
     public <E extends IPage<Map<String, Object>>> E pageMaps(E page) {
         return this.service.pageMaps(page);
+    }
+
+    /**
+     * 链式查询 普通
+     *
+     * @return QueryWrapper 的包装类
+     */
+    @Override
+    public QueryChainWrapper<T> query() {
+        return this.service.query();
+    }
+
+    /**
+     * 链式查询 lambda 式
+     * <p>注意：不支持 Kotlin </p>
+     *
+     * @return LambdaQueryWrapper 的包装类
+     */
+    @Override
+    public LambdaQueryChainWrapper<T> lambdaQuery() {
+        return this.service.lambdaQuery();
     }
 }

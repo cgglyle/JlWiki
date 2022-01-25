@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
+import com.baomidou.mybatisplus.extension.conditions.query.QueryChainWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import pers.cgglyle.common.annotaion.QueryModel;
 import pers.cgglyle.common.base.model.BaseQuery;
@@ -192,4 +194,19 @@ public interface IBaseGetService<T> {
      * @return {@link Class<T>}
      */
     Class<T> getEntityClass();
+
+    /**
+     * 链式查询 普通
+     *
+     * @return QueryWrapper 的包装类
+     */
+    QueryChainWrapper<T> query();
+
+    /**
+     * 链式查询 lambda 式
+     * <p>注意：不支持 Kotlin </p>
+     *
+     * @return LambdaQueryWrapper 的包装类
+     */
+    LambdaQueryChainWrapper<T> lambdaQuery();
 }
