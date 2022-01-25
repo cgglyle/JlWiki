@@ -8,12 +8,14 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
 import com.baomidou.mybatisplus.extension.conditions.query.QueryChainWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import pers.cgglyle.common.annotaion.QueryModel;
 import pers.cgglyle.common.base.model.BaseEntity;
 import pers.cgglyle.common.base.model.BaseQuery;
 import pers.cgglyle.common.base.service.intf.IBaseGetService;
+import pers.cgglyle.common.base.service.intf.IBaseService;
 import pers.cgglyle.common.constant.enums.QueryModelEnum;
 import pers.cgglyle.common.utils.StringUtils;
 
@@ -30,8 +32,8 @@ import java.util.function.Function;
  * @date 2022-01-25 14:56
  */
 public abstract class BaseGetServcieImpl<M extends BaseMapper<T>, T extends BaseEntity> implements IBaseGetService<T> {
-    @Autowired
-    private ServiceImpl<M, T> service;
+    @Resource
+    private IService<T> service;
 
     /**
      * 查询（根据ID 批量查询）
