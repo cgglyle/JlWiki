@@ -1,10 +1,8 @@
 package pers.cgglyle.common.base.service.intf;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
-import com.baomidou.mybatisplus.core.toolkit.Assert;
-import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
-import com.baomidou.mybatisplus.extension.service.IService;
-import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
+import com.baomidou.mybatisplus.extension.conditions.update.LambdaUpdateChainWrapper;
+import com.baomidou.mybatisplus.extension.conditions.update.UpdateChainWrapper;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
@@ -16,7 +14,7 @@ import java.util.Map;
  * @author cgglyle
  * @date 2022-01-25 15:17
  */
-public interface IBaseChangeService<T>{
+public interface IBaseChangeService<T> {
 
     /**
      * 插入一条记录（选择字段，策略插入）
@@ -24,6 +22,7 @@ public interface IBaseChangeService<T>{
      * @param entity 实体对象
      */
     boolean save(T entity);
+
     /**
      * 插入（批量）
      *
@@ -158,7 +157,7 @@ public interface IBaseChangeService<T>{
      * @return 删除结果
      * @since 3.5.0
      */
-    boolean removeBatchByIds(Collection<?> list, int batchSize) ;
+    boolean removeBatchByIds(Collection<?> list, int batchSize);
 
     /**
      * 批量删除(jdbc批量提交)
@@ -184,14 +183,14 @@ public interface IBaseChangeService<T>{
      *
      * @param entity 实体对象
      */
-    boolean updateById(T entity) ;
+    boolean updateById(T entity);
 
     /**
      * 根据 UpdateWrapper 条件，更新记录 需要设置sqlset
      *
      * @param updateWrapper 实体对象封装操作类 {@link com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper}
      */
-    boolean update(Wrapper<T> updateWrapper) ;
+    boolean update(Wrapper<T> updateWrapper);
 
     /**
      * 根据 whereEntity 条件，更新记录
@@ -223,4 +222,19 @@ public interface IBaseChangeService<T>{
      * @param entity 实体对象
      */
     boolean saveOrUpdate(T entity);
+
+    /**
+     * 链式更改 普通
+     *
+     * @return UpdateWrapper 的包装类
+     */
+    UpdateChainWrapper<T> update();
+
+    /**
+     * 链式更改 lambda 式
+     * <p>注意：不支持 Kotlin </p>
+     *
+     * @return LambdaUpdateWrapper 的包装类
+     */
+    LambdaUpdateChainWrapper<T> lambdaUpdate();
 }

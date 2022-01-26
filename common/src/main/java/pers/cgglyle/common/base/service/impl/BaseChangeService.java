@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.conditions.update.LambdaUpdateChainWrapper;
+import com.baomidou.mybatisplus.extension.conditions.update.UpdateChainWrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import pers.cgglyle.common.base.model.BaseEntity;
@@ -311,5 +313,26 @@ public abstract class BaseChangeService<M extends BaseMapper<T>, T extends BaseE
     @Override
     public boolean saveOrUpdate(T entity) {
         return this.service.save(entity);
+    }
+
+    /**
+     * 链式更改 普通
+     *
+     * @return UpdateWrapper 的包装类
+     */
+    @Override
+    public UpdateChainWrapper<T> update() {
+        return this.service.update();
+    }
+
+    /**
+     * 链式更改 lambda 式
+     * <p>注意：不支持 Kotlin </p>
+     *
+     * @return LambdaUpdateWrapper 的包装类
+     */
+    @Override
+    public LambdaUpdateChainWrapper<T> lambdaUpdate() {
+        return this.service.lambdaUpdate();
     }
 }
