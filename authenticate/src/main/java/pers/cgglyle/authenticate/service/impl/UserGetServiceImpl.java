@@ -12,4 +12,14 @@ import pers.cgglyle.common.base.service.impl.BaseGetServcieImpl;
  */
 @Service
 public class UserGetServiceImpl extends BaseGetServcieImpl<UserMapper, UserEntity> implements UserGetService {
+    /**
+     * 精确查询用户名
+     *
+     * @param userName 用户名
+     * @return 用户数据实体
+     */
+    @Override
+    public UserEntity getUserEntity(String userName) {
+        return query().eq("user_name", userName).one();
+    }
 }

@@ -24,7 +24,7 @@ import java.util.Map;
  * @author cgglyle
  * @date 2022-01-25 15:53
  */
-public abstract class BaseChangeService<M extends BaseMapper<T>, T extends BaseEntity> implements IBaseChangeService<T> {
+public abstract class BaseChangeServiceImpl<M extends BaseMapper<T>, T extends BaseEntity> implements IBaseChangeService<T> {
     @Resource
     private IService<T> service;
     @Resource
