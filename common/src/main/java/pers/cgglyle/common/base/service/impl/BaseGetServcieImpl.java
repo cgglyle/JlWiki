@@ -36,6 +36,16 @@ public abstract class BaseGetServcieImpl<M extends BaseMapper<T>, T extends Base
     private IService<T> service;
 
     /**
+     * 根据 ID 查询
+     *
+     * @param id 主键ID
+     */
+    @Override
+    public T getById(Serializable id) {
+        return service.getById(id);
+    }
+
+    /**
      * 查询（根据ID 批量查询）
      *
      * @param idList 主键ID列表

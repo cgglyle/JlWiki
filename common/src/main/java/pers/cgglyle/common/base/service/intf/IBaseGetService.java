@@ -23,6 +23,13 @@ import java.util.function.Function;
 public interface IBaseGetService<T> {
 
     /**
+     * 根据 ID 查询
+     *
+     * @param id 主键ID
+     */
+    T getById(Serializable id);
+
+    /**
      * 查询（根据ID 批量查询）
      *
      * @param idList 主键ID列表
