@@ -43,9 +43,6 @@
      </a>
 </div>
 
-## Contact Me
-Email: [cgglyle@outlook.com](cgglyle@outlook.com)
-
 ## READEME
 ***项目目前处于原型状态！甚至还没有添加前端，不具备可用性。下方介绍只是事先拟定好的。***
 
