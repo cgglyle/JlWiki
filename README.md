@@ -157,6 +157,11 @@ JlWiki只是一个写作的框架，存储结构还是您的硬盘。（我们�
 
 ## 贡献者
 
+## 鸣谢
+<img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.png" width = "300" height = "300" alt="JetBrains Logo (Main) logo.">
+
+在此特别感谢[JetBrains](https://www.jetbrains.com)对开源事业做出的贡献，您可以在[JetBranins开源支持](https://jb.gg/OpenSourceSupport)中查看到更多信息。
+
 ## License
 [GPL v3](https://www.gnu.org/licenses/gpl-3.0.html) © cgglyle
 
