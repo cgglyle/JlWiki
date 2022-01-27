@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.extension.conditions.update.LambdaUpdateChainWra
 import com.baomidou.mybatisplus.extension.conditions.update.UpdateChainWrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import pers.cgglyle.common.base.model.BaseEntity;
 import pers.cgglyle.common.base.service.intf.IBaseChangeService;
 import pers.cgglyle.common.base.service.intf.IBaseGetService;
@@ -25,9 +26,9 @@ import java.util.Map;
  * @date 2022-01-25 15:53
  */
 public abstract class BaseChangeServiceImpl<M extends BaseMapper<T>, T extends BaseEntity> implements IBaseChangeService<T> {
-    @Resource
+    @Autowired
     private IService<T> service;
-    @Resource
+    @Autowired
     private IBaseGetService<T> getService;
 
     /**

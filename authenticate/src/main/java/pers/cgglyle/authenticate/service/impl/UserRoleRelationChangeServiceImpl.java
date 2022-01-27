@@ -2,6 +2,7 @@ package pers.cgglyle.authenticate.service.impl;
 
 import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import pers.cgglyle.authenticate.mapper.UserRoleRelationMapper;
 import pers.cgglyle.authenticate.model.entity.UserRoleRelationEntity;
 import pers.cgglyle.authenticate.service.intf.UserRoleRelationChangeService;
@@ -17,6 +18,7 @@ import java.util.List;
  * @author cgglyle
  * @date 2022-01-26 19:46
  */
+@Service
 public class UserRoleRelationChangeServiceImpl extends BaseChangeServiceImpl<UserRoleRelationMapper, UserRoleRelationEntity> implements UserRoleRelationChangeService {
 
     @Autowired

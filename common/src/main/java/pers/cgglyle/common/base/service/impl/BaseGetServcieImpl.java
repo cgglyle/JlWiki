@@ -32,7 +32,7 @@ import java.util.function.Function;
  * @date 2022-01-25 14:56
  */
 public abstract class BaseGetServcieImpl<M extends BaseMapper<T>, T extends BaseEntity> implements IBaseGetService<T> {
-    @Resource
+    @Autowired
     private IService<T> service;
 
     /**
